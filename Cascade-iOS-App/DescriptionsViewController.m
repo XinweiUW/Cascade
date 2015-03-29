@@ -13,10 +13,24 @@
 @end
 
 @implementation DescriptionsViewController
+@synthesize routedb;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (self.routedb) {
+        [self.routeTitle setText:[self.routeTitle valueForKey:@"title"]];
+        [self.routeDescription setText:[self.routeDescription valueForKey:@"descriptions"]];
+    }
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
 
 - (void)didReceiveMemoryWarning {
