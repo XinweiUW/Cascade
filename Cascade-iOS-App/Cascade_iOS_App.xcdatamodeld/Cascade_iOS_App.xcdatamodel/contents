@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Routes" syncable="YES">
         <attribute name="attractions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="difficulties" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="finish" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,6 +18,6 @@
         <attribute name="turnDirections" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Routes" positionX="-63" positionY="-18" width="128" height="255"/>
+        <element name="Routes" positionX="-63" positionY="-18" width="128" height="270"/>
     </elements>
 </model>
