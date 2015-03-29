@@ -15,6 +15,8 @@
 		9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BFE031AC39B4100ED37D1 /* Images.xcassets */; };
 		9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BFE051AC39B4100ED37D1 /* LaunchScreen.xib */; };
 		9D8BFE131AC39B4100ED37D1 /* Cascade_iOS_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */; };
+		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
+		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,10 @@
 		9D8BFE0C1AC39B4100ED37D1 /* Cascade-iOS-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cascade-iOS-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8BFE111AC39B4100ED37D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cascade_iOS_AppTests.m; sourceTree = "<group>"; };
+		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
+		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
+		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
+		9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
 				9D8BFDFD1AC39B4100ED37D1 /* ViewController.h */,
 				9D8BFDFE1AC39B4100ED37D1 /* ViewController.m */,
+				9DD314C31AC7C135004C89AE /* View Controller */,
 				9D8BFE001AC39B4100ED37D1 /* Main.storyboard */,
 				9D8BFE031AC39B4100ED37D1 /* Images.xcassets */,
 				9D8BFE051AC39B4100ED37D1 /* LaunchScreen.xib */,
@@ -120,6 +127,17 @@
 				9D8BFE111AC39B4100ED37D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9DD314C31AC7C135004C89AE /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */,
+				9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */,
+				9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */,
+				9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */,
+			);
+			name = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +242,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,
+				9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */,
+				9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */,
 				9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */,
 				9D8BFDFF1AC39B4100ED37D1 /* ViewController.m in Sources */,
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
