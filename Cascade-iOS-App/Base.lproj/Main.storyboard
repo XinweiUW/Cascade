@@ -49,7 +49,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5G-bL-BeW">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5G-bL-BeW">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="fMa-nm-kdl">
@@ -65,13 +65,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caZ-PB-b9V">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caZ-PB-b9V">
                                 <rect key="frame" x="279" y="176" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obm-ws-RWb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obm-ws-RWb">
                                 <rect key="frame" x="279" y="324" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -79,6 +79,15 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P5G-bL-BeW" firstAttribute="centerX" secondItem="caZ-PB-b9V" secondAttribute="centerX" id="6wc-wG-ZDE"/>
+                            <constraint firstItem="FLc-L6-jlH" firstAttribute="top" secondItem="Obm-ws-RWb" secondAttribute="bottom" constant="255" id="Mb9-nm-f7b"/>
+                            <constraint firstItem="caZ-PB-b9V" firstAttribute="top" secondItem="41r-Z1-gyA" secondAttribute="bottom" constant="112" id="Mkb-Cz-2dz"/>
+                            <constraint firstItem="P5G-bL-BeW" firstAttribute="bottom" secondItem="41r-Z1-gyA" secondAttribute="bottom" id="Wc8-a8-Y28"/>
+                            <constraint firstItem="caZ-PB-b9V" firstAttribute="leading" secondItem="Obm-ws-RWb" secondAttribute="leading" id="biT-Yc-XZP"/>
+                            <constraint firstAttribute="trailing" secondItem="P5G-bL-BeW" secondAttribute="trailing" id="mMG-dm-D3l"/>
+                            <constraint firstItem="P5G-bL-BeW" firstAttribute="leading" secondItem="0qX-1p-O5P" secondAttribute="leading" id="wxa-MR-Mlz"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="routeDescription" destination="Obm-ws-RWb" id="1Ir-vY-G0R"/>
