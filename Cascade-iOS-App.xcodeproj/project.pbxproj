@@ -171,6 +171,7 @@
 				TargetAttributes = {
 					9D8BFDEF1AC39B4100ED37D1 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 2A24775PKD;
 					};
 					9D8BFE0B1AC39B4100ED37D1 = {
 						CreatedOnToolsVersion = 6.0;
@@ -416,6 +417,7 @@
 				9D8BFE181AC39B4100ED37D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9D8BFE191AC39B4100ED37D1 /* Build configuration list for PBXNativeTarget "Cascade-iOS-AppTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +426,7 @@
 				9D8BFE1B1AC39B4100ED37D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
