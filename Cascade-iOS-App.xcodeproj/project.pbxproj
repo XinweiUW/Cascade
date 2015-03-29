@@ -17,6 +17,10 @@
 		9D8BFE131AC39B4100ED37D1 /* Cascade_iOS_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
+		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
+		9DD314CA1AC7D069004C89AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C91AC7D069004C89AE /* CoreGraphics.framework */; };
+		9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CB1AC7D07A004C89AE /* UIKit.framework */; };
+		9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CD1AC7D084004C89AE /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
 		9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionsViewController.m; sourceTree = "<group>"; };
+		9DD314C71AC7D05A004C89AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9DD314C91AC7D069004C89AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9DD314CB1AC7D07A004C89AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9DD314CD1AC7D084004C89AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */,
+				9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */,
+				9DD314CA1AC7D069004C89AE /* CoreGraphics.framework in Frameworks */,
+				9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +85,7 @@
 			children = (
 				9D8BFDF21AC39B4100ED37D1 /* Cascade-iOS-App */,
 				9D8BFE0F1AC39B4100ED37D1 /* Cascade-iOS-AppTests */,
+				9DD314CF1AC7D09C004C89AE /* Frameworks */,
 				9D8BFDF11AC39B4100ED37D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -138,6 +151,17 @@
 				9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */,
 			);
 			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		9DD314CF1AC7D09C004C89AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DD314C71AC7D05A004C89AE /* Foundation.framework */,
+				9DD314C91AC7D069004C89AE /* CoreGraphics.framework */,
+				9DD314CB1AC7D07A004C89AE /* UIKit.framework */,
+				9DD314CD1AC7D084004C89AE /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
