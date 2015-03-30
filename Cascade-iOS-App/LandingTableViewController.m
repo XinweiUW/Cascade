@@ -211,6 +211,8 @@
     //[cell.textLabel setText:[NSString stringWithFormat:@"%@ %@", [device valueForKey:@"fullname"], [device valueForKey:@"email"]]];
     //[cell.detailTextLabel setText:[device valueForKey:@"phone"]];
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
     //UIImage *bgImage = [UIImage imageNamed:@"IDMXMmPB.jpeg"];
     //NSString *path = [[NSBundle mainBundle] pathForResource:@"IDMXMmPB" ofType:@"jpeg"];
     //UIImage *bgImage =[[UIImage alloc] initWithContentsOfFile:path];

@@ -18,9 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.navigationBar.backItem.title = @"Custom text";
+    
     if (self.routedb) {
-        [self.routeTitle setText:[self.routeTitle valueForKey:@"title"]];
-        [self.routeDescription setText:[self.routeDescription valueForKey:@"descriptions"]];
+        
     }
 }
 
