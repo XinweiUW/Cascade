@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LandingTableViewController : UITableViewController
+@property (strong) NSMutableArray *routeArray;
+-(void) executeParsing;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *detailButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *drawerButton;
 

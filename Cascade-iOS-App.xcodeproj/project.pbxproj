@@ -21,6 +21,7 @@
 		9DD314CA1AC7D069004C89AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C91AC7D069004C89AE /* CoreGraphics.framework */; };
 		9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CB1AC7D07A004C89AE /* UIKit.framework */; };
 		9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CD1AC7D084004C89AE /* CoreData.framework */; };
+		9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17F91AC9074600D79B51 /* CHCSVParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		9DD314C91AC7D069004C89AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9DD314CB1AC7D07A004C89AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DD314CD1AC7D084004C89AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9DFC17F91AC9074600D79B51 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
+		9DFC17FA1AC9074600D79B51 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
 				9D8BFDFD1AC39B4100ED37D1 /* ViewController.h */,
 				9D8BFDFE1AC39B4100ED37D1 /* ViewController.m */,
+				9DFC17FC1AC9074D00D79B51 /* CSVParser */,
 				9DD314C31AC7C135004C89AE /* View Controller */,
 				9D8BFE001AC39B4100ED37D1 /* Main.storyboard */,
 				9D8BFE031AC39B4100ED37D1 /* Images.xcassets */,
@@ -162,6 +166,15 @@
 				9DD314CD1AC7D084004C89AE /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DFC17FC1AC9074D00D79B51 /* CSVParser */ = {
+			isa = PBXGroup;
+			children = (
+				9DFC17F91AC9074600D79B51 /* CHCSVParser.m */,
+				9DFC17FA1AC9074600D79B51 /* CHCSVParser.h */,
+			);
+			name = CSVParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */,
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,
 				9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */,
 				9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */,

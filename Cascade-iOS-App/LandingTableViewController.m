@@ -7,12 +7,23 @@
 //
 
 #import "LandingTableViewController.h"
+#import "DescriptionsViewController.h"
 
 @interface LandingTableViewController ()
 
 @end
 
 @implementation LandingTableViewController
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,14 +98,18 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showRouteDetail"]) {
+        NSManagedObject *selectedDevice = [self.routeArray objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        DescriptionsViewController *destViewController = segue.destinationViewController;
+        destViewController.routedb = selectedDevice;
+    }
+
 }
-*/
+
 
 @end
