@@ -4,20 +4,21 @@
         <attribute name="attractions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="difficulties" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="finish" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="imgURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyWords" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="photos" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mapURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roadCondition" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="routeMap" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shortOverview" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="terrain" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="turnDirections" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="turnByTurn" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Routes" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="Routes" positionX="-63" positionY="-18" width="128" height="285"/>
     </elements>
 </model>
