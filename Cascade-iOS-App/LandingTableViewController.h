@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LandingTableViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *detailButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *drawerButton;
 
 @end

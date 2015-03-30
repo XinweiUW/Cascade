@@ -12,6 +12,7 @@
 @interface DescriptionsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *routeTitle;
 @property (weak, nonatomic) IBOutlet UILabel *routeDescription;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @property (strong) NSManagedObject *routedb;
 

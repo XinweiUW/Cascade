@@ -18,6 +18,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AcC-Fg-Sai" id="Mcp-Ey-pK1">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="hIS-Sp-du0" kind="show" identifier="showRouteDetail" id="zhv-Ky-lS9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -26,12 +29,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="l8h-9N-hJ5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="5R5-D1-xCv">
-                            <connections>
-                                <segue destination="hIS-Sp-du0" kind="show" id="ZzF-T6-jLt"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="drawer" id="why-jt-XN7"/>
+                        <barButtonItem key="rightBarButtonItem" title="detail" id="5R5-D1-xCv"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailButton" destination="5R5-D1-xCv" id="BPT-pg-rYI"/>
+                        <outlet property="drawerButton" destination="why-jt-XN7" id="i2p-ZM-XoH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXB-U6-uPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,7 +61,7 @@
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V88-u9-gU6">
                                                 <rect key="frame" x="-23" y="-15" width="133" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal">
+                                                <state key="normal" title="Back">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
@@ -90,6 +94,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="V88-u9-gU6" id="vyB-jt-hgZ"/>
                         <outlet property="routeDescription" destination="Obm-ws-RWb" id="1Ir-vY-G0R"/>
                         <outlet property="routeTitle" destination="caZ-PB-b9V" id="zGP-9h-XYG"/>
                     </connections>
