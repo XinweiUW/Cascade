@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082181ACA7E1500B2602B /* 2-switch to map list.png */; };
+		9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */; };
+		9D4082241ACA7E1500B2602B /* 5-distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821A1ACA7E1500B2602B /* 5-distance.png */; };
+		9D4082251ACA7E1500B2602B /* 6-duration.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821B1ACA7E1500B2602B /* 6-duration.png */; };
+		9D4082261ACA7E1500B2602B /* 7-terrain.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821C1ACA7E1500B2602B /* 7-terrain.png */; };
+		9D4082271ACA7E1500B2602B /* 8-road condition.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821D1ACA7E1500B2602B /* 8-road condition.png */; };
+		9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821E1ACA7E1500B2602B /* 9-turn by turn list.png */; };
+		9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821F1ACA7E1500B2602B /* 10-arrow-left.png */; };
+		9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082201ACA7E1500B2602B /* 10-arrow-right.png */; };
+		9D40822B1ACA7E1500B2602B /* 10-arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082211ACA7E1500B2602B /* 10-arrow-up.png */; };
 		9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF51AC39B4100ED37D1 /* main.m */; };
 		9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */; };
 		9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDFA1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld */; };
@@ -36,6 +46,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D4082181ACA7E1500B2602B /* 2-switch to map list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-switch to map list.png"; sourceTree = "<group>"; };
+		9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-switch to picture list.png"; sourceTree = "<group>"; };
+		9D40821A1ACA7E1500B2602B /* 5-distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-distance.png"; sourceTree = "<group>"; };
+		9D40821B1ACA7E1500B2602B /* 6-duration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6-duration.png"; sourceTree = "<group>"; };
+		9D40821C1ACA7E1500B2602B /* 7-terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7-terrain.png"; sourceTree = "<group>"; };
+		9D40821D1ACA7E1500B2602B /* 8-road condition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8-road condition.png"; sourceTree = "<group>"; };
+		9D40821E1ACA7E1500B2602B /* 9-turn by turn list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-turn by turn list.png"; sourceTree = "<group>"; };
+		9D40821F1ACA7E1500B2602B /* 10-arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-left.png"; sourceTree = "<group>"; };
+		9D4082201ACA7E1500B2602B /* 10-arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-right.png"; sourceTree = "<group>"; };
+		9D4082211ACA7E1500B2602B /* 10-arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-up.png"; sourceTree = "<group>"; };
 		9D8BFDF01AC39B4100ED37D1 /* Cascade-iOS-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cascade-iOS-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8BFDF41AC39B4100ED37D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8BFDF51AC39B4100ED37D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +106,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D4082171ACA7DEF00B2602B /* icon img */ = {
+			isa = PBXGroup;
+			children = (
+				9D4082181ACA7E1500B2602B /* 2-switch to map list.png */,
+				9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */,
+				9D40821A1ACA7E1500B2602B /* 5-distance.png */,
+				9D40821B1ACA7E1500B2602B /* 6-duration.png */,
+				9D40821C1ACA7E1500B2602B /* 7-terrain.png */,
+				9D40821D1ACA7E1500B2602B /* 8-road condition.png */,
+				9D40821E1ACA7E1500B2602B /* 9-turn by turn list.png */,
+				9D40821F1ACA7E1500B2602B /* 10-arrow-left.png */,
+				9D4082201ACA7E1500B2602B /* 10-arrow-right.png */,
+				9D4082211ACA7E1500B2602B /* 10-arrow-up.png */,
+			);
+			name = "icon img";
+			sourceTree = "<group>";
+		};
 		9D8BFDE71AC39B4100ED37D1 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +145,7 @@
 		9D8BFDF21AC39B4100ED37D1 /* Cascade-iOS-App */ = {
 			isa = PBXGroup;
 			children = (
+				9D4082171ACA7DEF00B2602B /* icon img */,
 				9D8BFDF71AC39B4100ED37D1 /* AppDelegate.h */,
 				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
 				9D8BFDFD1AC39B4100ED37D1 /* ViewController.h */,
@@ -263,9 +301,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D4082241ACA7E1500B2602B /* 5-distance.png in Resources */,
+				9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */,
+				9D4082271ACA7E1500B2602B /* 8-road condition.png in Resources */,
+				9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */,
+				9D4082261ACA7E1500B2602B /* 7-terrain.png in Resources */,
 				9D8BFE021AC39B4100ED37D1 /* Main.storyboard in Resources */,
+				9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */,
+				9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */,
+				9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */,
+				9D40822B1ACA7E1500B2602B /* 10-arrow-up.png in Resources */,
 				9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */,
 				9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */,
+				9D4082251ACA7E1500B2602B /* 6-duration.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
