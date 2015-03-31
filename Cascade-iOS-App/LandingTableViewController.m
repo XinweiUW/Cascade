@@ -127,13 +127,11 @@
                 [self.routedb setValue:difficulties forKey:@"difficulties"];
             }
             
-            NSError *error = nil;
+            //NSError *error = nil;
             // Save the object to persistent store
-            if (![context save:&error]) {
-                NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-            }
-
-            
+            //if (![context save:&error]) {
+            //    NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+            //}
         }
         NSError *error = nil;
         // Save the object to persistent store
@@ -156,7 +154,7 @@
         [self dataCount];
     }
     
-    [self loadImage];
+    //[self loadImage];
     
     [self.tableView reloadData];
     NSLog(@"abc");
@@ -245,8 +243,8 @@
     //NSString *identifier = [NSString stringWithFormat:@"Cell%ld", (long)indexPath.row];
     
     //NSLog(identifier);
-    /*if ([self.cachedImages objectForKey:identifier]){
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:identifier]];
+    if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
@@ -255,12 +253,12 @@
             UIImage *image = [UIImage imageWithData:imageData];
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
-                    [self.cachedImages setObject:image forKey:identifier];
+                    [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
                     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
                 }
             });
         });
-    }*/
+    }
     
     cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
     
