@@ -235,6 +235,7 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = UITextAlignmentCenter;
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0f];
     //UIImage *bgImage = [UIImage imageNamed:@"IDMXMmPB.jpeg"];
     //NSString *path = [[NSBundle mainBundle] pathForResource:@"IDMXMmPB" ofType:@"jpeg"];
     //UIImage *bgImage =[[UIImage alloc] initWithContentsOfFile:path];
