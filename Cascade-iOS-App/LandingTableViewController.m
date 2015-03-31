@@ -156,9 +156,30 @@
         [self dataCount];
     }
     
+    [self loadImage];
+    
     [self.tableView reloadData];
     NSLog(@"abc");
 }
+
+- (void)loadImage{
+    
+    for (NSManagedObject *obj in self.routeArray){
+        
+        NSString *imgURL = [obj valueForKey:@"imgURL"];
+        NSString *str = [obj valueForKey:@"title"];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+            UIImage *image = [UIImage imageWithData:imageData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.cachedImages setObject: image forKey:str];
+            });
+        });
+        
+    }
+}
+
 
 - (NSInteger)dataCount{
     
@@ -221,10 +242,10 @@
     //cell.backgroundView = [[UIImageView alloc] initWithImage: bgImage];
     //cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:imageData]];
     
-    NSString *identifier = [NSString stringWithFormat:@"Cell%ld", (long)indexPath.row];
+    //NSString *identifier = [NSString stringWithFormat:@"Cell%ld", (long)indexPath.row];
     
     //NSLog(identifier);
-    if ([self.cachedImages objectForKey:identifier]){
+    /*if ([self.cachedImages objectForKey:identifier]){
         cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:identifier]];
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
@@ -239,9 +260,9 @@
                 }
             });
         });
-    }
+    }*/
     
-    
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
     
     
     
