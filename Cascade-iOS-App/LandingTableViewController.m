@@ -234,8 +234,11 @@
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.textAlignment = UITextAlignmentCenter;
+    [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.lineBreakMode = 0;
+    
     //UIImage *bgImage = [UIImage imageNamed:@"IDMXMmPB.jpeg"];
     //NSString *path = [[NSBundle mainBundle] pathForResource:@"IDMXMmPB" ofType:@"jpeg"];
     //UIImage *bgImage =[[UIImage alloc] initWithContentsOfFile:path];
