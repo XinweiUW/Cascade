@@ -9,6 +9,7 @@
 #import "LandingTableViewController.h"
 #import "DescriptionsViewController.h"
 #import "Delegate.h"
+#import "UIImageEffects.h"
 
 @interface LandingTableViewController ()
 @property (strong) NSManagedObject *routedb;
@@ -146,7 +147,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.cachedImages = [[NSMutableDictionary alloc] init];
     
     if ([self dataCount] == 0){
@@ -170,6 +170,8 @@
         dispatch_async(queue, ^{
             NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             UIImage *image = [UIImage imageWithData:imageData];
+            //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.cachedImages setObject: image forKey:str];
             });
@@ -232,6 +234,7 @@
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textAlignment = UITextAlignmentCenter;
     //UIImage *bgImage = [UIImage imageNamed:@"IDMXMmPB.jpeg"];
     //NSString *path = [[NSBundle mainBundle] pathForResource:@"IDMXMmPB" ofType:@"jpeg"];
     //UIImage *bgImage =[[UIImage alloc] initWithContentsOfFile:path];
@@ -244,13 +247,16 @@
     
     //NSLog(identifier);
     if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
+        UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+        //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
             NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             UIImage *image = [UIImage imageWithData:imageData];
+            //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
                     [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];

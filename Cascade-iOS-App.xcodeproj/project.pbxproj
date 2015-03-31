@@ -18,6 +18,7 @@
 		9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082201ACA7E1500B2602B /* 10-arrow-right.png */; };
 		9D40822B1ACA7E1500B2602B /* 10-arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082211ACA7E1500B2602B /* 10-arrow-up.png */; };
 		9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D40822C1ACA7EB000B2602B /* Cascade_UserIcon.jpg */; };
+		9D4082341ACA8F4600B2602B /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4082331ACA8F4600B2602B /* UIImageEffects.m */; };
 		9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF51AC39B4100ED37D1 /* main.m */; };
 		9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */; };
 		9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDFA1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld */; };
@@ -58,6 +59,9 @@
 		9D4082201ACA7E1500B2602B /* 10-arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-right.png"; sourceTree = "<group>"; };
 		9D4082211ACA7E1500B2602B /* 10-arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-up.png"; sourceTree = "<group>"; };
 		9D40822C1ACA7EB000B2602B /* Cascade_UserIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cascade_UserIcon.jpg; sourceTree = "<group>"; };
+		9D4082321ACA8F4600B2602B /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
+		9D4082331ACA8F4600B2602B /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		9D4082381ACA916E00B2602B /* Cascade-iOS-App-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cascade-iOS-App-Prefix.pch"; sourceTree = "<group>"; };
 		9D8BFDF01AC39B4100ED37D1 /* Cascade-iOS-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cascade-iOS-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8BFDF41AC39B4100ED37D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8BFDF51AC39B4100ED37D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 		9D8BFDF21AC39B4100ED37D1 /* Cascade-iOS-App */ = {
 			isa = PBXGroup;
 			children = (
+				9D4082321ACA8F4600B2602B /* UIImageEffects.h */,
+				9D4082331ACA8F4600B2602B /* UIImageEffects.m */,
 				9D4082171ACA7DEF00B2602B /* icon img */,
 				9D8BFDF71AC39B4100ED37D1 /* AppDelegate.h */,
 				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
@@ -167,6 +173,7 @@
 		9D8BFDF31AC39B4100ED37D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9D4082381ACA916E00B2602B /* Cascade-iOS-App-Prefix.pch */,
 				9D8BFDF41AC39B4100ED37D1 /* Info.plist */,
 				9D8BFDF51AC39B4100ED37D1 /* main.m */,
 			);
@@ -340,6 +347,7 @@
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,
 				9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */,
 				9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */,
+				9D4082341ACA8F4600B2602B /* UIImageEffects.m in Sources */,
 				9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */,
 				9D8BFDFF1AC39B4100ED37D1 /* ViewController.m in Sources */,
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
