@@ -9,7 +9,6 @@
 #import "LandingTableViewController.h"
 #import "DescriptionsViewController.h"
 #import "Delegate.h"
-#import "UIImageEffects.h"
 
 @interface LandingTableViewController ()
 @property (strong) NSManagedObject *routedb;
