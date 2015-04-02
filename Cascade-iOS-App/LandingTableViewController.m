@@ -223,13 +223,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     tableView.rowHeight = 250;
     // Configure the cell...
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Complete"];
+    cell.rightUtilityButtons = rightUtilityButtons;
+    cell.delegate = self;
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     //[cell.textLabel setText:[NSString stringWithFormat:@"%@ %@", [device valueForKey:@"fullname"], [device valueForKey:@"email"]]];
     //[cell.detailTextLabel setText:[device valueForKey:@"phone"]];
+    
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -252,7 +259,8 @@
     if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
         UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
         //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        cell.backGroudImage.image = image;
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
@@ -263,14 +271,15 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
                     [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                    //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                    cell.backGroudImage.image = image;
                 }
             });
         });
     }
     
-    cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
-    
+    //cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
+    cell.backGroudImage.image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
     
     
     
@@ -287,6 +296,28 @@
     
     return cell;
 
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            // More button is pressed
+            UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Share on Facebook", @"Share on Twitter", nil];
+            [shareActionSheet showInView:self.view];
+            
+            [cell hideUtilityButtonsAnimated:YES];
+            break;
+        }
+        case 1:
+        {
+            // Delete button is pressed
+            
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 
