@@ -223,15 +223,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    //SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     tableView.rowHeight = 250;
     // Configure the cell...
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
                                                 title:@"Complete"];
-    cell.rightUtilityButtons = rightUtilityButtons;
-    cell.delegate = self;
+    //cell.rightUtilityButtons = rightUtilityButtons;
+    //cell.delegate = self;
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     //[cell.textLabel setText:[NSString stringWithFormat:@"%@ %@", [device valueForKey:@"fullname"], [device valueForKey:@"email"]]];
@@ -259,8 +260,8 @@
     if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
         UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
         //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
-        //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-        cell.backGroudImage.image = image;
+        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        //cell.backGroudImage.image = image;
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
@@ -271,15 +272,15 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
                     [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
-                    //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-                    cell.backGroudImage.image = image;
+                    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                    //cell.backGroudImage.image = image;
                 }
             });
         });
     }
     
-    //cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
-    cell.backGroudImage.image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
+    //cell.backGroudImage.image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
     
     
     
@@ -297,7 +298,7 @@
     return cell;
 
 }
-
+/*
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     switch (index) {
         case 0:
@@ -319,7 +320,7 @@
             break;
     }
 }
-
+*/
 
 
 // Override to support conditional editing of the table view.
