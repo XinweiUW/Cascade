@@ -238,8 +238,6 @@
     //cell.delegate = self;
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
-    //[cell.textLabel setText:[NSString stringWithFormat:@"%@ %@", [device valueForKey:@"fullname"], [device valueForKey:@"email"]]];
-    //[cell.detailTextLabel setText:[device valueForKey:@"phone"]];
     
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.textLabel.backgroundColor = [UIColor clearColor];
@@ -262,28 +260,26 @@
     //NSLog(identifier);
     if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
         UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
-        //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-        //cell.backGroudImage.image = image;
+        //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        cell.backGroudImageView.image = image;
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
             NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             UIImage *image = [UIImage imageWithData:imageData];
-            //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
                     [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-                    //cell.backGroudImage.image = image;
+                    //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                    cell.backGroudImageView.image = image;
                 }
             });
         });
     }
     
-    cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
-    //cell.backGroudImage.image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+    //cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
+    cell.backGroudImageView.image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
     
     
     

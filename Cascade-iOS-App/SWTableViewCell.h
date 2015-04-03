@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, SWCellState)
 @end
 
 @interface SWTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *backGroudImage;
+@property (weak, nonatomic) IBOutlet UIImageView *backGroudImageView;
 
 @property (nonatomic, copy) NSArray *leftUtilityButtons;
 @property (nonatomic, copy) NSArray *rightUtilityButtons;
