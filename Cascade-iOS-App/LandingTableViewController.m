@@ -219,23 +219,18 @@
     // Return the number of rows in the section.
     return self.routeArray.count;
 }
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"showRouteDetail" sender:nil];
 }
+ */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    //SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     tableView.rowHeight = 250;
     // Configure the cell...
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"Complete"];
-    //cell.rightUtilityButtons = rightUtilityButtons;
-    //cell.delegate = self;
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     
@@ -260,8 +255,7 @@
     //NSLog(identifier);
     if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
         UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
-        //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-        cell.backGroudImageView.image = image;
+        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
@@ -271,15 +265,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
                     [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
-                    //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-                    cell.backGroudImageView.image = image;
-                }
+                    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                                    }
             });
         });
     }
     
-    //cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
-    cell.backGroudImageView.image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
     
     
     
