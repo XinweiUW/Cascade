@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D2671041ACF9D8C00DFDB0B /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2670FF1ACF9D8C00DFDB0B /* MGSwipeButton.m */; };
-		9D2671051ACF9D8C00DFDB0B /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2671011ACF9D8C00DFDB0B /* MGSwipeTableCell.m */; };
-		9D2671061ACF9D8C00DFDB0B /* MailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2671031ACF9D8C00DFDB0B /* MailTableCell.m */; };
 		9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082181ACA7E1500B2602B /* 2-switch to map list.png */; };
 		9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */; };
 		9D4082241ACA7E1500B2602B /* 5-distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821A1ACA7E1500B2602B /* 5-distance.png */; };
@@ -55,12 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9D2670FE1ACF9D8C00DFDB0B /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
-		9D2670FF1ACF9D8C00DFDB0B /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
-		9D2671001ACF9D8C00DFDB0B /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
-		9D2671011ACF9D8C00DFDB0B /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
-		9D2671021ACF9D8C00DFDB0B /* MailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailTableCell.h; sourceTree = "<group>"; };
-		9D2671031ACF9D8C00DFDB0B /* MailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailTableCell.m; sourceTree = "<group>"; };
 		9D4082181ACA7E1500B2602B /* 2-switch to map list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-switch to map list.png"; sourceTree = "<group>"; };
 		9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-switch to picture list.png"; sourceTree = "<group>"; };
 		9D40821A1ACA7E1500B2602B /* 5-distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-distance.png"; sourceTree = "<group>"; };
@@ -132,19 +123,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9D2670FD1ACF9D5E00DFDB0B /* MGSwipeTableCell */ = {
-			isa = PBXGroup;
-			children = (
-				9D2670FE1ACF9D8C00DFDB0B /* MGSwipeButton.h */,
-				9D2670FF1ACF9D8C00DFDB0B /* MGSwipeButton.m */,
-				9D2671001ACF9D8C00DFDB0B /* MGSwipeTableCell.h */,
-				9D2671011ACF9D8C00DFDB0B /* MGSwipeTableCell.m */,
-				9D2671021ACF9D8C00DFDB0B /* MailTableCell.h */,
-				9D2671031ACF9D8C00DFDB0B /* MailTableCell.m */,
-			);
-			name = MGSwipeTableCell;
-			sourceTree = "<group>";
-		};
 		9D4082171ACA7DEF00B2602B /* icon img */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +165,6 @@
 		9D8BFDF21AC39B4100ED37D1 /* Cascade-iOS-App */ = {
 			isa = PBXGroup;
 			children = (
-				9D2670FD1ACF9D5E00DFDB0B /* MGSwipeTableCell */,
 				9DA8FC4D1ACF911B006F4FBB /* Animations */,
 				9D4082171ACA7DEF00B2602B /* icon img */,
 				9D8BFDF71AC39B4100ED37D1 /* AppDelegate.h */,
@@ -399,10 +376,7 @@
 				9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */,
 				9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */,
 				9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */,
-				9D2671041ACF9D8C00DFDB0B /* MGSwipeButton.m in Sources */,
 				9D8BFDFF1AC39B4100ED37D1 /* ViewController.m in Sources */,
-				9D2671051ACF9D8C00DFDB0B /* MGSwipeTableCell.m in Sources */,
-				9D2671061ACF9D8C00DFDB0B /* MailTableCell.m in Sources */,
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
 				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */,
