@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SWTableViewCell.h"
 #import "SlideNavigationController.h"
 
-@interface LandingTableViewController : UITableViewController<SlideNavigationControllerDelegate>
+@interface LandingTableViewController : UITableViewController<SlideNavigationControllerDelegate, SWTableViewCellDelegate>
 
 @property (strong) NSMutableArray *routeArray;
 -(void) executeParsing;
