@@ -179,6 +179,10 @@
     }
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
+}
 
 - (NSInteger)dataCount{
     

@@ -26,6 +26,10 @@
 		9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BFE031AC39B4100ED37D1 /* Images.xcassets */; };
 		9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BFE051AC39B4100ED37D1 /* LaunchScreen.xib */; };
 		9D8BFE131AC39B4100ED37D1 /* Cascade_iOS_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */; };
+		9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */; };
+		9DA8FC5F1ACF9137006F4FBB /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8FC5E1ACF9137006F4FBB /* menu-button.png */; };
+		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
+		9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
@@ -73,6 +77,14 @@
 		9D8BFE0C1AC39B4100ED37D1 /* Cascade-iOS-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cascade-iOS-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8BFE111AC39B4100ED37D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cascade_iOS_AppTests.m; sourceTree = "<group>"; };
+		9DA8FC4E1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
+		9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
+		9DA8FC5E1ACF9137006F4FBB /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
+		9DA8FC601ACF914D006F4FBB /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
+		9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
+		9DA8FC631ACF9176006F4FBB /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		9DA8FC661ACF9468006F4FBB /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
@@ -112,6 +124,7 @@
 		9D4082171ACA7DEF00B2602B /* icon img */ = {
 			isa = PBXGroup;
 			children = (
+				9DA8FC5E1ACF9137006F4FBB /* menu-button.png */,
 				9D4082181ACA7E1500B2602B /* 2-switch to map list.png */,
 				9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */,
 				9D40821A1ACA7E1500B2602B /* 5-distance.png */,
@@ -149,11 +162,14 @@
 		9D8BFDF21AC39B4100ED37D1 /* Cascade-iOS-App */ = {
 			isa = PBXGroup;
 			children = (
+				9DA8FC4D1ACF911B006F4FBB /* Animations */,
 				9D4082171ACA7DEF00B2602B /* icon img */,
 				9D8BFDF71AC39B4100ED37D1 /* AppDelegate.h */,
 				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
 				9D8BFDFD1AC39B4100ED37D1 /* ViewController.h */,
 				9D8BFDFE1AC39B4100ED37D1 /* ViewController.m */,
+				9DA8FC601ACF914D006F4FBB /* SlideNavigationController.h */,
+				9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */,
 				9DFC17FC1AC9074D00D79B51 /* CSVParser */,
 				9DD314C31AC7C135004C89AE /* View Controller */,
 				9D8BFE001AC39B4100ED37D1 /* Main.storyboard */,
@@ -192,9 +208,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9DA8FC4D1ACF911B006F4FBB /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				9DA8FC661ACF9468006F4FBB /* SlideNavigationContorllerAnimator.h */,
+				9DA8FC4E1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.h */,
+				9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */,
+			);
+			name = Animations;
+			sourceTree = "<group>";
+		};
 		9DD314C31AC7C135004C89AE /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9DA8FC631ACF9176006F4FBB /* LeftMenuViewController.h */,
+				9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */,
 				9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */,
 				9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */,
 				9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */,
@@ -317,6 +345,7 @@
 				9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */,
 				9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */,
 				9D40822B1ACA7E1500B2602B /* 10-arrow-up.png in Resources */,
+				9DA8FC5F1ACF9137006F4FBB /* menu-button.png in Resources */,
 				9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */,
 				9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */,
 				9D4082251ACA7E1500B2602B /* 6-duration.png in Resources */,
@@ -345,6 +374,9 @@
 				9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */,
 				9D8BFDFF1AC39B4100ED37D1 /* ViewController.m in Sources */,
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
+				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */,
+				9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
