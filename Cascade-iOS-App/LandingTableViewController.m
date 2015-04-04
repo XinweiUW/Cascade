@@ -233,7 +233,7 @@
     static NSString *CellIdentifier = @"Cell";
     //SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    tableView.rowHeight = 250;
+    //tableView.rowHeight = 250;
     // Configure the cell...
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];

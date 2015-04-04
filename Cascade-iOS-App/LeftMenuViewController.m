@@ -51,7 +51,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 20;
+	return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,12 +84,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone"
+	UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
 															 bundle: nil];
 	
 	UIViewController *vc ;
 	
-	switch (indexPath.row)
+	/*switch (indexPath.row)
 	{
 		case 0:
 			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"HomeViewController"];
@@ -112,7 +112,7 @@
 	
 	[[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
 															 withSlideOutAnimation:self.slideOutAnimationEnabled
-																	 andCompletion:nil];
+																	 andCompletion:nil];*/
 }
 
 @end
