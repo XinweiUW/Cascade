@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGSwipeTableCell.h"
 
 
-@interface LandingTableViewController : UITableViewController
+@interface LandingTableViewController : UITableViewController<MGSwipeTableCellDelegate>
 @property (strong) NSMutableArray *routeArray;
 -(void) executeParsing;
 
