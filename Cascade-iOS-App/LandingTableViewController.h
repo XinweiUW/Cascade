@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SlideNavigationController.h"
 
+#import "SlideNavigationController.h"
+#import "MGSwipeTableCell.h"
 @interface LandingTableViewController : UITableViewController<SlideNavigationControllerDelegate>
+
 @property (strong) NSMutableArray *routeArray;
 -(void) executeParsing;
 
