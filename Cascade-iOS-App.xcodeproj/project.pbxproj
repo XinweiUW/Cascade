@@ -43,6 +43,7 @@
 		9DD314CA1AC7D069004C89AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C91AC7D069004C89AE /* CoreGraphics.framework */; };
 		9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CB1AC7D07A004C89AE /* UIKit.framework */; };
 		9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CD1AC7D084004C89AE /* CoreData.framework */; };
+		9DD55BDD1AD0F57C005F4DFB /* CompletedStamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD55BDC1AD0F57C005F4DFB /* CompletedStamp.png */; };
 		9DE674901ACF9F54000653DB /* leftMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DE6748F1ACF9F54000653DB /* leftMenu.jpg */; };
 		9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17F91AC9074600D79B51 /* CHCSVParser.m */; };
 		9DFC17FF1AC90F6600D79B51 /* Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17FE1AC90F6600D79B51 /* Delegate.m */; };
@@ -114,6 +115,7 @@
 		9DD314C91AC7D069004C89AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9DD314CB1AC7D07A004C89AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DD314CD1AC7D084004C89AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9DD55BDC1AD0F57C005F4DFB /* CompletedStamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CompletedStamp.png; path = ../../../Downloads/CompletedStamp.png; sourceTree = "<group>"; };
 		9DE6748F1ACF9F54000653DB /* leftMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftMenu.jpg; sourceTree = "<group>"; };
 		9DFC17F91AC9074600D79B51 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		9DFC17FA1AC9074600D79B51 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		9D4082171ACA7DEF00B2602B /* icon img */ = {
 			isa = PBXGroup;
 			children = (
+				9DD55BDC1AD0F57C005F4DFB /* CompletedStamp.png */,
 				9D52CB531AD0D1590002CF59 /* CascadeLogo.png */,
 				9DE6748F1ACF9F54000653DB /* leftMenu.jpg */,
 				9DA8FC5E1ACF9137006F4FBB /* menu-button.png */,
@@ -384,6 +387,7 @@
 				9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */,
 				9D4082261ACA7E1500B2602B /* 7-terrain.png in Resources */,
 				9D8BFE021AC39B4100ED37D1 /* Main.storyboard in Resources */,
+				9DD55BDD1AD0F57C005F4DFB /* CompletedStamp.png in Resources */,
 				9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */,
 				9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */,
 				9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */,

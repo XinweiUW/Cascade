@@ -238,6 +238,9 @@
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
     [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
+    //UIImage *completeImage = [UIImage imageNamed:@"CompletedStamp.png"];
+    //cell.completeView = [[UIImageView alloc] initWithImage:completeImage];
+    cell.completeView.hidden = TRUE;
     cell.delegate = self;
 
     
@@ -381,6 +384,7 @@
             //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
             //[alertTest show];
             cell.backgroundView.alpha = 0.5;
+            cell.completeView.hidden = FALSE;
             [cell hideUtilityButtonsAnimated:YES];
             break;
         }
@@ -399,6 +403,7 @@
             //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
             //[alertTest show];
             cell.backgroundView.alpha = 1;
+            cell.completeView.hidden = TRUE;
             [cell hideUtilityButtonsAnimated:YES];
             break;
         }
