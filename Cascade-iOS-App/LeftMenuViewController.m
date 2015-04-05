@@ -7,7 +7,7 @@
 //
 
 #import "LeftMenuViewController.h"
-
+#import "LeftMenuTableViewCell.h"
 #import "SlideNavigationContorllerAnimatorSlide.h"
 /*#import "SlideNavigationContorllerAnimatorFade.h"
 #import "SlideNavigationContorllerAnimatorScale.h"
@@ -29,15 +29,16 @@
 {
 	[super viewDidLoad];
     
-    NSString *file = @(__FILE__);
-    file = [[file stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"CascadeLogo.png"];
+    //NSString *file = @(__FILE__);
+    //file = [[file stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"/iconimg/CascadeLogo.png"];
     
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:file]];
-    UIImage *myImage = [[UIImage alloc] initWithData:data ];//imageNamed:@"CascadeLogo.png"];
+    //NSData *data = [NSData data:[NSURL URLWithString:file]];
+    //UIImage *myImage = [UIImage imageNamed:@"CascadeLogo.png"];
     //myImage.size = CGRectMake(0, 0, 50, 50);
-    UIView *imageView = [[UIImageView alloc] initWithImage:myImage];
-    imageView.frame = CGRectMake(0, 0, 200, 200);
-    self.tableView.tableHeaderView = imageView;
+    //UIView *imageView = [[UIImageView alloc] initWithImage:myImage];
+    //imageView.backgroundColor = [UIColor redColor];
+    //imageView.frame = CGRectMake(0, 0, 500, 100);
+    //[self.tableView addSubview:imageView];
 	
 	//self.tableView.separatorColor = [UIColor lightGrayColor];
 	
@@ -49,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 4;
+	return 5;
 }
 
 /*- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -68,29 +69,35 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     
-	return 0;
+	return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftMenuCell"];
-	
+	LeftMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftMenuCell"];
+    //cell.logoViewImage.center = CGPointMake(cell.bounds.size.width / 2, cell.bounds.size.height / 2);
+    if (indexPath.row != 0) {
+        cell.logoViewImage.hidden = true;
+    }
 	switch (indexPath.row)
 	{
-		case 0:
+        case 0:
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            break;
+		case 1:
 			cell.textLabel.text = @"Home";
 			break;
 			
-		case 1:
-			cell.textLabel.text = @"Profile";
-			break;
-			
 		case 2:
-			cell.textLabel.text = @"Friends";
+			cell.textLabel.text = @"About";
 			break;
 			
 		case 3:
-			cell.textLabel.text = @"Sign Out";
+			cell.textLabel.text = @"Safety Tip";
+			break;
+			
+		case 4:
+			cell.textLabel.text = @"Settings";
 			break;
 	}
 	
@@ -106,30 +113,35 @@
 	
 	UIViewController *vc ;
 	
-	/*switch (indexPath.row)
+	switch (indexPath.row)
 	{
-		case 0:
-			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"HomeViewController"];
-			break;
-			
+        case 0:
+            return;
 		case 1:
-			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"ProfileViewController"];
+			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LandingTableViewController"];
 			break;
 			
 		case 2:
-			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LandingTableViewController"];
 			break;
-			
-		case 3:
-			[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-			[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
-			return;
-			break;
+        
+        case 3:
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LandingTableViewController"];
+            break;
+        
+        case 4:
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LandingTableViewController"];
+            break;
+		//case 3:
+			//[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+			//[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
+			//return;
+		//	break;
 	}
 	
 	[[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
 															 withSlideOutAnimation:self.slideOutAnimationEnabled
-																	 andCompletion:nil];*/
+																	 andCompletion:nil];
 }
 
 @end

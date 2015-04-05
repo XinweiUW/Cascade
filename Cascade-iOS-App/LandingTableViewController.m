@@ -236,7 +236,8 @@
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     //tableView.rowHeight = 250;
     // Configure the cell...
-    [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:58.0f];
+    [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
+    [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
     cell.delegate = self;
 
     
@@ -263,24 +264,49 @@
     //NSLog(identifier);
     if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
         UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        
+        // Draw new image in current graphics context
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+        
+        // Create new cropped UIImage
+        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+        
+        CGImageRelease(imageRef);
+        
+        cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
+        cell.backgroundView.backgroundColor = [UIColor blackColor];
+        //cell.backgroundView.alpha = 0.5;
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
             NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             UIImage *image = [UIImage imageWithData:imageData];
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+            
+            // Draw new image in current graphics context
+            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+            
+            // Create new cropped UIImage
+            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            
+            CGImageRelease(imageRef);
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
                     [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-                                    }
+                    cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
+                    cell.backgroundView.backgroundColor = [UIColor blackColor];
+                    //cell.backgroundView.alpha = 0.5;
+                }
             });
         });
     }
     
-    cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
-    
+    //cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
+    //cell.backgroundView.backgroundColor = [UIColor blackColor];
+    //cell.backgroundView.alpha = 0.5;
     
     
     
@@ -302,13 +328,22 @@
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"More"];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                title:@"Delete"];
+                                                title:@"Complete"];
     
     return rightUtilityButtons;
 }
+
+- (NSArray *)leftButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Uncomplete"];
+    
+    return rightUtilityButtons;
+}
+
+
 
 
 // Override to support conditional editing of the table view.
@@ -342,22 +377,32 @@
     switch (index) {
         case 0:
         {
-            NSLog(@"More button was pressed");
-            UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
-            [alertTest show];
-            
+            NSLog(@"Complete button was pressed");
+            //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+            //[alertTest show];
+            cell.backgroundView.alpha = 0.5;
             [cell hideUtilityButtonsAnimated:YES];
             break;
         }
-        case 1:
+        
+        default:
+            break;
+    }
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
+{
+    switch (index) {
+        case 0:
         {
-            // Delete button was pressed
-//            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-//            
-//            [_testArray[cellIndexPath.section] removeObjectAtIndex:cellIndexPath.row];
-//            [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            NSLog(@"Complete button was pressed");
+            //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+            //[alertTest show];
+            cell.backgroundView.alpha = 1;
+            [cell hideUtilityButtonsAnimated:YES];
             break;
         }
+            
         default:
             break;
     }
