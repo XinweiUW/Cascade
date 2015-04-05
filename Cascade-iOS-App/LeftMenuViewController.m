@@ -29,10 +29,10 @@
 {
 	[super viewDidLoad];
 	
-	self.tableView.separatorColor = [UIColor lightGrayColor];
+	//self.tableView.separatorColor = [UIColor lightGrayColor];
 	
-	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenu.jpg"]];
-	self.tableView.backgroundView = imageView;
+	//UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenu.jpg"]];
+	//self.tableView.backgroundView = imageView;
 }
 
 #pragma mark - UITableView Delegate & Datasrouce -
@@ -44,14 +44,22 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
+	/*UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
 	view.backgroundColor = [UIColor clearColor];
-	return view;
+	return view;*/
+    
+    UIImage *myImage = [UIImage imageNamed:@"CascadeLogo"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:myImage];
+    imageView.frame = CGRectMake(0, 0, 0, 0);
+    
+    return imageView;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 4;
+    
+	return 150;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
