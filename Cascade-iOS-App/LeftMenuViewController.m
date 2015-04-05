@@ -28,6 +28,16 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+    
+    NSString *file = @(__FILE__);
+    file = [[file stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"CascadeLogo.png"];
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:file]];
+    UIImage *myImage = [[UIImage alloc] initWithData:data ];//imageNamed:@"CascadeLogo.png"];
+    //myImage.size = CGRectMake(0, 0, 50, 50);
+    UIView *imageView = [[UIImageView alloc] initWithImage:myImage];
+    imageView.frame = CGRectMake(0, 0, 200, 200);
+    self.tableView.tableHeaderView = imageView;
 	
 	//self.tableView.separatorColor = [UIColor lightGrayColor];
 	
@@ -42,24 +52,23 @@
 	return 4;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+/*- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-	/*UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
 	view.backgroundColor = [UIColor clearColor];
-	return view;*/
+	return view;
     
-    UIImage *myImage = [UIImage imageNamed:@"CascadeLogo"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:myImage];
+    UIImage *myImage = [UIImage imageNamed:@"CascadeLogo.png"];
+    UIView *imageView = [[UIImageView alloc] initWithImage:myImage];
     imageView.frame = CGRectMake(0, 0, 0, 0);
-    
     return imageView;
     
-}
+}*/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     
-	return 150;
+	return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
