@@ -237,6 +237,7 @@
     //tableView.rowHeight = 250;
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
+    [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
     cell.delegate = self;
 
     
@@ -332,6 +333,18 @@
     return rightUtilityButtons;
 }
 
+- (NSArray *)leftButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Uncomplete"];
+    
+    return rightUtilityButtons;
+}
+
+
+
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -365,13 +378,31 @@
         case 0:
         {
             NSLog(@"Complete button was pressed");
-            UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
-            [alertTest show];
-            
+            //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+            //[alertTest show];
+            cell.backgroundView.alpha = 0.5;
             [cell hideUtilityButtonsAnimated:YES];
             break;
         }
         
+        default:
+            break;
+    }
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
+{
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"Complete button was pressed");
+            //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+            //[alertTest show];
+            cell.backgroundView.alpha = 1;
+            [cell hideUtilityButtonsAnimated:YES];
+            break;
+        }
+            
         default:
             break;
     }
