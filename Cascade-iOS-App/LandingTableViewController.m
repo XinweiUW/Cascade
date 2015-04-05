@@ -263,7 +263,17 @@
     //NSLog(identifier);
     if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
         UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        
+        // Draw new image in current graphics context
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+        
+        // Create new cropped UIImage
+        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+        
+        CGImageRelease(imageRef);
+        
+        cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
         cell.backgroundView.backgroundColor = [UIColor blackColor];
         //cell.backgroundView.alpha = 0.5;
     }else{
@@ -272,10 +282,20 @@
             NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             UIImage *image = [UIImage imageWithData:imageData];
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+            
+            // Draw new image in current graphics context
+            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+            
+            // Create new cropped UIImage
+            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            
+            CGImageRelease(imageRef);
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
                     [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                    cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
                     cell.backgroundView.backgroundColor = [UIColor blackColor];
                     //cell.backgroundView.alpha = 0.5;
                 }
