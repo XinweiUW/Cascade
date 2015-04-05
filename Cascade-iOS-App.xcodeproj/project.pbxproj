@@ -26,6 +26,7 @@
 		9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D40822C1ACA7EB000B2602B /* Cascade_UserIcon.jpg */; };
 		9D52CB541AD0D1590002CF59 /* CascadeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52CB531AD0D1590002CF59 /* CascadeLogo.png */; };
 		9D52CB571AD0FAF60002CF59 /* LeftMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */; };
+		9D52CB5B1AD109490002CF59 /* CompletedStamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52CB5A1AD109490002CF59 /* CompletedStamp.png */; };
 		9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF51AC39B4100ED37D1 /* main.m */; };
 		9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */; };
 		9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDFA1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld */; };
@@ -87,6 +88,7 @@
 		9D52CB531AD0D1590002CF59 /* CascadeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CascadeLogo.png; sourceTree = "<group>"; };
 		9D52CB551AD0FAF60002CF59 /* LeftMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuTableViewCell.h; sourceTree = "<group>"; };
 		9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuTableViewCell.m; sourceTree = "<group>"; };
+		9D52CB5A1AD109490002CF59 /* CompletedStamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CompletedStamp.png; sourceTree = "<group>"; };
 		9D8BFDF01AC39B4100ED37D1 /* Cascade-iOS-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cascade-iOS-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8BFDF41AC39B4100ED37D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8BFDF51AC39B4100ED37D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		9D4082171ACA7DEF00B2602B /* iconimg */ = {
 			isa = PBXGroup;
 			children = (
+				9D52CB5A1AD109490002CF59 /* CompletedStamp.png */,
 				9D52CB531AD0D1590002CF59 /* CascadeLogo.png */,
 				9DE6748F1ACF9F54000653DB /* leftMenu.jpg */,
 				9DA8FC5E1ACF9137006F4FBB /* menu-button.png */,
@@ -390,6 +393,7 @@
 				9D4082261ACA7E1500B2602B /* 7-terrain.png in Resources */,
 				9D8BFE021AC39B4100ED37D1 /* Main.storyboard in Resources */,
 				9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */,
+				9D52CB5B1AD109490002CF59 /* CompletedStamp.png in Resources */,
 				9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */,
 				9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */,
 				9D52CB541AD0D1590002CF59 /* CascadeLogo.png in Resources */,

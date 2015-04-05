@@ -18,8 +18,22 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AcC-Fg-Sai" id="Mcp-Ey-pK1">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="CompletedStamp.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cwy-Yq-WeT">
+                                            <rect key="frame" x="280" y="182" width="240" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="240" id="evn-f8-vsF"/>
+                                                <constraint firstAttribute="height" constant="45" id="wsE-oS-sMb"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Cwy-Yq-WeT" secondAttribute="trailing" constant="72" id="AsX-tV-HIV"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Cwy-Yq-WeT" secondAttribute="bottom" constant="15" id="SD6-Tt-Fko"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="completeView" destination="Cwy-Yq-WeT" id="mpb-QS-hGR"/>
                                     <segue destination="F3u-xA-HUs" kind="show" identifier="showRouteDetail" id="XRy-9W-Oeq"/>
                                 </connections>
                             </tableViewCell>
@@ -45,7 +59,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXB-U6-uPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1252" y="1112"/>
+            <point key="canvasLocation" x="1252" y="1109"/>
         </scene>
         <!--Descriptions View Controller-->
         <scene sceneID="ylo-eJ-1pf">
@@ -153,5 +167,6 @@
         <image name="10-arrow-left.png" width="31" height="30"/>
         <image name="2-switch to map list.png" width="20" height="32"/>
         <image name="CascadeLogo.png" width="600" height="278"/>
+        <image name="CompletedStamp.png" width="257" height="68"/>
     </resources>
 </document>
