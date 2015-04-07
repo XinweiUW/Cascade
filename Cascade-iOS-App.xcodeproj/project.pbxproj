@@ -24,6 +24,9 @@
 		9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082201ACA7E1500B2602B /* 10-arrow-right.png */; };
 		9D40822B1ACA7E1500B2602B /* 10-arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082211ACA7E1500B2602B /* 10-arrow-up.png */; };
 		9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D40822C1ACA7EB000B2602B /* Cascade_UserIcon.jpg */; };
+		9D52A8A11AD395900041CB62 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52A8A01AD395900041CB62 /* AboutViewController.m */; };
+		9D52A8A41AD395AC0041CB62 /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52A8A31AD395AC0041CB62 /* TipViewController.m */; };
+		9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52A8A61AD395BE0041CB62 /* SettingsViewController.m */; };
 		9D52CB541AD0D1590002CF59 /* CascadeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52CB531AD0D1590002CF59 /* CascadeLogo.png */; };
 		9D52CB571AD0FAF60002CF59 /* LeftMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */; };
 		9D52CB5B1AD109490002CF59 /* CompletedStamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52CB5A1AD109490002CF59 /* CompletedStamp.png */; };
@@ -85,6 +88,12 @@
 		9D4082211ACA7E1500B2602B /* 10-arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-up.png"; sourceTree = "<group>"; };
 		9D40822C1ACA7EB000B2602B /* Cascade_UserIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cascade_UserIcon.jpg; sourceTree = "<group>"; };
 		9D4082381ACA916E00B2602B /* Cascade-iOS-App-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cascade-iOS-App-Prefix.pch"; sourceTree = "<group>"; };
+		9D52A89F1AD395900041CB62 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		9D52A8A01AD395900041CB62 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		9D52A8A21AD395AC0041CB62 /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
+		9D52A8A31AD395AC0041CB62 /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
+		9D52A8A51AD395BE0041CB62 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		9D52A8A61AD395BE0041CB62 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		9D52CB531AD0D1590002CF59 /* CascadeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CascadeLogo.png; sourceTree = "<group>"; };
 		9D52CB551AD0FAF60002CF59 /* LeftMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuTableViewCell.h; sourceTree = "<group>"; };
 		9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuTableViewCell.m; sourceTree = "<group>"; };
@@ -279,6 +288,12 @@
 				9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */,
 				9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */,
 				9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */,
+				9D52A89F1AD395900041CB62 /* AboutViewController.h */,
+				9D52A8A01AD395900041CB62 /* AboutViewController.m */,
+				9D52A8A21AD395AC0041CB62 /* TipViewController.h */,
+				9D52A8A31AD395AC0041CB62 /* TipViewController.m */,
+				9D52A8A51AD395BE0041CB62 /* SettingsViewController.h */,
+				9D52A8A61AD395BE0041CB62 /* SettingsViewController.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -427,13 +442,16 @@
 				9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */,
 				9D2671191ACFB50400DFDB0B /* SWUtilityButtonView.m in Sources */,
 				9D2671141ACFB50400DFDB0B /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */,
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,
 				9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */,
 				9D2671181ACFB50400DFDB0B /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */,
+				9D52A8A41AD395AC0041CB62 /* TipViewController.m in Sources */,
 				9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */,
 				9D2671151ACFB50400DFDB0B /* SWCellScrollView.m in Sources */,
 				9D8BFDFF1AC39B4100ED37D1 /* ViewController.m in Sources */,
+				9D52A8A11AD395900041CB62 /* AboutViewController.m in Sources */,
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
 				9D2671171ACFB50400DFDB0B /* SWTableViewCell.m in Sources */,
 				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,

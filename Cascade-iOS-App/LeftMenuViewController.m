@@ -122,15 +122,15 @@
 			break;
 			
 		case 2:
-			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LandingTableViewController"];
+			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"AboutViewController"];
 			break;
         
         case 3:
-            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LandingTableViewController"];
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"TipViewController"];
             break;
         
         case 4:
-            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LandingTableViewController"];
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"SettingsViewController"];
             break;
 		//case 3:
 			//[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
