@@ -49,8 +49,9 @@
 		9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CB1AC7D07A004C89AE /* UIKit.framework */; };
 		9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CD1AC7D084004C89AE /* CoreData.framework */; };
 		9DE674901ACF9F54000653DB /* leftMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DE6748F1ACF9F54000653DB /* leftMenu.jpg */; };
+		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
+		9DF0F24B1ADB273400830753 /* Rides.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Rides.m */; };
 		9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17F91AC9074600D79B51 /* CHCSVParser.m */; };
-		9DFC17FF1AC90F6600D79B51 /* Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17FE1AC90F6600D79B51 /* Delegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,10 +130,12 @@
 		9DD314CB1AC7D07A004C89AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DD314CD1AC7D084004C89AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9DE6748F1ACF9F54000653DB /* leftMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftMenu.jpg; sourceTree = "<group>"; };
+		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		9DF0F2491ADB273400830753 /* Rides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rides.h; sourceTree = "<group>"; };
+		9DF0F24A1ADB273400830753 /* Rides.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rides.m; sourceTree = "<group>"; };
 		9DFC17F91AC9074600D79B51 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		9DFC17FA1AC9074600D79B51 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
-		9DFC17FD1AC90F6600D79B51 /* Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delegate.h; sourceTree = "<group>"; };
-		9DFC17FE1AC90F6600D79B51 /* Delegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Delegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,9 +227,9 @@
 				9DA8FC4D1ACF911B006F4FBB /* Animations */,
 				9D4082171ACA7DEF00B2602B /* iconimg */,
 				9D8BFDF71AC39B4100ED37D1 /* AppDelegate.h */,
+				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
 				9D52CB551AD0FAF60002CF59 /* LeftMenuTableViewCell.h */,
 				9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */,
-				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
 				9D8BFDFD1AC39B4100ED37D1 /* ViewController.h */,
 				9D8BFDFE1AC39B4100ED37D1 /* ViewController.m */,
 				9DA8FC601ACF914D006F4FBB /* SlideNavigationController.h */,
@@ -312,10 +315,12 @@
 		9DFC17FC1AC9074D00D79B51 /* CSVParser */ = {
 			isa = PBXGroup;
 			children = (
-				9DFC17FD1AC90F6600D79B51 /* Delegate.h */,
-				9DFC17FE1AC90F6600D79B51 /* Delegate.m */,
-				9DFC17F91AC9074600D79B51 /* CHCSVParser.m */,
+				9DF0F2461ADB1C6500830753 /* DataManager.h */,
+				9DF0F2471ADB1C6500830753 /* DataManager.m */,
+				9DF0F2491ADB273400830753 /* Rides.h */,
+				9DF0F24A1ADB273400830753 /* Rides.m */,
 				9DFC17FA1AC9074600D79B51 /* CHCSVParser.h */,
+				9DFC17F91AC9074600D79B51 /* CHCSVParser.m */,
 			);
 			name = CSVParser;
 			sourceTree = "<group>";
@@ -436,8 +441,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DFC17FF1AC90F6600D79B51 /* Delegate.m in Sources */,
 				9D52CB571AD0FAF60002CF59 /* LeftMenuTableViewCell.m in Sources */,
+				9DF0F24B1ADB273400830753 /* Rides.m in Sources */,
 				9D2671161ACFB50400DFDB0B /* SWLongPressGestureRecognizer.m in Sources */,
 				9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */,
 				9D2671191ACFB50400DFDB0B /* SWUtilityButtonView.m in Sources */,
@@ -445,6 +450,7 @@
 				9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */,
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,
 				9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */,
+				9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */,
 				9D2671181ACFB50400DFDB0B /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */,
 				9D52A8A41AD395AC0041CB62 /* TipViewController.m in Sources */,
