@@ -162,7 +162,14 @@
     
     if ([device valueForKey:@"imgData"]){
         NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
-        UIImage *image = [UIImage imageWithData:imageData];
+        UIImage *image;
+        if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
+            image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+        }else{
+            image = [UIImage imageWithData:imageData];
+            [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
+        }
+        
         CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.35);
         
         // Draw new image in current graphics context
@@ -203,7 +210,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
-                    
+                    [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
                     cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
                     cell.backgroundView.backgroundColor = [UIColor blackColor];
                     //cell.backgroundView.alpha = 0.5;
