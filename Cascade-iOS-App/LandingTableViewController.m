@@ -163,7 +163,7 @@
     if ([device valueForKey:@"imgData"]){
         NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
         UIImage *image = [UIImage imageWithData:imageData];
-        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.35);
         
         // Draw new image in current graphics context
         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
@@ -191,7 +191,7 @@
                 NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
             }
             UIImage *image = [UIImage imageWithData:imageData];
-            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.35);
             
             // Draw new image in current graphics context
             CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
