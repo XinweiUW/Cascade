@@ -88,6 +88,8 @@
         NSManagedObjectContext *context = [self managedObjectContext];
         
         // extract contents in csv file and convert to core data
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        
         for (NSInteger i = 1; i < size; i++){
             NSArray *temp = [[d lines] objectAtIndex:i];
             NSNumber *number = [NSNumber numberWithInt:i];
@@ -107,77 +109,53 @@
             NSString *turnByTurn = [temp objectAtIndex:13];
             NSString *difficulties = [temp objectAtIndex:14];
             
-            if (!self.routedb){
-                /*NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:context];
-                [newDevice setValue:number forKey:@"id"];
-                [newDevice setValue:title forKey:@"title"];
-                [newDevice setValue:distance forKey:@"distance"];
-                [newDevice setValue:duration forKey:@"duration"];
-                [newDevice setValue:terrain forKey:@"terrain"];
-                [newDevice setValue:keyWords forKey:@"keyWords"];
-                [newDevice setValue:shortOverview forKey:@"shortOverview"];
-                [newDevice setValue:start forKey:@"start"];
-                [newDevice setValue:finish forKey:@"finish"];
-                [newDevice setValue:mapURL forKey:@"mapURL"];
-                [newDevice setValue:roadCondition forKey:@"roadCondition"];
-                [newDevice setValue:imgURL forKey:@"imgURL"];
-                [newDevice setValue:attractions forKey:@"attractions"];
-                [newDevice setValue:descriptions forKey:@"descriptions"];
-                [newDevice setValue:turnByTurn forKey:@"turnByTurn"];
-                [newDevice setValue:difficulties forKey:@"difficulties"];*/
-                Rides *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:context];
-                newRide.id = number;
-                newRide.title = title;
-                newRide.distance = distance;
-                newRide.duration = duration;
-                newRide.terrain = terrain;
-                newRide.keyWords = keyWords;
-                newRide.shortOverview = shortOverview;
-                newRide.start = start;
-                newRide.finish = finish;
-                newRide.mapURL = mapURL;
-                newRide.roadCondition = roadCondition;
-                newRide.imgURL = imgURL;
-                newRide.attractions = attractions;
-                newRide.descriptions = descriptions;
-                newRide.turnByTurn = turnByTurn;
-                newRide.difficulties = difficulties;
-                
-            }else{
-                [self.routedb setValue:number forKey:@"id"];
-                [self.routedb setValue:title forKey:@"title"];
-                [self.routedb setValue:distance forKey:@"distance"];
-                [self.routedb setValue:duration forKey:@"duration"];
-                [self.routedb setValue:terrain forKey:@"terrain"];
-                [self.routedb setValue:keyWords forKey:@"keyWords"];
-                [self.routedb setValue:shortOverview forKey:@"shortOverview"];
-                [self.routedb setValue:start forKey:@"start"];
-                [self.routedb setValue:finish forKey:@"finish"];
-                [self.routedb setValue:mapURL forKey:@"mapURL"];
-                [self.routedb setValue:roadCondition forKey:@"roadCondition"];
-                [self.routedb setValue:imgURL forKey:@"imgURL"];
-                [self.routedb setValue:attractions forKey:@"attractions"];
-                [self.routedb setValue:descriptions forKey:@"descriptions"];
-                [self.routedb setValue:turnByTurn forKey:@"turnByTurn"];
-                [self.routedb setValue:difficulties forKey:@"difficulties"];
-            }
+            Rides *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:context];
+            
+            //newRide.imgURL = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:imgURL]];
+            
+            newRide.id = number;
+            newRide.title = title;
+            newRide.distance = distance;
+            newRide.duration = duration;
+            newRide.terrain = terrain;
+            newRide.keyWords = keyWords;
+            newRide.shortOverview = shortOverview;
+            newRide.start = start;
+            newRide.finish = finish;
+            newRide.mapURL = mapURL;
+            newRide.roadCondition = roadCondition;
+            newRide.imgURL = imgURL;
+            //NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+            //newRide.imgURL = [UIImage imageWithData:imgData];
+            //newRide.imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+            newRide.attractions = attractions;
+            newRide.descriptions = descriptions;
+            newRide.turnByTurn = turnByTurn;
+            newRide.difficulties = difficulties;
+            
+            //[[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationMessageEvent" object:self];
         }
+        
         NSError *error = nil;
         // Save the object to persistent store
         if (![context save:&error]) {
             NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
         }
         
-        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-        [fetchRequest setSortDescriptors:sortDescriptors];
-        
-        
-        return [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+        return [self fetchRequest];
         
     }
+}
+
+- (NSMutableArray *)fetchRequest{
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    return [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    
 }
 
 

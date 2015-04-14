@@ -10,22 +10,27 @@
 
 @interface Rides : NSManagedObject
 
-@property() NSInteger id;
-@property() NSString *title;
-@property() NSString *distance;
-@property() NSString *duration;
-@property() NSString *terrain;
-@property() NSString *keyWords;
-@property() NSString *shortOverview;
-@property() NSString *start;
-@property() NSString *finish;
-@property() NSString *mapURL;
-@property() NSString *roadCondition;
-@property() NSString *imgURL;
-@property() NSString *attractions;
-@property() NSString *descriptions;
-@property() NSString *turnByTurn;
-@property() NSString *difficulties;
+@property (nonatomic) NSInteger id;
+@property(strong, nonatomic) NSString *title;
+@property(strong, nonatomic) NSString *distance;
+@property(strong, nonatomic) NSString *duration;
+@property(strong, nonatomic) NSString *terrain;
+@property(strong, nonatomic) NSString *keyWords;
+@property(strong, nonatomic) NSString *shortOverview;
+@property(strong, nonatomic) NSString *start;
+@property(strong, nonatomic) NSString *finish;
+@property(strong, nonatomic) NSString *mapURL;
+@property(strong, nonatomic) NSString *roadCondition;
+@property(strong, nonatomic) NSString *imgURL;
+@property(strong, nonatomic) NSString *attractions;
+@property(strong, nonatomic) NSString *descriptions;
+@property(strong, nonatomic) NSString *turnByTurn;
+@property(strong, nonatomic) NSString *difficulties;
+
+//@property(strong, nonatomic) NSData *imgURL;
+@property(strong, nonatomic) NSData *imgData;
+
+//@property (nonatomic) UIImage *imgURL;
 
 /*
  [newDevice setValue:number forKey:@"id"];

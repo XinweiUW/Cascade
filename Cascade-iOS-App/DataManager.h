@@ -15,6 +15,7 @@
 
 - (NSManagedObjectContext *)managedObjectContext;
 - (NSMutableArray *)executeParsing;
+- (NSMutableArray *)fetchRequest;
 
 @property (strong) Rides *routedb;
 @property (readonly) NSArray *lines;

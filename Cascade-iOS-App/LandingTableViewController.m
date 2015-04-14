@@ -27,15 +27,29 @@
     self.cachedImages = [[NSMutableDictionary alloc] init];
     
     /*if ([self dataCount] == 0){
-        [self executeParsing];
-        [self dataCount];
-    }*/
+     [self executeParsing];
+     [self dataCount];
+     }*/
     
     //[self loadImage];
-    DataManager *dm = [[DataManager alloc] init];
-    self.routeArray = [dm executeParsing];
     
-    [self.tableView reloadData];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTableView) name:@"NotificationMessageEvent" object:nil];
+    
+    DataManager *dm = [[DataManager alloc] init];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        self.routeArray = [dm fetchRequest];
+        if (self.routeArray.count == 0){
+            self.routeArray = [dm executeParsing];
+        }
+        //[self loadImage];
+        //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    });
+    
+    
     NSLog(@"abc");
 }
 
@@ -121,7 +135,7 @@
     //cell.completeView = [[UIImageView alloc] initWithImage:completeImage];
     cell.completeView.hidden = TRUE;
     cell.delegate = self;
-
+    
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     
@@ -144,8 +158,11 @@
     //NSString *identifier = [NSString stringWithFormat:@"Cell%ld", (long)indexPath.row];
     
     //NSLog(identifier);
-    if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
-        UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+    
+    
+    if ([device valueForKey:@"imgData"]){
+        NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
+        UIImage *image = [UIImage imageWithData:imageData];
         CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
         
         // Draw new image in current graphics context
@@ -158,12 +175,21 @@
         
         cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
         cell.backgroundView.backgroundColor = [UIColor blackColor];
-        //cell.backgroundView.alpha = 0.5;
     }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
             NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+            [device setValue:imageData forKey:@"imgData"];
+            
+            DataManager *dm = [[DataManager alloc] init];
+            
+            NSManagedObjectContext *context = [dm managedObjectContext];
+            NSError *error = nil;
+            // Save the object to persistent store
+            if (![context save:&error]) {
+                NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+            }
             UIImage *image = [UIImage imageWithData:imageData];
             CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
             
@@ -177,14 +203,62 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
-                    [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
+                    
                     cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
                     cell.backgroundView.backgroundColor = [UIColor blackColor];
                     //cell.backgroundView.alpha = 0.5;
                 }
             });
         });
+        
+        
     }
+    
+    
+    /*if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
+     UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+     CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+     
+     // Draw new image in current graphics context
+     CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+     
+     // Create new cropped UIImage
+     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+     
+     CGImageRelease(imageRef);
+     
+     cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
+     cell.backgroundView.backgroundColor = [UIColor blackColor];
+     //cell.backgroundView.alpha = 0.5;
+     }else{
+     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+     dispatch_async(queue, ^{
+     //NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
+     //NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+     NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgURL"]];
+     UIImage *image = [UIImage imageWithData:imageData];
+     CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+     
+     // Draw new image in current graphics context
+     CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+     
+     // Create new cropped UIImage
+     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+     
+     CGImageRelease(imageRef);
+     
+     dispatch_async(dispatch_get_main_queue(), ^{
+     if ([tableView indexPathForCell:cell].row == indexPath.row){
+     [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
+     cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
+     cell.backgroundView.backgroundColor = [UIColor blackColor];
+     //cell.backgroundView.alpha = 0.5;
+     }
+     });
+     });
+     }*/
+    
+    
     
     //cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
     //cell.backgroundView.backgroundColor = [UIColor blackColor];
@@ -202,9 +276,24 @@
      });
      });*/
     
+    /*NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgURL"]];
+     UIImage *image = [UIImage imageWithData:imageData];
+     CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+     
+     // Draw new image in current graphics context
+     CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+     
+     // Create new cropped UIImage
+     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+     cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
+     CGImageRelease(imageRef);*/
+    
+    
     return cell;
-
+    
 }
+
+
 - (NSArray *)rightButtons
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
