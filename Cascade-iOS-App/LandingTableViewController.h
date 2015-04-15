@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SWTableViewCell.h"
 #import "SlideNavigationController.h"
+@class DataManager;
+
 
 @interface LandingTableViewController : UITableViewController<SlideNavigationControllerDelegate, SWTableViewCellDelegate>
 

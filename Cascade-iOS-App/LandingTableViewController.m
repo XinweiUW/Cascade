@@ -10,10 +10,12 @@
 #import "DescriptionsViewController.h"
 #import "SWTableViewCell.h"
 #import "DataManager.h"
+#import "AppDelegate.h"
 
 @interface LandingTableViewController ()
 @property (strong) NSManagedObject *routedb;
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
+@property (strong, nonatomic) DataManager *dm;
 
 @end
 
@@ -25,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cachedImages = [[NSMutableDictionary alloc] init];
+    self.dm = [[DataManager alloc] init];
+    //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     /*if ([self dataCount] == 0){
      [self executeParsing];
@@ -35,8 +39,8 @@
     
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTableView) name:@"NotificationMessageEvent" object:nil];
     
-    DataManager *dm = [[DataManager alloc] init];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    //DataManager *dm = [[DataManager alloc] init];
+    /*dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
         self.routeArray = [dm fetchRequest];
         if (self.routeArray.count == 0){
@@ -47,11 +51,34 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
-    });
+    });*/
     
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        [self.dm updateFromServerWithCompletion:^{
+            NSLog(@"datastore update complete");
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        }];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
+    }else{
+        self.routeArray = [self.dm fetchRequest];
+        [self.tableView reloadData];
+    }
     
-    NSLog(@"abc");
 }
+
+
+- (void)reloadTable:(NSNotification *)notification
+{
+    //NSError *error;
+    self.routeArray = [self.dm fetchRequest];
+    //[self.tableView setNeedsDisplay];
+    [self.tableView reloadData];
+    NSLog(@"print");
+}
+
 
 - (void)loadImage{
     
@@ -91,15 +118,6 @@
     return self.routeArray.count;
 }*/
 
-- (void)requestData{
-    
-    //NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -152,14 +170,59 @@
     //UIImage *bgImage =[[UIImage alloc] initWithContentsOfFile:path];
     //NSString *url = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
     //NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:url]];
-    //cell.backgroundView = [[UIImageView alloc] initWithImage: bgImage];
-    //cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:imageData]];
+    
+    
+    
+    if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
+        UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        
+        // Draw new image in current graphics context
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+        
+        // Create new cropped UIImage
+        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+        
+        CGImageRelease(imageRef);
+        
+        cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
+        cell.backgroundView.backgroundColor = [UIColor blackColor];
+    }else{
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
+            UIImage *image = [UIImage imageWithData:imageData];
+
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.35);
+            
+            // Draw new image in current graphics context
+            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+            
+            // Create new cropped UIImage
+            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            
+            CGImageRelease(imageRef);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([tableView indexPathForCell:cell].row == indexPath.row){
+                    [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
+                    cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
+                    cell.backgroundView.backgroundColor = [UIColor blackColor];
+                    //cell.backgroundView.alpha = 0.5;
+                }
+            });
+        });
+        
+        
+    }
+
+    
     
     //NSString *identifier = [NSString stringWithFormat:@"Cell%ld", (long)indexPath.row];
     
     //NSLog(identifier);
     
-    
+    /*
     if ([device valueForKey:@"imgData"]){
         NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
         UIImage *image;
@@ -220,7 +283,7 @@
         
         
     }
-    
+    */
     
     /*if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
      UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
@@ -320,8 +383,6 @@
     
     return rightUtilityButtons;
 }
-
-
 
 
 // Override to support conditional editing of the table view.
