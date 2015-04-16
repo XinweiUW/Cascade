@@ -306,10 +306,10 @@
             newRide.finish = finish;
             newRide.mapURL = mapURL;
             newRide.roadCondition = roadCondition;
-            //newRide.imgURL = imgURL;
+            newRide.imgURL = imgURL;
             //NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
             //newRide.imgURL = [UIImage imageWithData:imgData];
-            newRide.imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]];
+            //newRide.imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]];
             newRide.attractions = attractions;
             newRide.descriptions = descriptions;
             newRide.turnByTurn = turnByTurn;

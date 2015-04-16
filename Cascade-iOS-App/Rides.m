@@ -25,6 +25,7 @@
 @dynamic descriptions;
 @dynamic turnByTurn;
 @dynamic difficulties;
-@dynamic imgData;
+//@dynamic imgData;
+@dynamic imgURL;
 
 @end

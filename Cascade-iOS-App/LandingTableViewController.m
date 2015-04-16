@@ -13,9 +13,13 @@
 #import "AppDelegate.h"
 
 @interface LandingTableViewController ()
+
 @property (strong) NSManagedObject *routedb;
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
 @property (strong, nonatomic) DataManager *dm;
+@property (strong, nonatomic) NSUserDefaults *defaultUser;
+@property (strong, nonatomic) NSString *dataFilePath;
+@property id plist;
 
 @end
 
@@ -23,11 +27,83 @@
 @synthesize routedb;
 
 
+-(NSString *) dataFilePath{
+    //NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    //self.dataFilePath = [documentDirectory stringByAppendingPathComponent:@"Info.plist"];
+    //return [documentDirectory stringByAppendingPathComponent:@"Info.plist"];
+    return [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+}
 
+-(void)readPlist{
+    NSString *filePath = [self dataFilePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
+        self.cachedImages = [[NSMutableDictionary alloc] initWithContentsOfFile:[self dataFilePath]];
+        
+    }
+
+}
+
+
+- (void) createPlist{
+    /*NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    self.dm = [[DataManager alloc] init];
+    for(NSManagedObject *device in [self.dm fetchRequest]){
+        NSString *title = [NSString stringWithFormat:@"%@", [device valueForKey:@"title"]];
+        NSString *url = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
+        [data setValue:url forKey:title];
+    }
+    /*NSString *error = nil;
+    self.plist = [NSPropertyListSerialization dataFromPropertyList:data
+                                                          format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+    [data writeToFile:[self dataFilePath] atomically:YES];*/
+    
+    //NSString *searchFilename = @"Info.plist"; // name of the PDF you are searching for
+    
+    NSString *DocPath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *filePath=[DocPath stringByAppendingPathComponent:@"Info.plist"];
+    
+        NSString *path=[[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+        NSLog(@"file path: %@",filePath);
+        //NSDictionary *info=[NSDictionary dictionaryWithContentsOfFile:path];
+        //[[info writeToFile:filePath atomically:YES];
+         
+     
+         NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+         self.dm = [[DataManager alloc] init];
+         for(NSManagedObject *device in [self.dm fetchRequest]){
+         
+             NSString *title = [NSString stringWithFormat:@"%@", [device valueForKey:@"title"]];
+             NSString *url = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
+             [data setValue:url forKey:title];
+             
+    }
+    
+    [data writeToFile:filePath atomically:YES];
+    
+    
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.cachedImages = [[NSMutableDictionary alloc] init];
     self.dm = [[DataManager alloc] init];
+    self.cachedImages = [[NSMutableDictionary alloc] init];
+    [self createPlist];
+    //self.defaultUser = [NSUserDefaults standardUserDefaults];
+    [self readPlist];
+    //[self loadImage2];
+    /*NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+    NSDictionary 
+    
+    if ([[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"cachedImages"] count] == 0){
+        [[NSUserDefaults standardUserDefaults] setObject: [[NSMutableDictionary alloc] init] forKey:@"cachedImages"];
+    }*/
+    
+    /*if ([self.defaultUser dictionaryForKey:@"cachedImages"] == nil){
+        [self.defaultUser setObject:[[NSMutableDictionary alloc] init] forKey:@"cachedImages"];
+    }*/
+    
+    
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     /*if ([self dataCount] == 0){
@@ -88,7 +164,7 @@
         NSString *str = [obj valueForKey:@"title"];
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
-            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             UIImage *image = [UIImage imageWithData:imageData];
             //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
             
@@ -98,6 +174,19 @@
         });
         
     }
+}
+
+- (void)loadImage2{
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    /*for (NSString *fileName in docFiles) {
+        if([fileName hasSuffix:@".png"]){
+            NSString *fullPath = [docDir stringByAppendingString:fileName];
+            UIImage *loadedImage = [UIImage imageWithContentsOfFile:fullPath];
+            
+        }
+    }*/
+    
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -173,26 +262,37 @@
     
     
     
+    //if ([self.cachedImages objectForKey:[device valueForKey:@"title"]])
     if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
-        UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
-        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
         
-        // Draw new image in current graphics context
-        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+        //UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+        //UIImage *image = [[[NSUserDefaults standardUserDefaults] objectForKey:@"cachedImages"] objectForKey:[device valueForKey:@"title"]];
         
-        // Create new cropped UIImage
-        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            
+            NSData *imageData = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+            UIImage *image = [[UIImage alloc] initWithData:imageData];
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+            
+            // Draw new image in current graphics context
+            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+            
+            // Create new cropped UIImage
+            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            
+            CGImageRelease(imageRef);
+
+                
+            cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
+            cell.backgroundView.backgroundColor = [UIColor blackColor];
         
-        CGImageRelease(imageRef);
-        
-        cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
-        cell.backgroundView.backgroundColor = [UIColor blackColor];
-    }else{
+        }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
-            NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
+            NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+            
             UIImage *image = [UIImage imageWithData:imageData];
-
+            
             CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.35);
             
             // Draw new image in current graphics context
@@ -203,9 +303,27 @@
             
             CGImageRelease(imageRef);
             
+            /*NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+            NSString *pngFilePath = [NSString stringWithFormat:@"%@/%@.png", docDir, [device valueForKey:@"title"]];
+            NSData *data = [NSData dataWithData:UIImagePNGRepresentation(croppedImage)];
+            [data writeToFile:pngFilePath atomically:YES];*/
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
-                    [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
+                    
+                    //[[[NSUserDefaults standardUserDefaults] objectForKey:@"cachedImages"] setObject:imageData forKey:[device valueForKey:@"title"]];
+                    //[[NSUserDefaults standardUserDefaults] synchronize];
+                    
+                    //[[self.defaultUser dictionaryForKey:@"cachedImages"] setValue:imageData forKey:[device valueForKey:@"title"]];
+                    //[self.defaultUser synchronize];
+                    
+                    [self.cachedImages setValue:imageData forKey:[device valueForKey:@"title"]];
+                    
+                    if ([[NSFileManager defaultManager] fileExistsAtPath:[self dataFilePath]]){
+                        [self.cachedImages writeToFile:[self dataFilePath] atomically:YES];
+                    }
+                    
+                    //[self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
                     cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
                     cell.backgroundView.backgroundColor = [UIColor blackColor];
                     //cell.backgroundView.alpha = 0.5;
