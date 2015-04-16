@@ -27,7 +27,7 @@
 @synthesize routedb;
 
 
--(NSString *) dataFilePath{
+/*-(NSString *) dataFilePath{
     //NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     //self.dataFilePath = [documentDirectory stringByAppendingPathComponent:@"Info.plist"];
     //return [documentDirectory stringByAppendingPathComponent:@"Info.plist"];
@@ -55,7 +55,7 @@
     /*NSString *error = nil;
     self.plist = [NSPropertyListSerialization dataFromPropertyList:data
                                                           format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
-    [data writeToFile:[self dataFilePath] atomically:YES];*/
+    [data writeToFile:[self dataFilePath] atomically:YES];
     
     //NSString *searchFilename = @"Info.plist"; // name of the PDF you are searching for
     
@@ -81,16 +81,17 @@
     
     [data writeToFile:filePath atomically:YES];
     
-    
-    
 }
+
+*/
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
-    [self createPlist];
+    //[self createPlist];
     //self.defaultUser = [NSUserDefaults standardUserDefaults];
-    [self readPlist];
+    //[self readPlist];
     //[self loadImage2];
     /*NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
     NSDictionary 
@@ -134,17 +135,19 @@
         [self.dm updateFromServerWithCompletion:^{
             NSLog(@"datastore update complete");
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            
         }];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
-    }else{
+    }
+    /*else{
         self.routeArray = [self.dm fetchRequest];
         [self.tableView reloadData];
-    }
-    
+    }*/
+    self.routeArray = [self.dm fetchRequest];
+    [self.tableView reloadData];
 }
-
 
 - (void)reloadTable:(NSNotification *)notification
 {
@@ -172,7 +175,6 @@
                 [self.cachedImages setObject: image forKey:str];
             });
         });
-        
     }
 }
 
@@ -232,7 +234,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil){
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    }
+    
+    cell.backgroundView = nil;
+    //SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     //tableView.rowHeight = 250;
     // Configure the cell...
@@ -263,33 +272,46 @@
     
     
     //if ([self.cachedImages objectForKey:[device valueForKey:@"title"]])
-    if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
+    //if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
+    if ([device valueForKey:@"imgData"]) {
         
         //UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
         //UIImage *image = [[[NSUserDefaults standardUserDefaults] objectForKey:@"cachedImages"] objectForKey:[device valueForKey:@"title"]];
         
-            
-            NSData *imageData = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
-            UIImage *image = [[UIImage alloc] initWithData:imageData];
-            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
+        UIImage *image;
+        
+        if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+            image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+        }else{
+            image = [[UIImage alloc] initWithData:imageData];
+            [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+        }
+
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
             
             // Draw new image in current graphics context
-            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
             
             // Create new cropped UIImage
-            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
             
-            CGImageRelease(imageRef);
+        CGImageRelease(imageRef);
 
                 
-            cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
-            cell.backgroundView.backgroundColor = [UIColor blackColor];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
+        cell.backgroundView.backgroundColor = [UIColor blackColor];
         
         }else{
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
             NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+            
+            [device setValue:imageData forKey:@"imgData"];
+            
+            //DataManager *dataManager = [[DataManager alloc] init];
+            
             
             UIImage *image = [UIImage imageWithData:imageData];
             
@@ -317,11 +339,16 @@
                     //[[self.defaultUser dictionaryForKey:@"cachedImages"] setValue:imageData forKey:[device valueForKey:@"title"]];
                     //[self.defaultUser synchronize];
                     
-                    [self.cachedImages setValue:imageData forKey:[device valueForKey:@"title"]];
-                    
-                    if ([[NSFileManager defaultManager] fileExistsAtPath:[self dataFilePath]]){
+                    /*if ([[NSFileManager defaultManager] fileExistsAtPath:[self dataFilePath]]){
                         [self.cachedImages writeToFile:[self dataFilePath] atomically:YES];
+                    }*/
+
+                    NSError *error = nil;
+                    // Save the object to persistent store
+                    if (![[self.dm managedObjectContext] save:&error]) {
+                        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
                     }
+                    [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
                     
                     //[self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
                     cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];

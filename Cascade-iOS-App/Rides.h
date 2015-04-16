@@ -22,13 +22,13 @@
 @property(strong, nonatomic) NSString *mapURL;
 @property(strong, nonatomic) NSString *roadCondition;
 @property(strong, nonatomic) NSString *imgURL;
+@property(strong, nonatomic) NSData *imgData;
 @property(strong, nonatomic) NSString *attractions;
 @property(strong, nonatomic) NSString *descriptions;
 @property(strong, nonatomic) NSString *turnByTurn;
 @property(strong, nonatomic) NSString *difficulties;
 
 //@property(strong, nonatomic) NSData *imgURL;
-//@property(strong, nonatomic) NSData *imgData;
 
 //@property (nonatomic) UIImage *imgURL;
 
