@@ -10,4 +10,21 @@
 
 @implementation Rides
 
+@dynamic id;
+@dynamic title;
+@dynamic distance;
+@dynamic duration;
+@dynamic terrain;
+@dynamic keyWords;
+@dynamic shortOverview;
+@dynamic start;
+@dynamic finish;
+@dynamic mapURL;
+@dynamic roadCondition;
+@dynamic attractions;
+@dynamic descriptions;
+@dynamic turnByTurn;
+@dynamic difficulties;
+@dynamic imgData;
+
 @end

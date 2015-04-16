@@ -799,38 +799,6 @@
             endingLineNumber = "58"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LandingTableViewController viewDidLoad]"
-                  moduleName = "Cascade-iOS-App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "450772588.858831"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "380">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__41-[LandingTableViewController viewDidLoad]_block_invoke"
-                  moduleName = "Cascade-iOS-App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "450772588.85893"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
