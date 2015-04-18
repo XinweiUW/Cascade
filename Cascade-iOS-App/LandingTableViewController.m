@@ -362,8 +362,18 @@
         });
         
     }*/
-    if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
-        UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+    if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+    //if ([self.dm loadImage:[device valueForKey:@"title"]]){
+        //UIImage *image = [self.dm loadImage:[device valueForKey:@"title"]];
+        
+        UIImage *image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
+        
+        /*if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+            image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
+        }else{
+            image = [self.dm loadImage:[device valueForKey:@"title"]];
+            [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+        }*/
         
         CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
          
@@ -377,6 +387,7 @@
          
         cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
         cell.backgroundView.backgroundColor = [UIColor blackColor];
+        
     }else{
         
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
