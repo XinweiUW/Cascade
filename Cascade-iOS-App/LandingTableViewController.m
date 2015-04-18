@@ -88,7 +88,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dm = [[DataManager alloc] init];
+    NSString *title = @"Must-see Seattle by Bike";
+    //[self.dm loadImage:title];
     self.cachedImages = [[NSMutableDictionary alloc] init];
+    
     //[self createPlist];
     //self.defaultUser = [NSUserDefaults standardUserDefaults];
     //[self readPlist];
@@ -146,6 +149,7 @@
         [self.tableView reloadData];
     }*/
     self.routeArray = [self.dm fetchRequest];
+    
     [self.tableView reloadData];
 }
 
@@ -272,13 +276,13 @@
     
     
     //if ([self.cachedImages objectForKey:[device valueForKey:@"title"]])
-    //if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
-    if ([device valueForKey:@"imgData"]) {
+    /*if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
+    //if ([device valueForKey:@"imgData"]) {
         
-        //UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
+        UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
         //UIImage *image = [[[NSUserDefaults standardUserDefaults] objectForKey:@"cachedImages"] objectForKey:[device valueForKey:@"title"]];
         
-        NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
+        /*NSData *imageData = [[NSData alloc] initWithData:[device valueForKey:@"imgData"]];
         UIImage *image;
         
         if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
@@ -297,7 +301,6 @@
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
             
         CGImageRelease(imageRef);
-
                 
         cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
         cell.backgroundView.backgroundColor = [UIColor blackColor];
@@ -308,7 +311,7 @@
             NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             
-            [device setValue:imageData forKey:@"imgData"];
+            //[device setValue:imageData forKey:@"imgData"];
             
             //DataManager *dataManager = [[DataManager alloc] init];
             
@@ -330,7 +333,7 @@
             NSData *data = [NSData dataWithData:UIImagePNGRepresentation(croppedImage)];
             [data writeToFile:pngFilePath atomically:YES];*/
             
-            dispatch_async(dispatch_get_main_queue(), ^{
+            /*dispatch_async(dispatch_get_main_queue(), ^{
                 if ([tableView indexPathForCell:cell].row == indexPath.row){
                     
                     //[[[NSUserDefaults standardUserDefaults] objectForKey:@"cachedImages"] setObject:imageData forKey:[device valueForKey:@"title"]];
@@ -341,7 +344,7 @@
                     
                     /*if ([[NSFileManager defaultManager] fileExistsAtPath:[self dataFilePath]]){
                         [self.cachedImages writeToFile:[self dataFilePath] atomically:YES];
-                    }*/
+                    }
 
                     NSError *error = nil;
                     // Save the object to persistent store
@@ -358,10 +361,56 @@
             });
         });
         
+    }*/
+    if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
+        UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
         
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+         
+         // Draw new image in current graphics context
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+         
+         // Create new cropped UIImage
+        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+         
+        CGImageRelease(imageRef);
+         
+        cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
+        cell.backgroundView.backgroundColor = [UIColor blackColor];
+    }else{
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            
+            NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+            //NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:imgURL]];
+            UIImage *image = [UIImage imageWithData:imageData];
+            
+            //[self.dm saveImage:image :[device valueForKey:@"title"]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
+                [self.cachedImages setValue:image forKey: [device valueForKey:@"title"]];
+                
+                CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+                
+                // Draw new image in current graphics context
+                CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+                
+                // Create new cropped UIImage
+                UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+                
+                CGImageRelease(imageRef);
+                
+                cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
+            });
+        });
     }
-
     
+    
+    //cell.backgroundView = [[UIImageView alloc] initWithImage:[self.dm loadImage:[device valueForKey:@"title"]]];
     
     //NSString *identifier = [NSString stringWithFormat:@"Cell%ld", (long)indexPath.row];
     

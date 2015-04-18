@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <UIKit/UIKit.h>
 #import "CHCSVParser.h"
 #import "Rides.h"
 
@@ -21,6 +22,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void)updateFromServerWithCompletion:(void (^)(void))completionHandler;
+- (void)saveImage: (UIImage *)image :(NSString *)title;
+- (UIImage *)loadImage:(NSString *)title;
 
 @property (strong) Rides *routedb;
 @property (readonly) NSArray *lines;

@@ -307,6 +307,9 @@
             newRide.mapURL = mapURL;
             newRide.roadCondition = roadCondition;
             newRide.imgURL = imgURL;
+            //NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:imgURL]];
+            //UIImage *img = [UIImage imageWithData:imgData];
+            //[self saveImage:img:title];
             //NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
             //newRide.imgURL = [UIImage imageWithData:imgData];
             //newRide.imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]];
@@ -325,9 +328,33 @@
                 [self.managedObjectContext save:nil];
             });
         }
-
     }];
 }
+
+
+- (void)saveImage: (UIImage *)image :(NSString *)title {
+    if (image != nil)
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                            NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", title]];
+        NSData* data = UIImagePNGRepresentation(image);
+        [data writeToFile:path atomically:YES];
+    }
+}
+
+
+- (UIImage *)loadImage:(NSString *)title{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:title];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    return image;
+}
+
 
 - (NSMutableArray *)fetchRequest{
     
@@ -338,7 +365,6 @@
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     return [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-    
 }
 
 - (void) deleteObjects{
