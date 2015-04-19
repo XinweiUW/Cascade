@@ -9,203 +9,60 @@
 #import "LandingTableViewController.h"
 #import "DescriptionsViewController.h"
 #import "SWTableViewCell.h"
-#import "Delegate.h"
+#import "DataManager.h"
+#import "AppDelegate.h"
 
 @interface LandingTableViewController ()
+
 @property (strong) NSManagedObject *routedb;
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
+@property (strong, nonatomic) DataManager *dm;
+@property (strong, nonatomic) NSUserDefaults *defaultUser;
+@property (strong, nonatomic) NSString *dataFilePath;
+@property id plist;
 
 @end
 
 @implementation LandingTableViewController
-@synthesize routedb;
-
-- (NSManagedObjectContext *)managedObjectContext
-{
-    NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
-}
-
--(void)executeParsing{
-    @autoreleasepool {
-        //NSString *file = @(__FILE__);
-        //file = [[file stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Top_10_Rides_Content_pictureReplaced.csv"];
-        //NSString *file;
-        //file = @"https://drive.google.com/file/d/0BzxR2Xc3LZ7MRl9CSkJrUm5iLVU/view?usp=sharing";
-        
-        NSString *url = @"https://www.filepicker.io/api/file/ki56tpiDS5W93y2f52fo";
-        NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-        NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] ;
-        //NSString *robots = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://www.filepicker.io/api/file/w5eur5N6QmuK8znclVWf"] encoding:NSUTF8StringEncoding error:nil];
-        //NSString *file = @"/var/mobile/Containers/Bundle/Application/31AB2441-9139-43B2-9722-C08C037EF052/MyContacts.app/Top_10_Rides_Content_pictureReplaced.csv";
-        //NSString *file = @"https://www.filepicker.io/api/file/w5eur5N6QmuK8znclVWf";
-        
-        
-        NSLog(@"Beginning...");
-        NSStringEncoding encoding = 0;
-        //NSInputStream *stream = [NSInputStream inputStreamWithFileAtPath:file];
-        CHCSVParser * p = [[CHCSVParser alloc] initWithCSVString:file];
-        [p setRecognizesBackslashesAsEscapes:YES];
-        [p setSanitizesFields:YES];
-        
-        NSLog(@"encoding: %@", CFStringGetNameOfEncoding(CFStringConvertNSStringEncodingToEncoding(encoding)));
-        
-        Delegate * d = [[Delegate alloc] init];
-        [p setDelegate:d];
-        
-        NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
-        [p parse];
-        NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
-        
-        NSLog(@"raw difference: %f", (end-start));
-        
-        NSLog(@"%@", [d lines]);
-        
-        NSInteger size = [[d lines ]count];
-        
-        NSManagedObjectContext *context = [self managedObjectContext];
-        
-        
-        
-        // extract contents in csv file and convert to core data
-        for (NSInteger i = 1; i < size; i++){
-            NSArray *temp = [[d lines] objectAtIndex:i];
-            NSNumber *number = [NSNumber numberWithInt:i];
-            NSString *title = [temp objectAtIndex:0];
-            NSString *distance = [temp objectAtIndex:1];
-            NSString *duration = [temp objectAtIndex:2];
-            NSString *terrain = [temp objectAtIndex:3];
-            NSString *keyWords = [temp objectAtIndex:4];
-            NSString *shortOverview = [temp objectAtIndex:5];
-            NSString *start = [temp objectAtIndex:6];
-            NSString *finish = [temp objectAtIndex:7];
-            NSString *mapURL = [temp objectAtIndex:8];
-            NSString *roadCondition = [temp objectAtIndex:9];
-            NSString *imgURL = [temp objectAtIndex:10];
-            NSString *attractions = [temp objectAtIndex:11];
-            NSString *descriptions = [temp objectAtIndex:12];
-            NSString *turnByTurn = [temp objectAtIndex:13];
-            NSString *difficulties = [temp objectAtIndex:14];
-            
-            if (!self.routedb){
-                NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:context];
-                [newDevice setValue:number forKey:@"id"];
-                [newDevice setValue:title forKey:@"title"];
-                [newDevice setValue:distance forKey:@"distance"];
-                [newDevice setValue:duration forKey:@"duration"];
-                [newDevice setValue:terrain forKey:@"terrain"];
-                [newDevice setValue:keyWords forKey:@"keyWords"];
-                [newDevice setValue:shortOverview forKey:@"shortOverview"];
-                [newDevice setValue:start forKey:@"start"];
-                [newDevice setValue:finish forKey:@"finish"];
-                [newDevice setValue:mapURL forKey:@"mapURL"];
-                [newDevice setValue:roadCondition forKey:@"roadCondition"];
-                [newDevice setValue:imgURL forKey:@"imgURL"];
-                [newDevice setValue:attractions forKey:@"attractions"];
-                [newDevice setValue:descriptions forKey:@"descriptions"];
-                [newDevice setValue:turnByTurn forKey:@"turnByTurn"];
-                [newDevice setValue:difficulties forKey:@"difficulties"];
-            }else{
-                [self.routedb setValue:number forKey:@"id"];
-                [self.routedb setValue:title forKey:@"title"];
-                [self.routedb setValue:distance forKey:@"distance"];
-                [self.routedb setValue:duration forKey:@"duration"];
-                [self.routedb setValue:terrain forKey:@"terrain"];
-                [self.routedb setValue:keyWords forKey:@"keyWords"];
-                [self.routedb setValue:shortOverview forKey:@"shortOverview"];
-                [self.routedb setValue:start forKey:@"start"];
-                [self.routedb setValue:finish forKey:@"finish"];
-                [self.routedb setValue:mapURL forKey:@"mapURL"];
-                [self.routedb setValue:roadCondition forKey:@"roadCondition"];
-                [self.routedb setValue:imgURL forKey:@"imgURL"];
-                [self.routedb setValue:attractions forKey:@"attractions"];
-                [self.routedb setValue:descriptions forKey:@"descriptions"];
-                [self.routedb setValue:turnByTurn forKey:@"turnByTurn"];
-                [self.routedb setValue:difficulties forKey:@"difficulties"];
-            }
-            
-            //NSError *error = nil;
-            // Save the object to persistent store
-            //if (![context save:&error]) {
-            //    NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-            //}
-        }
-        NSError *error = nil;
-        // Save the object to persistent store
-        if (![context save:&error]) {
-            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-        }
-        
-        
-    }
-}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     
-    if ([self dataCount] == 0){
-        [self executeParsing];
-        [self dataCount];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        [self.dm updateFromServerWithCompletion:^{
+            NSLog(@"datastore update complete");
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            
+        }];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
     }
+    else{
+        self.routeArray = [self.dm fetchRequest];
+        [self.tableView reloadData];
+    }
+
     
-    //[self loadImage];
-    
-    [self.tableView reloadData];
-    NSLog(@"abc");
+
 }
 
-- (void)loadImage{
-    
-    for (NSManagedObject *obj in self.routeArray){
-        
-        NSString *imgURL = [obj valueForKey:@"imgURL"];
-        NSString *str = [obj valueForKey:@"title"];
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
-            UIImage *image = [UIImage imageWithData:imageData];
-            //UIImage *blurImage = [UIImageEffects imageByApplyingLightEffectToImage:image];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.cachedImages setObject: image forKey:str];
-            });
-        });
-        
-    }
+- (void)reloadTable:(NSNotification *)notification
+{
+    //NSError *error;
+    self.routeArray = [self.dm fetchRequest];
+    [self.tableView setNeedsDisplay];
+    [self.tableView reloadData];
+    NSLog(@"print");
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
     return YES;
-}
-
-- (NSInteger)dataCount{
-    
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    self.routeArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-    
-    return self.routeArray.count;
-}
-
-- (void)requestData{
-    
-    //NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -232,17 +89,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    //tableView.rowHeight = 250;
+    
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil){
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    }
+    cell.backgroundView = nil;
+    
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
     [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
-    //UIImage *completeImage = [UIImage imageNamed:@"CompletedStamp.png"];
-    //cell.completeView = [[UIImageView alloc] initWithImage:completeImage];
+
     cell.completeView.hidden = TRUE;
     cell.delegate = self;
-
+    
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     
@@ -254,78 +114,59 @@
     cell.textLabel.numberOfLines = 2;
     cell.textLabel.lineBreakMode = 0;
     
-    //UIImage *bgImage = [UIImage imageNamed:@"IDMXMmPB.jpeg"];
-    //NSString *path = [[NSBundle mainBundle] pathForResource:@"IDMXMmPB" ofType:@"jpeg"];
-    //UIImage *bgImage =[[UIImage alloc] initWithContentsOfFile:path];
-    //NSString *url = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
-    //NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:url]];
-    //cell.backgroundView = [[UIImageView alloc] initWithImage: bgImage];
-    //cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:imageData]];
-    
-    //NSString *identifier = [NSString stringWithFormat:@"Cell%ld", (long)indexPath.row];
-    
-    //NSLog(identifier);
-    if ([self.cachedImages objectForKey:[device valueForKey:@"title"]]){
-        UIImage *image = [self.cachedImages objectForKey:[device valueForKey:@"title"]];
-        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-        
-        // Draw new image in current graphics context
-        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-        
-        // Create new cropped UIImage
-        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-        
-        CGImageRelease(imageRef);
-        
-        cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
-        cell.backgroundView.backgroundColor = [UIColor blackColor];
-        //cell.backgroundView.alpha = 0.5;
-    }else{
+
+    //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+    if ([self.dm loadImage:[device valueForKey:@"title"]]){
+
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
+            
+            UIImage *image;
+            if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+                image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
+            }else{
+                image = [self.dm loadImage:[device valueForKey:@"title"]];
+                [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+            }
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.backgroundView = nil;
+                cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+            });
+        });
+    
+    }else{
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            
             NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             UIImage *image = [UIImage imageWithData:imageData];
+            
             CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
             
             // Draw new image in current graphics context
             CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-            
-            // Create new cropped UIImage
             UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
             
+            [self.cachedImages setValue:croppedImage forKey: [device valueForKey:@"title"]];
+            [self.dm saveImage:croppedImage :[device valueForKey:@"title"]];
             CGImageRelease(imageRef);
-            
+            // Create new cropped UIImage
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([tableView indexPathForCell:cell].row == indexPath.row){
-                    [self.cachedImages setObject:image forKey:[device valueForKey:@"title"]];
-                    cell.backgroundView = [[UIImageView alloc] initWithImage: croppedImage];
-                    cell.backgroundView.backgroundColor = [UIColor blackColor];
-                    //cell.backgroundView.alpha = 0.5;
-                }
+                //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
+                cell.backgroundView = nil;
+                cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
             });
         });
     }
     
-    //cell.backgroundView = [[UIImageView alloc] initWithImage:[self.cachedImages objectForKey:[device valueForKey:@"title"]]];
-    //cell.backgroundView.backgroundColor = [UIColor blackColor];
-    //cell.backgroundView.alpha = 0.5;
-    
-    
-    
-    /*dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-     dispatch_async(queue, ^{
-     NSString *url = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
-     NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:url]];
-     UIImage *image = [UIImage imageWithData:imageData];
-     dispatch_async(dispatch_get_main_queue(), ^{
-     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-     });
-     });*/
-    
     return cell;
-
+    
 }
+
+
 - (NSArray *)rightButtons
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
@@ -345,8 +186,6 @@
     
     return rightUtilityButtons;
 }
-
-
 
 
 // Override to support conditional editing of the table view.
