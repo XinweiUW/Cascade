@@ -149,7 +149,6 @@
         
         DataManager * d = [[DataManager alloc] init];
         [p setDelegate:d];
-        
         [p parse];
         
         NSLog(@"%@", [d lines]);
@@ -174,9 +173,8 @@
             NSString *descriptions = [temp objectAtIndex:12];
             NSString *turnByTurn = [temp objectAtIndex:13];
             NSString *difficulties = [temp objectAtIndex:14];
-            
+
             Rides *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
-            
             newRide.id = number;
             newRide.title = title;
             newRide.distance = distance;
@@ -241,7 +239,7 @@
 }
 
 
-// This is for temporary use. Later, instead of deleting all the objects for updating, we will update the corresponding data from the CSV file.
+// Currently, if we want to update the core data, we would delete all the data and insert all the new data. Later, we will just update those that has been changed.
 - (void) deleteObjects{
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
@@ -251,8 +249,16 @@
     
     NSMutableArray *rides = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath;
+    NSError *error;
+    
     for (id ride in rides){
         [managedObjectContext deleteObject:ride];
+        filePath = [documentsDirectory stringByAppendingPathComponent:[ride valueForKey:@"title"]];
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
     }
 }
 

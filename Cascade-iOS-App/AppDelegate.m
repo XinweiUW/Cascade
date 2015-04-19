@@ -31,6 +31,19 @@
     
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     
+    self.userDefault =[NSUserDefaults standardUserDefaults];
+    if (![self.userDefault objectForKey:@"lastDate"]){
+        [self.userDefault setObject:[NSDate date] forKey:@"lastDate"];
+        [self.userDefault synchronize];
+    }else{
+        NSDate *lastDate = [self.userDefault objectForKey:@"lastDate"];
+        NSDate *now = [NSDate date];
+        if ([now timeIntervalSinceDate:lastDate] > 60){
+            [self.userDefault setBool:NO forKey:@"HasLaunchedOnce"];
+            [self.userDefault setObject:now forKey:@"lastDate"];
+            [self.userDefault synchronize];
+        }
+    }
     return YES;
 }
 

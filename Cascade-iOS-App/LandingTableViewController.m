@@ -17,8 +17,6 @@
 @property (strong) NSManagedObject *routedb;
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
 @property (strong, nonatomic) DataManager *dm;
-@property (strong, nonatomic) NSUserDefaults *defaultUser;
-@property (strong, nonatomic) NSString *dataFilePath;
 @property id plist;
 
 @end
@@ -46,9 +44,6 @@
         self.routeArray = [self.dm fetchRequest];
         [self.tableView reloadData];
     }
-
-    
-
 }
 
 - (void)reloadTable:(NSNotification *)notification
@@ -57,7 +52,6 @@
     self.routeArray = [self.dm fetchRequest];
     [self.tableView setNeedsDisplay];
     [self.tableView reloadData];
-    NSLog(@"print");
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -102,7 +96,6 @@
 
     cell.completeView.hidden = TRUE;
     cell.delegate = self;
-    
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     

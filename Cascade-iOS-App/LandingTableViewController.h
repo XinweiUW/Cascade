@@ -15,7 +15,6 @@
 @interface LandingTableViewController : UITableViewController<SlideNavigationControllerDelegate, SWTableViewCellDelegate>
 
 @property (strong) NSMutableArray *routeArray;
--(void) executeParsing;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *detailButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *drawerButton;
