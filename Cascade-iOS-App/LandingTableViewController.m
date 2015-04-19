@@ -94,9 +94,8 @@
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
-    
     cell.backgroundView = nil;
-
+    
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
     [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
@@ -131,6 +130,7 @@
             }
         
             dispatch_async(dispatch_get_main_queue(), ^{
+                cell.backgroundView = nil;
                 cell.backgroundView = [[UIImageView alloc] initWithImage:image];
             });
         });
@@ -144,8 +144,6 @@
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
             UIImage *image = [UIImage imageWithData:imageData];
             
-            [self.dm saveImage:image :[device valueForKey:@"title"]];
-            
             CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
             
             // Draw new image in current graphics context
@@ -153,11 +151,12 @@
             UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
             
             [self.cachedImages setValue:croppedImage forKey: [device valueForKey:@"title"]];
-            
+            [self.dm saveImage:croppedImage :[device valueForKey:@"title"]];
+            CGImageRelease(imageRef);
             // Create new cropped UIImage
             dispatch_async(dispatch_get_main_queue(), ^{
                 //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
-                CGImageRelease(imageRef);
+                cell.backgroundView = nil;
                 cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
             });
         });
