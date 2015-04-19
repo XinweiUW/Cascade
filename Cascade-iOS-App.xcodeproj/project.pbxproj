@@ -48,6 +48,9 @@
 		9DD314CA1AC7D069004C89AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C91AC7D069004C89AE /* CoreGraphics.framework */; };
 		9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CB1AC7D07A004C89AE /* UIKit.framework */; };
 		9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CD1AC7D084004C89AE /* CoreData.framework */; };
+		9DD46A3E1AE4628C006BBCEB /* MapListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */; };
+		9DD46A401AE468C6006BBCEB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A3F1AE468C6006BBCEB /* MapKit.framework */; };
+		9DD46A421AE468CE006BBCEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A411AE468CE006BBCEB /* CoreLocation.framework */; };
 		9DE674901ACF9F54000653DB /* leftMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DE6748F1ACF9F54000653DB /* leftMenu.jpg */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Rides.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Rides.m */; };
@@ -129,6 +132,10 @@
 		9DD314C91AC7D069004C89AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9DD314CB1AC7D07A004C89AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DD314CD1AC7D084004C89AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9DD46A3C1AE4628C006BBCEB /* MapListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapListViewController.h; sourceTree = "<group>"; };
+		9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapListViewController.m; sourceTree = "<group>"; };
+		9DD46A3F1AE468C6006BBCEB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9DD46A411AE468CE006BBCEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9DE6748F1ACF9F54000653DB /* leftMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftMenu.jpg; sourceTree = "<group>"; };
 		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
@@ -143,6 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DD46A421AE468CE006BBCEB /* CoreLocation.framework in Frameworks */,
+				9DD46A401AE468C6006BBCEB /* MapKit.framework in Frameworks */,
 				9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */,
 				9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */,
 				9DD314CA1AC7D069004C89AE /* CoreGraphics.framework in Frameworks */,
@@ -297,6 +306,8 @@
 				9D52A8A31AD395AC0041CB62 /* TipViewController.m */,
 				9D52A8A51AD395BE0041CB62 /* SettingsViewController.h */,
 				9D52A8A61AD395BE0041CB62 /* SettingsViewController.m */,
+				9DD46A3C1AE4628C006BBCEB /* MapListViewController.h */,
+				9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -304,6 +315,8 @@
 		9DD314CF1AC7D09C004C89AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DD46A411AE468CE006BBCEB /* CoreLocation.framework */,
+				9DD46A3F1AE468C6006BBCEB /* MapKit.framework */,
 				9DD314C71AC7D05A004C89AE /* Foundation.framework */,
 				9DD314C91AC7D069004C89AE /* CoreGraphics.framework */,
 				9DD314CB1AC7D07A004C89AE /* UIKit.framework */,
@@ -450,6 +463,7 @@
 				9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */,
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,
 				9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */,
+				9DD46A3E1AE4628C006BBCEB /* MapListViewController.m in Sources */,
 				9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */,
 				9D2671181ACFB50400DFDB0B /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */,

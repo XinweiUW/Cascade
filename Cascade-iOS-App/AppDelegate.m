@@ -38,7 +38,7 @@
     }else{
         NSDate *lastDate = [self.userDefault objectForKey:@"lastDate"];
         NSDate *now = [NSDate date];
-        if ([now timeIntervalSinceDate:lastDate] > 60){
+        if ([now timeIntervalSinceDate:lastDate] > 3600){
             [self.userDefault setBool:NO forKey:@"HasLaunchedOnce"];
             [self.userDefault setObject:now forKey:@"lastDate"];
             [self.userDefault synchronize];

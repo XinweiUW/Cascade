@@ -29,8 +29,7 @@
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     
-    //if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
-    //{
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]){
         [self.dm updateFromServerWithCompletion:^{
             NSLog(@"datastore update complete");
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -39,11 +38,11 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
-    //}
-    //else{
-        //self.routeArray = [self.dm fetchRequest];
-        //[self.tableView reloadData];
-    //}
+    }
+    else{
+        self.routeArray = [self.dm fetchRequest];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)reloadTable:(NSNotification *)notification
