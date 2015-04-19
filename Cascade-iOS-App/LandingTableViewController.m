@@ -29,8 +29,8 @@
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
-    {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]){
+
         [self.dm updateFromServerWithCompletion:^{
             NSLog(@"datastore update complete");
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];

@@ -312,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451176377.316082"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
             <Locations>
@@ -324,16 +324,16 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__62-[LandingTableViewController tableView:cellForRowAtIndexPath:]_block_invoke122"
+                  symbolName = "__62-[LandingTableViewController tableView:cellForRowAtIndexPath:]_block_invoke134"
                   moduleName = "Cascade-iOS-App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451175876.389444"
+                  timestampString = "451102458.098395"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156"
-                  offsetFromSymbolStart = "1096">
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "1212">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -360,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451176377.316082"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -376,11 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451176377.316082"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -527,12 +527,44 @@
             endingLineNumber = "36"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LandingTableViewController viewDidLoad]"
+                  moduleName = "Cascade-iOS-App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
+                  timestampString = "451102458.10085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "478">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[LandingTableViewController viewDidLoad]_block_invoke"
+                  moduleName = "Cascade-iOS-App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
+                  timestampString = "451102458.100955"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
@@ -580,7 +612,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"

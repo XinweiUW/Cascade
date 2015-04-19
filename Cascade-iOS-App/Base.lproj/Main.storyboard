@@ -50,6 +50,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="2-switch to map list.png" style="plain" id="5R5-D1-xCv">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="t4a-yX-4Qw" kind="show" id="dDQ-P4-BeW"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -60,6 +63,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXB-U6-uPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1252" y="1109"/>
+        </scene>
+        <!--Map List View Controller-->
+        <scene sceneID="mRG-Xu-kVs">
+            <objects>
+                <viewController id="t4a-yX-4Qw" customClass="MapListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kB0-LT-DL1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z6b-Ih-dHH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YQ1-P9-R9A">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4XN-AD-L25">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0KF-hA-RlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1252" y="1972"/>
         </scene>
         <!--Descriptions View Controller-->
         <scene sceneID="ylo-eJ-1pf">
