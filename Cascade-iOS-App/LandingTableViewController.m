@@ -118,31 +118,23 @@
 
     //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
     if ([self.dm loadImage:[device valueForKey:@"title"]]){
-        //UIImage *image = [self.dm loadImage:[device valueForKey:@"title"]];
+
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            
+            UIImage *image;
+            if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+                image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
+            }else{
+                image = [self.dm loadImage:[device valueForKey:@"title"]];
+                [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+            }
         
-        //UIImage *image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
-        UIImage *image;
-        if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
-            image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
-        }else{
-            image = [self.dm loadImage:[device valueForKey:@"title"]];
-            [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-        }
-        
-        //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-         
-         // Draw new image in current graphics context
-        //CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-         
-         // Create new cropped UIImage
-        //UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-         
-        //CGImageRelease(imageRef);
-         
-        //cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-        cell.backgroundView.backgroundColor = [UIColor blackColor];
-        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+            });
+        });
+    
     }else{
         
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
@@ -154,21 +146,18 @@
             
             [self.dm saveImage:image :[device valueForKey:@"title"]];
             
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+            
+            // Draw new image in current graphics context
+            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            
+            [self.cachedImages setValue:croppedImage forKey: [device valueForKey:@"title"]];
+            
+            // Create new cropped UIImage
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
-                [self.cachedImages setValue:image forKey: [device valueForKey:@"title"]];
-                
-                CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-                
-                // Draw new image in current graphics context
-                CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-                
-                // Create new cropped UIImage
-                UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-                
                 CGImageRelease(imageRef);
-                
                 cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
             });
         });
