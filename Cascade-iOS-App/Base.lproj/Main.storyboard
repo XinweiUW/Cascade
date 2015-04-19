@@ -20,16 +20,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="CompletedStamp.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cwy-Yq-WeT">
-                                            <rect key="frame" x="280" y="182" width="240" height="45"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="240" id="evn-f8-vsF"/>
-                                                <constraint firstAttribute="height" constant="45" id="wsE-oS-sMb"/>
-                                            </constraints>
+                                            <rect key="frame" x="280" y="182" width="233" height="41"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Cwy-Yq-WeT" secondAttribute="trailing" constant="72" id="AsX-tV-HIV"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Cwy-Yq-WeT" secondAttribute="bottom" constant="15" id="SD6-Tt-Fko"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Cwy-Yq-WeT" secondAttribute="bottom" constant="40" id="ZjP-is-NJM"/>
+                                        <constraint firstItem="Cwy-Yq-WeT" firstAttribute="leading" secondItem="Mcp-Ey-pK1" secondAttribute="leadingMargin" constant="80" id="uPc-3E-Ca4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
