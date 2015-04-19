@@ -158,6 +158,8 @@
         for (NSInteger i = 1; i < size; i++){
             NSArray *temp = [[d lines] objectAtIndex:i];
             NSNumber *number = [NSNumber numberWithInt:i];
+            NSNumber *comp = [NSNumber numberWithInt:0];
+            
             NSString *title = [temp objectAtIndex:0];
             NSString *distance = [temp objectAtIndex:1];
             NSString *duration = [temp objectAtIndex:2];
@@ -191,6 +193,7 @@
             newRide.descriptions = descriptions;
             newRide.turnByTurn = turnByTurn;
             newRide.difficulties = difficulties;
+            newRide.complete = comp;
         }
         
         if (![backgroundContext save:&error]){

@@ -27,5 +27,6 @@
 @dynamic difficulties;
 //@dynamic imgData;
 @dynamic imgURL;
+@dynamic complete;
 
 @end

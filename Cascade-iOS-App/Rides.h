@@ -27,7 +27,7 @@
 @property(strong, nonatomic) NSString *descriptions;
 @property(strong, nonatomic) NSString *turnByTurn;
 @property(strong, nonatomic) NSString *difficulties;
-
+@property(nonatomic) NSInteger complete;
 //@property(strong, nonatomic) NSData *imgURL;
 
 //@property (nonatomic) UIImage *imgURL;

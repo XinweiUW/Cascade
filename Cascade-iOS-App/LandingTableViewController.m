@@ -29,8 +29,8 @@
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
-    {
+    //if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    //{
         [self.dm updateFromServerWithCompletion:^{
             NSLog(@"datastore update complete");
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -39,11 +39,11 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
-    }
-    else{
-        self.routeArray = [self.dm fetchRequest];
-        [self.tableView reloadData];
-    }
+    //}
+    //else{
+        //self.routeArray = [self.dm fetchRequest];
+        //[self.tableView reloadData];
+    //}
 }
 
 - (void)reloadTable:(NSNotification *)notification
@@ -94,19 +94,12 @@
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
     [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
 
-    cell.completeView.hidden = TRUE;
+    //cell.completeView.hidden = TRUE;
     cell.delegate = self;
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-    cell.textLabel.numberOfLines = 2;
-    cell.textLabel.lineBreakMode = 0;
-    
 
     //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
     if ([self.dm loadImage:[device valueForKey:@"title"]]){
@@ -124,7 +117,20 @@
         
             dispatch_async(dispatch_get_main_queue(), ^{
                 cell.backgroundView = nil;
+                
                 cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                
+                if ([[device valueForKey:@"complete"] integerValue] == 1) {
+                    cell.backgroundView.alpha = 0.5;
+                    cell.completeView.hidden = FALSE;
+                    [cell hideUtilityButtonsAnimated:YES];
+                } else if ([[device valueForKey:@"complete"] integerValue] == 0 ){
+                    cell.backgroundView.alpha = 1;
+                    cell.completeView.hidden = TRUE;
+                    [cell hideUtilityButtonsAnimated:YES];
+                }
+                
+                
             });
         });
     
@@ -150,10 +156,33 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
                 cell.backgroundView = nil;
+                
                 cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
+                
+                if ([device valueForKey:@"complete"] == 1) {
+                    cell.backgroundView.alpha = 0.5;
+                    cell.completeView.hidden = FALSE;
+                    [cell hideUtilityButtonsAnimated:YES];
+                } else{
+                    cell.backgroundView.alpha = 1;
+                    cell.completeView.hidden = TRUE;
+                    [cell hideUtilityButtonsAnimated:YES];
+                }
+                
+                
             });
         });
     }
+    
+    /*if ([device valueForKey:@"complete"] == 1) {
+        cell.backgroundView.alpha = 0.5;
+        cell.completeView.hidden = FALSE;
+        [cell hideUtilityButtonsAnimated:YES];
+    } else if ([device valueForKey:@"complete"] == 0){
+        cell.backgroundView.alpha = 1;
+        cell.completeView.hidden = TRUE;
+        [cell hideUtilityButtonsAnimated:YES];
+    }*/
     
     return cell;
     
@@ -218,6 +247,14 @@
             cell.backgroundView.alpha = 0.5;
             cell.completeView.hidden = FALSE;
             [cell hideUtilityButtonsAnimated:YES];
+            //self.dm.routedb.complete = 1;
+            
+            NSManagedObject *obj = [self.routeArray objectAtIndex:index];
+            
+            NSNumber *comp = [NSNumber numberWithInt:1];
+            [obj setValue:comp forKey:@"complete"];
+            NSError *error;
+            [self.dm.managedObjectContext save:&error];
             break;
         }
         
@@ -231,12 +268,18 @@
     switch (index) {
         case 0:
         {
-            NSLog(@"Complete button was pressed");
+            NSLog(@"Uncomplete button was pressed");
             //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
             //[alertTest show];
             cell.backgroundView.alpha = 1;
             cell.completeView.hidden = TRUE;
             [cell hideUtilityButtonsAnimated:YES];
+            NSManagedObject *obj = [self.routeArray objectAtIndex:index];
+            
+            NSNumber *comp = [NSNumber numberWithInt:0];
+            [obj setValue:comp forKey:@"complete"];
+            NSError *error;
+            [self.dm.managedObjectContext save:&error];
             break;
         }
             

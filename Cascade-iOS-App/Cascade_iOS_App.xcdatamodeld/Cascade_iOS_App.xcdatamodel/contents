@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Routes" syncable="YES">
         <attribute name="attractions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="complete" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="difficulties" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,6 +20,6 @@
         <attribute name="turnByTurn" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Routes" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="Routes" positionX="-63" positionY="-18" width="128" height="300"/>
     </elements>
 </model>
