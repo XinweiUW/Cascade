@@ -855,6 +855,7 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
             timestampString = "451205464.47761"
             startingColumnNumber = "9223372036854775807"
@@ -862,6 +863,15 @@
             startingLineNumber = "52"
             endingLineNumber = "52"
             landmarkName = "-reloadTable:"
+=======
+            filePath = "Cascade-iOS-App/DescriptionsViewController.m"
+            timestampString = "451204257.116688"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-viewDidLoad"
+>>>>>>> 04aee3164036cf9f5a3476d29f33fcbf3e547aa8
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -871,6 +881,7 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
             timestampString = "451206579.01841"
             startingColumnNumber = "9223372036854775807"
@@ -942,6 +953,15 @@
             startingLineNumber = "257"
             endingLineNumber = "257"
             landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
+=======
+            filePath = "Cascade-iOS-App/DescriptionsViewController.m"
+            timestampString = "451197298.938485"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-viewDidLoad"
+>>>>>>> 04aee3164036cf9f5a3476d29f33fcbf3e547aa8
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

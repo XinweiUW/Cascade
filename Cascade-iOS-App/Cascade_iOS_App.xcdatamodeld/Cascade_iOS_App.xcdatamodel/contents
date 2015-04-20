@@ -11,8 +11,8 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="imgURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyWords" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mapURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roadCondition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shortOverview" optional="YES" attributeType="String" syncable="YES"/>

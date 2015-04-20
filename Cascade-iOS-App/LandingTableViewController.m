@@ -88,6 +88,7 @@
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
+
     cell.backgroundView = [[UIImageView alloc] init];
 
     //CGAffineTransform transform = cell.completeView.transform;
@@ -98,13 +99,14 @@
     cell.completeView.hidden = YES;
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
-    if ([[device valueForKey:@"complete"] integerValue] == 1) {
+    /*if ([[device valueForKey:@"complete"] integerValue] == 1) {
         cell.backgroundView.alpha = 0.5;
         cell.completeView.hidden = FALSE;
     } else if ([[device valueForKey:@"complete"] integerValue]  == 0){
         cell.backgroundView.alpha = 1;
         cell.completeView.hidden = TRUE;
     }
+    [cell hideUtilityButtonsAnimated:YES];*/
     
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:80.0f];
@@ -134,14 +136,14 @@
                 cell.backgroundView = [[UIImageView alloc] initWithImage:image];
                 //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
                 
-                /*if ([[device valueForKey:@"complete"] integerValue] == 1) {
+                if ([[device valueForKey:@"complete"] integerValue] == 1) {
                     cell.backgroundView.alpha = 0.5;
                     cell.completeView.hidden = FALSE;
                 } else if ([[device valueForKey:@"complete"] integerValue] == 0 ){
                     cell.backgroundView.alpha = 1;
                     cell.completeView.hidden = TRUE;
                 }
-                [cell hideUtilityButtonsAnimated:YES];*/
+                [cell hideUtilityButtonsAnimated:YES];
                 
             });
         });
@@ -169,7 +171,7 @@
                 //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
                 cell.backgroundView = [[UIImageView alloc] initWithImage:image];
 
-                /*cell.backgroundView = nil;
+                //cell.backgroundView = nil;
                 
                 cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
                 
@@ -180,7 +182,7 @@
                     cell.backgroundView.alpha = 1;
                     cell.completeView.hidden = TRUE;
                 }
-                [cell hideUtilityButtonsAnimated:YES];*/
+                [cell hideUtilityButtonsAnimated:YES];
             });
         });
     }
@@ -264,7 +266,6 @@
         default:
             break;
     }
-    [cell hideUtilityButtonsAnimated:YES];
     
 }
 
@@ -294,7 +295,6 @@
         default:
             break;
     }
-    [cell hideUtilityButtonsAnimated:YES];
 }
 
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
