@@ -187,6 +187,15 @@
             newRide.mapURL = mapURL;
             newRide.roadCondition = roadCondition;
             newRide.imgURL = imgURL;
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+            UIImage *image = [UIImage imageWithData:imageData];
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+            
+            // Draw new image in current graphics context
+            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            [self saveImage:croppedImage :title];
+            CGImageRelease(imageRef);
             newRide.attractions = attractions;
             newRide.descriptions = descriptions;
             newRide.turnByTurn = turnByTurn;

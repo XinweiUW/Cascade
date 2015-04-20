@@ -109,9 +109,9 @@
     
 
     //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
-    if ([self.dm loadImage:[device valueForKey:@"title"]]){
+    //if ([self.dm loadImage:[device valueForKey:@"title"]]){
 
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
         dispatch_async(queue, ^{
             
             UIImage *image;
@@ -128,7 +128,7 @@
             });
         });
     
-    }else{
+    /*}else{
         
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
@@ -153,7 +153,7 @@
                 cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
             });
         });
-    }
+      }*/
     
     return cell;
     
