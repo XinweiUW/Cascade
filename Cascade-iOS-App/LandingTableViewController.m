@@ -89,11 +89,11 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
     cell.backgroundView = nil;
-    CGAffineTransform transform = cell.completeView.transform;
+    //CGAffineTransform transform = cell.completeView.transform;
     
     // Rotate the view 45 degrees (the actual function takes radians)
-    transform = CGAffineTransformRotate(transform, (-M_PI / 5));
-    cell.completeView.transform = transform;
+    //transform = CGAffineTransformRotate(transform, (-M_PI / 5));
+    //cell.completeView.transform = transform;
     cell.completeView.hidden = YES;
     
     // Configure the cell...
