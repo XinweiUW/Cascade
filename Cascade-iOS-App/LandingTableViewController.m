@@ -84,17 +84,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
-    cell.backgroundView = nil;
-    CGAffineTransform transform = cell.completeView.transform;
+    cell.backgroundView = [[UIImageView alloc] init];
+
+    //CGAffineTransform transform = cell.completeView.transform;
     
     // Rotate the view 45 degrees (the actual function takes radians)
-    transform = CGAffineTransformRotate(transform, (-M_PI / 5));
-    cell.completeView.transform = transform;
+    //transform = CGAffineTransformRotate(transform, (-M_PI / 5));
+    //cell.completeView.transform = transform;
     cell.completeView.hidden = YES;
+    
+    NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
+    if ([[device valueForKey:@"complete"] integerValue] == 1) {
+        cell.backgroundView.alpha = 0.5;
+        cell.completeView.hidden = FALSE;
+    } else if ([[device valueForKey:@"complete"] integerValue]  == 0){
+        cell.backgroundView.alpha = 1;
+        cell.completeView.hidden = TRUE;
+    }
     
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:80.0f];
@@ -103,10 +113,8 @@
     //cell.completeView.hidden = TRUE;
     cell.delegate = self;
     
-    NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
-    
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
-
+    
     //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
     if ([self.dm loadImage:[device valueForKey:@"title"]]){
 
@@ -122,18 +130,18 @@
             }
         
             dispatch_async(dispatch_get_main_queue(), ^{
-                cell.backgroundView = nil;
-                
+                //cell.backgroundView = nil;
                 cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
                 
-                if ([[device valueForKey:@"complete"] integerValue] == 1) {
+                /*if ([[device valueForKey:@"complete"] integerValue] == 1) {
                     cell.backgroundView.alpha = 0.5;
                     cell.completeView.hidden = FALSE;
                 } else if ([[device valueForKey:@"complete"] integerValue] == 0 ){
                     cell.backgroundView.alpha = 1;
                     cell.completeView.hidden = TRUE;
                 }
-                [cell hideUtilityButtonsAnimated:YES];
+                [cell hideUtilityButtonsAnimated:YES];*/
                 
             });
         });
@@ -159,7 +167,9 @@
             // Create new cropped UIImage
             dispatch_async(dispatch_get_main_queue(), ^{
                 //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
-                cell.backgroundView = nil;
+                cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+
+                /*cell.backgroundView = nil;
                 
                 cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
                 
@@ -170,20 +180,10 @@
                     cell.backgroundView.alpha = 1;
                     cell.completeView.hidden = TRUE;
                 }
-                [cell hideUtilityButtonsAnimated:YES];
+                [cell hideUtilityButtonsAnimated:YES];*/
             });
         });
     }
-    
-    /*if ([device valueForKey:@"complete"] == 1) {
-        cell.backgroundView.alpha = 0.5;
-        cell.completeView.hidden = FALSE;
-        [cell hideUtilityButtonsAnimated:YES];
-    } else if ([device valueForKey:@"complete"] == 0){
-        cell.backgroundView.alpha = 1;
-        cell.completeView.hidden = TRUE;
-        [cell hideUtilityButtonsAnimated:YES];
-    }*/
     
     return cell;
     
@@ -264,6 +264,8 @@
         default:
             break;
     }
+    [cell hideUtilityButtonsAnimated:YES];
+    
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
@@ -292,6 +294,7 @@
         default:
             break;
     }
+    [cell hideUtilityButtonsAnimated:YES];
 }
 
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell

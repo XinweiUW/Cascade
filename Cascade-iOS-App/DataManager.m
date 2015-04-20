@@ -135,7 +135,8 @@
     
     [backgroundContext performBlock:^{
         NSError *error;
-        NSString *url = @"https://www.filepicker.io/api/file/B9uBaBZRTs2lmD5j2Ff8";
+        //NSString *url = @"https://www.filepicker.io/api/file/B9uBaBZRTs2lmD5j2Ff8";
+        NSString *url = @"https://www.filepicker.io/api/file/nEf0qv6TUq5sKUSUT7FM";
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] ;
     
@@ -175,6 +176,9 @@
             NSString *descriptions = [temp objectAtIndex:12];
             NSString *turnByTurn = [temp objectAtIndex:13];
             NSString *difficulties = [temp objectAtIndex:14];
+            NSString *latitude = [temp objectAtIndex:15];
+            NSString *longitude = [temp objectAtIndex:16];
+            
 
             Rides *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
             newRide.id = number;
@@ -194,6 +198,8 @@
             newRide.turnByTurn = turnByTurn;
             newRide.difficulties = difficulties;
             newRide.complete = comp;
+            newRide.latitude = latitude;
+            newRide.longitude = longitude;
         }
         
         if (![backgroundContext save:&error]){

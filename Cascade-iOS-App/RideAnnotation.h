@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
-@interface RideAnnotation : NSObject<MKAnnotation>
+@interface RideAnnotation : NSObject <MKAnnotation>
+
+@property (copy, nonatomic) NSString *title;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+
+- (id)initWithVariable:(NSString *)title :(CLLocationCoordinate2D)coordinate;
 
 @end

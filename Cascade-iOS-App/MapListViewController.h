@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
-@import CoreLocation;
+#import "RideAnnotation.h"
+
 @import MapKit;
+@import CoreLocation;
 
 @interface MapListViewController : ViewController<CLLocationManagerDelegate, MKMapViewDelegate, MKAnnotation>
 
