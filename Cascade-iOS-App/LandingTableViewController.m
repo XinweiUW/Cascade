@@ -89,10 +89,16 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
     cell.backgroundView = nil;
+    CGAffineTransform transform = cell.completeView.transform;
+    
+    // Rotate the view 45 degrees (the actual function takes radians)
+    transform = CGAffineTransformRotate(transform, (-M_PI / 5));
+    cell.completeView.transform = transform;
+    cell.completeView.hidden = YES;
     
     // Configure the cell...
-    [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
-    [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
+    [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:80.0f];
+    [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 80.f];
 
     //cell.completeView.hidden = TRUE;
     cell.delegate = self;
@@ -157,10 +163,10 @@
                 
                 cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
                 
-                if ([device valueForKey:@"complete"] == 1) {
+                if ([[device valueForKey:@"complete"] integerValue] == 1) {
                     cell.backgroundView.alpha = 0.5;
                     cell.completeView.hidden = FALSE;
-                } else{
+                } else if ([[device valueForKey:@"complete"] integerValue] == 0 ){
                     cell.backgroundView.alpha = 1;
                     cell.completeView.hidden = TRUE;
                 }
@@ -188,8 +194,8 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"Complete"];
+     [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0]
+                                                title:@"Done"];
     
     return rightUtilityButtons;
 }
@@ -198,8 +204,8 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"Uncomplete"];
+     [UIColor colorWithRed:0.0f green:1.0f blue:0.1f alpha:1.0]
+                                                title:@"Reset"];
     
     return rightUtilityButtons;
 }
