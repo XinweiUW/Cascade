@@ -51,6 +51,7 @@
 		9DD46A3E1AE4628C006BBCEB /* MapListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */; };
 		9DD46A401AE468C6006BBCEB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A3F1AE468C6006BBCEB /* MapKit.framework */; };
 		9DD46A421AE468CE006BBCEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A411AE468CE006BBCEB /* CoreLocation.framework */; };
+		9DD46A451AE47E99006BBCEB /* RideAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD46A441AE47E99006BBCEB /* RideAnnotation.m */; };
 		9DE674901ACF9F54000653DB /* leftMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DE6748F1ACF9F54000653DB /* leftMenu.jpg */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Rides.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Rides.m */; };
@@ -136,6 +137,8 @@
 		9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapListViewController.m; sourceTree = "<group>"; };
 		9DD46A3F1AE468C6006BBCEB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9DD46A411AE468CE006BBCEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9DD46A431AE47E99006BBCEB /* RideAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideAnnotation.h; sourceTree = "<group>"; };
+		9DD46A441AE47E99006BBCEB /* RideAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideAnnotation.m; sourceTree = "<group>"; };
 		9DE6748F1ACF9F54000653DB /* leftMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftMenu.jpg; sourceTree = "<group>"; };
 		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 				9D52A8A61AD395BE0041CB62 /* SettingsViewController.m */,
 				9DD46A3C1AE4628C006BBCEB /* MapListViewController.h */,
 				9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */,
+				9DD46A431AE47E99006BBCEB /* RideAnnotation.h */,
+				9DD46A441AE47E99006BBCEB /* RideAnnotation.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				9D2671151ACFB50400DFDB0B /* SWCellScrollView.m in Sources */,
 				9D8BFDFF1AC39B4100ED37D1 /* ViewController.m in Sources */,
 				9D52A8A11AD395900041CB62 /* AboutViewController.m in Sources */,
+				9DD46A451AE47E99006BBCEB /* RideAnnotation.m in Sources */,
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
 				9D2671171ACFB50400DFDB0B /* SWTableViewCell.m in Sources */,
 				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,

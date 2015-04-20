@@ -308,7 +308,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
@@ -321,34 +321,34 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__62-[LandingTableViewController tableView:cellForRowAtIndexPath:]_block_invoke134"
+                  symbolName = "__62-[LandingTableViewController tableView:cellForRowAtIndexPath:]_block_invoke124"
                   moduleName = "Cascade-iOS-App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451102458.098395"
+                  timestampString = "451179255.109503"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
-                  offsetFromSymbolStart = "1212">
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "888">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__62-[LandingTableViewController tableView:cellForRowAtIndexPath:]_block_invoke_2142"
+                  symbolName = "__62-[LandingTableViewController tableView:cellForRowAtIndexPath:]_block_invoke_2144"
                   moduleName = "Cascade-iOS-App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451175876.389581"
+                  timestampString = "451179255.109633"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156"
-                  offsetFromSymbolStart = "32">
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -356,7 +356,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
@@ -372,7 +372,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
@@ -388,15 +388,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451100570.094244"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -404,7 +404,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
@@ -415,79 +415,47 @@
             endingLineNumber = "32"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LandingTableViewController viewDidLoad]"
-                  moduleName = "Cascade-iOS-App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451175876.406232"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "336">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__41-[LandingTableViewController viewDidLoad]_block_invoke"
-                  moduleName = "Cascade-iOS-App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451175876.406334"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451100614.876023"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[LandingTableViewController viewDidLoad]"
                   moduleName = "Cascade-iOS-App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451175876.406951"
+                  timestampString = "451179255.111756"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "336">
+                  offsetFromSymbolStart = "380">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__41-[LandingTableViewController viewDidLoad]_block_invoke"
                   moduleName = "Cascade-iOS-App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451175876.407104"
+                  timestampString = "451179255.111854"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
@@ -504,7 +472,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451100615.411941"
+            timestampString = "451176571.121083"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/LandingTableViewController.m"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -520,45 +504,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451100615.836136"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LandingTableViewController viewDidLoad]"
-                  moduleName = "Cascade-iOS-App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451102458.10085"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "478">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__41-[LandingTableViewController viewDidLoad]_block_invoke"
-                  moduleName = "Cascade-iOS-App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iguest/Desktop/Cascade/Cascade-iOS-App/LandingTableViewController.m"
-                  timestampString = "451102458.100955"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -568,27 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451100632.557218"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451100632.931537"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -616,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451102166.838439"
+            timestampString = "451176571.121083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -647,13 +583,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451176377.316082"
+            filePath = "Cascade-iOS-App/MapListViewController.m"
+            timestampString = "451181987.553958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -663,13 +599,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451176377.316082"
+            filePath = "Cascade-iOS-App/MapListViewController.m"
+            timestampString = "451181987.553958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-mapView:didUpdateUserLocation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/MapListViewController.m"
+            timestampString = "451181987.553958"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-mapView:didUpdateUserLocation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/MapListViewController.m"
+            timestampString = "451181987.553958"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/MapListViewController.m"
+            timestampString = "451181987.553958"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

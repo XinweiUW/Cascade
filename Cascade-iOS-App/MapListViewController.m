@@ -7,8 +7,13 @@
 //
 
 #import "MapListViewController.h"
+@import CoreLocation;
+
 
 @interface MapListViewController ()
+
+@property (assign,nonatomic) CLLocationCoordinate2D coordinate;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -17,6 +22,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestAlwaysAuthorization];
+    
+    [self.locationManager startUpdatingLocation];
+    
+    [self.mapView setShowsUserLocation:YES];
+    
+    self.coordinate = CLLocationCoordinate2DMake(47.6097, 122.3331);
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    
+    [self.mapView addAnnotation:annotation];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +52,22 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark -CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+{
+    NSLog(@"%@",locations);
+    
+}
+
+#pragma mark - MKMapViewDelegate
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    CLLocationCoordinate2D loc = [userLocation coordinate];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 1000, 1000);
+    [self.mapView setRegion:region animated:YES];
+}
+
 
 @end
