@@ -88,7 +88,7 @@
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
-
+    NSLog(@"test");
     cell.backgroundView = [[UIImageView alloc] init];
 
     //CGAffineTransform transform = cell.completeView.transform;
@@ -128,6 +128,12 @@
                 image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
             }else{
                 image = [self.dm loadImage:[device valueForKey:@"title"]];
+                CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+                
+                // Draw new image in current graphics context
+                CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+                UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+                image = croppedImage;
                 [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
             }
         
@@ -164,12 +170,12 @@
             UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
             
             [self.cachedImages setValue:croppedImage forKey: [device valueForKey:@"title"]];
-            [self.dm saveImage:croppedImage :[device valueForKey:@"title"]];
+            [self.dm saveImage:image :[device valueForKey:@"title"]];
             CGImageRelease(imageRef);
             // Create new cropped UIImage
             dispatch_async(dispatch_get_main_queue(), ^{
                 //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
-                cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+                //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
 
                 //cell.backgroundView = nil;
                 
