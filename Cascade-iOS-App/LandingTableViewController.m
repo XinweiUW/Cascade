@@ -88,8 +88,7 @@
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
-    NSLog(@"test");
-    cell.backgroundView = [[UIImageView alloc] init];
+    cell.backgroundView = nil;//[[UIImageView alloc] init];
 
     //CGAffineTransform transform = cell.completeView.transform;
     
@@ -272,7 +271,7 @@
         default:
             break;
     }
-    
+    [cell hideUtilityButtonsAnimated:YES];
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
@@ -301,6 +300,7 @@
         default:
             break;
     }
+    [cell hideUtilityButtonsAnimated:YES];
 }
 
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell

@@ -125,17 +125,26 @@
     if ([annotation isKindOfClass:[RideAnnotation class]])
     {
         // Try to dequeue an existing pin view first.
-        MKPinAnnotationView* pinView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"rideAnnotation"];
+        MKAnnotationView* pinView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"rideAnnotation"];
         
         if (!pinView)
         {
             // If an existing pin view was not available, create one.
             pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
                                                       reuseIdentifier:@"rideAnnotation"];
-            pinView.pinColor = MKPinAnnotationColorRed;
-            pinView.animatesDrop = YES;
+            //pinView.pinColor = MKPinAnnotationColorRed;
+            //pinView. = YES;
             pinView.canShowCallout = YES;
-            
+            NSString *title = [pinView.annotation title];
+            NSInteger index = [[self.rideIndices valueForKey:title] integerValue] - 1;
+            NSManagedObject *ride = [self.rides objectAtIndex:index];
+            NSInteger complete = [[ride valueForKey:@"complete"] integerValue];
+            if (complete == 0) {
+                pinView.image = [UIImage imageNamed:@"pin_grey.png"];
+            }else{
+                pinView.image = [UIImage imageNamed:@"pin.png"];
+            }
+            //pinView.image = [UIImage imageNamed:@"menu-button.png"];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
             //[button setImage:[UIImage new] forState:UIControlStateNormal];
             pinView.rightCalloutAccessoryView = button;
