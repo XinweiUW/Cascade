@@ -60,14 +60,17 @@
     descriptImage.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:0.5];
     [self.view addSubview:descriptImage];
     
-    UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, descriptImage.frame.size.width, descriptImage.frame.size.height)];
+    UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0.1 * descriptImage.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
     routeDescriptLabel.backgroundColor = [UIColor clearColor];
-    //routeDescriptLabel.backgroundColor
+    routeDescriptLabel.textColor = [UIColor whiteColor];
+    routeDescriptLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    routeDescriptLabel.numberOfLines = 0;
     [descriptImage addSubview:routeDescriptLabel];
     
     if (self.routedb) {
         routeTitleLabel.text = [self.routedb valueForKey:@"title"];
         [backgroundView addSubview:routeTitleLabel];
+        routeDescriptLabel.text = [self.routedb valueForKey:@"descriptions"];
     }
 }
 
