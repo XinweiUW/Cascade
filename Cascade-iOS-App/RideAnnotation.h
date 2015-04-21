@@ -11,9 +11,10 @@
 
 @interface RideAnnotation : NSObject <MKAnnotation>
 
+@property (nonatomic) NSInteger index;
 @property (copy, nonatomic) NSString *title;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
-- (id)initWithVariable:(NSString *)title :(CLLocationCoordinate2D)coordinate;
+- (id)initWithVariable:(NSInteger )index :(NSString *)title :(CLLocationCoordinate2D)coordinate;
 
 @end

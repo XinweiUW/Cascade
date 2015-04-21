@@ -9,6 +9,7 @@
 #import "MapListViewController.h"
 #import "DataManager.h"
 #import "Rides.h"
+#import "DescriptionsViewController.h"
 
 
 @interface MapListViewController ()
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) DataManager *dm;
 @property (strong, nonatomic) NSMutableArray *rides;
+@property (strong, nonatomic) NSMutableDictionary *rideIndices;
 
 @end
 
@@ -28,6 +30,7 @@
     // Do any additional setup after loading the view.
     self.coordinate = CLLocationCoordinate2DMake(47.6204, -122.0000);
     self.dm = [[DataManager alloc] init];
+    self.rideIndices = [[NSMutableDictionary alloc] init];
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -47,22 +50,21 @@
         Rides *ride = [self.rides objectAtIndex:index];
         double latitude = [[ride valueForKey:@"latitude"] doubleValue];
         double longitude = [[ride valueForKey:@"longitude"] doubleValue];
+        [self.rideIndices setValue:[ride valueForKey:@"id"] forKey:[ride valueForKey:@"title"]];
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake(latitude, longitude);
         //CLLocationCoordinate2D *loc =
-        RideAnnotation *annotation = [[RideAnnotation alloc] initWithVariable:[ride valueForKey:@"title"] :location];
+        RideAnnotation *annotation = [[RideAnnotation alloc] initWithVariable:index :[ride valueForKey:@"title"] :location];
         MKAnnotationView *aView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"rideAnnotation"];
         [self.mapView addAnnotation:annotation];
     }
     
     
+    //[self.locationManager startUpdatingLocation];
     
-    
-    /*[self.locationManager startUpdatingLocation];
-    
-    [self.mapView setShowsUserLocation:YES];
+    /*[self.mapView setShowsUserLocation:YES];
     
     self.coordinate = CLLocationCoordinate2DMake(47.6097, 122.3331);
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    RideAnnotation *annotation = [[RideAnnotation alloc] initWithVariable:<#(NSString *)#> :<#(CLLocationCoordinate2D)#>]
     
     [self.mapView addAnnotation:annotation];*/
     
@@ -88,7 +90,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 {
     NSLog(@"%@",locations);
-    
 }
 
 #pragma mark - MKMapViewDelegate
@@ -99,21 +100,32 @@
     [self.mapView setRegion:region animated:YES];
 }
 
-/*- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
-    //CLLocationCoordinate2D loc = self.locationManager.location.coordinate;
-    //MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 1000, 1000);
-    //[self.mapView setRegion:region animated:YES];
-}*/
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    NSLog(@"It works");
+    NSString *title = [view.annotation title];
+    NSInteger *index = [[self.rideIndices valueForKey:title] integerValue] - 1;
+    NSManagedObject *ride = [self.rides objectAtIndex:index];
+    [self performSegueWithIdentifier:@"showDetailFromMap" sender:ride];
+}
 
-/*- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showDetailFromMap"]) {
+        DescriptionsViewController *vc = segue.destinationViewController;
+        NSManagedObject *ride = sender;
+        vc.routedb = ride;
+        
+    }
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
     if ([annotation isKindOfClass:[RideAnnotation class]])
     {
         // Try to dequeue an existing pin view first.
-        MKPinAnnotationView* pinView = (MKPinAnnotationView*)[mapView
-                                                                 dequeueReusableAnnotationViewWithIdentifier:@"rideAnnotation"];
+        MKPinAnnotationView* pinView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"rideAnnotation"];
         
         if (!pinView)
         {
@@ -124,6 +136,10 @@
             pinView.animatesDrop = YES;
             pinView.canShowCallout = YES;
             
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
+            //[button setImage:[UIImage new] forState:UIControlStateNormal];
+            pinView.rightCalloutAccessoryView = button;
+            
             // If appropriate, customize the callout by adding accessory views (code not shown).
         }
         else
@@ -133,6 +149,6 @@
     }
     
     return nil;
-}*/
+}
 
 @end

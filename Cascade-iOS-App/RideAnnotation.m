@@ -10,10 +10,11 @@
 
 @implementation RideAnnotation
 
-- (id)initWithVariable:(NSString *)title :(CLLocationCoordinate2D)coordinate;{
+- (id)initWithVariable:(NSInteger)index :(NSString *)title :(CLLocationCoordinate2D)coordinate;{
     
     self = [super init];
     if (self){
+        self.index = index;
         self.title = title;
         self.coordinate = coordinate;
     }

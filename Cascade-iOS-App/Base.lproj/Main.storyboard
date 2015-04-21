@@ -83,6 +83,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="4XN-AD-L25" id="4Nr-J1-djI"/>
+                        <segue destination="F3u-xA-HUs" kind="show" identifier="showDetailFromMap" id="G9I-Hk-jOv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0KF-hA-RlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -266,4 +267,7 @@
         <image name="CascadeLogo.png" width="600" height="278"/>
         <image name="CompletedStamp.png" width="257" height="68"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="G9I-Hk-jOv"/>
+    </inferredMetricsTieBreakers>
 </document>
