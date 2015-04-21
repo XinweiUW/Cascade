@@ -136,7 +136,9 @@
     [backgroundContext performBlock:^{
         NSError *error;
         //NSString *url = @"https://www.filepicker.io/api/file/B9uBaBZRTs2lmD5j2Ff8";
-        NSString *url = @"https://www.filepicker.io/api/file/nEf0qv6TUq5sKUSUT7FM";
+        //NSString *url = @"https://www.filepicker.io/api/file/nEf0qv6TUq5sKUSUT7FM";
+        NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv?RH7kJuTht6GRQXLlLeu2jlhLEFp5uQch";
+        
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] ;
     
