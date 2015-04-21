@@ -113,8 +113,10 @@
 
     //cell.completeView.hidden = TRUE;
     cell.delegate = self;
-    
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
+    cell.routeNameLabel.numberOfLines = 2;
+    cell.routeNameLabel.lineBreakMode = 0;
+    //[cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
+    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     
     //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
     if ([self.dm loadImage:[device valueForKey:@"title"]]){
@@ -211,7 +213,7 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.0f green:1.0f blue:0.1f alpha:1.0]
+     [UIColor colorWithRed:102/255.0f green:205/255.0f blue:102/255.0f alpha:1.0]
                                                 title:@"Reset"];
     
     return rightUtilityButtons;
