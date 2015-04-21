@@ -147,6 +147,7 @@
             //pinView.image = [UIImage imageNamed:@"menu-button.png"];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
             //[button setImage:[UIImage new] forState:UIControlStateNormal];
+            [button.titleLabel setTextAlignment:NSTextAlignmentCenter];
             pinView.rightCalloutAccessoryView = button;
             
             // If appropriate, customize the callout by adding accessory views (code not shown).
