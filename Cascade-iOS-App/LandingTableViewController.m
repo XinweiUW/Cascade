@@ -212,7 +212,7 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.0f green:1.0f blue:0.1f alpha:1.0]
+     [UIColor colorWithRed:102/255.0f green:205/255.0f blue:102/255.0f alpha:1.0]
                                                 title:@"Reset"];
     
     return rightUtilityButtons;
