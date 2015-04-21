@@ -57,8 +57,15 @@
     routeTitleLabel.lineBreakMode = 0;
     
     UIImageView *descriptImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.6, backgroundView.frame.size.width, backgroundView.frame.size.height*0.4)];
-    descriptImage.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:0.5];
+    //descriptImage.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:0];
+    descriptImage.backgroundColor = [UIColor clearColor];
     [self.view addSubview:descriptImage];
+    
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.alpha = 0.4;
+    effectView.frame = descriptImage.bounds;
+    [descriptImage addSubview:effectView];
     
     UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0.1 * descriptImage.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
     routeDescriptLabel.backgroundColor = [UIColor clearColor];
