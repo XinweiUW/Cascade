@@ -114,8 +114,10 @@
 
     //cell.completeView.hidden = TRUE;
     cell.delegate = self;
-    
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
+    cell.routeNameLabel.numberOfLines = 2;
+    cell.routeNameLabel.lineBreakMode = 0;
+    //[cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
+    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     
     //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
     if ([self.dm loadImage:[device valueForKey:@"title"]]){
