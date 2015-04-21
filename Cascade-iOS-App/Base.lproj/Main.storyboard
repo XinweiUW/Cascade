@@ -40,7 +40,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="l8h-9N-hJ5">
-                        <barButtonItem key="leftBarButtonItem" image="10-arrow-left.png" id="why-jt-XN7">
+                        <barButtonItem key="leftBarButtonItem" image="menu-button.png" style="plain" id="why-jt-XN7">
                             <inset key="imageInsets" minX="-9" minY="0.0" maxX="0.0" maxY="-4"/>
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -262,12 +262,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="10-arrow-left.png" width="31" height="30"/>
         <image name="2-switch to map list.png" width="20" height="32"/>
         <image name="CascadeLogo.png" width="600" height="278"/>
         <image name="CompletedStamp.png" width="257" height="68"/>
+        <image name="menu-button.png" width="22" height="17"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="G9I-Hk-jOv"/>
-    </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>
