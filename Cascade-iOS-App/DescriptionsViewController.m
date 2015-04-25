@@ -7,6 +7,7 @@
 //
 
 #import "DescriptionsViewController.h"
+#import "DifficultiesViewController.h"
 
 @interface DescriptionsViewController ()
 
@@ -25,7 +26,6 @@
     
     self.dm = [[DataManager alloc] init];
     UIImage *backgroundImage = [self.dm loadImage:[self.routedb valueForKey:@"title"]];
-    
     
     
     CGRect croprect = CGRectMake(backgroundImage.size.width/6, 0 , backgroundImage.size.height/2, backgroundImage.size.height);
@@ -72,6 +72,7 @@
 
 
 
+
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
     id delegate = [[UIApplication sharedApplication] delegate];
@@ -86,14 +87,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showDifficultySegue"]) {
+        //NSManagedObject *selectedDevice = [self.routeArray objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        DifficultiesViewController *destViewController = segue.destinationViewController;
+        destViewController.routedb = self.routedb;
+    }
 }
-*/
+
 
 @end

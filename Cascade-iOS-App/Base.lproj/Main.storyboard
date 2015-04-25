@@ -128,7 +128,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcE-zU-IcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="up" id="5fN-FH-quZ">
                     <connections>
-                        <segue destination="Sqt-N4-Tlp" kind="presentation" modalTransitionStyle="coverVertical" id="N44-gI-QQZ"/>
+                        <segue destination="Sqt-N4-Tlp" kind="presentation" identifier="showDifficultySegue" modalTransitionStyle="coverVertical" id="N44-gI-QQZ"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -161,7 +161,7 @@
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="down" id="HP6-C3-ztk">
                     <connections>
-                        <segue destination="F3u-xA-HUs" kind="show" id="YxH-Ne-Ayr"/>
+                        <segue destination="F3u-xA-HUs" kind="show" identifier="backToDescriptionSegue" id="YxH-Ne-Ayr"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

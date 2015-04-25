@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "DataManager.h"
+#import "DescriptionsViewController.h"
 
 @interface DifficultiesViewController : UIViewController
 
