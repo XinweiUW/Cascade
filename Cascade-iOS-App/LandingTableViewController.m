@@ -31,14 +31,18 @@
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
-        [self.dm updateFromServerWithCompletion:^{
-            NSLog(@"datastore update complete");
+        [self.dm updateTextFromServerWithCompletion:^{
+            NSLog(@"text-based information update complete");
+            [self.dm generateImageFromURL];
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            
         }];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"imageGenerated" object:nil];
+        
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
+        
     }
     else{
         self.routeArray = [self.dm fetchRequest];
@@ -50,8 +54,16 @@
 {
     //NSError *error;
     self.routeArray = [self.dm fetchRequest];
-    [self.tableView setNeedsDisplay];
-    [self.tableView reloadData];
+    /*if ([[notification name] isEqualToString:@"imageGenerated"]){
+        NSInteger number = [notification.object integerValue] - 1;
+        NSIndexPath *index = [NSIndexPath indexPathForRow:number inSection:0];
+        NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
+        [self.tableView reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationFade];
+    }else{*/
+        [self.tableView setNeedsDisplay];
+        [self.tableView reloadData];
+    //}
+
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -84,7 +96,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
@@ -111,22 +123,24 @@
     //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
     //if ([self.dm loadImage:[device valueForKey:@"title"]]){
 
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
-        dispatch_async(queue, ^{
+        //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
+        //dispatch_async(queue, ^{
             
             UIImage *image;
             if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
                 image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
-            }else{
+            }else if ([self.dm loadImage:[device valueForKey:@"title"]]){
                 image = [self.dm loadImage:[device valueForKey:@"title"]];
                 [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+            }else{
+                image = [UIImage imageNamed:@"loading.gif"];
             }
         
-            dispatch_async(dispatch_get_main_queue(), ^{
+            //dispatch_async(dispatch_get_main_queue(), ^{
                 cell.backgroundView = nil;
                 cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-            });
-        });
+            //});
+        //});
     
     /*}else{
         

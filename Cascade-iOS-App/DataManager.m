@@ -121,7 +121,7 @@
 }
 
 
-- (void)updateFromServerWithCompletion:(void (^)(void))completionHandler{
+- (void)updateTextFromServerWithCompletion:(void (^)(void))completionHandler{
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     NSMutableArray *rides = [self fetchRequest];
@@ -135,7 +135,7 @@
     
     [backgroundContext performBlock:^{
         NSError *error;
-        NSString *url = @"https://www.filepicker.io/api/file/B9uBaBZRTs2lmD5j2Ff8";
+        NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv?RH7kJuTht6GRQXLlLeu2jlhLEFp5uQch";
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] ;
     
@@ -187,15 +187,6 @@
             newRide.mapURL = mapURL;
             newRide.roadCondition = roadCondition;
             newRide.imgURL = imgURL;
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
-            UIImage *image = [UIImage imageWithData:imageData];
-            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-            
-            // Draw new image in current graphics context
-            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-            [self saveImage:croppedImage :title];
-            CGImageRelease(imageRef);
             newRide.attractions = attractions;
             newRide.descriptions = descriptions;
             newRide.turnByTurn = turnByTurn;
@@ -209,7 +200,38 @@
                 [self.managedObjectContext save:nil];
             });
         }
+        if (completionHandler) {
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+            dispatch_async(queue, completionHandler);
+            //dispatch_async(dispatch_get_main_queue(), completionHandler);
+            //completionHandler();
+        }
     }];
+}
+
+- (void)generateImageFromURL{
+
+    NSMutableArray *routes = [self fetchRequest];
+    
+    NSString *imgURL;
+    NSString *title;
+    
+    for (NSManagedObject *route in routes) {
+        title = [route valueForKey:@"title"];
+        imgURL = [route valueForKey:@"imgURL"];
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+        UIImage *image = [UIImage imageWithData:imageData];
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        
+        // Draw new image in current graphics context
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+        [self saveImage:croppedImage :title];
+        CGImageRelease(imageRef);
+        [self.managedObjectContext save:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"imageGenerated" object:[route valueForKey:@"id"]];
+    }
+    
 }
 
 
@@ -234,7 +256,6 @@
     UIImage* image = [UIImage imageWithContentsOfFile:path];
     return image;
 }
-
 
 - (NSMutableArray *)fetchRequest{
     

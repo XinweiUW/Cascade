@@ -21,7 +21,8 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-- (void)updateFromServerWithCompletion:(void (^)(void))completionHandler;
+- (void)updateTextFromServerWithCompletion:(void (^)(void))completionHandler;
+- (void)generateImageFromURL;
 - (void)saveImage: (UIImage *)image :(NSString *)title;
 - (UIImage *)loadImage:(NSString *)title;
 
