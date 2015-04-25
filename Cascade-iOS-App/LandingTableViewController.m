@@ -52,20 +52,22 @@
 
 - (void)reloadTable:(NSNotification *)notification
 {
-    //NSError *error;
-    self.routeArray = [self.dm fetchRequest];
-    /*if ([[notification name] isEqualToString:@"imageGenerated"]){
+    if (self.routeArray == nil){
+        self.routeArray = [self.dm fetchRequest];
+    }
+    [self.tableView setNeedsDisplay];
+    if ([[notification name] isEqualToString:@"imageGenerated"]){
         NSInteger number = [notification.object integerValue] - 1;
         NSIndexPath *index = [NSIndexPath indexPathForRow:number inSection:0];
         NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
-        [self.tableView reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationFade];
-    }else{*/
-        [self.tableView setNeedsDisplay];
-        [self.tableView reloadData];
-    //}
-
+        [self.tableView performSelectorOnMainThread:@selector(reloadRowsAtIndexPaths:withRowAnimation:) withObject:indexArray waitUntilDone:NO];
+    }else{
+        @synchronized(self.tableView){
+            [self.tableView setNeedsDisplay];
+            [self.tableView reloadData];
+        }
+    }
 }
-
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
     return YES;
@@ -133,11 +135,11 @@
                 image = [self.dm loadImage:[device valueForKey:@"title"]];
                 [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
             }else{
-                image = [UIImage imageNamed:@"loading.gif"];
+                image = [UIImage imageNamed:@"loading.png"];
             }
         
             //dispatch_async(dispatch_get_main_queue(), ^{
-                cell.backgroundView = nil;
+                //cell.backgroundView = nil;
                 cell.backgroundView = [[UIImageView alloc] initWithImage:image];
             //});
         //});

@@ -228,10 +228,8 @@
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
         [self saveImage:croppedImage :title];
         CGImageRelease(imageRef);
-        [self.managedObjectContext save:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"imageGenerated" object:[route valueForKey:@"id"]];
     }
-    
 }
 
 
