@@ -125,7 +125,14 @@
         image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
     }else{
         image = [self.dm loadImage:[device valueForKey:@"title"]];
+        
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+        image = croppedImage;
         [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+        CGImageRelease(imageRef);
+        
     }
     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     

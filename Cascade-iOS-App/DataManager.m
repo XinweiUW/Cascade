@@ -221,13 +221,8 @@
         imgURL = [route valueForKey:@"imgURL"];
         NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
         UIImage *image = [UIImage imageWithData:imageData];
-        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-        
-        // Draw new image in current graphics context
-        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-        [self saveImage:croppedImage :title];
-        CGImageRelease(imageRef);
+        // We store original images instead of cropped images since we want to use original images later.
+        [self saveImage:image :title];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"imageGenerated" object:[route valueForKey:@"id"]];
     }
 }
