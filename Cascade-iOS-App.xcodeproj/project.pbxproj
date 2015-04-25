@@ -55,6 +55,7 @@
 		9DD46A401AE468C6006BBCEB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A3F1AE468C6006BBCEB /* MapKit.framework */; };
 		9DD46A421AE468CE006BBCEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A411AE468CE006BBCEB /* CoreLocation.framework */; };
 		9DD46A451AE47E99006BBCEB /* RideAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD46A441AE47E99006BBCEB /* RideAnnotation.m */; };
+		9DD7EF2E1AEB43C2008B2C33 /* DifficultiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */; };
 		9DE674901ACF9F54000653DB /* leftMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DE6748F1ACF9F54000653DB /* leftMenu.jpg */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Rides.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Rides.m */; };
@@ -145,6 +146,8 @@
 		9DD46A411AE468CE006BBCEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9DD46A431AE47E99006BBCEB /* RideAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideAnnotation.h; sourceTree = "<group>"; };
 		9DD46A441AE47E99006BBCEB /* RideAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideAnnotation.m; sourceTree = "<group>"; };
+		9DD7EF2C1AEB43C2008B2C33 /* DifficultiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DifficultiesViewController.h; sourceTree = "<group>"; };
+		9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DifficultiesViewController.m; sourceTree = "<group>"; };
 		9DE6748F1ACF9F54000653DB /* leftMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftMenu.jpg; sourceTree = "<group>"; };
 		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 				9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */,
 				9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */,
 				9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */,
+				9DD7EF2C1AEB43C2008B2C33 /* DifficultiesViewController.h */,
+				9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */,
 				9D52A89F1AD395900041CB62 /* AboutViewController.h */,
 				9D52A8A01AD395900041CB62 /* AboutViewController.m */,
 				9D52A8A21AD395AC0041CB62 /* TipViewController.h */,
@@ -494,6 +499,7 @@
 				9D2671171ACFB50400DFDB0B /* SWTableViewCell.m in Sources */,
 				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */,
+				9DD7EF2E1AEB43C2008B2C33 /* DifficultiesViewController.m in Sources */,
 				9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

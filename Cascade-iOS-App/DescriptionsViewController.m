@@ -25,30 +25,19 @@
     
     self.dm = [[DataManager alloc] init];
     UIImage *backgroundImage = [self.dm loadImage:[self.routedb valueForKey:@"title"]];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:backgroundImage]];
     
     
-    //CGRect croprect = CGRectMake(0, 0 , backgroundImage.size.width, backgroundImage.size.width * 2.5);
+    
     CGRect croprect = CGRectMake(backgroundImage.size.width/6, 0 , backgroundImage.size.height/2, backgroundImage.size.height);
      //Draw new image in current graphics context
     CGImageRef imageRef = CGImageCreateWithImageInRect([backgroundImage CGImage], croprect);
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     
-    /*
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [backgroundImage drawInRect:self.view.bounds];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
-    */
+    //UIImageView * backgroundView  =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, selfViewWidth, selfViewHeight)];
+    [_backgroundView setImage:croppedImage];
+    //[self.view addSubview:backgroundView];
     
-    UIImageView * backgroundView  =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, selfViewWidth, selfViewHeight)];
-    [backgroundView setImage:croppedImage];
-    [self.view addSubview:backgroundView];
-    //[self.view insertSubview:backgroundView belowSubview:self.routeTitleLabel];
-    
-    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.4, backgroundView.frame.size.width, backgroundView.frame.size.width/5)];
+    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, _backgroundView.frame.size.height * 0.4, _backgroundView.frame.size.width, _backgroundView.frame.size.width/5)];
     routeTitleLabel.backgroundColor = [UIColor clearColor];
     routeTitleLabel.textColor = [UIColor whiteColor];
     [routeTitleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -56,27 +45,27 @@
     routeTitleLabel.numberOfLines = 2;
     routeTitleLabel.lineBreakMode = 0;
     
-    UIImageView *descriptImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.6, backgroundView.frame.size.width, backgroundView.frame.size.height*0.4)];
+    UIImageView *descriptImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, _backgroundView.frame.size.height * 0.6, _backgroundView.frame.size.width, _backgroundView.frame.size.height*0.4)];
     //descriptImage.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:0];
     descriptImage.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:descriptImage];
+    //[self.view addSubview:descriptImage];
     
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
     effectView.alpha = 0.4;
     effectView.frame = descriptImage.bounds;
-    [descriptImage addSubview:effectView];
+    //[descriptImage addSubview:effectView];
     
     UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0.1 * descriptImage.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
     routeDescriptLabel.backgroundColor = [UIColor clearColor];
     routeDescriptLabel.textColor = [UIColor whiteColor];
     routeDescriptLabel.lineBreakMode = NSLineBreakByWordWrapping;
     routeDescriptLabel.numberOfLines = 0;
-    [descriptImage addSubview:routeDescriptLabel];
+    //[descriptImage addSubview:routeDescriptLabel];
     
     if (self.routedb) {
         routeTitleLabel.text = [self.routedb valueForKey:@"title"];
-        [backgroundView addSubview:routeTitleLabel];
+        [_backgroundView addSubview:routeTitleLabel];
         routeDescriptLabel.text = [self.routedb valueForKey:@"descriptions"];
     }
 }
