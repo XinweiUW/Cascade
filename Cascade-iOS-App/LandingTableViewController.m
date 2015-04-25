@@ -69,6 +69,7 @@
         }
     }
 }
+
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
     return YES;
@@ -103,7 +104,7 @@
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
-    cell.backgroundView = nil;
+    //cell.backgroundView = nil;
     
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
