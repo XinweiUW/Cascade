@@ -13,7 +13,7 @@
 @interface DescriptionsViewController : UIViewController
 
 @property (strong, nonatomic) DataManager *dm;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+//@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 
 //@property (weak, nonatomic) IBOutlet UILabel *routeTitleLabel;
 //@property (weak, nonatomic) IBOutlet UILabel *routeDescriptionLabel;
