@@ -61,6 +61,7 @@
         NSIndexPath *index = [NSIndexPath indexPathForRow:number inSection:0];
         NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
         [self.tableView performSelectorOnMainThread:@selector(reloadRowsAtIndexPaths:withRowAnimation:) withObject:indexArray waitUntilDone:NO];
+        // This came from the background thread. Without performing in the main thread, cellForRowAtIndexPath will not be fired.
     }else{
         @synchronized(self.tableView){
             [self.tableView setNeedsDisplay];
@@ -113,6 +114,20 @@
     
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     
+    UIImage *image;
+    if (![self.dm loadImage:[device valueForKey:@"title"]]){
+        image = [UIImage imageNamed:@"loading.png"];
+        cell.textLabel.text = @"";
+        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        return cell;
+    }else if([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+        image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
+    }else{
+        image = [self.dm loadImage:[device valueForKey:@"title"]];
+        [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+    }
+    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+    
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -120,56 +135,6 @@
     cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0f];
     cell.textLabel.numberOfLines = 2;
     cell.textLabel.lineBreakMode = 0;
-    
-
-    //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
-    //if ([self.dm loadImage:[device valueForKey:@"title"]]){
-
-        //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
-        //dispatch_async(queue, ^{
-            
-            UIImage *image;
-            if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
-                image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
-            }else if ([self.dm loadImage:[device valueForKey:@"title"]]){
-                image = [self.dm loadImage:[device valueForKey:@"title"]];
-                [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-            }else{
-                image = [UIImage imageNamed:@"loading.png"];
-            }
-        
-            //dispatch_async(dispatch_get_main_queue(), ^{
-                //cell.backgroundView = nil;
-                cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-            //});
-        //});
-    
-    /*}else{
-        
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            
-            NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
-            UIImage *image = [UIImage imageWithData:imageData];
-            
-            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-            
-            // Draw new image in current graphics context
-            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-            
-            [self.cachedImages setValue:croppedImage forKey: [device valueForKey:@"title"]];
-            [self.dm saveImage:croppedImage :[device valueForKey:@"title"]];
-            CGImageRelease(imageRef);
-            // Create new cropped UIImage
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
-                cell.backgroundView = nil;
-                cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
-            });
-        });
-      }*/
     
     return cell;
     
