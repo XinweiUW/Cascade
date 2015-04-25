@@ -349,7 +349,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
             endingLineNumber = "232"
-            landmarkName = "-generateImageFromURL"
+            landmarkName = "-saveImage::"
             landmarkType = "5">
             <Locations>
                <Location
@@ -413,7 +413,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
             endingLineNumber = "231"
-            landmarkName = "-generateImageFromURL"
+            landmarkName = "-saveImage::"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
