@@ -124,7 +124,7 @@
 - (void)updateTextFromServerWithCompletion:(void (^)(void))completionHandler{
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    NSMutableArray *rides = [self fetchRequest];
+    NSMutableArray *rides = [self mutableArrayUsingFetchRequest];
     if (rides.count != 0){
         [self deleteObjects];
     }
@@ -179,7 +179,7 @@
             NSString *longitude = [temp objectAtIndex:16];
             
 
-            Rides *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
+            Ride *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
             newRide.id = number;
             newRide.title = title;
             newRide.distance = distance;
@@ -219,7 +219,12 @@
 
 - (void)generateImageFromURL{
 
-    NSMutableArray *routes = [self fetchRequest];
+    NSMutableArray *routes = [self mutableArrayUsingFetchRequest];
+    NSError *error;
+    if (routes == nil){
+        NSLog(@"routes don't exist! Error: %@", error.localizedDescription);
+        return;
+    }
     
     NSString *imgURL;
     NSString *title;
@@ -255,18 +260,24 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString* path = [documentsDirectory stringByAppendingPathComponent:title];
     UIImage* image = [UIImage imageWithContentsOfFile:path];
+    if (!image) {
+        NSLog(@"Image doesn't exist!");
+    }
     return image;
 }
 
-- (NSMutableArray *)fetchRequest{
+- (NSMutableArray *)mutableArrayUsingFetchRequest{
     
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSArray *sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES]];
+    fetchRequest.sortDescriptors = sortDescriptors;
     
-    return [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSError *error;
+    NSArray *fetchResult = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (!fetchResult){
+        NSLog(@"fetch failed: %@", error.localizedDescription);
+    }
+    return [fetchResult mutableCopy];
 }
 
 

@@ -11,13 +11,14 @@
 #import "SWTableViewCell.h"
 #import "DataManager.h"
 #import "AppDelegate.h"
+#import "Ride.h"
 
 @interface LandingTableViewController ()
 
 @property (strong) NSManagedObject *routedb;
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
 @property (strong, nonatomic) DataManager *dm;
-@property id plist;
+@property (strong, nonatomic) NSFetchedResultsController *fetchResults;
 
 @end
 
@@ -29,7 +30,7 @@
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
         [self.dm updateTextFromServerWithCompletion:^{
             NSLog(@"text-based information update complete");
@@ -40,12 +41,12 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"imageGenerated" object:nil];
         
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasBeenLaunchedOnceKey"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
     }
     else{
-        self.routeArray = [self.dm fetchRequest];
+        self.routeArray = [self.dm mutableArrayUsingFetchRequest];
         [self.tableView reloadData];
     }
 }
@@ -53,7 +54,7 @@
 - (void)reloadTable:(NSNotification *)notification
 {
     if (self.routeArray == nil){
-        self.routeArray = [self.dm fetchRequest];
+        self.routeArray = [self.dm mutableArrayUsingFetchRequest];
     }
     [self.tableView setNeedsDisplay];
     if ([[notification name] isEqualToString:@"imageGenerated"]){
@@ -108,9 +109,9 @@
     }
     cell.completeView.hidden = YES;
     cell.backgroundView = nil;
-    NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
+    Ride *device = [self.routeArray objectAtIndex:indexPath.row];
     UIImage *image;
-    if (![self.dm loadImage:[device valueForKey:@"title"]]){
+    if (![self.dm loadImage:device.title]){
         image = [UIImage imageNamed:@"loading.png"];
         cell.userInteractionEnabled = NO;
         cell.backgroundView = [[UIImageView alloc] initWithImage:image];
@@ -129,37 +130,35 @@
     //cell.completeView.transform = transform;
     //
     
-    if([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
-        image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
+    if([self.cachedImages valueForKey:device.title]){
+        image = [self.cachedImages valueForKey:device.title];
     }else{
-        image = [self.dm loadImage:[device valueForKey:@"title"]];
+        image = [self.dm loadImage:device.title];
         
         CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
         image = croppedImage;
-        [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+        [self.cachedImages setValue:image forKey:device.title];
         
         CGImageRelease(imageRef);
     }
     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     
-    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
+    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", device.title]];
     cell.routeNameLabel.numberOfLines = 2;
     cell.routeNameLabel.lineBreakMode = 0;
     
-    if ([[device valueForKey:@"complete"] integerValue] == 1) {
+    if (device.complete == 1) {
         cell.backgroundView.alpha = 0.5;
         cell.completeView.hidden = FALSE;
-    } else if ([[device valueForKey:@"complete"] integerValue] == 0 ){
+    } else if (device.complete == 0 ){
         cell.backgroundView.alpha = 1;
         cell.completeView.hidden = TRUE;
     }
     
     return cell;
-    
 }
-
 
 - (NSArray *)rightButtons
 {
@@ -223,10 +222,10 @@
             
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             
-            NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
-            NSNumber *comp = [NSNumber numberWithInt:1];
-            [obj setValue:comp forKey:@"complete"];
+            //NSNumber *comp = [NSNumber numberWithInt:1];
+            obj.complete = 1;
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;
@@ -252,10 +251,10 @@
             
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             
-            NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
-            NSNumber *comp = [NSNumber numberWithInt:0];
-            [obj setValue:comp forKey:@"complete"];
+            //NSNumber *comp = [NSNumber numberWithInt:0];
+            obj.complete = 0;
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;

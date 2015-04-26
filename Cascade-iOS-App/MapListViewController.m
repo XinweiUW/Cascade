@@ -8,7 +8,7 @@
 
 #import "MapListViewController.h"
 #import "DataManager.h"
-#import "Rides.h"
+#import "Ride.h"
 #import "DescriptionsViewController.h"
 
 
@@ -43,11 +43,11 @@
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.coordinate, 70000, 60000);
     [self.mapView setRegion:region animated:YES];
     
-    self.rides = [self.dm fetchRequest];
+    self.rides = [self.dm mutableArrayUsingFetchRequest];
     
     
     for (NSInteger index = 0; index < self.rides.count; index ++) {
-        Rides *ride = [self.rides objectAtIndex:index];
+        Ride *ride = [self.rides objectAtIndex:index];
         double latitude = [[ride valueForKey:@"latitude"] doubleValue];
         double longitude = [[ride valueForKey:@"longitude"] doubleValue];
         [self.rideIndices setValue:[ride valueForKey:@"id"] forKey:[ride valueForKey:@"title"]];
