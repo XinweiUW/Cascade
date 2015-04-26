@@ -170,11 +170,123 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451775627.875852"
+            timestampString = "451780128.391518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "-swipeableTableViewCell:canSwipeToState:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/LandingTableViewController.m"
+            timestampString = "451780128.391518"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "-swipeableTableViewCell:canSwipeToState:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/LandingTableViewController.m"
+            timestampString = "451780128.391518"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "-swipeableTableViewCell:canSwipeToState:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/LandingTableViewController.m"
+            timestampString = "451780128.391518"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "-swipeableTableViewCell:canSwipeToState:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/LandingTableViewController.m"
+            timestampString = "451780128.391518"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "-swipeableTableViewCell:didTriggerLeftUtilityButtonWithIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/LandingTableViewController.m"
+            timestampString = "451779789.426283"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "-swipeableTableViewCell:didTriggerLeftUtilityButtonWithIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/LandingTableViewController.m"
+            timestampString = "451780128.391518"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "-swipeableTableViewCell:didTriggerLeftUtilityButtonWithIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cascade-iOS-App/LandingTableViewController.m"
+            timestampString = "451779796.234001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,12 +298,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451775627.875852"
+            timestampString = "451779801.220542"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451775627.875852"
+            timestampString = "451780128.391518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "-swipeableTableViewCell:canSwipeToState:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,12 +330,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cascade-iOS-App/LandingTableViewController.m"
-            timestampString = "451775627.875852"
+            timestampString = "451780128.391518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "-swipeableTableViewCell:canSwipeToState:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

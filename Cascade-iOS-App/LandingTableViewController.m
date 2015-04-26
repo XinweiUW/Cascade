@@ -217,7 +217,7 @@
             //[alertTest show];
             cell.backgroundView.alpha = 0.5;
             cell.completeView.hidden = FALSE;
-            [cell hideUtilityButtonsAnimated:YES];
+            [cell hideUtilityButtonsAnimated:NO];
             //self.dm.routedb.complete = 1;
             
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
@@ -248,7 +248,7 @@
             //[alertTest show];
             cell.backgroundView.alpha = 1;
             cell.completeView.hidden = TRUE;
-            [cell hideUtilityButtonsAnimated:YES];
+            [cell hideUtilityButtonsAnimated:NO];
             
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             
@@ -277,13 +277,22 @@
 
 - (BOOL)swipeableTableViewCell:(SWTableViewCell *)cell canSwipeToState:(SWCellState)state
 {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
     switch (state) {
         case 1:
             // set to NO to disable all left utility buttons appearing
+            
+            if ([[obj valueForKey:@"complete"] integerValue] == 0) {
+                return NO;
+            }
             return YES;
             break;
         case 2:
             // set to NO to disable all right utility buttons appearing
+            if ([[obj valueForKey:@"complete"] integerValue] == 1) {
+                return NO;
+            }
             return YES;
             break;
         default:
