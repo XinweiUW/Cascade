@@ -224,8 +224,8 @@
             
             Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
-            //NSNumber *comp = [NSNumber numberWithInt:1];
-            obj.complete = 1;
+            NSNumber *comp = [NSNumber numberWithInt:1];
+            obj.complete = comp;
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;
