@@ -18,7 +18,6 @@
 @property (strong) NSManagedObject *routedb;
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
 @property (strong, nonatomic) DataManager *dm;
-@property (strong, nonatomic) NSFetchedResultsController *fetchResults;
 
 @end
 
