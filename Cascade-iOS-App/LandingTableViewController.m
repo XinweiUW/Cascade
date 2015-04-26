@@ -109,9 +109,10 @@
     }
     cell.completeView.hidden = YES;
     cell.backgroundView = nil;
-    Ride *device = [self.routeArray objectAtIndex:indexPath.row];
+    
+    NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     UIImage *image;
-    if (![self.dm loadImage:device.title]){
+    if (![self.dm loadImage:[device valueForKey:@"title"]]){
         image = [UIImage imageNamed:@"loading.png"];
         cell.userInteractionEnabled = NO;
         cell.backgroundView = [[UIImageView alloc] initWithImage:image];
@@ -130,29 +131,29 @@
     //cell.completeView.transform = transform;
     //
     
-    if([self.cachedImages valueForKey:device.title]){
-        image = [self.cachedImages valueForKey:device.title];
+    if([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+        image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
     }else{
-        image = [self.dm loadImage:device.title];
+        image = [self.dm loadImage:[device valueForKey:@"title"]];
         
         CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
         image = croppedImage;
-        [self.cachedImages setValue:image forKey:device.title];
+        [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
         
         CGImageRelease(imageRef);
     }
     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     
-    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", device.title]];
+    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.routeNameLabel.numberOfLines = 2;
     cell.routeNameLabel.lineBreakMode = 0;
     
-    if (device.complete == 1) {
+    if ([[device valueForKey:@"complete"] integerValue] == 1) {
         cell.backgroundView.alpha = 0.5;
         cell.completeView.hidden = FALSE;
-    } else if (device.complete == 0 ){
+    } else if ([[device valueForKey:@"complete"] integerValue]  == 0 ){
         cell.backgroundView.alpha = 1;
         cell.completeView.hidden = TRUE;
     }
@@ -222,10 +223,11 @@
             
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             
-            Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
             NSNumber *comp = [NSNumber numberWithInt:1];
-            obj.complete = comp;
+            //obj.complete = comp;
+            [obj setValue:comp forKey:@"complete"];
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;
@@ -254,7 +256,9 @@
             Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
             //NSNumber *comp = [NSNumber numberWithInt:0];
-            obj.complete = 0;
+            NSNumber *comp = [NSNumber numberWithInt:0];
+            //obj.complete = comp;
+            [obj setValue:comp forKey:@"complete"];
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;
