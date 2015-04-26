@@ -101,27 +101,35 @@
     static NSString *CellIdentifier = @"Cell";
     
     SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.delegate = self;
+    cell.routeNameLabel.text = nil;
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
-    //cell.backgroundView = nil;
+    cell.completeView.hidden = YES;
+    cell.backgroundView = nil;
+    NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
+    UIImage *image;
+    if (![self.dm loadImage:[device valueForKey:@"title"]]){
+        image = [UIImage imageNamed:@"loading.png"];
+        cell.userInteractionEnabled = NO;
+        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        return cell;
+    }
+    cell.userInteractionEnabled = YES;
     
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
     [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
 
-    cell.completeView.hidden = TRUE;
-    cell.delegate = self;
+    //CGAffineTransform transform = cell.completeView.transform;
     
-    NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
+    // Rotate the view 45 degrees (the actual function takes radians)
+    //transform = CGAffineTransformRotate(transform, (-M_PI / 5));
+    //cell.completeView.transform = transform;
+    //
     
-    UIImage *image;
-    if (![self.dm loadImage:[device valueForKey:@"title"]]){
-        image = [UIImage imageNamed:@"loading.png"];
-        cell.textLabel.text = @"";
-        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-        return cell;
-    }else if([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
+    if([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
         image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
     }else{
         image = [self.dm loadImage:[device valueForKey:@"title"]];
@@ -131,18 +139,22 @@
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
         image = croppedImage;
         [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-        CGImageRelease(imageRef);
         
+        CGImageRelease(imageRef);
     }
     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-    cell.textLabel.numberOfLines = 2;
-    cell.textLabel.lineBreakMode = 0;
+    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
+    cell.routeNameLabel.numberOfLines = 2;
+    cell.routeNameLabel.lineBreakMode = 0;
+    
+    if ([[device valueForKey:@"complete"] integerValue] == 1) {
+        cell.backgroundView.alpha = 0.5;
+        cell.completeView.hidden = FALSE;
+    } else if ([[device valueForKey:@"complete"] integerValue] == 0 ){
+        cell.backgroundView.alpha = 1;
+        cell.completeView.hidden = TRUE;
+    }
     
     return cell;
     
@@ -153,8 +165,8 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"Complete"];
+     [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0]
+                                                title:@"Done"];
     
     return rightUtilityButtons;
 }
@@ -163,8 +175,8 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"Uncomplete"];
+     [UIColor colorWithRed:102/255.0f green:205/255.0f blue:102/255.0f alpha:1.0]
+                                                title:@"Reset"];
     
     return rightUtilityButtons;
 }
@@ -207,12 +219,23 @@
             cell.backgroundView.alpha = 0.5;
             cell.completeView.hidden = FALSE;
             [cell hideUtilityButtonsAnimated:YES];
+            //self.dm.routedb.complete = 1;
+            
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            
+            NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            
+            NSNumber *comp = [NSNumber numberWithInt:1];
+            [obj setValue:comp forKey:@"complete"];
+            NSError *error;
+            [self.dm.managedObjectContext save:&error];
             break;
         }
         
         default:
             break;
     }
+    [cell hideUtilityButtonsAnimated:YES];
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
@@ -220,18 +243,28 @@
     switch (index) {
         case 0:
         {
-            NSLog(@"Complete button was pressed");
+            NSLog(@"Uncomplete button was pressed");
             //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
             //[alertTest show];
             cell.backgroundView.alpha = 1;
             cell.completeView.hidden = TRUE;
             [cell hideUtilityButtonsAnimated:YES];
+            
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            
+            NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            
+            NSNumber *comp = [NSNumber numberWithInt:0];
+            [obj setValue:comp forKey:@"complete"];
+            NSError *error;
+            [self.dm.managedObjectContext save:&error];
             break;
         }
             
         default:
             break;
     }
+    [cell hideUtilityButtonsAnimated:YES];
 }
 
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell

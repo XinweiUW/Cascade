@@ -39,16 +39,23 @@
 		9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BFE031AC39B4100ED37D1 /* Images.xcassets */; };
 		9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BFE051AC39B4100ED37D1 /* LaunchScreen.xib */; };
 		9D8BFE131AC39B4100ED37D1 /* Cascade_iOS_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */; };
+		9D9007381AE63CAD00F42812 /* pin_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9007371AE63CAD00F42812 /* pin_grey.png */; };
+		9D90073A1AE63CB300F42812 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9007391AE63CB300F42812 /* pin.png */; };
 		9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */; };
 		9DA8FC5F1ACF9137006F4FBB /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8FC5E1ACF9137006F4FBB /* menu-button.png */; };
 		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
 		9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */; };
+		9DBDE8AC1AE4D60E003971F1 /* routeBackGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
 		9DD314CA1AC7D069004C89AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C91AC7D069004C89AE /* CoreGraphics.framework */; };
 		9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CB1AC7D07A004C89AE /* UIKit.framework */; };
 		9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314CD1AC7D084004C89AE /* CoreData.framework */; };
+		9DD46A3E1AE4628C006BBCEB /* MapListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */; };
+		9DD46A401AE468C6006BBCEB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A3F1AE468C6006BBCEB /* MapKit.framework */; };
+		9DD46A421AE468CE006BBCEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A411AE468CE006BBCEB /* CoreLocation.framework */; };
+		9DD46A451AE47E99006BBCEB /* RideAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD46A441AE47E99006BBCEB /* RideAnnotation.m */; };
 		9DE674901ACF9F54000653DB /* leftMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DE6748F1ACF9F54000653DB /* leftMenu.jpg */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Rides.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Rides.m */; };
@@ -115,6 +122,8 @@
 		9D8BFE0C1AC39B4100ED37D1 /* Cascade-iOS-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cascade-iOS-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8BFE111AC39B4100ED37D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cascade_iOS_AppTests.m; sourceTree = "<group>"; };
+		9D9007371AE63CAD00F42812 /* pin_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_grey.png; sourceTree = "<group>"; };
+		9D9007391AE63CB300F42812 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		9DA8FC4E1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
 		9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
 		9DA8FC5E1ACF9137006F4FBB /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -123,6 +132,7 @@
 		9DA8FC631ACF9176006F4FBB /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
 		9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		9DA8FC661ACF9468006F4FBB /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
+		9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = routeBackGround.jpg; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
@@ -131,6 +141,12 @@
 		9DD314C91AC7D069004C89AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9DD314CB1AC7D07A004C89AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DD314CD1AC7D084004C89AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9DD46A3C1AE4628C006BBCEB /* MapListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapListViewController.h; sourceTree = "<group>"; };
+		9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapListViewController.m; sourceTree = "<group>"; };
+		9DD46A3F1AE468C6006BBCEB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9DD46A411AE468CE006BBCEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9DD46A431AE47E99006BBCEB /* RideAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideAnnotation.h; sourceTree = "<group>"; };
+		9DD46A441AE47E99006BBCEB /* RideAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideAnnotation.m; sourceTree = "<group>"; };
 		9DE6748F1ACF9F54000653DB /* leftMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftMenu.jpg; sourceTree = "<group>"; };
 		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
@@ -145,6 +161,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DD46A421AE468CE006BBCEB /* CoreLocation.framework in Frameworks */,
+				9DD46A401AE468C6006BBCEB /* MapKit.framework in Frameworks */,
 				9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */,
 				9DD314CC1AC7D07A004C89AE /* UIKit.framework in Frameworks */,
 				9DD314CA1AC7D069004C89AE /* CoreGraphics.framework in Frameworks */,
@@ -185,6 +203,9 @@
 			isa = PBXGroup;
 			children = (
 				9D49365A1AEC0F1200607486 /* loading.png */,
+				9D9007371AE63CAD00F42812 /* pin_grey.png */,
+				9D9007391AE63CB300F42812 /* pin.png */,
+				9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */,
 				9D52CB5A1AD109490002CF59 /* CompletedStamp.png */,
 				9D52CB531AD0D1590002CF59 /* CascadeLogo.png */,
 				9DE6748F1ACF9F54000653DB /* leftMenu.jpg */,
@@ -300,6 +321,10 @@
 				9D52A8A31AD395AC0041CB62 /* TipViewController.m */,
 				9D52A8A51AD395BE0041CB62 /* SettingsViewController.h */,
 				9D52A8A61AD395BE0041CB62 /* SettingsViewController.m */,
+				9DD46A3C1AE4628C006BBCEB /* MapListViewController.h */,
+				9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */,
+				9DD46A431AE47E99006BBCEB /* RideAnnotation.h */,
+				9DD46A441AE47E99006BBCEB /* RideAnnotation.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -307,6 +332,8 @@
 		9DD314CF1AC7D09C004C89AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DD46A411AE468CE006BBCEB /* CoreLocation.framework */,
+				9DD46A3F1AE468C6006BBCEB /* MapKit.framework */,
 				9DD314C71AC7D05A004C89AE /* Foundation.framework */,
 				9DD314C91AC7D069004C89AE /* CoreGraphics.framework */,
 				9DD314CB1AC7D07A004C89AE /* UIKit.framework */,
@@ -412,10 +439,12 @@
 				9D4082241ACA7E1500B2602B /* 5-distance.png in Resources */,
 				9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */,
 				9D4082271ACA7E1500B2602B /* 8-road condition.png in Resources */,
+				9D90073A1AE63CB300F42812 /* pin.png in Resources */,
 				9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */,
 				9D4082261ACA7E1500B2602B /* 7-terrain.png in Resources */,
 				9D8BFE021AC39B4100ED37D1 /* Main.storyboard in Resources */,
 				9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */,
+				9DBDE8AC1AE4D60E003971F1 /* routeBackGround.jpg in Resources */,
 				9D52CB5B1AD109490002CF59 /* CompletedStamp.png in Resources */,
 				9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */,
 				9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */,
@@ -426,6 +455,7 @@
 				9DE674901ACF9F54000653DB /* leftMenu.jpg in Resources */,
 				9DA8FC5F1ACF9137006F4FBB /* menu-button.png in Resources */,
 				9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */,
+				9D9007381AE63CAD00F42812 /* pin_grey.png in Resources */,
 				9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */,
 				9D4082251ACA7E1500B2602B /* 6-duration.png in Resources */,
 			);
@@ -454,6 +484,7 @@
 				9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */,
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,
 				9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */,
+				9DD46A3E1AE4628C006BBCEB /* MapListViewController.m in Sources */,
 				9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */,
 				9D2671181ACFB50400DFDB0B /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */,
@@ -462,6 +493,7 @@
 				9D2671151ACFB50400DFDB0B /* SWCellScrollView.m in Sources */,
 				9D8BFDFF1AC39B4100ED37D1 /* ViewController.m in Sources */,
 				9D52A8A11AD395900041CB62 /* AboutViewController.m in Sources */,
+				9DD46A451AE47E99006BBCEB /* RideAnnotation.m in Sources */,
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
 				9D2671171ACFB50400DFDB0B /* SWTableViewCell.m in Sources */,
 				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,

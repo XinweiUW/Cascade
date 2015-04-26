@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CVX-JB-8n8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CVX-JB-8n8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,21 +19,32 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AcC-Fg-Sai" id="Mcp-Ey-pK1">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="CompletedStamp.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cwy-Yq-WeT">
-                                            <rect key="frame" x="280" y="182" width="240" height="45"/>
+                                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT9-1j-rz7">
+                                            <rect key="frame" x="121" y="51" width="359" height="147"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CompletedStamp.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cwy-Yq-WeT">
+                                            <rect key="frame" x="177" y="95" width="247" height="59"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="240" id="evn-f8-vsF"/>
-                                                <constraint firstAttribute="height" constant="45" id="wsE-oS-sMb"/>
+                                                <constraint firstAttribute="width" constant="247" id="Q4w-lA-vjb"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Cwy-Yq-WeT" secondAttribute="trailing" constant="72" id="AsX-tV-HIV"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Cwy-Yq-WeT" secondAttribute="bottom" constant="15" id="SD6-Tt-Fko"/>
+                                        <constraint firstItem="Cwy-Yq-WeT" firstAttribute="centerX" secondItem="zT9-1j-rz7" secondAttribute="centerX" id="6E1-PE-Rau"/>
+                                        <constraint firstItem="Cwy-Yq-WeT" firstAttribute="top" secondItem="Mcp-Ey-pK1" secondAttribute="topMargin" constant="87" id="Ia0-mp-cO4"/>
+                                        <constraint firstItem="Cwy-Yq-WeT" firstAttribute="centerY" secondItem="zT9-1j-rz7" secondAttribute="centerY" id="Pg7-I7-1aK"/>
+                                        <constraint firstItem="zT9-1j-rz7" firstAttribute="leading" secondItem="Mcp-Ey-pK1" secondAttribute="leadingMargin" constant="30" id="WMn-sk-p8j"/>
+                                        <constraint firstAttribute="centerY" secondItem="zT9-1j-rz7" secondAttribute="centerY" id="pdx-wT-6nF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zT9-1j-rz7" secondAttribute="trailing" constant="30" id="uuq-SI-V5e"/>
+                                        <constraint firstAttribute="centerX" secondItem="zT9-1j-rz7" secondAttribute="centerX" id="xP3-b7-fe1"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="completeView" destination="Cwy-Yq-WeT" id="mpb-QS-hGR"/>
+                                    <outlet property="routeNameLabel" destination="zT9-1j-rz7" id="Oqb-w3-Ngr"/>
                                     <segue destination="F3u-xA-HUs" kind="show" identifier="showRouteDetail" id="XRy-9W-Oeq"/>
                                 </connections>
                             </tableViewCell>
@@ -44,12 +55,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="l8h-9N-hJ5">
-                        <barButtonItem key="leftBarButtonItem" image="10-arrow-left.png" id="why-jt-XN7">
+                        <barButtonItem key="leftBarButtonItem" image="menu-button.png" style="plain" id="why-jt-XN7">
                             <inset key="imageInsets" minX="-9" minY="0.0" maxX="0.0" maxY="-4"/>
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="2-switch to map list.png" style="plain" id="5R5-D1-xCv">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="t4a-yX-4Qw" kind="show" id="Xm2-Nl-gqY"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -60,6 +74,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXB-U6-uPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1252" y="1109"/>
+        </scene>
+        <!--Map List View Controller-->
+        <scene sceneID="mRG-Xu-kVs">
+            <objects>
+                <viewController id="t4a-yX-4Qw" customClass="MapListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kB0-LT-DL1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z6b-Ih-dHH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YQ1-P9-R9A">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4XN-AD-L25">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="t4a-yX-4Qw" id="0RN-3K-tdC"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="4XN-AD-L25" id="4Nr-J1-djI"/>
+                        <segue destination="F3u-xA-HUs" kind="show" identifier="showDetailFromMap" id="G9I-Hk-jOv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0KF-hA-RlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1252" y="1854"/>
         </scene>
         <!--Descriptions View Controller-->
         <scene sceneID="ylo-eJ-1pf">
@@ -218,9 +262,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="10-arrow-left.png" width="31" height="30"/>
         <image name="2-switch to map list.png" width="20" height="32"/>
         <image name="CascadeLogo.png" width="600" height="278"/>
         <image name="CompletedStamp.png" width="257" height="68"/>
+        <image name="menu-button.png" width="22" height="17"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XRy-9W-Oeq"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>

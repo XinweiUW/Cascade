@@ -27,5 +27,8 @@
 @dynamic difficulties;
 //@dynamic imgData;
 @dynamic imgURL;
+@dynamic complete;
+@dynamic latitude;
+@dynamic longitude;
 
 @end

@@ -77,6 +77,7 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
 - (void)initializer
 {
     layoutUpdating = NO;
+    
     // Set up scroll view that will host our cell content
     self.cellScrollView = [[SWCellScrollView alloc] init];
     self.cellScrollView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -85,8 +86,18 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
     self.cellScrollView.scrollsToTop = NO;
     self.cellScrollView.scrollEnabled = YES;
     
+    self.textLabel.backgroundColor = [UIColor clearColor];
+    self.textLabel.textColor = [UIColor whiteColor];
+    [self.textLabel setTextAlignment:NSTextAlignmentCenter];
+    self.textLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    self.textLabel.numberOfLines = 2;
+    self.textLabel.lineBreakMode = 0;
+    
+    
     _contentCellView = [[UIView alloc] init];
     [self.cellScrollView addSubview:_contentCellView];
+    
+    
     
     // Add the cell scroll view to the cell
     UIView *contentViewParent = self;
