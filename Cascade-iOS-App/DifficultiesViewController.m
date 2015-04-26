@@ -32,9 +32,25 @@
     CGImageRef imageRef = CGImageCreateWithImageInRect([backgroundImage CGImage], croprect);
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     
-    UIImageView * backgroundView  =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, selfViewWidth, selfViewHeight)];
+    UIImageView *backgroundView  =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, selfViewWidth, selfViewHeight)];
     [backgroundView setImage:croppedImage];
     [self.view addSubview:backgroundView];
+    
+    UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.15 * selfViewWidth, 0.15 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    [distanceIcon setImage:[UIImage imageNamed:@"5-distance.png"]];
+    [backgroundView addSubview:distanceIcon];
+    
+    UIImageView *durationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.3 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    [durationIcon setImage:[UIImage imageNamed:@"6-duration.png"]];
+    [backgroundView addSubview:durationIcon];
+    
+    UIImageView *terrainIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.5 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    [terrainIcon setImage:[UIImage imageNamed:@"7-terrain.png"]];
+    [backgroundView addSubview:terrainIcon];
+    
+    UIImageView *roadConditionIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.15 * selfViewWidth, 0.65 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    [roadConditionIcon setImage:[UIImage imageNamed:@"8-road condition.png"]];
+    [backgroundView addSubview:roadConditionIcon];
 }
 
 - (void)didReceiveMemoryWarning {
