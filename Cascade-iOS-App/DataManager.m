@@ -121,10 +121,10 @@
 }
 
 
-- (void)updateFromServerWithCompletion:(void (^)(void))completionHandler{
+- (void)updateTextFromServerWithCompletion:(void (^)(void))completionHandler{
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    NSMutableArray *rides = [self fetchRequest];
+    NSMutableArray *rides = [self mutableArrayUsingFetchRequest];
     if (rides.count != 0){
         [self deleteObjects];
     }
@@ -135,10 +135,7 @@
     
     [backgroundContext performBlock:^{
         NSError *error;
-        //NSString *url = @"https://www.filepicker.io/api/file/B9uBaBZRTs2lmD5j2Ff8";
-        //NSString *url = @"https://www.filepicker.io/api/file/nEf0qv6TUq5sKUSUT7FM";
-        NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv?RH7kJuTht6GRQXLlLeu2jlhLEFp5uQch";
-        
+        NSString *url = @"https://www.filepicker.io/api/file/GJY1HLYyROPWwUoshwEN";
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] ;
     
@@ -182,7 +179,7 @@
             NSString *longitude = [temp objectAtIndex:16];
             
 
-            Rides *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
+            Ride *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
             newRide.id = number;
             newRide.title = title;
             newRide.distance = distance;
@@ -211,7 +208,36 @@
                 [self.managedObjectContext save:nil];
             });
         }
+        if (completionHandler) {
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+            dispatch_async(queue, completionHandler);
+            //dispatch_async(dispatch_get_main_queue(), completionHandler);
+            //completionHandler();
+        }
     }];
+}
+
+- (void)generateImageFromURL{
+
+    NSMutableArray *routes = [self mutableArrayUsingFetchRequest];
+    NSError *error;
+    if (routes == nil){
+        NSLog(@"routes don't exist! Error: %@", error.localizedDescription);
+        return;
+    }
+    
+    NSString *imgURL;
+    NSString *title;
+    
+    for (NSManagedObject *route in routes) {
+        title = [route valueForKey:@"title"];
+        imgURL = [route valueForKey:@"imgURL"];
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+        UIImage *image = [UIImage imageWithData:imageData];
+        // We store original images instead of cropped images since we want to use original images later.
+        [self saveImage:image :title];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"imageGenerated" object:[route valueForKey:@"id"]];
+    }
 }
 
 
@@ -234,19 +260,24 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString* path = [documentsDirectory stringByAppendingPathComponent:title];
     UIImage* image = [UIImage imageWithContentsOfFile:path];
+    if (!image) {
+        NSLog(@"Image doesn't exist!");
+    }
     return image;
 }
 
-
-- (NSMutableArray *)fetchRequest{
+- (NSMutableArray *)mutableArrayUsingFetchRequest{
     
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSArray *sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES]];
+    fetchRequest.sortDescriptors = sortDescriptors;
     
-    return [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSError *error;
+    NSArray *fetchResult = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (!fetchResult){
+        NSLog(@"fetch failed: %@", error.localizedDescription);
+    }
+    return [fetchResult mutableCopy];
 }
 
 

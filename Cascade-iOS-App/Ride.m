@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Cascade. All rights reserved.
 //
 
-#import "Rides.h"
+#import "Ride.h"
 
-@implementation Rides
+@implementation Ride
 
 @dynamic id;
 @dynamic title;

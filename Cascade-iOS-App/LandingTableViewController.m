@@ -11,13 +11,14 @@
 #import "SWTableViewCell.h"
 #import "DataManager.h"
 #import "AppDelegate.h"
+#import "Ride.h"
 
 @interface LandingTableViewController ()
 
 @property (strong) NSManagedObject *routedb;
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
 @property (strong, nonatomic) DataManager *dm;
-@property id plist;
+@property (strong, nonatomic) NSFetchedResultsController *fetchResults;
 
 @end
 
@@ -29,29 +30,45 @@
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]){
-
-        [self.dm updateFromServerWithCompletion:^{
-            NSLog(@"datastore update complete");
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
+    {
+        [self.dm updateTextFromServerWithCompletion:^{
+            NSLog(@"text-based information update complete");
+            [self.dm generateImageFromURL];
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            
         }];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"imageGenerated" object:nil];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasBeenLaunchedOnceKey"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
     }
     else{
-        self.routeArray = [self.dm fetchRequest];
+        self.routeArray = [self.dm mutableArrayUsingFetchRequest];
         [self.tableView reloadData];
     }
 }
 
 - (void)reloadTable:(NSNotification *)notification
 {
-    //NSError *error;
-    self.routeArray = [self.dm fetchRequest];
+    if (self.routeArray == nil){
+        self.routeArray = [self.dm mutableArrayUsingFetchRequest];
+    }
     [self.tableView setNeedsDisplay];
-    [self.tableView reloadData];
+    if ([[notification name] isEqualToString:@"imageGenerated"]){
+        NSInteger number = [notification.object integerValue] - 1;
+        NSIndexPath *index = [NSIndexPath indexPathForRow:number inSection:0];
+        NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
+        [self.tableView performSelectorOnMainThread:@selector(reloadRowsAtIndexPaths:withRowAnimation:) withObject:indexArray waitUntilDone:NO];
+        // This came from the background thread. Without performing in the main thread, cellForRowAtIndexPath will not be fired.
+    }else{
+        @synchronized(self.tableView){
+            [self.tableView setNeedsDisplay];
+            [self.tableView reloadData];
+        }
+    }
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -85,119 +102,63 @@
     static NSString *CellIdentifier = @"Cell";
     
     SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.delegate = self;
+    cell.routeNameLabel.text = nil;
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
-    cell.backgroundView = nil;//[[UIImageView alloc] init];
+    cell.completeView.hidden = YES;
+    cell.backgroundView = nil;
+    Ride *device = [self.routeArray objectAtIndex:indexPath.row];
+    UIImage *image;
+    if (![self.dm loadImage:device.title]){
+        image = [UIImage imageNamed:@"loading.png"];
+        cell.userInteractionEnabled = NO;
+        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        return cell;
+    }
+    cell.userInteractionEnabled = YES;
+    
+    // Configure the cell...
+    [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
+    [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
 
     //CGAffineTransform transform = cell.completeView.transform;
     
     // Rotate the view 45 degrees (the actual function takes radians)
     //transform = CGAffineTransformRotate(transform, (-M_PI / 5));
     //cell.completeView.transform = transform;
-    cell.completeView.hidden = YES;
+    //
     
-    NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
-    /*if ([[device valueForKey:@"complete"] integerValue] == 1) {
+    if([self.cachedImages valueForKey:device.title]){
+        image = [self.cachedImages valueForKey:device.title];
+    }else{
+        image = [self.dm loadImage:device.title];
+        
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+        image = croppedImage;
+        [self.cachedImages setValue:image forKey:device.title];
+        
+        CGImageRelease(imageRef);
+    }
+    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+    
+    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", device.title]];
+    cell.routeNameLabel.numberOfLines = 2;
+    cell.routeNameLabel.lineBreakMode = 0;
+    
+    if (device.complete == 1) {
         cell.backgroundView.alpha = 0.5;
         cell.completeView.hidden = FALSE;
-    } else if ([[device valueForKey:@"complete"] integerValue]  == 0){
+    } else if (device.complete == 0 ){
         cell.backgroundView.alpha = 1;
         cell.completeView.hidden = TRUE;
     }
-    [cell hideUtilityButtonsAnimated:YES];*/
-    
-    // Configure the cell...
-    [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:80.0f];
-    [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 80.f];
-
-    //cell.completeView.hidden = TRUE;
-    cell.delegate = self;
-    cell.routeNameLabel.numberOfLines = 2;
-    cell.routeNameLabel.lineBreakMode = 0;
-    //[cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
-    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
-    
-    //if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
-    if ([self.dm loadImage:[device valueForKey:@"title"]]){
-
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            
-            UIImage *image;
-            if ([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
-                image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
-            }else{
-                image = [self.dm loadImage:[device valueForKey:@"title"]];
-                CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-                
-                // Draw new image in current graphics context
-                CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-                UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-                image = croppedImage;
-                [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-            }
-        
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //cell.backgroundView = nil;
-                cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-                //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-                
-                if ([[device valueForKey:@"complete"] integerValue] == 1) {
-                    cell.backgroundView.alpha = 0.5;
-                    cell.completeView.hidden = FALSE;
-                } else if ([[device valueForKey:@"complete"] integerValue] == 0 ){
-                    cell.backgroundView.alpha = 1;
-                    cell.completeView.hidden = TRUE;
-                }
-                [cell hideUtilityButtonsAnimated:YES];
-                
-            });
-        });
-    
-    }else{
-        
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            
-            NSString *imgURL = [NSString stringWithFormat:@"%@", [device valueForKey:@"imgURL"]];
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
-            UIImage *image = [UIImage imageWithData:imageData];
-            
-            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-            
-            // Draw new image in current graphics context
-            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-            
-            [self.cachedImages setValue:croppedImage forKey: [device valueForKey:@"title"]];
-            [self.dm saveImage:image :[device valueForKey:@"title"]];
-            CGImageRelease(imageRef);
-            // Create new cropped UIImage
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //[self.cachedImages setValue:[self.dm loadImage:[device valueForKey:@"title"]] forKey: [device valueForKey:@"title"]];
-                //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-
-                //cell.backgroundView = nil;
-                
-                cell.backgroundView = [[UIImageView alloc] initWithImage:croppedImage];
-                
-                if ([[device valueForKey:@"complete"] integerValue] == 1) {
-                    cell.backgroundView.alpha = 0.5;
-                    cell.completeView.hidden = FALSE;
-                } else if ([[device valueForKey:@"complete"] integerValue] == 0 ){
-                    cell.backgroundView.alpha = 1;
-                    cell.completeView.hidden = TRUE;
-                }
-                [cell hideUtilityButtonsAnimated:YES];
-            });
-        });
-    }
     
     return cell;
-    
 }
-
 
 - (NSArray *)rightButtons
 {
@@ -261,10 +222,10 @@
             
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             
-            NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
-            NSNumber *comp = [NSNumber numberWithInt:1];
-            [obj setValue:comp forKey:@"complete"];
+            //NSNumber *comp = [NSNumber numberWithInt:1];
+            obj.complete = 1;
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;
@@ -290,10 +251,10 @@
             
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             
-            NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
-            NSNumber *comp = [NSNumber numberWithInt:0];
-            [obj setValue:comp forKey:@"complete"];
+            //NSNumber *comp = [NSNumber numberWithInt:0];
+            obj.complete = 0;
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;

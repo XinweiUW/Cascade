@@ -8,7 +8,7 @@
 
 #import <CoreData/CoreData.h>
 
-@interface Rides : NSManagedObject
+@interface Ride : NSManagedObject
 
 @property (nonatomic) NSInteger id;
 @property(strong, nonatomic) NSString *title;

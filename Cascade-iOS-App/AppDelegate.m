@@ -38,8 +38,8 @@
     }else{
         NSDate *lastDate = [self.userDefault objectForKey:@"lastDate"];
         NSDate *now = [NSDate date];
-        if ([now timeIntervalSinceDate:lastDate] > 2592000){
-            [self.userDefault setBool:NO forKey:@"HasLaunchedOnce"];
+        if ([now timeIntervalSinceDate:lastDate] > 3600000000000){
+            [self.userDefault setBool:NO forKey:@"hasBeenLaunchedOnceKey"];
             [self.userDefault setObject:now forKey:@"lastDate"];
             [self.userDefault synchronize];
         }
@@ -55,7 +55,6 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
