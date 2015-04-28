@@ -11,7 +11,10 @@
 #import "DataManager.h"
 #import "DescriptionsViewController.h"
 
-@interface DifficultiesViewController : UIViewController
+@interface DifficultiesViewController : UIViewController {
+    CGFloat selfViewWidth;
+    CGFloat selfViewHeight;
+}
 
 @property (strong, nonatomic) DataManager *dm;
 @property (strong) NSManagedObject *routedb;
