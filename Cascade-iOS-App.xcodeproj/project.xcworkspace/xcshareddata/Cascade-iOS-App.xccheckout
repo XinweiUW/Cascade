@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3BECCBD8-04C4-4AC8-978A-5337DCF80AF0</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Cascade-iOS-App</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>699C4C13CF5A9C2DE97A41AB8CF2C41D61D3B084</key>
 		<string>https://github.com/XinweiUW/Cascade.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Cascade-iOS-App.xcodeproj/project.xcworkspace</string>
+	<string>Cascade-iOS-App.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>699C4C13CF5A9C2DE97A41AB8CF2C41D61D3B084</key>

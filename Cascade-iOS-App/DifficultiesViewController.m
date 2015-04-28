@@ -42,6 +42,26 @@
     [backgroundView setImage:croppedImage];
     [self.view addSubview:backgroundView];
 
+    UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.15 * selfViewWidth, 0.2 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    [distanceIcon setImage:[UIImage imageNamed:@"distance.png"]];
+    [backgroundView addSubview:distanceIcon];
+    [self setLabel:distanceIcon connectWithValue:@"distance"];
+    
+    
+    UIImageView *durationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.35 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    [durationIcon setImage:[UIImage imageNamed:@"time.png"]];
+    [backgroundView addSubview:durationIcon];
+    [self setLabel:durationIcon connectWithValue:@"duration"];
+    
+    UIImageView *terrainIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.55 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    [terrainIcon setImage:[UIImage imageNamed:@"terrain.png"]];
+    [backgroundView addSubview:terrainIcon];
+    [self setLabel:terrainIcon connectWithValue:@"terrain"];
+    
+    UIImageView *roadConditionIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.15 * selfViewWidth, 0.7 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    [roadConditionIcon setImage:[UIImage imageNamed:@"road condition.png"]];
+    [backgroundView addSubview:roadConditionIcon];
+    [self setLabel:roadConditionIcon connectWithValue:@"roadCondition"];
     
     UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
     [self.view addSubview:navBar];
@@ -56,6 +76,21 @@
     item.leftBarButtonItem = flipButton;
     [navBar pushNavigationItem:item animated:NO];
     
+}
+
+- (void) setLabel: (UIImageView *) iconImageView connectWithValue: (NSString *)valueName {
+    CGFloat originX = iconImageView.frame.origin.x + iconImageView.frame.size.width * 1.1;
+    CGFloat originY = iconImageView.frame.origin.y;
+    CGFloat labelWidth = iconImageView.frame.size.width * 4;
+    CGFloat labelHeight = iconImageView.frame.size.height;
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
+    [label setTextAlignment:NSTextAlignmentLeft];
+    label.text = [self.routedb valueForKey:valueName];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:21.0f];
+    label.numberOfLines = 2;
+    label.lineBreakMode = 0;
+    [self.view addSubview:label];
 }
 
 - (void)didReceiveMemoryWarning {
