@@ -133,7 +133,7 @@
 - (void)backToMenu{
     //LandingTableViewController *vc = [[LandingTableViewController alloc] initWithNibName:@"LandingTableViewController" bundle:nil];
     //[self.navigationController pushViewController:vc animated:YES];
-    [self performSegueWithIdentifier:@"showLandingTableView" sender:self];
+    [self performSegueWithIdentifier:@"unwindFromDifficulty" sender:self];
 }
 
 - (void)swipeDown:(UISwipeGestureRecognizer *)gestureRecognizer{

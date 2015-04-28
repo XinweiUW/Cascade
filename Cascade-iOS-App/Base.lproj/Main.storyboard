@@ -153,7 +153,7 @@
                         </connections>
                     </view>
                     <connections>
-                        <segue destination="bW3-aT-nuO" kind="unwind" identifier="showLandingTableView" unwindAction="unwindSegue:" id="hgn-ic-eVv"/>
+                        <segue destination="bW3-aT-nuO" kind="unwind" identifier="unwindFromDifficulty" unwindAction="unwindSegue:" id="hgn-ic-eVv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yX9-TB-Bmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,8 +181,12 @@
                             <outletCollection property="gestureRecognizers" destination="nP8-j0-Pum" appends="YES" id="Ojj-y9-eBE"/>
                         </connections>
                     </view>
+                    <connections>
+                        <segue destination="Lrf-9f-3aJ" kind="unwind" identifier="unwindFromRouteMap" unwindAction="unwindSegue:" id="Vic-3t-0td"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTl-FT-1oG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Lrf-9f-3aJ" userLabel="Exit" sceneMemberID="exit"/>
                 <swipeGestureRecognizer direction="down" id="nP8-j0-Pum"/>
             </objects>
             <point key="canvasLocation" x="2015" y="2700"/>
