@@ -32,7 +32,7 @@
     UIImage *backImage = [UIImage imageNamed:@"back.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
-    [backButton setFrame:CGRectMake(0, 0, navBar.frame.size.height/2.5, navBar.frame.size.height/2)];
+    [backButton setFrame:CGRectMake(0, 0, navBar.frame.size.height/3, navBar.frame.size.height/2.5)];
     [backButton setImage:backImage forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];

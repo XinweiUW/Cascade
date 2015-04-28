@@ -58,7 +58,7 @@
     UIImage *backImage = [UIImage imageNamed:@"back.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
-    [backButton setFrame:CGRectMake(0, 0, navBar.frame.size.height/2.5, navBar.frame.size.height/2)];
+    [backButton setFrame:CGRectMake(0, 0, navBar.frame.size.height/3, navBar.frame.size.height/2.5)];
     [backButton setImage:backImage forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
@@ -77,19 +77,31 @@
 }
 
 - (void) setDifficultyLabelWith: (UIImageView *) distanceIcon andRoadConditionIcon: (UIImageView *) roadConditionIcon{
-    CGFloat originX = distanceIcon.frame.origin.x;
+    CGFloat originX = distanceIcon.frame.origin.x - 0.2 * distanceIcon.frame.size.width;
     CGFloat originY = (distanceIcon.frame.origin.y + roadConditionIcon.frame.origin.y)/2;
     CGFloat labelWidth = distanceIcon.frame.size.width * 2;
     CGFloat labelHeight = distanceIcon.frame.size.height;
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
     [label setTextAlignment:NSTextAlignmentLeft];
-    label.text = [self.routedb valueForKey:@"difficulties"];
+    [self setDifficultyLabelText:label withStarStrings:[self.routedb valueForKey:@"difficulties"]];
+    
+    //label.text = [self.routedb valueForKey:@"difficulties"];
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:21.0f];
+    label.font = [UIFont boldSystemFontOfSize:25.0f];
     label.numberOfLines = 2;
     label.lineBreakMode = 0;
     [self.view addSubview:label];
 
+}
+
+- (void) setDifficultyLabelText: (UILabel *)label withStarStrings: (NSString *)starString {
+    if ([starString isEqualToString:@"*"]) {
+        label.text = @"Easy";
+    } else if ([starString isEqualToString:@"**"]) {
+        label.text = @"Medium";
+    } else {
+        label.text = @"Hard";
+    }
 }
 
 - (void) setBackground {
