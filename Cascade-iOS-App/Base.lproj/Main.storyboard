@@ -121,16 +121,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="5fN-FH-quZ" appends="YES" id="EH9-eu-BVQ"/>
+                            <outletCollection property="gestureRecognizers" destination="8bm-nW-Iae" appends="YES" id="pyI-ma-eMZ"/>
                         </connections>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcE-zU-IcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="up" id="5fN-FH-quZ">
+                <swipeGestureRecognizer direction="up" id="8bm-nW-Iae">
                     <connections>
-                        <segue destination="Sqt-N4-Tlp" kind="presentation" identifier="showDifficultySegue" id="Usi-Ug-sCe"/>
+                        <segue destination="Sqt-N4-Tlp" kind="presentation" identifier="showDifficultySegue" id="Qwq-5U-y2I"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -177,17 +177,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="nP8-j0-Pum" appends="YES" id="Ojj-y9-eBE"/>
-                        </connections>
                     </view>
                     <connections>
-                        <segue destination="Lrf-9f-3aJ" kind="unwind" identifier="unwindFromRouteMap" unwindAction="unwindSegue:" id="Vic-3t-0td"/>
+                        <segue destination="Lrf-9f-3aJ" kind="unwind" identifier="unwindFromRouteMap" unwindAction="unwindSegue:" id="8aw-S4-frv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTl-FT-1oG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Lrf-9f-3aJ" userLabel="Exit" sceneMemberID="exit"/>
-                <swipeGestureRecognizer direction="down" id="nP8-j0-Pum"/>
             </objects>
             <point key="canvasLocation" x="2015" y="2700"/>
         </scene>
