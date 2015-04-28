@@ -58,6 +58,7 @@
 		9D968B371AEF6E7B00104C42 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B261AEF6E7B00104C42 /* time.png */; };
 		9D968B381AEF6E7B00104C42 /* to list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B271AEF6E7B00104C42 /* to list.png */; };
 		9D968B391AEF6E7B00104C42 /* to map.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B281AEF6E7B00104C42 /* to map.png */; };
+		9D968B3C1AEF8CE900104C42 /* RouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */; };
 		9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */; };
 		9DA8FC5F1ACF9137006F4FBB /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8FC5E1ACF9137006F4FBB /* menu-button.png */; };
 		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
@@ -159,6 +160,8 @@
 		9D968B261AEF6E7B00104C42 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		9D968B271AEF6E7B00104C42 /* to list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "to list.png"; sourceTree = "<group>"; };
 		9D968B281AEF6E7B00104C42 /* to map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "to map.png"; sourceTree = "<group>"; };
+		9D968B3A1AEF8CE900104C42 /* RouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteMapViewController.h; sourceTree = "<group>"; };
+		9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteMapViewController.m; sourceTree = "<group>"; };
 		9DA8FC4E1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
 		9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
 		9DA8FC5E1ACF9137006F4FBB /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -371,6 +374,8 @@
 				9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */,
 				9DD7EF2C1AEB43C2008B2C33 /* DifficultiesViewController.h */,
 				9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */,
+				9D968B3A1AEF8CE900104C42 /* RouteMapViewController.h */,
+				9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */,
 				9D52A89F1AD395900041CB62 /* AboutViewController.h */,
 				9D52A8A01AD395900041CB62 /* AboutViewController.m */,
 				9D52A8A21AD395AC0041CB62 /* TipViewController.h */,
@@ -553,6 +558,7 @@
 				9D2671161ACFB50400DFDB0B /* SWLongPressGestureRecognizer.m in Sources */,
 				9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */,
 				9D2671191ACFB50400DFDB0B /* SWUtilityButtonView.m in Sources */,
+				9D968B3C1AEF8CE900104C42 /* RouteMapViewController.m in Sources */,
 				9D2671141ACFB50400DFDB0B /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */,
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,

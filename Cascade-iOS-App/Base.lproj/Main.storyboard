@@ -147,11 +147,9 @@
                     <view key="view" contentMode="scaleToFill" id="p9b-4b-ird">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ahY-af-QVu" appends="YES" id="sfL-wb-ZFz"/>
-                            <outletCollection property="gestureRecognizers" destination="HP6-C3-ztk" appends="YES" id="vmZ-TI-fVs"/>
                         </connections>
                     </view>
                     <connections>
@@ -161,17 +159,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yX9-TB-Bmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="up" id="ahY-af-QVu">
                     <connections>
-                        <segue destination="FlH-gq-vPK" kind="presentation" modalTransitionStyle="coverVertical" id="SWn-tI-5D5"/>
+                        <segue destination="FlH-gq-vPK" kind="presentation" identifier="showRouteMapSegue" modalTransitionStyle="coverVertical" id="SWn-tI-5D5"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="down" id="HP6-C3-ztk"/>
             </objects>
             <point key="canvasLocation" x="2015" y="1919"/>
         </scene>
-        <!--View Controller-->
+        <!--Route Map View Controller-->
         <scene sceneID="D5S-3S-IE6">
             <objects>
-                <viewController id="FlH-gq-vPK" sceneMemberID="viewController">
+                <viewController id="FlH-gq-vPK" customClass="RouteMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KAO-vK-HeQ"/>
                         <viewControllerLayoutGuide type="bottom" id="mc8-EU-ycv"/>
@@ -179,7 +176,6 @@
                     <view key="view" contentMode="scaleToFill" id="1hf-26-Pof">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.98795372318098529" blue="0.25800769237356314" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="nP8-j0-Pum" appends="YES" id="Ojj-y9-eBE"/>
@@ -187,13 +183,9 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTl-FT-1oG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="down" id="nP8-j0-Pum">
-                    <connections>
-                        <segue destination="Sqt-N4-Tlp" kind="presentation" modalTransitionStyle="partialCurl" id="SO6-5N-wBu"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="nP8-j0-Pum"/>
             </objects>
-            <point key="canvasLocation" x="3514" y="1109"/>
+            <point key="canvasLocation" x="2015" y="2700"/>
         </scene>
         <!--Slide Navigation Controller-->
         <scene sceneID="BVH-ka-3bJ">
@@ -341,7 +333,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XRy-9W-Oeq"/>
-        <segue reference="Usi-Ug-sCe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>
