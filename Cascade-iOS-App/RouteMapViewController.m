@@ -47,6 +47,23 @@
     //item.leftBarButtonItem = flipButton;
     item.leftBarButtonItem = backButtonItem;
     [navBar pushNavigationItem:item animated:NO];
+    [self loadMapView];
+}
+
+- (void) loadMapView {
+    
+    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,60,selfViewWidth,self.view.frame.size.height - 120)];
+    
+    webView.scalesPageToFit = YES;
+    
+    NSString *urlAddress = [self.routedb valueForKey:@"mapURL"];
+    //Create a URL object.
+    NSURL *url = [NSURL URLWithString:urlAddress];
+    //URL Requst Object
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    //Load the request in the UIWebView.
+    [webView loadRequest:requestObj];
+    [self.view addSubview:webView];
 }
 
 - (void) setBackground {
