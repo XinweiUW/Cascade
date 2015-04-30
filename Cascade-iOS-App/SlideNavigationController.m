@@ -62,6 +62,34 @@ NSString  *const SlideNavigationControllerDidReveal = @"SlideNavigationControlle
 
 static SlideNavigationController *singletonInstance;
 
+/*
+- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+    return [UIStoryboardSegue segueWithIdentifier:identifier source:fromViewController destination:toViewController performHandler:^{
+        UIView *fromView = fromViewController.view;
+        UIView *toView = toViewController.view;
+        UIView *containerView = fromView.superview;
+        NSTimeInterval duration = 1.0;
+        CGRect initialFrame = fromView.frame;
+        CGRect offscreenRect = initialFrame;
+        offscreenRect.origin.x -= CGRectGetWidth(initialFrame);
+        toView.frame = offscreenRect;
+        [containerView addSubview:toView];
+        // Animate the view onscreen
+        [UIView animateWithDuration:duration
+                              delay:0
+             usingSpringWithDamping:0.5
+              initialSpringVelocity:4.0
+                            options:0
+                         animations: ^{
+                             toView.frame = initialFrame;
+                         } completion: ^(BOOL finished) {
+                             [toView removeFromSuperview];
+                             [toViewController.navigationController popToViewController:toViewController animated:NO];
+                         }];
+    }];
+}
+*/
+
 #pragma mark - Initialization -
 
 + (SlideNavigationController *)sharedInstance
