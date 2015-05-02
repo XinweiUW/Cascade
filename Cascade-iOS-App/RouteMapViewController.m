@@ -26,7 +26,7 @@
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDown];
     
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
+    /*UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
     [self.view addSubview:navBar];
     
     UIImage *backImage = [UIImage imageNamed:@"back.png"];
@@ -36,17 +36,17 @@
     [backButton setImage:backImage forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    /*
+    
      UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
      initWithTitle:@"Back"
      style:UIBarButtonItemStylePlain
      target:self
      action:@selector(flipView)];
      */
-    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:nil];
+    //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:nil];
     //item.leftBarButtonItem = flipButton;
-    item.leftBarButtonItem = backButtonItem;
-    [navBar pushNavigationItem:item animated:NO];
+    /*item.leftBarButtonItem = backButtonItem;
+    [navBar pushNavigationItem:item animated:NO];*/
     [self loadMapView];
 }
 

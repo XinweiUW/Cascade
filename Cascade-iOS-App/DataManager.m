@@ -157,8 +157,8 @@
         
         for (NSInteger i = 1; i < size; i++){
             NSArray *temp = [[d lines] objectAtIndex:i];
-            NSNumber *number = [NSNumber numberWithInt:i];
-            NSNumber *comp = [NSNumber numberWithInt:0];
+            NSNumber *number = [NSNumber numberWithInteger:i];
+            //NSNumber *comp = [NSNumber numberWithInt:0];
             
             NSString *title = [temp objectAtIndex:0];
             NSString *distance = [temp objectAtIndex:1];
@@ -180,7 +180,7 @@
             
 
             Ride *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
-            newRide.id = number;
+            newRide.id = (NSInteger)number;
             newRide.title = title;
             newRide.distance = distance;
             newRide.duration = duration;
@@ -196,7 +196,7 @@
             newRide.descriptions = descriptions;
             newRide.turnByTurn = turnByTurn;
             newRide.difficulties = difficulties;
-            newRide.complete = comp;
+            newRide.complete = 0;
             newRide.latitude = latitude;
             newRide.longitude = longitude;
         }

@@ -54,7 +54,7 @@
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake(latitude, longitude);
         //CLLocationCoordinate2D *loc =
         RideAnnotation *annotation = [[RideAnnotation alloc] initWithVariable:index :[ride valueForKey:@"title"] :location];
-        MKAnnotationView *aView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"rideAnnotation"];
+        //MKAnnotationView *aView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"rideAnnotation"];
         [self.mapView addAnnotation:annotation];
     }
     
@@ -103,8 +103,8 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
     NSLog(@"It works");
     NSString *title = [view.annotation title];
-    NSInteger *index = [[self.rideIndices valueForKey:title] integerValue] - 1;
-    NSManagedObject *ride = [self.rides objectAtIndex:index];
+    NSNumber *index = [self.rideIndices valueForKey:title];
+    NSManagedObject *ride = [self.rides objectAtIndex:[index integerValue] - 1];
     [self performSegueWithIdentifier:@"showDetailFromMap" sender:ride];
 }
 

@@ -20,9 +20,6 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) NSUserDefaults *userDefault;
 
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
-
 
 @end
 
