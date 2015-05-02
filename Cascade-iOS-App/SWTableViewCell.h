@@ -39,8 +39,6 @@ typedef NS_ENUM(NSInteger, SWCellState)
 
 @property (nonatomic, copy) NSArray *leftUtilityButtons;
 @property (nonatomic, copy) NSArray *rightUtilityButtons;
-@property (weak, nonatomic) IBOutlet UIImageView *completeView;
-@property (weak, nonatomic) IBOutlet UILabel *routeNameLabel;
 
 @property (nonatomic, weak) id <SWTableViewCellDelegate> delegate;
 

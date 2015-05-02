@@ -8,7 +8,7 @@
 
 #import "LandingTableViewController.h"
 #import "DescriptionsViewController.h"
-#import "SWTableViewCell.h"
+#import "CustomLandingTableViewCell.h"
 #import "DataManager.h"
 #import "AppDelegate.h"
 #import "Ride.h"
@@ -100,7 +100,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CustomLandingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.delegate = self;
     cell.routeNameLabel.text = nil;
     if (cell == nil){
@@ -207,7 +207,7 @@
     }
 }
 
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+- (void)swipeableTableViewCell:(CustomLandingTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
     switch (index) {
         case 0:
@@ -238,7 +238,7 @@
     [cell hideUtilityButtonsAnimated:YES];
 }
 
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
+- (void)swipeableTableViewCell:(CustomLandingTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
 {
     switch (index) {
         case 0:

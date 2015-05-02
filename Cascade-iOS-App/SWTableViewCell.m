@@ -77,7 +77,6 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
 - (void)initializer
 {
     layoutUpdating = NO;
-    
     // Set up scroll view that will host our cell content
     self.cellScrollView = [[SWCellScrollView alloc] init];
     self.cellScrollView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -86,18 +85,8 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
     self.cellScrollView.scrollsToTop = NO;
     self.cellScrollView.scrollEnabled = YES;
     
-    self.textLabel.backgroundColor = [UIColor clearColor];
-    self.textLabel.textColor = [UIColor whiteColor];
-    [self.textLabel setTextAlignment:NSTextAlignmentCenter];
-    self.textLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-    self.textLabel.numberOfLines = 2;
-    self.textLabel.lineBreakMode = 0;
-    
-    
     _contentCellView = [[UIView alloc] init];
     [self.cellScrollView addSubview:_contentCellView];
-    
-    
     
     // Add the cell scroll view to the cell
     UIView *contentViewParent = self;
@@ -184,7 +173,7 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
                                [NSLayoutConstraint constraintWithItem:buttonView attribute:alignmentAttribute relatedBy:NSLayoutRelationEqual toItem:clipView attribute:alignmentAttribute multiplier:1.0 constant:0.0],
                                
                                // Constrain the maximum button width so that at least a button's worth of contentView is left visible. (The button view will shrink accordingly.)
-                               [NSLayoutConstraint constraintWithItem:buttonView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:-kUtilityButtonWidthDefault],
+                               //[NSLayoutConstraint constraintWithItem:buttonView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:-kUtilityButtonWidthDefault],
                                ]];
     }
 }
