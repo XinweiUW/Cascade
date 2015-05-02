@@ -30,5 +30,6 @@
 @dynamic complete;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic turnByTurnText;
 
 @end

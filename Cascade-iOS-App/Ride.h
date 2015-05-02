@@ -30,6 +30,7 @@
 @property(nonatomic) NSInteger complete;
 @property(nonatomic) NSString *latitude;
 @property(nonatomic) NSString *longitude;
+@property(strong, nonatomic) NSString *turnByTurnText;
 
 
 //@property(strong, nonatomic) NSData *imgURL;

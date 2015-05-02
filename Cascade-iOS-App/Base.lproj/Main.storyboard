@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CVX-JB-8n8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CVX-JB-8n8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -157,11 +157,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yX9-TB-Bmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="up" id="ahY-af-QVu">
                     <connections>
-                        <segue destination="FlH-gq-vPK" kind="presentation" identifier="showRouteMapSegue" modalTransitionStyle="coverVertical" id="SWn-tI-5D5"/>
+                        <segue destination="FlH-gq-vPK" kind="presentation" identifier="showRouteMapSegue" id="SWn-tI-5D5"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2015" y="1919"/>
+        </scene>
+        <!--Turn By Turn Table View Controller-->
+        <scene sceneID="Lbh-Gs-a2g">
+            <objects>
+                <viewController id="tzA-zG-dWW" customClass="TurnByTurnTableViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fa3-hd-85M"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mk4-H4-VhE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E4i-7y-nOg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LF5-xd-ghH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2687" y="2700"/>
         </scene>
         <!--Route Map View Controller-->
         <scene sceneID="D5S-3S-IE6">
@@ -175,6 +193,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3Js-Zi-NTV" appends="YES" id="i8F-3g-nb4"/>
+                        </connections>
                     </view>
                     <connections>
                         <segue destination="Lrf-9f-3aJ" kind="unwind" identifier="unwindFromRouteMap" unwindAction="unwindSegue:" id="8aw-S4-frv"/>
@@ -182,6 +203,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTl-FT-1oG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Lrf-9f-3aJ" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="up" id="3Js-Zi-NTV">
+                    <connections>
+                        <segue destination="tzA-zG-dWW" kind="presentation" identifier="showTurnByTurn" modalTransitionStyle="coverVertical" id="els-PL-6WT"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2015" y="2700"/>
         </scene>
