@@ -30,6 +30,9 @@
     
     [self setBackground];
     
+    
+   
+    
     UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.15 * selfViewWidth, 0.2 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
     [distanceIcon setImage:[UIImage imageNamed:@"distance.png"]];
     [self.view addSubview:distanceIcon];
@@ -109,7 +112,7 @@
     UIImage *backgroundImage = [self.dm loadImage:[self.routedb valueForKey:@"title"]];
     
     
-    CGRect croprect = CGRectMake(backgroundImage.size.width/6, 0 , backgroundImage.size.height/2, backgroundImage.size.height);
+    CGRect croprect = CGRectMake(backgroundImage.size.width/7, 0 , backgroundImage.size.height/2, backgroundImage.size.height);
     //Draw new image in current graphics context
     
     CGImageRef imageRef = CGImageCreateWithImageInRect([backgroundImage CGImage], croprect);
@@ -118,6 +121,12 @@
     UIImageView * backgroundView  =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, selfViewWidth, selfViewHeight)];
     [backgroundView setImage:croppedImage];
     [self.view addSubview:backgroundView];
+    
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.alpha = 0.7;
+    effectView.frame = self.view.bounds;
+    [backgroundView addSubview:effectView];
 
 }
 
