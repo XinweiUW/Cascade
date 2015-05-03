@@ -7,10 +7,13 @@
 //
 
 #import "TurnByTurnTableViewController.h"
+#import "TurnByTurnTableViewCell.h"
+#import "DataManager.h"
 
 @interface TurnByTurnTableViewController ()
 
 @property (nonatomic,strong) NSArray *turns;
+@property (strong, nonatomic) DataManager *dm;
 
 @end
 
@@ -18,8 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //selfViewWidth = self.view.frame.size.width;
+    //selfViewHeight = self.view.frame.size.height;
+    
+    [self setBackground];
+    
     NSString *turnByTurn = [self.routedb valueForKey:@"turnByTurnText"];
     self.turns = [turnByTurn componentsSeparatedByString:@";"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -32,11 +42,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) setBackground {
+    self.dm = [[DataManager alloc] init];
+    UIImage *backgroundImage = [self.dm loadImage:[self.routedb valueForKey:@"title"]];
+    
+    
+    CGRect croprect = CGRectMake(backgroundImage.size.width/6, 0 , backgroundImage.size.height/2, backgroundImage.size.height);
+    //Draw new image in current graphics context
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect([backgroundImage CGImage], croprect);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    
+    UIImageView * backgroundView  =[[UIImageView alloc]initWithImage:croppedImage];
+    //[backgroundView setImage:croppedImage];
+    //[self.view addSubview:backgroundView];
+    //self.tableView.backgroundColor = [UIColor clearColor];
+    //self.tableView.opaque = YES;
+    self.tableView.backgroundView = backgroundView;
+    //self.tableView.backgroundColor = [UIColor colorWithPatternImage:croppedImage];
+}
+
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 20;
+    return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -54,21 +84,37 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TurnByTurnTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
+    UIImage *img = [UIImage imageNamed:@"arrow-up.png"];
+    cell.arrowView = [[UIImageView alloc] initWithImage:img];
+    cell.arrowView.backgroundColor =[UIColor whiteColor];
+    
+    cell.direction.lineBreakMode = 0;
+    cell.direction.numberOfLines = 2;
+    cell.backgroundColor = [UIColor clearColor];
+    
+    [cell.direction setFont:[UIFont fontWithName:@"Arial" size:12]];
+    [cell.distance setFont:[UIFont fontWithName:@"Arial" size:10]];
+    cell.direction.textColor = [UIColor whiteColor];
+    cell.distance.textColor = [UIColor whiteColor];
+    
     NSString *turn = [self.turns objectAtIndex:indexPath.row];
+    
     cell.userInteractionEnabled = NO;
-    if ([turn containsString:@"Start"] || [turn containsString:@"End"] || ![turn containsString:@","])
+    if ([turn containsString:@"Start"] || [turn containsString:@"End"] || ![turn containsString:@"&"])
     {
-        cell.textLabel.text = turn;
-        cell.detailTextLabel.text = nil;
+        //cell.textLabel.text = turn;
+        //cell.detailTextLabel.text = nil;
+        cell.direction.text = turn;
+        cell.distance.text = nil;
         return cell;
     }
-    NSArray *arr = [[self.turns objectAtIndex:indexPath.row] componentsSeparatedByString:@","];
-    cell.textLabel.text = [arr objectAtIndex:0];
-    cell.detailTextLabel.text = [arr objectAtIndex:1];
+    NSArray *arr = [[self.turns objectAtIndex:indexPath.row] componentsSeparatedByString:@"&"];
+    cell.direction.text = [arr objectAtIndex:0];
+    cell.distance.text = [arr objectAtIndex:1];
     
     // Configure the cell...
     return cell;

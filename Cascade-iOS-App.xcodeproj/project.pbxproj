@@ -14,6 +14,7 @@
 		9D069E231AF497E30061E098 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D069E1C1AF497E30061E098 /* SWUtilityButtonTapGestureRecognizer.m */; };
 		9D069E241AF497E30061E098 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D069E1E1AF497E30061E098 /* SWUtilityButtonView.m */; };
 		9D069E271AF4980F0061E098 /* CustomLandingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D069E261AF4980F0061E098 /* CustomLandingTableViewCell.m */; };
+		9D1B386D1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B386C1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m */; };
 		9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082181ACA7E1500B2602B /* 2-switch to map list.png */; };
 		9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */; };
 		9D4082241ACA7E1500B2602B /* 5-distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821A1ACA7E1500B2602B /* 5-distance.png */; };
@@ -108,6 +109,8 @@
 		9D069E1E1AF497E30061E098 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		9D069E251AF4980F0061E098 /* CustomLandingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLandingTableViewCell.h; sourceTree = "<group>"; };
 		9D069E261AF4980F0061E098 /* CustomLandingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLandingTableViewCell.m; sourceTree = "<group>"; };
+		9D1B386B1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnByTurnTableViewCell.h; sourceTree = "<group>"; };
+		9D1B386C1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnByTurnTableViewCell.m; sourceTree = "<group>"; };
 		9D4082181ACA7E1500B2602B /* 2-switch to map list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-switch to map list.png"; sourceTree = "<group>"; };
 		9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-switch to picture list.png"; sourceTree = "<group>"; };
 		9D40821A1ACA7E1500B2602B /* 5-distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-distance.png"; sourceTree = "<group>"; };
@@ -317,6 +320,8 @@
 				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
 				9D069E251AF4980F0061E098 /* CustomLandingTableViewCell.h */,
 				9D069E261AF4980F0061E098 /* CustomLandingTableViewCell.m */,
+				9D1B386B1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.h */,
+				9D1B386C1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m */,
 				9D52CB551AD0FAF60002CF59 /* LeftMenuTableViewCell.h */,
 				9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */,
 				9D8BFDFD1AC39B4100ED37D1 /* ViewController.h */,
@@ -566,6 +571,7 @@
 				9D52CB571AD0FAF60002CF59 /* LeftMenuTableViewCell.m in Sources */,
 				9DF0F24B1ADB273400830753 /* Ride.m in Sources */,
 				9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */,
+				9D1B386D1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m in Sources */,
 				9D968B3C1AEF8CE900104C42 /* RouteMapViewController.m in Sources */,
 				9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */,
 				9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */,

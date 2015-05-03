@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface TurnByTurnTableViewController : UITableViewController
+@interface TurnByTurnTableViewController : UITableViewController/*{
+    CGFloat selfViewWidth;
+    CGFloat selfViewHeight;
+}*/
+
 
 @property (strong) NSManagedObject *routedb;
 
