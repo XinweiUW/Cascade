@@ -132,16 +132,17 @@
 
 - (void) setLabel: (UIImageView *) iconImageView connectWithValue: (NSString *)valueName {
     CGFloat originX = iconImageView.frame.origin.x + iconImageView.frame.size.width * 1.1;
-    CGFloat originY = iconImageView.frame.origin.y;
+    CGFloat originY = iconImageView.frame.origin.y - iconImageView.frame.size.width * 0.2;
     CGFloat labelWidth = iconImageView.frame.size.width * 2.5;
-    CGFloat labelHeight = iconImageView.frame.size.height;
+    CGFloat labelHeight = iconImageView.frame.size.height * 1.5;
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
+    //label.backgroundColor = [UIColor grayColor];
     [label setTextAlignment:NSTextAlignmentLeft];
     label.text = [self.routedb valueForKey:valueName];
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont boldSystemFontOfSize:18.0f];
-    label.numberOfLines = 2;
-    label.lineBreakMode = 0;
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:label];
 }
 
