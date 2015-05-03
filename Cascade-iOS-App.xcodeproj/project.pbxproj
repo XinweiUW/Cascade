@@ -65,6 +65,7 @@
 		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
 		9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */; };
 		9DBDE8AC1AE4D60E003971F1 /* routeBackGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */; };
+		9DC4FF601AF59CFD0070E3EF /* TurnByTurnTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4FF5F1AF59CFD0070E3EF /* TurnByTurnTableViewController.m */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
@@ -174,6 +175,8 @@
 		9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		9DA8FC661ACF9468006F4FBB /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
 		9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = routeBackGround.jpg; sourceTree = "<group>"; };
+		9DC4FF5E1AF59CFD0070E3EF /* TurnByTurnTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnByTurnTableViewController.h; sourceTree = "<group>"; };
+		9DC4FF5F1AF59CFD0070E3EF /* TurnByTurnTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnByTurnTableViewController.m; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
@@ -381,6 +384,8 @@
 				9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */,
 				9D968B3A1AEF8CE900104C42 /* RouteMapViewController.h */,
 				9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */,
+				9DC4FF5E1AF59CFD0070E3EF /* TurnByTurnTableViewController.h */,
+				9DC4FF5F1AF59CFD0070E3EF /* TurnByTurnTableViewController.m */,
 				9D52A89F1AD395900041CB62 /* AboutViewController.h */,
 				9D52A8A01AD395900041CB62 /* AboutViewController.m */,
 				9D52A8A21AD395AC0041CB62 /* TipViewController.h */,
@@ -580,6 +585,7 @@
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
 				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				9D069E241AF497E30061E098 /* SWUtilityButtonView.m in Sources */,
+				9DC4FF601AF59CFD0070E3EF /* TurnByTurnTableViewController.m in Sources */,
 				9D069E1F1AF497E30061E098 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */,
 				9DD7EF2E1AEB43C2008B2C33 /* DifficultiesViewController.m in Sources */,

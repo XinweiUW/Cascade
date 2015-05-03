@@ -8,6 +8,7 @@
 
 #import "RouteMapViewController.h"
 #import "LandingTableViewController.h"
+#import "TurnByTurnTableViewController.h"
 
 @interface RouteMapViewController ()
 
@@ -106,9 +107,9 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"backToDescriptionSegue"]) {
+    if ([[segue identifier] isEqualToString:@"showTurnByTurn"]) {
         //NSManagedObject *selectedDevice = [self.routeArray objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-        DescriptionsViewController *destViewController = segue.destinationViewController;
+        TurnByTurnTableViewController *destViewController = segue.destinationViewController;
         destViewController.routedb = self.routedb;
     }
     

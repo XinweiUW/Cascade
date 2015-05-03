@@ -24,6 +24,7 @@
 @dynamic attractions;
 @dynamic descriptions;
 @dynamic turnByTurn;
+@dynamic turnByTurnText;
 @dynamic difficulties;
 //@dynamic imgData;
 @dynamic imgURL;

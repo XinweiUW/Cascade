@@ -10,7 +10,7 @@
 #import "DataManager.h"
 #import "DescriptionsViewController.h"
 
-@interface RouteMapViewController : UINavigationController {
+@interface RouteMapViewController : UIViewController {
     CGFloat selfViewWidth;
     CGFloat selfViewHeight;
 }
