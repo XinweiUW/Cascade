@@ -80,6 +80,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIImage *)convertImageToGrayScale:(UIImage *)image
+{
+    // Create image rectangle with current image width/height
+    CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    // Grayscale color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    
+    // Create bitmap content with current image size and grayscale colorspace
+    CGContextRef context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaNone);
+    
+    // Draw image into current context, with specified rectangle
+    // using previously defined context (with grayscale colorspace)
+    CGContextDrawImage(context, imageRect, [image CGImage]);
+    
+    // Create bitmap image info from pixel data in current context
+    CGImageRef imageRef = CGBitmapContextCreateImage(context);
+    
+    // Create a new UIImage object
+    UIImage *newImage = [UIImage imageWithCGImage:imageRef];
+    
+    // Release colorspace, context and bitmap information
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    CFRelease(imageRef);
+    
+    // Return the new grayscale image
+    return newImage;
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -143,7 +174,8 @@
         
         CGImageRelease(imageRef);
     }
-    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+    //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+    UIImage *grayBackGound = [self convertImageToGrayScale:image];
     
     [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.routeNameLabel.numberOfLines = 2;
@@ -152,9 +184,11 @@
     if ([[device valueForKey:@"complete"] integerValue] == 1) {
         cell.backgroundView.alpha = 0.5;
         cell.completeView.hidden = FALSE;
+        cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
     } else if ([[device valueForKey:@"complete"] integerValue]  == 0 ){
         cell.backgroundView.alpha = 1;
         cell.completeView.hidden = TRUE;
+        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     }
     
     return cell;
@@ -227,6 +261,9 @@
             NSNumber *comp = [NSNumber numberWithInt:1];
             //obj.complete = comp;
             [obj setValue:comp forKey:@"complete"];
+            UIImage *image = [self.cachedImages valueForKey:[obj valueForKey:@"title"]];
+            UIImage *grayBackGound = [self convertImageToGrayScale:image];
+            cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;
@@ -253,6 +290,9 @@
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             
             Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            
+            UIImage *image = [self.cachedImages valueForKey:[obj valueForKey:@"title"]];
+            cell.backgroundView = [[UIImageView alloc] initWithImage:image];
             
             //NSNumber *comp = [NSNumber numberWithInt:0];
             NSNumber *comp = [NSNumber numberWithInt:0];
