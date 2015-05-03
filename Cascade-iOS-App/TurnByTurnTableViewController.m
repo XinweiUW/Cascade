@@ -27,6 +27,10 @@
     
     [self setBackground];
     
+    //UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeDown:)];
+    //swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    //[self.view addGestureRecognizer:swipeDown];
+    
     NSString *turnByTurn = [self.routedb valueForKey:@"turnByTurnText"];
     self.turns = [turnByTurn componentsSeparatedByString:@";"];
     
@@ -62,6 +66,17 @@
     //self.tableView.backgroundColor = [UIColor colorWithPatternImage:croppedImage];
 }
 
+- (void)swipeDown:(UISwipeGestureRecognizer *)gestureRecognizer{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)backToMenu{
+    //LandingTableViewController *vc = [[LandingTableViewController alloc] initWithNibName:@"LandingTableViewController" bundle:nil];
+    //[self.navigationController pushViewController:vc animated:YES];
+    [self performSegueWithIdentifier:@"unwindFromTurnByTurn" sender:self];
+}
+
+
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -81,6 +96,29 @@
     return self.turns.count;
 }
 
+/*- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGPoint offset1 = scrollView.contentOffset;
+    CGRect bounds1 = scrollView.bounds;
+    CGSize size1 = scrollView.contentSize;
+    UIEdgeInsets inset1 = scrollView.contentInset;
+    float y1 = offset1.y + bounds1.size.height - inset1.bottom;
+    //float h1 = size1.height;
+    if (y1 < self.tableView.frame.size.height) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}*/
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    CGPoint offset1 = scrollView.contentOffset;
+    CGRect bounds1 = scrollView.bounds;
+    CGSize size1 = scrollView.contentSize;
+    UIEdgeInsets inset1 = scrollView.contentInset;
+    float y1 = offset1.y + bounds1.size.height - inset1.bottom;
+    //float h1 = size1.height;
+    if (y1 < self.tableView.frame.size.height) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
@@ -96,7 +134,7 @@
     cell.direction.numberOfLines = 2;
     cell.backgroundColor = [UIColor clearColor];
     
-    [cell.direction setFont:[UIFont fontWithName:@"Arial" size:12]];
+    [cell.direction setFont:[UIFont fontWithName:@"Arial" size:16]];
     [cell.distance setFont:[UIFont fontWithName:@"Arial" size:10]];
     cell.direction.textColor = [UIColor whiteColor];
     cell.distance.textColor = [UIColor whiteColor];
@@ -119,6 +157,8 @@
     // Configure the cell...
     return cell;
 }
+
+
 
 
 /*

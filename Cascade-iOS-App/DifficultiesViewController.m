@@ -55,27 +55,27 @@
     
     [self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
     
-    //UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
-    //[self.view addSubview:navBar];
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
+    [self.view addSubview:navBar];
     
-    //UIImage *backImage = [UIImage imageNamed:@"back.png"];
-    //UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
-    //[backButton setFrame:CGRectMake(0, 0, navBar.frame.size.height/3, navBar.frame.size.height/2.5)];
-    //[backButton setImage:backImage forState:UIControlStateNormal];
-    //[backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
-    //UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    /*
-    UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
+    UIImage *backImage = [UIImage imageNamed:@"back.png"];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
+    [backButton setFrame:CGRectMake(0, 0, navBar.frame.size.height/3, navBar.frame.size.height/2.5)];
+    [backButton setImage:backImage forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    /*UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Back"
                                    style:UIBarButtonItemStylePlain
                                    target:self
-                                   action:@selector(flipView)];
-   */
-    //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:nil];
+                                   action:@selector(flipView)];*/
+   
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:nil];
     //item.leftBarButtonItem = flipButton;
-    //item.leftBarButtonItem = backButtonItem;
-    //[navBar pushNavigationItem:item animated:NO];
+    item.leftBarButtonItem = backButtonItem;
+    [navBar pushNavigationItem:item animated:NO];
     
 }
 
