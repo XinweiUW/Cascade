@@ -65,6 +65,8 @@
     keyWordsLabel.numberOfLines = 0;
     [descriptImage addSubview:keyWordsLabel];
     
+    
+    
     UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0.15 * descriptImage.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
     routeDescriptLabel.backgroundColor = [UIColor clearColor];
     routeDescriptLabel.textColor = [UIColor whiteColor];

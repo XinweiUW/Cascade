@@ -87,7 +87,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4XN-AD-L25">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4XN-AD-L25">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
                                     <outlet property="delegate" destination="t4a-yX-4Qw" id="0RN-3K-tdC"/>
@@ -95,6 +95,12 @@
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4XN-AD-L25" firstAttribute="bottom" secondItem="Z6b-Ih-dHH" secondAttribute="top" id="CEt-af-aOl"/>
+                            <constraint firstItem="4XN-AD-L25" firstAttribute="top" secondItem="YQ1-P9-R9A" secondAttribute="top" id="Fyy-Kp-Mbd"/>
+                            <constraint firstItem="4XN-AD-L25" firstAttribute="leading" secondItem="YQ1-P9-R9A" secondAttribute="leading" id="HDQ-EX-MFN"/>
+                            <constraint firstAttribute="trailing" secondItem="4XN-AD-L25" secondAttribute="trailing" id="WoU-A0-2xS"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="4XN-AD-L25" id="4Nr-J1-djI"/>
@@ -378,7 +384,7 @@
         <image name="menu-button.png" width="22" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XRy-9W-Oeq"/>
+        <segue reference="G9I-Hk-jOv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>
