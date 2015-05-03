@@ -33,22 +33,22 @@
     
    
     
-    UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.15 * selfViewWidth, 0.2 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.13 * selfViewWidth, 0.22 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
     [distanceIcon setImage:[UIImage imageNamed:@"distance.png"]];
     [self.view addSubview:distanceIcon];
     [self setLabel:distanceIcon connectWithValue:@"distance"];
     
-    UIImageView *durationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.35 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    UIImageView *durationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.40 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
     [durationIcon setImage:[UIImage imageNamed:@"time.png"]];
     [self.view addSubview:durationIcon];
     [self setLabel:durationIcon connectWithValue:@"duration"];
     
-    UIImageView *terrainIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.55 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    UIImageView *terrainIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.60 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
     [terrainIcon setImage:[UIImage imageNamed:@"terrain.png"]];
     [self.view addSubview:terrainIcon];
     [self setLabel:terrainIcon connectWithValue:@"terrain"];
     
-    UIImageView *roadConditionIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.15 * selfViewWidth, 0.7 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
+    UIImageView *roadConditionIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.13 * selfViewWidth, 0.78 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
     [roadConditionIcon setImage:[UIImage imageNamed:@"road condition.png"]];
     [self.view addSubview:roadConditionIcon];
     [self setLabel:roadConditionIcon connectWithValue:@"roadCondition"];
@@ -122,9 +122,9 @@
     [backgroundView setImage:croppedImage];
     [self.view addSubview:backgroundView];
     
-    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-    effectView.alpha = 0.7;
+    effectView.alpha = 0.4;
     effectView.frame = self.view.bounds;
     [backgroundView addSubview:effectView];
 
@@ -133,13 +133,13 @@
 - (void) setLabel: (UIImageView *) iconImageView connectWithValue: (NSString *)valueName {
     CGFloat originX = iconImageView.frame.origin.x + iconImageView.frame.size.width * 1.1;
     CGFloat originY = iconImageView.frame.origin.y;
-    CGFloat labelWidth = iconImageView.frame.size.width * 4;
+    CGFloat labelWidth = iconImageView.frame.size.width * 2.5;
     CGFloat labelHeight = iconImageView.frame.size.height;
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
     [label setTextAlignment:NSTextAlignmentLeft];
     label.text = [self.routedb valueForKey:valueName];
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:21.0f];
+    label.font = [UIFont boldSystemFontOfSize:18.0f];
     label.numberOfLines = 2;
     label.lineBreakMode = 0;
     [self.view addSubview:label];
