@@ -17,8 +17,8 @@
 @synthesize routedb;
 
 - (void)viewDidLoad {
-    CGFloat selfViewWidth = self.view.frame.size.width;
-    CGFloat selfViewHeight = self.view.frame.size.height;
+    selfViewWidth = self.view.frame.size.width;
+    selfViewHeight = self.view.frame.size.height;
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
@@ -37,15 +37,16 @@
     [backgroundView setImage:croppedImage];
     [self.view addSubview:backgroundView];
     
-    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.4, backgroundView.frame.size.width, backgroundView.frame.size.width/5)];
+    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.3, backgroundView.frame.size.width, backgroundView.frame.size.width/5)];
     routeTitleLabel.backgroundColor = [UIColor clearColor];
     routeTitleLabel.textColor = [UIColor whiteColor];
     [routeTitleLabel setTextAlignment:NSTextAlignmentCenter];
     routeTitleLabel.font = [UIFont boldSystemFontOfSize:23.0f];
     routeTitleLabel.numberOfLines = 2;
     routeTitleLabel.lineBreakMode = 0;
+    [backgroundView addSubview:routeTitleLabel];
     
-    UIImageView *descriptImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.6, backgroundView.frame.size.width, backgroundView.frame.size.height*0.4)];
+    UIImageView *descriptImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.5, backgroundView.frame.size.width, backgroundView.frame.size.height*0.5)];
     descriptImage.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:0];
     descriptImage.backgroundColor = [UIColor clearColor];
     [self.view addSubview:descriptImage];
@@ -56,16 +57,25 @@
     effectView.frame = descriptImage.bounds;
     [descriptImage addSubview:effectView];
     
-    UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0.1 * descriptImage.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
+    UILabel *keyWordsLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0, 0.84 * descriptImage.frame.size.width, 0.2 * descriptImage.frame.size.height)];
+    keyWordsLabel.backgroundColor = [UIColor clearColor];
+    keyWordsLabel.textColor = [UIColor whiteColor];
+    keyWordsLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+    keyWordsLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    keyWordsLabel.numberOfLines = 0;
+    [descriptImage addSubview:keyWordsLabel];
+    
+    UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0.15 * descriptImage.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
     routeDescriptLabel.backgroundColor = [UIColor clearColor];
     routeDescriptLabel.textColor = [UIColor whiteColor];
+    routeDescriptLabel.font = [UIFont systemFontOfSize:16.0f];
     routeDescriptLabel.lineBreakMode = NSLineBreakByWordWrapping;
     routeDescriptLabel.numberOfLines = 0;
     [descriptImage addSubview:routeDescriptLabel];
     
     if (self.routedb) {
         routeTitleLabel.text = [self.routedb valueForKey:@"title"];
-        [backgroundView addSubview:routeTitleLabel];
+        keyWordsLabel.text = [self.routedb valueForKey:@"keyWords"];
         routeDescriptLabel.text = [self.routedb valueForKey:@"descriptions"];
     }
 }
