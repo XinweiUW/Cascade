@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
+    self.tableView.rowHeight = self.view.frame.size.height * 0.43;
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
@@ -166,7 +167,12 @@
     }else{
         image = [self.dm loadImage:[device valueForKey:@"title"]];
         
-        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        CGFloat cellWidth = cell.frame.size.width;
+        CGFloat cellHeight = cell.frame.size.height;
+
+        
+        //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
         image = croppedImage;
@@ -174,8 +180,8 @@
         
         CGImageRelease(imageRef);
     }
-    //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-    UIImage *grayBackGound = [self convertImageToGrayScale:image];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+    //UIImage *grayBackGound = [self convertImageToGrayScale:image];
     
     [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.routeNameLabel.numberOfLines = 2;
@@ -184,11 +190,11 @@
     if ([[device valueForKey:@"complete"] integerValue] == 1) {
         cell.backgroundView.alpha = 0.5;
         cell.completeView.hidden = FALSE;
-        cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
+        //cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
     } else if ([[device valueForKey:@"complete"] integerValue]  == 0 ){
         cell.backgroundView.alpha = 1;
         cell.completeView.hidden = TRUE;
-        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     }
     
     return cell;
@@ -261,9 +267,9 @@
             NSNumber *comp = [NSNumber numberWithInt:1];
             //obj.complete = comp;
             [obj setValue:comp forKey:@"complete"];
-            UIImage *image = [self.cachedImages valueForKey:[obj valueForKey:@"title"]];
-            UIImage *grayBackGound = [self convertImageToGrayScale:image];
-            cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
+            //UIImage *image = [self.cachedImages valueForKey:[obj valueForKey:@"title"]];
+            //UIImage *grayBackGound = [self convertImageToGrayScale:image];
+            //cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
             NSError *error;
             [self.dm.managedObjectContext save:&error];
             break;
@@ -291,8 +297,8 @@
             
             Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
-            UIImage *image = [self.cachedImages valueForKey:[obj valueForKey:@"title"]];
-            cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+            //UIImage *image = [self.cachedImages valueForKey:[obj valueForKey:@"title"]];
+            //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
             
             //NSNumber *comp = [NSNumber numberWithInt:0];
             NSNumber *comp = [NSNumber numberWithInt:0];
