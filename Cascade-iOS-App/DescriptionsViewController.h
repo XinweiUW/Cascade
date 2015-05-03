@@ -10,7 +10,10 @@
 #import <CoreData/CoreData.h>
 #import "DataManager.h"
 
-@interface DescriptionsViewController : UIViewController
+@interface DescriptionsViewController : UIViewController {
+    CGFloat selfViewWidth;
+    CGFloat selfViewHeight;
+}
 
 @property (strong, nonatomic) DataManager *dm;
 //@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;

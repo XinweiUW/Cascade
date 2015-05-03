@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.coordinate = CLLocationCoordinate2DMake(47.6204, -122.0000);
+    self.coordinate = CLLocationCoordinate2DMake(47.6204, -122.2);
     self.dm = [[DataManager alloc] init];
     self.rideIndices = [[NSMutableDictionary alloc] init];
     
