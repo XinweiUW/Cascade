@@ -41,7 +41,7 @@
     //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
     [backButton setFrame:CGRectMake(0, 0, navBar.frame.size.height/3, navBar.frame.size.height/2.5)];
     [backButton setImage:backImage forState:UIControlStateNormal];
-    //[backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:nil];
@@ -55,6 +55,7 @@
     leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left.png"] scaledToSize:imgSizeHorizontal];
     rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right.png"] scaledToSize:imgSizeHorizontal];
     upImage = [self imageWithImage:[UIImage imageNamed:@"arrow-up.png"] scaledToSize:imgSizeUp];
+    attractionImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -186,6 +187,9 @@
         //cell.imageView.transform = CGAffineTransformMakeScale(0.16, 0.16);
         cell.imageView.image = startImage;//[UIImage imageNamed:@"attraction.png"];
     }else if([turn containsString:@"End"]){
+        //cell.imageView.transform = CGAffineTransformMakeScale(0.16, 0.16);
+        cell.imageView.image = endImage;//[UIImage imageNamed:@"attraction.png"];
+    }else if([turn containsString:@"Arrive"]){
         //cell.imageView.transform = CGAffineTransformMakeScale(0.16, 0.16);
         cell.imageView.image = endImage;//[UIImage imageNamed:@"attraction.png"];
     }else if([turn containsString:@"left"]){

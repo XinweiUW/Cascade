@@ -19,6 +19,7 @@
     UIImage *rightImage;
     UIImage *upImage;
     UIImage *endImage;
+    UIImage *attractionImage;
 }
 
 @property (strong) NSManagedObject *routedb;
