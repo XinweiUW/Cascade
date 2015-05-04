@@ -96,17 +96,6 @@
     return self.turns.count;
 }
 
-/*- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGPoint offset1 = scrollView.contentOffset;
-    CGRect bounds1 = scrollView.bounds;
-    CGSize size1 = scrollView.contentSize;
-    UIEdgeInsets inset1 = scrollView.contentInset;
-    float y1 = offset1.y + bounds1.size.height - inset1.bottom;
-    //float h1 = size1.height;
-    if (y1 < self.tableView.frame.size.height) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-}*/
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     CGPoint offset1 = scrollView.contentOffset;
@@ -114,8 +103,10 @@
     CGSize size1 = scrollView.contentSize;
     UIEdgeInsets inset1 = scrollView.contentInset;
     float y1 = offset1.y + bounds1.size.height - inset1.bottom;
+    NSLog(@"%f", y1);
     //float h1 = size1.height;
-    if (y1 < self.tableView.frame.size.height) {
+    NSLog(@"%f", self.tableView.frame.size.height / 6 * 5);
+    if (y1 < 450) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -157,8 +148,6 @@
     // Configure the cell...
     return cell;
 }
-
-
 
 
 /*

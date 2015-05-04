@@ -33,6 +33,7 @@
 		9D52CB541AD0D1590002CF59 /* CascadeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52CB531AD0D1590002CF59 /* CascadeLogo.png */; };
 		9D52CB571AD0FAF60002CF59 /* LeftMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */; };
 		9D52CB5B1AD109490002CF59 /* CompletedStamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52CB5A1AD109490002CF59 /* CompletedStamp.png */; };
+		9D7B794D1AF6E0E9004F362E /* TurnByTurnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B794C1AF6E0E9004F362E /* TurnByTurnViewController.m */; };
 		9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF51AC39B4100ED37D1 /* main.m */; };
 		9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */; };
 		9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDFA1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld */; };
@@ -134,6 +135,8 @@
 		9D52CB551AD0FAF60002CF59 /* LeftMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuTableViewCell.h; sourceTree = "<group>"; };
 		9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuTableViewCell.m; sourceTree = "<group>"; };
 		9D52CB5A1AD109490002CF59 /* CompletedStamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CompletedStamp.png; sourceTree = "<group>"; };
+		9D7B794B1AF6E0E9004F362E /* TurnByTurnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnByTurnViewController.h; sourceTree = "<group>"; };
+		9D7B794C1AF6E0E9004F362E /* TurnByTurnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnByTurnViewController.m; sourceTree = "<group>"; };
 		9D8BFDF01AC39B4100ED37D1 /* Cascade-iOS-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cascade-iOS-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8BFDF41AC39B4100ED37D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8BFDF51AC39B4100ED37D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -401,6 +404,8 @@
 				9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */,
 				9DD46A431AE47E99006BBCEB /* RideAnnotation.h */,
 				9DD46A441AE47E99006BBCEB /* RideAnnotation.m */,
+				9D7B794B1AF6E0E9004F362E /* TurnByTurnViewController.h */,
+				9D7B794C1AF6E0E9004F362E /* TurnByTurnViewController.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 				9DD7EF2E1AEB43C2008B2C33 /* DifficultiesViewController.m in Sources */,
 				9D069E271AF4980F0061E098 /* CustomLandingTableViewCell.m in Sources */,
 				9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */,
+				9D7B794D1AF6E0E9004F362E /* TurnByTurnViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

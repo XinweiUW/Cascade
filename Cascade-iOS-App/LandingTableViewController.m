@@ -26,9 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     self.tableView.rowHeight = self.view.frame.size.height * 0.43;
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenu.jpg"]];
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
