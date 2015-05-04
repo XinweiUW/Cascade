@@ -8,6 +8,7 @@
 
 #import "DifficultiesViewController.h"
 #import "LandingTableViewController.h"
+#import "DSNavigationBar.h"
 
 @interface DifficultiesViewController ()
 
@@ -55,7 +56,7 @@
     
     [self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
     
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
+    DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
     [self.view addSubview:navBar];
     
     UIImage *backImage = [UIImage imageNamed:@"back.png"];

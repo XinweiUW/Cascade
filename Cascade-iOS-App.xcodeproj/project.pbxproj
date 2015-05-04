@@ -15,6 +15,7 @@
 		9D069E241AF497E30061E098 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D069E1E1AF497E30061E098 /* SWUtilityButtonView.m */; };
 		9D069E271AF4980F0061E098 /* CustomLandingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D069E261AF4980F0061E098 /* CustomLandingTableViewCell.m */; };
 		9D1B386D1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B386C1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m */; };
+		9D38DEE11AF7158D0082DD07 /* DSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D38DEE01AF7158D0082DD07 /* DSNavigationBar.m */; };
 		9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082181ACA7E1500B2602B /* 2-switch to map list.png */; };
 		9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */; };
 		9D4082241ACA7E1500B2602B /* 5-distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821A1ACA7E1500B2602B /* 5-distance.png */; };
@@ -113,6 +114,8 @@
 		9D069E261AF4980F0061E098 /* CustomLandingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLandingTableViewCell.m; sourceTree = "<group>"; };
 		9D1B386B1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnByTurnTableViewCell.h; sourceTree = "<group>"; };
 		9D1B386C1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnByTurnTableViewCell.m; sourceTree = "<group>"; };
+		9D38DEDF1AF7158D0082DD07 /* DSNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSNavigationBar.h; sourceTree = "<group>"; };
+		9D38DEE01AF7158D0082DD07 /* DSNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSNavigationBar.m; sourceTree = "<group>"; };
 		9D4082181ACA7E1500B2602B /* 2-switch to map list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-switch to map list.png"; sourceTree = "<group>"; };
 		9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-switch to picture list.png"; sourceTree = "<group>"; };
 		9D40821A1ACA7E1500B2602B /* 5-distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-distance.png"; sourceTree = "<group>"; };
@@ -253,6 +256,15 @@
 			name = SWTableViewCell;
 			sourceTree = "<group>";
 		};
+		9D38DEDE1AF7156C0082DD07 /* DSTransparentNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				9D38DEDF1AF7158D0082DD07 /* DSNavigationBar.h */,
+				9D38DEE01AF7158D0082DD07 /* DSNavigationBar.m */,
+			);
+			name = DSTransparentNavigationBar;
+			sourceTree = "<group>";
+		};
 		9D4082171ACA7DEF00B2602B /* iconimg */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +331,7 @@
 		9D8BFDF21AC39B4100ED37D1 /* Cascade-iOS-App */ = {
 			isa = PBXGroup;
 			children = (
+				9D38DEDE1AF7156C0082DD07 /* DSTransparentNavigationBar */,
 				9D2671071ACFB4EA00DFDB0B /* SWTableViewCell */,
 				9DA8FC4D1ACF911B006F4FBB /* Animations */,
 				9D4082171ACA7DEF00B2602B /* iconimg */,
@@ -597,6 +610,7 @@
 				9D52A8A11AD395900041CB62 /* AboutViewController.m in Sources */,
 				9DD46A451AE47E99006BBCEB /* RideAnnotation.m in Sources */,
 				9D069E221AF497E30061E098 /* SWTableViewCell.m in Sources */,
+				9D38DEE11AF7158D0082DD07 /* DSNavigationBar.m in Sources */,
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
 				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				9D069E241AF497E30061E098 /* SWUtilityButtonView.m in Sources */,

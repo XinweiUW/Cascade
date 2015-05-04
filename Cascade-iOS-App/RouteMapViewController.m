@@ -9,6 +9,7 @@
 #import "RouteMapViewController.h"
 #import "LandingTableViewController.h"
 #import "TurnByTurnTableViewController.h"
+#import "DSNavigationBar.h"
 
 @interface RouteMapViewController ()
 
@@ -27,7 +28,7 @@
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDown];
     
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
+    DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
     [self.view addSubview:navBar];
     
     UIImage *backImage = [UIImage imageNamed:@"back.png"];

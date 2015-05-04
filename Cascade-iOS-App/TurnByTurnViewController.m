@@ -47,12 +47,13 @@
     item.leftBarButtonItem = backButtonItem;
     [navBar pushNavigationItem:item animated:NO];
     
-    CGSize imgSize = CGSizeMake(40, 45);
-    startImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSize];
-    endImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSize];
-    leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left.png"] scaledToSize:imgSize];
-    rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right.png"] scaledToSize:imgSize];
-    upImage = [self imageWithImage:[UIImage imageNamed:@"arrow-up.png"] scaledToSize:imgSize];
+    CGSize imgSizeUp = CGSizeMake(40, 45);
+    CGSize imgSizeHorizontal = CGSizeMake(40, 45);
+    startImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
+    endImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
+    leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left.png"] scaledToSize:imgSizeHorizontal];
+    rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right.png"] scaledToSize:imgSizeHorizontal];
+    upImage = [self imageWithImage:[UIImage imageNamed:@"arrow-up.png"] scaledToSize:imgSizeUp];
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -65,6 +66,13 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
+
+- (void)backToMenu{
+    //LandingTableViewController *vc = [[LandingTableViewController alloc] initWithNibName:@"LandingTableViewController" bundle:nil];
+    //[self.navigationController pushViewController:vc animated:YES];
+    [self performSegueWithIdentifier:@"unwindFromTurnByTurn" sender:self];
+}
+
 
 - (void)setBackground {
 
