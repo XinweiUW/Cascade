@@ -27,7 +27,7 @@
     selfViewHeight = self.view.frame.size.height;
     
     [self setBackground];
-    [self.tableView reloadData];
+    [tableView reloadData];
     
     NSString *turnByTurn = [self.routedb valueForKey:@"turnByTurnText"];
     self.turns = [turnByTurn componentsSeparatedByString:@";"];
@@ -51,13 +51,13 @@
 
 - (void)setBackground {
 
-    self.tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
-    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
+    tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     //self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     //[self.view addSubview:self.tableView];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 
     self.dm = [[DataManager alloc] init];
     UIImage *backgroundImage = [self.dm loadImage:[self.routedb valueForKey:@"title"]];
@@ -73,9 +73,9 @@
     //[self.view addSubview:backgroundView];
     //self.tableView.backgroundColor = [UIColor clearColor];
     //self.tableView.opaque = YES;
-    self.tableView.backgroundView = backgroundView;
-    self.tableView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.tableView];
+    tableView.backgroundView = backgroundView;
+    tableView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:tableView];
 
 }
 
@@ -119,6 +119,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
     cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundView.alpha = 0;
     
     NSString *turn = [self.turns objectAtIndex:indexPath.row];
     
@@ -148,7 +149,7 @@
     float y1 = offset1.y + bounds1.size.height - inset1.bottom;
     NSLog(@"%f", y1);
     //float h1 = size1.height;
-    NSLog(@"%f", self.tableView.frame.size.height / 6 * 5);
+    NSLog(@"%f", tableView.frame.size.height / 6 * 5);
     if (y1 < 450) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }

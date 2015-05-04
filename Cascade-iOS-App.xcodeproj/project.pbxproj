@@ -62,6 +62,7 @@
 		9D968B381AEF6E7B00104C42 /* to list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B271AEF6E7B00104C42 /* to list.png */; };
 		9D968B391AEF6E7B00104C42 /* to map.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B281AEF6E7B00104C42 /* to map.png */; };
 		9D968B3C1AEF8CE900104C42 /* RouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */; };
+		9D987E671AF6ED9E005F4BAD /* navbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D987E661AF6ED9E005F4BAD /* navbar_bg.png */; };
 		9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */; };
 		9DA8FC5F1ACF9137006F4FBB /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8FC5E1ACF9137006F4FBB /* menu-button.png */; };
 		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
@@ -172,6 +173,7 @@
 		9D968B281AEF6E7B00104C42 /* to map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "to map.png"; sourceTree = "<group>"; };
 		9D968B3A1AEF8CE900104C42 /* RouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteMapViewController.h; sourceTree = "<group>"; };
 		9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteMapViewController.m; sourceTree = "<group>"; };
+		9D987E661AF6ED9E005F4BAD /* navbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_bg.png; sourceTree = "<group>"; };
 		9DA8FC4E1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
 		9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
 		9DA8FC5E1ACF9137006F4FBB /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */,
 				9D52CB5A1AD109490002CF59 /* CompletedStamp.png */,
 				9D52CB531AD0D1590002CF59 /* CascadeLogo.png */,
+				9D987E661AF6ED9E005F4BAD /* navbar_bg.png */,
 				9DE6748F1ACF9F54000653DB /* leftMenu.jpg */,
 				9DA8FC5E1ACF9137006F4FBB /* menu-button.png */,
 				9D4082181ACA7E1500B2602B /* 2-switch to map list.png */,
@@ -535,6 +538,7 @@
 				9D968B371AEF6E7B00104C42 /* time.png in Resources */,
 				9DBDE8AC1AE4D60E003971F1 /* routeBackGround.jpg in Resources */,
 				9D52CB5B1AD109490002CF59 /* CompletedStamp.png in Resources */,
+				9D987E671AF6ED9E005F4BAD /* navbar_bg.png in Resources */,
 				9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */,
 				9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */,
 				9D52CB541AD0D1590002CF59 /* CascadeLogo.png in Resources */,

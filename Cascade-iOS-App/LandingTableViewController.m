@@ -32,6 +32,9 @@
     self.tableView.rowHeight = self.view.frame.size.height * 0.43;
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenu.jpg"]];
     
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
         [self.dm updateTextFromServerWithCompletion:^{

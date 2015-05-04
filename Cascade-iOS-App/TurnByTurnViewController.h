@@ -12,9 +12,10 @@
 @interface TurnByTurnViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
     CGFloat selfViewWidth;
     CGFloat selfViewHeight;
+    UITableView *tableView;
 }
 
 @property (strong) NSManagedObject *routedb;
-@property (strong, nonatomic) UITableView *tableView;
+//@property (strong, nonatomic) UITableView *tableView;
 
 @end

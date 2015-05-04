@@ -10,7 +10,7 @@
 #import "LeftMenuViewController.h"
 #import "SlideNavigationController.h"
 #import "DataManager.h"
-
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:0]
 @interface AppDelegate ()
 
 @end
@@ -24,6 +24,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor greenColor]];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x66CC00)];
+    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"leftMenu.jpg"] forBarMetrics:UIBarMetricsDefault];
+    //UIImage *navBackgroundImage = [UIImage imageNamed:@"navbar_bg"];
+    //[[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    //UIImage *backButtonImage = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
+    //[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
