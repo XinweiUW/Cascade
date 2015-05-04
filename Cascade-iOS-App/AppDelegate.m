@@ -34,9 +34,10 @@
     //[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     UIColor * color = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:0.2f];
     [[DSNavigationBar appearance] setNavigationBarWithColor:color];
-    //UIImage *backImage = [UIImage imageNamed:@"back.png"];
-    //[[DSNavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"back.png"]];
-    //[[DSNavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"back.png"]];
+    CGSize imgSizeUp = CGSizeMake(20, 25);
+    UIImage *backImage = [self imageWithImage:[UIImage imageNamed:@"back.png"] scaledToSize:imgSizeUp];
+    [[DSNavigationBar appearance] setBackIndicatorImage:backImage];
+    [[DSNavigationBar appearance] setBackIndicatorTransitionMaskImage:backImage];
     //UIImage *backButtonImage = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
     //[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     

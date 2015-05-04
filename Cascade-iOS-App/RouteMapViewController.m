@@ -28,7 +28,7 @@
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDown];
     
-    DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
+    DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 50)];
     [self.view addSubview:navBar];
     
     UIImage *backImage = [UIImage imageNamed:@"back.png"];
@@ -54,7 +54,7 @@
 
 - (void) loadMapView {
     
-    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,60,selfViewWidth,self.view.frame.size.height - 120)];
+    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,70,selfViewWidth,self.view.frame.size.height - 120)];
     
     webView.scalesPageToFit = YES;
     
