@@ -9,7 +9,7 @@
 #import "TurnByTurnViewController.h"
 #import "DataManager.h"
 #import "TurnByTurnTableViewCell.h"
-
+//#import "MYUtil.h"
 
 @interface TurnByTurnViewController ()
 
@@ -27,7 +27,7 @@
     selfViewHeight = self.view.frame.size.height;
     
     [self setBackground];
-    [tableView reloadData];
+    [customTableView reloadData];
     
     NSString *turnByTurn = [self.routedb valueForKey:@"turnByTurnText"];
     self.turns = [turnByTurn componentsSeparatedByString:@";"];
@@ -47,18 +47,35 @@
     item.leftBarButtonItem = backButtonItem;
     [navBar pushNavigationItem:item animated:NO];
     
+    CGSize imgSize = CGSizeMake(40, 45);
+    startImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSize];
+    endImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSize];
+    leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left.png"] scaledToSize:imgSize];
+    rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right.png"] scaledToSize:imgSize];
+    upImage = [self imageWithImage:[UIImage imageNamed:@"arrow-up.png"] scaledToSize:imgSize];
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 - (void)setBackground {
 
-    tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
-    tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    //self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    //[self.view addSubview:self.tableView];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-
+    customTableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
+    customTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    customTableView.delegate = self;
+    customTableView.dataSource = self;
+    [customTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    customTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    customTableView.contentInset = UIEdgeInsetsMake(60, 0, 0, 0);
+    
     self.dm = [[DataManager alloc] init];
     UIImage *backgroundImage = [self.dm loadImage:[self.routedb valueForKey:@"title"]];
     
@@ -69,13 +86,10 @@
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     
     UIImageView * backgroundView  =[[UIImageView alloc]initWithImage:croppedImage];
-    //[backgroundView setImage:croppedImage];
-    //[self.view addSubview:backgroundView];
-    //self.tableView.backgroundColor = [UIColor clearColor];
-    //self.tableView.opaque = YES;
-    tableView.backgroundView = backgroundView;
-    tableView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:tableView];
+
+    customTableView.backgroundView = backgroundView;
+    customTableView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:customTableView];
 
 }
 
@@ -85,13 +99,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setTableView:(UITableView *)tableView{
+/*- (void)setTableView:(UITableView *)tableView{
     tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:tableView];
     tableView.delegate = self;
     tableView.dataSource = self;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-}
+}*/
 
 #pragma mark - Table view data source
 
@@ -109,35 +123,69 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.turns.count;
+    return self.turns.count - 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 95;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSString *turn = [self.turns objectAtIndex:indexPath.row];
     if (cell == nil){
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
     cell.backgroundColor = [UIColor clearColor];
-    cell.backgroundView.alpha = 0;
     
-    NSString *turn = [self.turns objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     
-    cell.userInteractionEnabled = NO;
-    [cell.textLabel setFont:[UIFont fontWithName:@"Arial" size:16]];
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.textLabel.numberOfLines = 0;
+    
+    //[cell setIndentationLevel:5];
+    //[cell setIndentationWidth:6];
+    
     if ([turn containsString:@"Start"] || [turn containsString:@"End"] || ![turn containsString:@"&"])
     {
-        //cell.textLabel.text = turn;
-        //cell.detailTextLabel.text = nil;
         cell.textLabel.text = turn;
         cell.detailTextLabel.text = nil;
-        return cell;
     }
-    NSArray *arr = [[self.turns objectAtIndex:indexPath.row] componentsSeparatedByString:@"&"];
-    cell.textLabel.text = [arr objectAtIndex:0];
-    cell.detailTextLabel.text = [arr objectAtIndex:1];
+    else{
+        NSArray *arr = [[self.turns objectAtIndex:indexPath.row] componentsSeparatedByString:@"&"];
+        cell.textLabel.text = [arr objectAtIndex:0];
+        cell.detailTextLabel.text = [arr objectAtIndex:1];
+    }
+    //cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    //UIImage *img;
+    //cell.imageView.frame = CGRectMake(0,0,32,32);
+    //[cell.imageView setFrame:CGRectMake(0,0,32,32)];
+    //cell.imageView.transform = CGAffineTransformMakeScale(0.35, 0.35);
+    if ([turn containsString:@"Start"]){
+        //cell.imageView.transform = CGAffineTransformMakeScale(0.16, 0.16);
+        cell.imageView.image = startImage;//[UIImage imageNamed:@"attraction.png"];
+    }else if([turn containsString:@"End"]){
+        //cell.imageView.transform = CGAffineTransformMakeScale(0.16, 0.16);
+        cell.imageView.image = endImage;//[UIImage imageNamed:@"attraction.png"];
+    }else if([turn containsString:@"left"]){
+        //cell.imageView.transform = CGAffineTransformMakeScale(0.37, 0.35);
+        cell.imageView.image = leftImage;//[UIImage imageNamed:@"arrow left.png"];
+    }else if([turn containsString:@"right"]){
+        //cell.imageView.transform = CGAffineTransformMakeScale(0.35, 0.35);
+        cell.imageView.image = rightImage;//[UIImage imageNamed:@"arrow right.png"];
+    }else /*if([turn containsString:@"End"])*/{
+        //cell.imageView.transform = CGAffineTransformMakeScale(0.40, 0.35);
+        //cell.imageView.transform = CGAffineTransformMakeScale(0.50, 0.50);
+        cell.imageView.image = upImage;//[UIImage imageNamed:@"arrow-up.png"];
+    }
     
-    // Configure the cell...
+
     return cell;
 }
 
@@ -149,7 +197,7 @@
     float y1 = offset1.y + bounds1.size.height - inset1.bottom;
     NSLog(@"%f", y1);
     //float h1 = size1.height;
-    NSLog(@"%f", tableView.frame.size.height / 6 * 5);
+    NSLog(@"%f", customTableView.frame.size.height / 6 * 5);
     if (y1 < 450) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
