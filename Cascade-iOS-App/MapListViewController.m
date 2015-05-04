@@ -45,7 +45,6 @@
     
     self.rides = [self.dm mutableArrayUsingFetchRequest];
     
-    
     for (NSInteger index = 0; index < self.rides.count; index ++) {
         Ride *ride = [self.rides objectAtIndex:index];
         double latitude = [[ride valueForKey:@"latitude"] doubleValue];
@@ -58,7 +57,8 @@
         [self.mapView addAnnotation:annotation];
     }
     
-    
+    //self.navigationController.navigationBarHidden = TRUE;
+    //[self.navigationController.navigationBar setTranslucent:TRUE];
     //[self.locationManager startUpdatingLocation];
     
     /*[self.mapView setShowsUserLocation:YES];
