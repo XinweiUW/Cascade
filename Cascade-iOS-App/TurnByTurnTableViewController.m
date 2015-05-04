@@ -85,13 +85,13 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return self.turns.count;
 }
@@ -100,7 +100,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     CGPoint offset1 = scrollView.contentOffset;
     CGRect bounds1 = scrollView.bounds;
-    CGSize size1 = scrollView.contentSize;
+    //CGSize size1 = scrollView.contentSize;
     UIEdgeInsets inset1 = scrollView.contentInset;
     float y1 = offset1.y + bounds1.size.height - inset1.bottom;
     NSLog(@"%f", y1);

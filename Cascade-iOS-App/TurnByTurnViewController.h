@@ -12,7 +12,13 @@
 @interface TurnByTurnViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
     CGFloat selfViewWidth;
     CGFloat selfViewHeight;
-    UITableView *tableView;
+    UITableView *customTableView;
+    
+    UIImage *startImage;
+    UIImage *leftImage;
+    UIImage *rightImage;
+    UIImage *upImage;
+    UIImage *endImage;
 }
 
 @property (strong) NSManagedObject *routedb;
