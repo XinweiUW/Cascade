@@ -9,6 +9,7 @@
 #import "TurnByTurnViewController.h"
 #import "DataManager.h"
 #import "TurnByTurnTableViewCell.h"
+#import "DSNavigationBar.h"
 //#import "MYUtil.h"
 
 @interface TurnByTurnViewController ()
@@ -32,7 +33,7 @@
     NSString *turnByTurn = [self.routedb valueForKey:@"turnByTurnText"];
     self.turns = [turnByTurn componentsSeparatedByString:@";"];
     
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
+    DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
     [self.view addSubview:navBar];
     
     UIImage *backImage = [UIImage imageNamed:@"back.png"];
@@ -98,6 +99,12 @@
     customTableView.backgroundView = backgroundView;
     customTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:customTableView];
+    
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.alpha = 0.4;
+    effectView.frame = self.view.bounds;
+    [backgroundView addSubview:effectView];
 
 }
 
@@ -123,13 +130,13 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return self.turns.count - 1;
 }
@@ -200,7 +207,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     CGPoint offset1 = scrollView.contentOffset;
     CGRect bounds1 = scrollView.bounds;
-    CGSize size1 = scrollView.contentSize;
+    //CGSize size1 = scrollView.contentSize;
     UIEdgeInsets inset1 = scrollView.contentInset;
     float y1 = offset1.y + bounds1.size.height - inset1.bottom;
     NSLog(@"%f", y1);
