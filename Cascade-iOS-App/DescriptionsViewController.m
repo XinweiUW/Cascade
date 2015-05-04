@@ -20,7 +20,8 @@
     selfViewWidth = self.view.frame.size.width;
     selfViewHeight = self.view.frame.size.height;
     [super viewDidLoad];
-    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];
     // Do any additional setup after loading the view.
     //self.navigationController.navigationBar.backItem.title = @"Custom text";
     

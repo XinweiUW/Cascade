@@ -54,11 +54,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="l8h-9N-hJ5">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="menu-button.png" id="why-jt-XN7">
-                            <inset key="imageInsets" minX="-9" minY="0.0" maxX="0.0" maxY="-4"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="why-jt-XN7">
+                            <inset key="imageInsets" minX="-7" minY="18" maxX="83" maxY="10"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="2-switch to map list.png" id="5R5-D1-xCv">
+                        <barButtonItem key="rightBarButtonItem" image="to map.png" id="5R5-D1-xCv">
+                            <inset key="imageInsets" minX="73" minY="57" maxX="3" maxY="57"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="t4a-yX-4Qw" kind="show" id="Xm2-Nl-gqY"/>
@@ -412,10 +413,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2-switch to map list.png" width="20" height="32"/>
         <image name="CascadeLogo.png" width="600" height="278"/>
         <image name="complete stamp.png" width="1624" height="1319"/>
-        <image name="menu-button.png" width="22" height="17"/>
+        <image name="menu.png" width="106" height="63"/>
+        <image name="to map.png" width="97" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XRy-9W-Oeq"/>
