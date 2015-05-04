@@ -34,7 +34,9 @@
     //[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     UIColor * color = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:0.2f];
     [[DSNavigationBar appearance] setNavigationBarWithColor:color];
-    
+    //UIImage *backImage = [UIImage imageNamed:@"back.png"];
+    //[[DSNavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"back.png"]];
+    //[[DSNavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"back.png"]];
     //UIImage *backButtonImage = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
     //[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
@@ -59,6 +61,17 @@
         }
     }
     return YES;
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
