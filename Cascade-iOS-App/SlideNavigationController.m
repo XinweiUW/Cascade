@@ -474,7 +474,7 @@ static SlideNavigationController *singletonInstance;
 	}
 	else
 	{
-        CGSize imgSizeUp = CGSizeMake(25, 23);
+        CGSize imgSizeUp = CGSizeMake(25, 22);
         //CGSize imgSizeHorizontal = CGSizeMake(40, 45);
 		UIImage *image = [self imageWithImage:[UIImage imageNamed:@"menu.png"] scaledToSize:imgSizeUp];
         return [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:selector];
