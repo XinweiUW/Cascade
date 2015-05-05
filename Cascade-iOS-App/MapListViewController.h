@@ -12,7 +12,11 @@
 @import MapKit;
 @import CoreLocation;
 
-@interface MapListViewController : ViewController<CLLocationManagerDelegate, MKMapViewDelegate, MKAnnotation>
+@interface MapListViewController : ViewController<CLLocationManagerDelegate, MKMapViewDelegate, MKAnnotation> {
+    CGFloat selfViewWidth;
+    CGFloat selfViewHeight;
+}
+
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
