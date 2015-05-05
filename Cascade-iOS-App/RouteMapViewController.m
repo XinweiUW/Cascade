@@ -46,8 +46,20 @@
     [navBar pushNavigationItem:item animated:NO];
     */
     [self setNavigationBar];
+    [self setArrow];
     [self loadMapView];
 }
+
+- (void) setArrow {
+    CGFloat arrowX = 0.45 * selfViewWidth;
+    CGFloat arrowY = 0.94 * selfViewHeight;
+    CGFloat arrowWidth = 0.1 * selfViewWidth;
+    CGFloat arrowHeight = 0.03 * selfViewHeight;
+    UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+    [arrowView setImage:[UIImage imageNamed:@"next page arrow.png"]];
+    [self.view addSubview:arrowView];
+}
+
 
 - (void) setNavigationBar {
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];
