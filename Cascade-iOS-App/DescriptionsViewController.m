@@ -97,12 +97,6 @@
     [backgroundView setImage:croppedImage];
     [self.view addSubview:backgroundView];
     
-    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-    effectView.alpha = 0.4;
-    effectView.frame = self.view.bounds;
-    [backgroundView addSubview:effectView];
-    
 }
 
 
