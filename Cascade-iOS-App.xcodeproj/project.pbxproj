@@ -57,7 +57,7 @@
 		9D968B301AEF6E7B00104C42 /* complete stamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B1F1AEF6E7B00104C42 /* complete stamp.png */; };
 		9D968B311AEF6E7B00104C42 /* distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B201AEF6E7B00104C42 /* distance.png */; };
 		9D968B321AEF6E7B00104C42 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B211AEF6E7B00104C42 /* menu.png */; };
-		9D968B331AEF6E7B00104C42 /* pin (complete).png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B221AEF6E7B00104C42 /* pin (complete).png */; };
+		9D968B331AEF6E7B00104C42 /* pin(complete).png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B221AEF6E7B00104C42 /* pin(complete).png */; };
 		9D968B341AEF6E7B00104C42 /* pin(uncomplete).png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B231AEF6E7B00104C42 /* pin(uncomplete).png */; };
 		9D968B351AEF6E7B00104C42 /* road condition.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B241AEF6E7B00104C42 /* road condition.png */; };
 		9D968B361AEF6E7B00104C42 /* terrain.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B251AEF6E7B00104C42 /* terrain.png */; };
@@ -169,7 +169,7 @@
 		9D968B1F1AEF6E7B00104C42 /* complete stamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "complete stamp.png"; sourceTree = "<group>"; };
 		9D968B201AEF6E7B00104C42 /* distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distance.png; sourceTree = "<group>"; };
 		9D968B211AEF6E7B00104C42 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
-		9D968B221AEF6E7B00104C42 /* pin (complete).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin (complete).png"; sourceTree = "<group>"; };
+		9D968B221AEF6E7B00104C42 /* pin(complete).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin(complete).png"; sourceTree = "<group>"; };
 		9D968B231AEF6E7B00104C42 /* pin(uncomplete).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin(uncomplete).png"; sourceTree = "<group>"; };
 		9D968B241AEF6E7B00104C42 /* road condition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "road condition.png"; sourceTree = "<group>"; };
 		9D968B251AEF6E7B00104C42 /* terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain.png; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 				9D968B1F1AEF6E7B00104C42 /* complete stamp.png */,
 				9D968B201AEF6E7B00104C42 /* distance.png */,
 				9D968B211AEF6E7B00104C42 /* menu.png */,
-				9D968B221AEF6E7B00104C42 /* pin (complete).png */,
+				9D968B221AEF6E7B00104C42 /* pin(complete).png */,
 				9D968B231AEF6E7B00104C42 /* pin(uncomplete).png */,
 				9D968B241AEF6E7B00104C42 /* road condition.png */,
 				9D968B251AEF6E7B00104C42 /* terrain.png */,
@@ -537,7 +537,7 @@
 				9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */,
 				9D4082271ACA7E1500B2602B /* 8-road condition.png in Resources */,
 				9D90073A1AE63CB300F42812 /* pin.png in Resources */,
-				9D968B331AEF6E7B00104C42 /* pin (complete).png in Resources */,
+				9D968B331AEF6E7B00104C42 /* pin(complete).png in Resources */,
 				9D968B2E1AEF6E7B00104C42 /* back to original.png in Resources */,
 				9D968B341AEF6E7B00104C42 /* pin(uncomplete).png in Resources */,
 				9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */,

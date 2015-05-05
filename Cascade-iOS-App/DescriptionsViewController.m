@@ -26,29 +26,18 @@
     // Do any additional setup after loading the view.
     //self.navigationController.navigationBar.backItem.title = @"Custom text";
     
-    self.dm = [[DataManager alloc] init];
-    UIImage *backgroundImage = [self.dm loadImage:[self.routedb valueForKey:@"title"]];
+    [self setBackground];
     
-    
-    CGRect croprect = CGRectMake(backgroundImage.size.width/6, 0 , backgroundImage.size.height/2, backgroundImage.size.height);
-     //Draw new image in current graphics context
-    CGImageRef imageRef = CGImageCreateWithImageInRect([backgroundImage CGImage], croprect);
-    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-    
-    UIImageView * backgroundView  =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, selfViewWidth, selfViewHeight)];
-    [backgroundView setImage:croppedImage];
-    [self.view addSubview:backgroundView];
-    
-    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.3, backgroundView.frame.size.width, backgroundView.frame.size.width/5)];
+    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, selfViewHeight * 0.3, selfViewWidth, selfViewWidth/5)];
     routeTitleLabel.backgroundColor = [UIColor clearColor];
     routeTitleLabel.textColor = [UIColor whiteColor];
     [routeTitleLabel setTextAlignment:NSTextAlignmentCenter];
     routeTitleLabel.font = [UIFont boldSystemFontOfSize:23.0f];
     routeTitleLabel.numberOfLines = 2;
     routeTitleLabel.lineBreakMode = 0;
-    [backgroundView addSubview:routeTitleLabel];
+    [self.view addSubview:routeTitleLabel];
     
-    UIImageView *descriptImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, backgroundView.frame.size.height * 0.5, backgroundView.frame.size.width, backgroundView.frame.size.height*0.5)];
+    UIImageView *descriptImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, selfViewHeight * 0.5, selfViewWidth, selfViewHeight*0.5)];
     descriptImage.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:0];
     descriptImage.backgroundColor = [UIColor clearColor];
     [self.view addSubview:descriptImage];
@@ -92,6 +81,30 @@
    
     
 }
+
+- (void) setBackground {
+    self.dm = [[DataManager alloc] init];
+    UIImage *backgroundImage = [self.dm loadImage:[self.routedb valueForKey:@"title"]];
+    
+    
+    CGRect croprect = CGRectMake(backgroundImage.size.width/7, 0 , backgroundImage.size.height/2, backgroundImage.size.height);
+    //Draw new image in current graphics context
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect([backgroundImage CGImage], croprect);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    
+    UIImageView * backgroundView  =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, selfViewWidth, selfViewHeight)];
+    [backgroundView setImage:croppedImage];
+    [self.view addSubview:backgroundView];
+    
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.alpha = 0.4;
+    effectView.frame = self.view.bounds;
+    [backgroundView addSubview:effectView];
+    
+}
+
 
 - (void) setArrow {
     CGFloat arrowX = 0.45 * selfViewWidth;
