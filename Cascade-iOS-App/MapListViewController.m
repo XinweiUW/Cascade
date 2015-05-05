@@ -158,11 +158,27 @@
             NSInteger index = [[self.rideIndices valueForKey:title] integerValue] - 1;
             NSManagedObject *ride = [self.rides objectAtIndex:index];
             NSInteger complete = [[ride valueForKey:@"complete"] integerValue];
+            
+            CGSize imgSizeUp = CGSizeMake(25, 33);
+            
+            //CGSize imgSizeHorizontal = CGSizeMake(40, 45);
+            
+            UIImage *completePin = [self imageWithImage:[UIImage imageNamed:@"pin(complete).png"] scaledToSize:imgSizeUp];
+            
+            UIImage *uncompletePin = [self imageWithImage:[UIImage imageNamed:@"pin(uncomplete).png"] scaledToSize:imgSizeUp];
+            
+            
+            
             if (complete == 0) {
-                pinView.image = [UIImage imageNamed:@"pin_grey.png"];
+                
+                pinView.image = uncompletePin;
+                
             }else{
-                pinView.image = [UIImage imageNamed:@"pin.png"];
+                
+                pinView.image = completePin;
+                
             }
+            
             //pinView.image = [UIImage imageNamed:@"menu-button.png"];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
             //[button setImage:[UIImage new] forState:UIControlStateNormal];
@@ -178,6 +194,26 @@
     }
     
     return nil;
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    
+    //UIGraphicsBeginImageContext(newSize);
+    
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    
+    // Pass 1.0 to force exact pixel size.
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+    
 }
 
 @end
