@@ -33,6 +33,7 @@
     NSString *turnByTurn = [self.routedb valueForKey:@"turnByTurnText"];
     self.turns = [turnByTurn componentsSeparatedByString:@";"];
     
+    /*
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
     [self.view addSubview:navBar];
     
@@ -47,6 +48,8 @@
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:nil];
     item.leftBarButtonItem = backButtonItem;
     [navBar pushNavigationItem:item animated:NO];
+     */
+    [self setNavigationBar];
     
     CGSize imgSizeUp = CGSizeMake(40, 45);
     CGSize imgSizeHorizontal = CGSizeMake(40, 45);
@@ -57,6 +60,25 @@
     upImage = [self imageWithImage:[UIImage imageNamed:@"arrow-up.png"] scaledToSize:imgSizeUp];
     attractionImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
 }
+
+- (void) setNavigationBar {
+    DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];
+    [self.view addSubview:navBar];
+    
+    UIImage *backImage = [UIImage imageNamed:@"back.png"];
+    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
+    [backImageView setImage:backImage];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
+    [backButton setFrame:CGRectMake(10, 10, navBar.frame.size.height, navBar.frame.size.height/1.6)];
+    backButton.backgroundColor = [UIColor clearColor];
+    //[backButton setImage:backImage forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
+    [navBar addSubview:backButton];
+    [navBar addSubview:backImageView];
+    
+}
+
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     //UIGraphicsBeginImageContext(newSize);

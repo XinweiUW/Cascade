@@ -80,7 +80,7 @@
     [self.view addSubview:navBar];
     
     UIImage *backImage = [UIImage imageNamed:@"back.png"];
-    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
+    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
     [backImageView setImage:backImage];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
