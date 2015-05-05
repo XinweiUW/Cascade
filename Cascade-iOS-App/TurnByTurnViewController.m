@@ -33,6 +33,10 @@
     NSString *turnByTurn = [self.routedb valueForKey:@"turnByTurnText"];
     self.turns = [turnByTurn componentsSeparatedByString:@";"];
     
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeDown:)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipeDown];
+
     /*
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
     [self.view addSubview:navBar];
@@ -59,6 +63,10 @@
     rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right.png"] scaledToSize:imgSizeHorizontal];
     upImage = [self imageWithImage:[UIImage imageNamed:@"arrow-up.png"] scaledToSize:imgSizeUp];
     attractionImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
+}
+
+- (void)swipeDown:(UISwipeGestureRecognizer *)gestureRecognizer{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) setNavigationBar {
