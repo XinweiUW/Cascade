@@ -137,7 +137,7 @@
         NSError *error;
         //NSString *url = @"https://www.filepicker.io/api/file/KkEihfrMR2OYX6b3j2sJ";
         //NSString *url = @"https://www.filepicker.io/api/file/mDbEwF6QRyeOcbBrE1pj";
-        NSString *url = @"https://www.filepicker.io/api/file/0UwQyOTYQK5UyrnpwnBY";
+        NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv?vHRPZKc_L59_ZfaJp2A_aMfaNcZOrYD5";
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] ;
     
