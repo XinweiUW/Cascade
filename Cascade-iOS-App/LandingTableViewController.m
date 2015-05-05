@@ -54,6 +54,7 @@
         self.routeArray = [self.dm mutableArrayUsingFetchRequest];
         [self.tableView reloadData];
     }
+    //[[self navigationController] setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)reloadTable:(NSNotification *)notification
