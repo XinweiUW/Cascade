@@ -20,6 +20,7 @@
 @property (strong, nonatomic) DataManager *dm;
 @property (strong, nonatomic) NSMutableArray *rides;
 @property (strong, nonatomic) NSMutableDictionary *rideIndices;
+@property (nonatomic) MKCoordinateRegion region;
 
 @end
 
@@ -27,8 +28,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    selfViewWidth = self.view.frame.size.width;
+    selfViewHeight = self.view.frame.size.height;
+
     // Do any additional setup after loading the view.
-    self.coordinate = CLLocationCoordinate2DMake(47.6204, -122.2);
+    
     self.dm = [[DataManager alloc] init];
     self.rideIndices = [[NSMutableDictionary alloc] init];
     
@@ -37,11 +42,20 @@
     [self.locationManager requestAlwaysAuthorization];
     [self.locationManager startUpdatingLocation];
     
+    [self resetButton];
+    [self setBackButton];
+    
+    
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = TRUE;
+    //[self.mapView setCenterCoordinate:self.coordinate];
+    //self.region = MKCoordinateRegionMakeWithDistance(self.coordinate, 70000, 60000);
+    //[self.mapView setRegion:[self.mapView regionThatFits:self.region] animated:YES];
+    
+    self.coordinate = CLLocationCoordinate2DMake(47.6204, -122.2);
     [self.mapView setCenterCoordinate:self.coordinate];
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.coordinate, 70000, 60000);
-    [self.mapView setRegion:region animated:YES];
+    self.region = MKCoordinateRegionMakeWithDistance(self.coordinate, 1000, 60000);
+    [self.mapView setRegion:[self.mapView regionThatFits:self.region] animated:YES];
     
     self.rides = [self.dm mutableArrayUsingFetchRequest];
     
@@ -56,18 +70,27 @@
         //MKAnnotationView *aView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"rideAnnotation"];
         [self.mapView addAnnotation:annotation];
     }
+}
+
+- (void) resetButton {
+    //UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
+    //UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGFloat buttonX = 0.75 * selfViewWidth;
+    CGFloat buttonY = 0.85 * selfViewHeight;
+    CGFloat buttonWidth = 0.15 * selfViewWidth;
     
-    //self.navigationController.navigationBarHidden = TRUE;
-    //[self.navigationController.navigationBar setTranslucent:TRUE];
-    //[self.locationManager startUpdatingLocation];
-    
-    /*[self.mapView setShowsUserLocation:YES];
-    
-    self.coordinate = CLLocationCoordinate2DMake(47.6097, 122.3331);
-    RideAnnotation *annotation = [[RideAnnotation alloc] initWithVariable:<#(NSString *)#> :<#(CLLocationCoordinate2D)#>]
-    
-    [self.mapView addAnnotation:annotation];*/
-    [self setBackButton];
+    UIButton *resetButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonWidth)];
+    [resetButton setImage:[UIImage imageNamed:@"back to original.png"] forState:UIControlStateNormal];
+    //[backButton setImage:backImage forState:UIControlStateNormal];
+    [resetButton addTarget:self action:@selector(resetMap) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:resetButton];
+}
+
+- (void) resetMap {
+    self.coordinate = CLLocationCoordinate2DMake(47.6204, -122.2);
+    //[self.mapView setCenterCoordinate:self.coordinate];
+    self.region = MKCoordinateRegionMakeWithDistance(self.coordinate, 1000, 35000);
+    [self.mapView setRegion:self.region animated:YES];
 }
 
 - (void) setBackButton {
@@ -115,7 +138,7 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(47.6097, -122.3331);
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 1000, 1000);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 22000, 1000);
     [self.mapView setRegion:region animated:YES];
 }
 
