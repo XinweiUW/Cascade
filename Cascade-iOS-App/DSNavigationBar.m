@@ -8,6 +8,7 @@
 
 #import "DSNavigationBar.h"
 #import <QuartzCore/QuartzCore.h>
+#define NAVIGATION_BTN_MARGIN 5
 
 @implementation DSNavigationBar
 
@@ -22,6 +23,7 @@ static CGFloat kEndPoint = 1.5;
         [self setNavigationBarWithColor:[UIColor whiteColor]];
     }
 }
+
 
 /*
 - (id)initWithCoder:(NSCoder *)aDecoder {

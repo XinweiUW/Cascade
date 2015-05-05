@@ -21,7 +21,7 @@
 //@property (weak, nonatomic) IBOutlet UILabel *routeTitleLabel;
 //@property (weak, nonatomic) IBOutlet UILabel *routeDescriptionLabel;
 
-
+@property(nonatomic) UIEdgeInsets contentEdgeInsets;
 @property (strong) NSManagedObject *routedb;
 
 @end

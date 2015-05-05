@@ -67,8 +67,27 @@
     RideAnnotation *annotation = [[RideAnnotation alloc] initWithVariable:<#(NSString *)#> :<#(CLLocationCoordinate2D)#>]
     
     [self.mapView addAnnotation:annotation];*/
-    
+    [self setBackButton];
 }
+
+- (void) setBackButton {
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [backBtn setTitle:@"" forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(didTapBackButton) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.frame = CGRectMake(0.0f, 0.0f, 16.0f, 28.0f);
+    backBtn.backgroundColor = [UIColor clearColor];
+    //[backBtn setContentEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 16.0f, 28.0f)];
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    //[backButtonItem setWidth:-5];
+    self.navigationItem.leftBarButtonItem = backButtonItem;
+}
+
+- (void) didTapBackButton {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

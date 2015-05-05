@@ -57,7 +57,7 @@
     [self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
     
     [self setNavigationBar];
-    
+    [self setArrow];
     
     //UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
@@ -75,12 +75,23 @@
     
 }
 
+- (void) setArrow {
+    CGFloat arrowX = 0.45 * selfViewWidth;
+    CGFloat arrowY = 0.94 * selfViewHeight;
+    CGFloat arrowWidth = 0.1 * selfViewWidth;
+    CGFloat arrowHeight = 0.03 * selfViewHeight;
+    UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+    [arrowView setImage:[UIImage imageNamed:@"next page arrow.png"]];
+    [self.view addSubview:arrowView];
+}
+
+
 - (void) setNavigationBar {
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];
     [self.view addSubview:navBar];
     
     UIImage *backImage = [UIImage imageNamed:@"back.png"];
-    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
+    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
     [backImageView setImage:backImage];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
