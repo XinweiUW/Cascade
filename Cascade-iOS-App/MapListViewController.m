@@ -43,6 +43,7 @@
     [self.locationManager startUpdatingLocation];
     
     [self resetButton];
+    [self setBackButton];
     
     
     self.mapView.delegate = self;
