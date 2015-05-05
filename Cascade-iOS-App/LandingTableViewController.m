@@ -18,6 +18,7 @@
 @property (strong) NSManagedObject *routedb;
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
 @property (strong, nonatomic) DataManager *dm;
+@property (nonatomic) CGRect croprect;
 
 @end
 
@@ -54,6 +55,7 @@
         self.routeArray = [self.dm mutableArrayUsingFetchRequest];
         [self.tableView reloadData];
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"greyimageGenerated" object:nil];
 }
 
 - (void)reloadTable:(NSNotification *)notification
@@ -68,7 +70,16 @@
         NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
         [self.tableView performSelectorOnMainThread:@selector(reloadRowsAtIndexPaths:withRowAnimation:) withObject:indexArray waitUntilDone:NO];
         // This came from the background thread. Without performing in the main thread, cellForRowAtIndexPath will not be fired.
-    }else{
+    }
+    else if ([[notification name] isEqualToString:@"greyimageGenerated"]){
+        NSInteger number = [notification.object integerValue];
+        //number = number - 1;
+        NSIndexPath *index = [NSIndexPath indexPathForRow:number inSection:0];
+        NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
+        //[self.tableView reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
+    }
+    else{
         @synchronized(self.tableView){
             [self.tableView setNeedsDisplay];
             [self.tableView reloadData];
@@ -137,7 +148,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
-    CustomLandingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CustomLandingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];//[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.delegate = self;
     cell.routeNameLabel.text = nil;
     if (cell == nil){
@@ -166,25 +177,35 @@
     //transform = CGAffineTransformRotate(transform, (-M_PI / 5));
     //cell.completeView.transform = transform;
     //
-    
+
     if([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
         image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
     }else{
-        image = [self.dm loadImage:[device valueForKey:@"title"]];
+        
+        NSString *title = [device valueForKey:@"title"];
+        if ([[device valueForKey:@"complete"] integerValue] == 0){
+            title = [device valueForKey:@"title"];
+        }else{
+            title = [NSString stringWithFormat:@"grey%@", [device valueForKey:@"title"]];
+        }
+        image = [self.dm loadImage:title];
         
         CGFloat cellWidth = cell.frame.size.width;
         CGFloat cellHeight = cell.frame.size.height;
-
-        
+        //if (CGRectIsEmpty(self.croprect)){
+        //self.croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
+        //}
         //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
         CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
         CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
         image = croppedImage;
         [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-        
         CGImageRelease(imageRef);
     }
+    
+    
+    
     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     //UIImage *grayBackGound = [self convertImageToGrayScale:image];
     
@@ -193,11 +214,11 @@
     cell.routeNameLabel.lineBreakMode = 0;
     
     if ([[device valueForKey:@"complete"] integerValue] == 1) {
-        cell.backgroundView.alpha = 0.5;
+        //cell.backgroundView.alpha = 0.5;
         cell.completeView.hidden = FALSE;
         //cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
     } else if ([[device valueForKey:@"complete"] integerValue]  == 0 ){
-        cell.backgroundView.alpha = 1;
+        //cell.backgroundView.alpha = 1;
         cell.completeView.hidden = TRUE;
         //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     }
@@ -260,26 +281,60 @@
             NSLog(@"Complete button was pressed");
             //UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
             //[alertTest show];
-            cell.backgroundView.alpha = 0.5;
+            //cell.backgroundView.alpha = 0.5;
             cell.completeView.hidden = FALSE;
             [cell hideUtilityButtonsAnimated:NO];
             //self.dm.routedb.complete = 1;
             
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             
-            NSManagedObject *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
+            
+            // Setting up grey image.
+            NSString *title = [NSString stringWithFormat:@"grey%@", obj.title];
+            UIImage *image;
+            
+            if ([self.dm loadImage:title]){
+                image = [self.dm loadImage:title];
+            }else{
+                image = [self.dm loadImage:obj.title];
+                image = [self convertImageToGrayScale:image];
+                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+                dispatch_async(queue, ^{
+                    [self.dm saveImage:image :title];
+                });
+                
+            }
+            
+            [self.cachedImages setValue:image forKey:obj.title];
+            
+            CGFloat cellWidth = cell.frame.size.width;
+            CGFloat cellHeight = cell.frame.size.height;
+            
+            //UIImage *original = [self.dm loadImage:obj.title];
+            //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
+            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            image = croppedImage;
+            [self.cachedImages setValue:image forKey:obj.title];
+            //[self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+            CGImageRelease(imageRef);
+            
+            
+            //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
             
             NSNumber *comp = [NSNumber numberWithInt:1];
             //obj.complete = comp;
             [obj setValue:comp forKey:@"complete"];
-            //UIImage *image = [self.cachedImages valueForKey:[obj valueForKey:@"title"]];
-            //UIImage *grayBackGound = [self convertImageToGrayScale:image];
-            //cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
             NSError *error;
             [self.dm.managedObjectContext save:&error];
+            NSNumber *i = [NSNumber numberWithInteger:obj.id - 1];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"greyimageGenerated" object:i];
             break;
         }
-        
+            
         default:
             break;
     }
@@ -303,14 +358,37 @@
             Ride *obj = [self.routeArray objectAtIndex:cellIndexPath.row];
             
             //UIImage *image = [self.cachedImages valueForKey:[obj valueForKey:@"title"]];
+            NSString *title = obj.title;
+            UIImage *image = [self.dm loadImage:obj.title];
+            
+            CGFloat cellWidth = cell.frame.size.width;
+            CGFloat cellHeight = cell.frame.size.height;
+            
+            //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
+            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+            image = croppedImage;
+            //[self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+            [self.cachedImages setValue:image forKey:obj.title];
+            CGImageRelease(imageRef);
+            
+            
             //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+            
+            [self.cachedImages setValue:image forKey:title];
             
             //NSNumber *comp = [NSNumber numberWithInt:0];
             NSNumber *comp = [NSNumber numberWithInt:0];
             //obj.complete = comp;
             [obj setValue:comp forKey:@"complete"];
             NSError *error;
+            
             [self.dm.managedObjectContext save:&error];
+            
+            NSNumber *i = [NSNumber numberWithInteger:obj.id - 1];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"greyimageGenerated" object:i];
+            
             break;
         }
             
