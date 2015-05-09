@@ -31,6 +31,7 @@
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     self.tableView.rowHeight = self.view.frame.size.height * 0.43;
+    self.view.backgroundColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
     
     /*
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
@@ -85,10 +86,10 @@
         [self.tableView reloadData];
     }
     else{
-        @synchronized(self.tableView){
+        //@synchronized(self.tableView){
             [self.tableView setNeedsDisplay];
             [self.tableView reloadData];
-        }
+        //}
     }
 }
 
@@ -175,14 +176,6 @@
     // Configure the cell...
     [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:100.0f];
     [cell setLeftUtilityButtons:[self leftButtons] WithButtonWidth: 100.f];
-
-    //CGAffineTransform transform = cell.completeView.transform;
-    
-    // Rotate the view 45 degrees (the actual function takes radians)
-    //transform = CGAffineTransformRotate(transform, (-M_PI / 5));
-    //cell.completeView.transform = transform;
-    //
-
     if([self.cachedImages valueForKey:[device valueForKey:@"title"]]){
         image = [self.cachedImages valueForKey:[device valueForKey:@"title"]];
     }else{
@@ -194,19 +187,9 @@
             title = [NSString stringWithFormat:@"grey%@", [device valueForKey:@"title"]];
         }
         image = [self.dm loadImage:title];
-        
-        CGFloat cellWidth = cell.frame.size.width;
-        CGFloat cellHeight = cell.frame.size.height;
-        //if (CGRectIsEmpty(self.croprect)){
-        //self.croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
-        //}
-        //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-        CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
-        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-        UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-        image = croppedImage;
+        image = [self getCroppedImage:cell fromOriginalImage:image];
         [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-        CGImageRelease(imageRef);
+        
     }
     
     
@@ -229,6 +212,20 @@
     }
     
     return cell;
+}
+
+- (UIImage *) getCroppedImage: (CustomLandingTableViewCell *) cell fromOriginalImage: (UIImage *) image {
+    CGFloat cellWidth = cell.frame.size.width;
+    CGFloat cellHeight = cell.frame.size.height;
+    //if (CGRectIsEmpty(self.croprect)){
+    //self.croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
+    //}
+    //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
+    CGRect croprect = CGRectMake(0, image.size.height / 5 , image.size.width, image.size.width*cellHeight/cellWidth);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return croppedImage;
 }
 
 - (NSArray *)rightButtons
@@ -311,20 +308,10 @@
                 
             }
             
-            [self.cachedImages setValue:image forKey:obj.title];
-            
-            CGFloat cellWidth = cell.frame.size.width;
-            CGFloat cellHeight = cell.frame.size.height;
-            
-            //UIImage *original = [self.dm loadImage:obj.title];
-            //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
-            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-            image = croppedImage;
+            image = [self getCroppedImage:cell fromOriginalImage:image];
             [self.cachedImages setValue:image forKey:obj.title];
             //[self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-            CGImageRelease(imageRef);
+            
             
             
             //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
@@ -366,18 +353,8 @@
             NSString *title = obj.title;
             UIImage *image = [self.dm loadImage:obj.title];
             
-            CGFloat cellWidth = cell.frame.size.width;
-            CGFloat cellHeight = cell.frame.size.height;
-            
-            //CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width/1.3);
-            CGRect croprect = CGRectMake(0, image.size.height / 4 , image.size.width, image.size.width*cellHeight/cellWidth);
-            CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], croprect);
-            UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-            image = croppedImage;
-            //[self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
+            image = [self getCroppedImage:cell fromOriginalImage:image];
             [self.cachedImages setValue:image forKey:obj.title];
-            CGImageRelease(imageRef);
-            
             
             //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
             
