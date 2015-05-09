@@ -45,6 +45,7 @@
     item.leftBarButtonItem = backButtonItem;
     [navBar pushNavigationItem:item animated:NO];
     */
+    allowLoad = YES;
     [self setNavigationBar];
     [self setArrow];
     [self loadMapView];
@@ -85,7 +86,7 @@
     UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,70,selfViewWidth,self.view.frame.size.height - 120)];
     
     webView.scalesPageToFit = YES;
-    
+    webView.delegate = self;
     NSString *urlAddress = [self.routedb valueForKey:@"mapURL"];
     //Create a URL object.
     NSURL *url = [NSURL URLWithString:urlAddress];
@@ -95,6 +96,15 @@
     [webView loadRequest:requestObj];
     [self.view addSubview:webView];
 }
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    return allowLoad;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView*)webView {
+    allowLoad = NO;
+}
+
 
 - (void) setBackground {
     self.dm = [[DataManager alloc] init];
