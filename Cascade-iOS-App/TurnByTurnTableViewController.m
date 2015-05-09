@@ -103,10 +103,11 @@
     //CGSize size1 = scrollView.contentSize;
     UIEdgeInsets inset1 = scrollView.contentInset;
     float y1 = offset1.y + bounds1.size.height - inset1.bottom;
-    NSLog(@"%f", y1);
+    //NSLog(@"%f", y1);
     //float h1 = size1.height;
-    NSLog(@"%f", self.tableView.frame.size.height / 6 * 5);
-    if (y1 < 450) {
+    NSLog(@"%f", self.tableView.frame.size.height);
+    //NSLog(@"%f", self.tableView.frame.size.height / 10 * 9);
+    if (y1 < self.tableView.frame.size.height / 10 * 9) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

@@ -246,8 +246,8 @@
     float y1 = offset1.y + bounds1.size.height - inset1.bottom;
     NSLog(@"%f", y1);
     //float h1 = size1.height;
-    NSLog(@"%f", customTableView.frame.size.height / 6 * 5);
-    if (y1 < 450) {
+    NSLog(@"%f", customTableView.frame.size.height * 0.75);
+    if (y1 < customTableView.frame.size.height * 0.75) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

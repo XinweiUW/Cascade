@@ -157,7 +157,7 @@
         [p setDelegate:d];
         [p parse];
         
-        NSLog(@"%@", [d lines]);
+        //NSLog(@"%@", [d lines]);
         
         NSInteger size = [d lines].count;
         
