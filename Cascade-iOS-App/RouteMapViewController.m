@@ -91,7 +91,7 @@
 
 - (void) loadMapView {
     
-    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,70,selfViewWidth,self.view.frame.size.height - 120)];
+    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,selfViewHeight * 0.17,selfViewWidth,selfViewHeight * 0.72)];
     
     webView.scalesPageToFit = YES;
     webView.delegate = self;
