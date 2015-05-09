@@ -20,10 +20,6 @@
 		9D38DEE11AF7158D0082DD07 /* DSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D38DEE01AF7158D0082DD07 /* DSNavigationBar.m */; };
 		9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082181ACA7E1500B2602B /* 2-switch to map list.png */; };
 		9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */; };
-		9D4082241ACA7E1500B2602B /* 5-distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821A1ACA7E1500B2602B /* 5-distance.png */; };
-		9D4082251ACA7E1500B2602B /* 6-duration.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821B1ACA7E1500B2602B /* 6-duration.png */; };
-		9D4082261ACA7E1500B2602B /* 7-terrain.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821C1ACA7E1500B2602B /* 7-terrain.png */; };
-		9D4082271ACA7E1500B2602B /* 8-road condition.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821D1ACA7E1500B2602B /* 8-road condition.png */; };
 		9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821E1ACA7E1500B2602B /* 9-turn by turn list.png */; };
 		9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821F1ACA7E1500B2602B /* 10-arrow-left.png */; };
 		9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082201ACA7E1500B2602B /* 10-arrow-right.png */; };
@@ -35,7 +31,6 @@
 		9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52A8A61AD395BE0041CB62 /* SettingsViewController.m */; };
 		9D52CB541AD0D1590002CF59 /* CascadeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52CB531AD0D1590002CF59 /* CascadeLogo.png */; };
 		9D52CB571AD0FAF60002CF59 /* LeftMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */; };
-		9D52CB5B1AD109490002CF59 /* CompletedStamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D52CB5A1AD109490002CF59 /* CompletedStamp.png */; };
 		9D7B794D1AF6E0E9004F362E /* TurnByTurnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B794C1AF6E0E9004F362E /* TurnByTurnViewController.m */; };
 		9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF51AC39B4100ED37D1 /* main.m */; };
 		9D8BFDF91AC39B4100ED37D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */; };
@@ -45,8 +40,6 @@
 		9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BFE031AC39B4100ED37D1 /* Images.xcassets */; };
 		9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BFE051AC39B4100ED37D1 /* LaunchScreen.xib */; };
 		9D8BFE131AC39B4100ED37D1 /* Cascade_iOS_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */; };
-		9D9007381AE63CAD00F42812 /* pin_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9007371AE63CAD00F42812 /* pin_grey.png */; };
-		9D90073A1AE63CB300F42812 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9007391AE63CB300F42812 /* pin.png */; };
 		9D968B291AEF6E7B00104C42 /* arrow down.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B181AEF6E7B00104C42 /* arrow down.png */; };
 		9D968B2A1AEF6E7B00104C42 /* arrow left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B191AEF6E7B00104C42 /* arrow left.png */; };
 		9D968B2B1AEF6E7B00104C42 /* arrow right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B1A1AEF6E7B00104C42 /* arrow right.png */; };
@@ -65,11 +58,9 @@
 		9D968B381AEF6E7B00104C42 /* to list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B271AEF6E7B00104C42 /* to list.png */; };
 		9D968B391AEF6E7B00104C42 /* to map.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D968B281AEF6E7B00104C42 /* to map.png */; };
 		9D968B3C1AEF8CE900104C42 /* RouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */; };
-		9D987E671AF6ED9E005F4BAD /* navbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D987E661AF6ED9E005F4BAD /* navbar_bg.png */; };
 		9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */; };
 		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
 		9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */; };
-		9DBDE8AC1AE4D60E003971F1 /* routeBackGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */; };
 		9DC4FF601AF59CFD0070E3EF /* TurnByTurnTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4FF5F1AF59CFD0070E3EF /* TurnByTurnTableViewController.m */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
@@ -82,6 +73,11 @@
 		9DD46A421AE468CE006BBCEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD46A411AE468CE006BBCEB /* CoreLocation.framework */; };
 		9DD46A451AE47E99006BBCEB /* RideAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD46A441AE47E99006BBCEB /* RideAnnotation.m */; };
 		9DD7EF2E1AEB43C2008B2C33 /* DifficultiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */; };
+		9DD92FD61AFDBA150068EAC6 /* menu 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD92FD31AFDBA150068EAC6 /* menu 1.png */; };
+		9DD92FD71AFDBA150068EAC6 /* next page arrow 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD92FD41AFDBA150068EAC6 /* next page arrow 1.png */; };
+		9DD92FD81AFDBA150068EAC6 /* last page arrow 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD92FD51AFDBA150068EAC6 /* last page arrow 1.png */; };
+		9DD92FDA1AFDBA710068EAC6 /* back to original 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD92FD91AFDBA710068EAC6 /* back to original 1.png */; };
+		9DD92FDC1AFDBBE40068EAC6 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD92FDB1AFDBBE40068EAC6 /* LaunchImage.png */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Ride.m */; };
 		9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17F91AC9074600D79B51 /* CHCSVParser.m */; };
@@ -120,10 +116,6 @@
 		9D38DEE01AF7158D0082DD07 /* DSNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSNavigationBar.m; sourceTree = "<group>"; };
 		9D4082181ACA7E1500B2602B /* 2-switch to map list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-switch to map list.png"; sourceTree = "<group>"; };
 		9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-switch to picture list.png"; sourceTree = "<group>"; };
-		9D40821A1ACA7E1500B2602B /* 5-distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-distance.png"; sourceTree = "<group>"; };
-		9D40821B1ACA7E1500B2602B /* 6-duration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6-duration.png"; sourceTree = "<group>"; };
-		9D40821C1ACA7E1500B2602B /* 7-terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7-terrain.png"; sourceTree = "<group>"; };
-		9D40821D1ACA7E1500B2602B /* 8-road condition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8-road condition.png"; sourceTree = "<group>"; };
 		9D40821E1ACA7E1500B2602B /* 9-turn by turn list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-turn by turn list.png"; sourceTree = "<group>"; };
 		9D40821F1ACA7E1500B2602B /* 10-arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-left.png"; sourceTree = "<group>"; };
 		9D4082201ACA7E1500B2602B /* 10-arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-right.png"; sourceTree = "<group>"; };
@@ -140,7 +132,6 @@
 		9D52CB531AD0D1590002CF59 /* CascadeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CascadeLogo.png; sourceTree = "<group>"; };
 		9D52CB551AD0FAF60002CF59 /* LeftMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuTableViewCell.h; sourceTree = "<group>"; };
 		9D52CB561AD0FAF60002CF59 /* LeftMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuTableViewCell.m; sourceTree = "<group>"; };
-		9D52CB5A1AD109490002CF59 /* CompletedStamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CompletedStamp.png; sourceTree = "<group>"; };
 		9D7B794B1AF6E0E9004F362E /* TurnByTurnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnByTurnViewController.h; sourceTree = "<group>"; };
 		9D7B794C1AF6E0E9004F362E /* TurnByTurnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnByTurnViewController.m; sourceTree = "<group>"; };
 		9D8BFDF01AC39B4100ED37D1 /* Cascade-iOS-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cascade-iOS-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,8 +148,6 @@
 		9D8BFE0C1AC39B4100ED37D1 /* Cascade-iOS-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cascade-iOS-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8BFE111AC39B4100ED37D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8BFE121AC39B4100ED37D1 /* Cascade_iOS_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cascade_iOS_AppTests.m; sourceTree = "<group>"; };
-		9D9007371AE63CAD00F42812 /* pin_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_grey.png; sourceTree = "<group>"; };
-		9D9007391AE63CB300F42812 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		9D968B181AEF6E7B00104C42 /* arrow down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow down.png"; sourceTree = "<group>"; };
 		9D968B191AEF6E7B00104C42 /* arrow left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow left.png"; sourceTree = "<group>"; };
 		9D968B1A1AEF6E7B00104C42 /* arrow right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow right.png"; sourceTree = "<group>"; };
@@ -178,7 +167,6 @@
 		9D968B281AEF6E7B00104C42 /* to map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "to map.png"; sourceTree = "<group>"; };
 		9D968B3A1AEF8CE900104C42 /* RouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteMapViewController.h; sourceTree = "<group>"; };
 		9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteMapViewController.m; sourceTree = "<group>"; };
-		9D987E661AF6ED9E005F4BAD /* navbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_bg.png; sourceTree = "<group>"; };
 		9DA8FC4E1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
 		9DA8FC4F1ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
 		9DA8FC601ACF914D006F4FBB /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
@@ -186,7 +174,6 @@
 		9DA8FC631ACF9176006F4FBB /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
 		9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		9DA8FC661ACF9468006F4FBB /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
-		9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = routeBackGround.jpg; sourceTree = "<group>"; };
 		9DC4FF5E1AF59CFD0070E3EF /* TurnByTurnTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnByTurnTableViewController.h; sourceTree = "<group>"; };
 		9DC4FF5F1AF59CFD0070E3EF /* TurnByTurnTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnByTurnTableViewController.m; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
@@ -205,6 +192,11 @@
 		9DD46A441AE47E99006BBCEB /* RideAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideAnnotation.m; sourceTree = "<group>"; };
 		9DD7EF2C1AEB43C2008B2C33 /* DifficultiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DifficultiesViewController.h; sourceTree = "<group>"; };
 		9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DifficultiesViewController.m; sourceTree = "<group>"; };
+		9DD92FD31AFDBA150068EAC6 /* menu 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu 1.png"; sourceTree = "<group>"; };
+		9DD92FD41AFDBA150068EAC6 /* next page arrow 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next page arrow 1.png"; sourceTree = "<group>"; };
+		9DD92FD51AFDBA150068EAC6 /* last page arrow 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last page arrow 1.png"; sourceTree = "<group>"; };
+		9DD92FD91AFDBA710068EAC6 /* back to original 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back to original 1.png"; sourceTree = "<group>"; };
+		9DD92FDB1AFDBBE40068EAC6 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		9DF0F2491ADB273400830753 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
@@ -268,6 +260,9 @@
 		9D4082171ACA7DEF00B2602B /* iconimg */ = {
 			isa = PBXGroup;
 			children = (
+				9DD92FD31AFDBA150068EAC6 /* menu 1.png */,
+				9DD92FD41AFDBA150068EAC6 /* next page arrow 1.png */,
+				9DD92FD51AFDBA150068EAC6 /* last page arrow 1.png */,
 				9D968B181AEF6E7B00104C42 /* arrow down.png */,
 				9D968B191AEF6E7B00104C42 /* arrow left.png */,
 				9D968B1A1AEF6E7B00104C42 /* arrow right.png */,
@@ -275,6 +270,7 @@
 				9D968B1C1AEF6E7B00104C42 /* attraction.png */,
 				9D968B1D1AEF6E7B00104C42 /* back to original.png */,
 				9D968B1E1AEF6E7B00104C42 /* back.png */,
+				9DD92FD91AFDBA710068EAC6 /* back to original 1.png */,
 				9D968B1F1AEF6E7B00104C42 /* complete stamp.png */,
 				9D968B201AEF6E7B00104C42 /* distance.png */,
 				9D968B211AEF6E7B00104C42 /* menu.png */,
@@ -285,21 +281,13 @@
 				9D968B261AEF6E7B00104C42 /* time.png */,
 				9D968B271AEF6E7B00104C42 /* to list.png */,
 				9D968B281AEF6E7B00104C42 /* to map.png */,
+				9DD92FDB1AFDBBE40068EAC6 /* LaunchImage.png */,
 				9D49365A1AEC0F1200607486 /* loading.png */,
-				9D9007371AE63CAD00F42812 /* pin_grey.png */,
-				9D9007391AE63CB300F42812 /* pin.png */,
-				9DBDE8AB1AE4D60E003971F1 /* routeBackGround.jpg */,
-				9D52CB5A1AD109490002CF59 /* CompletedStamp.png */,
 				9D52CB531AD0D1590002CF59 /* CascadeLogo.png */,
-				9D987E661AF6ED9E005F4BAD /* navbar_bg.png */,
 				9D4082181ACA7E1500B2602B /* 2-switch to map list.png */,
 				9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */,
-				9D40821A1ACA7E1500B2602B /* 5-distance.png */,
-				9D40821B1ACA7E1500B2602B /* 6-duration.png */,
-				9D40821C1ACA7E1500B2602B /* 7-terrain.png */,
 				9D26F58E1AF8A5E800AC73E0 /* next page arrow.png */,
 				9D26F58F1AF8A5E800AC73E0 /* last page arrow.png */,
-				9D40821D1ACA7E1500B2602B /* 8-road condition.png */,
 				9D40821E1ACA7E1500B2602B /* 9-turn by turn list.png */,
 				9D40821F1ACA7E1500B2602B /* 10-arrow-left.png */,
 				9D4082201ACA7E1500B2602B /* 10-arrow-right.png */,
@@ -533,26 +521,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D4082241ACA7E1500B2602B /* 5-distance.png in Resources */,
 				9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */,
-				9D4082271ACA7E1500B2602B /* 8-road condition.png in Resources */,
-				9D90073A1AE63CB300F42812 /* pin.png in Resources */,
+				9DD92FD61AFDBA150068EAC6 /* menu 1.png in Resources */,
 				9D968B331AEF6E7B00104C42 /* pin(complete).png in Resources */,
 				9D968B2E1AEF6E7B00104C42 /* back to original.png in Resources */,
 				9D968B341AEF6E7B00104C42 /* pin(uncomplete).png in Resources */,
 				9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */,
-				9D4082261ACA7E1500B2602B /* 7-terrain.png in Resources */,
 				9D968B391AEF6E7B00104C42 /* to map.png in Resources */,
 				9D8BFE021AC39B4100ED37D1 /* Main.storyboard in Resources */,
 				9D968B2F1AEF6E7B00104C42 /* back.png in Resources */,
+				9DD92FDA1AFDBA710068EAC6 /* back to original 1.png in Resources */,
 				9D968B361AEF6E7B00104C42 /* terrain.png in Resources */,
 				9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */,
 				9D968B291AEF6E7B00104C42 /* arrow down.png in Resources */,
 				9D968B371AEF6E7B00104C42 /* time.png in Resources */,
-				9DBDE8AC1AE4D60E003971F1 /* routeBackGround.jpg in Resources */,
-				9D52CB5B1AD109490002CF59 /* CompletedStamp.png in Resources */,
-				9D987E671AF6ED9E005F4BAD /* navbar_bg.png in Resources */,
+				9DD92FD81AFDBA150068EAC6 /* last page arrow 1.png in Resources */,
 				9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */,
+				9DD92FD71AFDBA150068EAC6 /* next page arrow 1.png in Resources */,
 				9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */,
 				9D52CB541AD0D1590002CF59 /* CascadeLogo.png in Resources */,
 				9D968B321AEF6E7B00104C42 /* menu.png in Resources */,
@@ -564,15 +549,14 @@
 				9D26F5911AF8A5E800AC73E0 /* last page arrow.png in Resources */,
 				9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */,
 				9D968B2B1AEF6E7B00104C42 /* arrow right.png in Resources */,
-				9D9007381AE63CAD00F42812 /* pin_grey.png in Resources */,
 				9D968B2D1AEF6E7B00104C42 /* attraction.png in Resources */,
 				9D968B381AEF6E7B00104C42 /* to list.png in Resources */,
 				9D968B301AEF6E7B00104C42 /* complete stamp.png in Resources */,
 				9D968B2C1AEF6E7B00104C42 /* arrow-up.png in Resources */,
 				9D968B311AEF6E7B00104C42 /* distance.png in Resources */,
 				9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */,
-				9D4082251ACA7E1500B2602B /* 6-duration.png in Resources */,
 				9D968B2A1AEF6E7B00104C42 /* arrow left.png in Resources */,
+				9DD92FDC1AFDBBE40068EAC6 /* LaunchImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
