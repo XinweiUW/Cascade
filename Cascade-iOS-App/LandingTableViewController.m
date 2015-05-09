@@ -182,8 +182,10 @@
         
         NSString *title = [device valueForKey:@"title"];
         if ([[device valueForKey:@"complete"] integerValue] == 0){
+            cell.completeView.hidden = TRUE;
             title = [device valueForKey:@"title"];
         }else{
+            cell.completeView.hidden = FALSE;
             title = [NSString stringWithFormat:@"grey%@", [device valueForKey:@"title"]];
         }
         image = [self.dm loadImage:title];
@@ -192,24 +194,12 @@
         
     }
     
-    
-    
     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     //UIImage *grayBackGound = [self convertImageToGrayScale:image];
     
     [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.routeNameLabel.numberOfLines = 2;
     cell.routeNameLabel.lineBreakMode = 0;
-    
-    if ([[device valueForKey:@"complete"] integerValue] == 1) {
-        //cell.backgroundView.alpha = 0.5;
-        cell.completeView.hidden = FALSE;
-        //cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
-    } else if ([[device valueForKey:@"complete"] integerValue]  == 0 ){
-        //cell.backgroundView.alpha = 1;
-        cell.completeView.hidden = TRUE;
-        //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-    }
     
     return cell;
 }

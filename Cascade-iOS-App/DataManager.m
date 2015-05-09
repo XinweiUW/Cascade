@@ -216,7 +216,7 @@
             });
         }
         if (completionHandler) {
-            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
             dispatch_async(queue, completionHandler);
             //dispatch_async(dispatch_get_main_queue(), completionHandler);
             //completionHandler();
