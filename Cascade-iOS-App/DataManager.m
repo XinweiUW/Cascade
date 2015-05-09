@@ -126,7 +126,7 @@
     
     NSMutableArray *rides = [self mutableArrayUsingFetchRequest];
     if (rides.count != 0){
-        [self deleteObjects];
+        //[self deleteObjects];
     }
     
     NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
@@ -135,11 +135,15 @@
     
     [backgroundContext performBlock:^{
         NSError *error;
-        //NSString *url = @"https://www.filepicker.io/api/file/KkEihfrMR2OYX6b3j2sJ";
-        //NSString *url = @"https://www.filepicker.io/api/file/mDbEwF6QRyeOcbBrE1pj";
-        NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv?vHRPZKc_L59_ZfaJp2A_aMfaNcZOrYD5";
+        //NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv?tZGtCGxt4B9qc9nqujQIYqYaA1VZPld7";
+        //NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
+        NSString *url = @"http://www.cascade.org/system/files/Top_10_Rides_Content.csv";
+        //NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-        NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] ;
+        //NSData *responseData = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                     //returningResponse:nil
+                                                     //            error:nil];
+        NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
         NSLog(@"Beginning...");
         NSStringEncoding encoding = 0;
