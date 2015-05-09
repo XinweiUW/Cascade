@@ -135,8 +135,8 @@
     
     [backgroundContext performBlock:^{
         NSError *error;
-        //NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv?tZGtCGxt4B9qc9nqujQIYqYaA1VZPld7";
-        NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
+        NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv";
+        //NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
         //NSString *url = @"http://www.cascade.org/system/files/Top_10_Rides_Content.csv";
         //NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
@@ -213,13 +213,13 @@
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.managedObjectContext save:nil];
+                //if (completionHandler) {
+                    //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
+                    //dispatch_async(queue, completionHandler);
+                    //dispatch_async(dispatch_get_main_queue(), completionHandler);
+                    //completionHandler();
+                //}
             });
-        }
-        if (completionHandler) {
-            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
-            dispatch_async(queue, completionHandler);
-            //dispatch_async(dispatch_get_main_queue(), completionHandler);
-            //completionHandler();
         }
     }];
 }

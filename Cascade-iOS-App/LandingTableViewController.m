@@ -46,7 +46,7 @@
     {
         [self.dm updateTextFromServerWithCompletion:^{
             NSLog(@"text-based information update complete");
-            [self.dm generateImageFromURL];
+            //[self.dm generateImageFromURL];
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         }];
         
@@ -87,8 +87,12 @@
     }
     else{
         //@synchronized(self.tableView){
-            [self.tableView setNeedsDisplay];
-            [self.tableView reloadData];
+        [self.tableView setNeedsDisplay];
+        [self.tableView reloadData];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
+        dispatch_async(queue, ^{
+            [self.dm generateImageFromURL];
+        });
         //}
     }
 }
