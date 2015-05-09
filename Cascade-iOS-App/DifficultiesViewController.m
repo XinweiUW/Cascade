@@ -57,7 +57,7 @@
     [self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
     
     [self setNavigationBar];
-    [self setArrow];
+    [self setNextPageButton];
     
     //UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
@@ -75,16 +75,25 @@
     
 }
 
-- (void) setArrow {
+- (void) setNextPageButton {
     CGFloat arrowX = 0.45 * selfViewWidth;
     CGFloat arrowY = 0.94 * selfViewHeight;
     CGFloat arrowWidth = 0.1 * selfViewWidth;
     CGFloat arrowHeight = 0.03 * selfViewHeight;
-    UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    [arrowView setImage:[UIImage imageNamed:@"next page arrow.png"]];
-    [self.view addSubview:arrowView];
+    //UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+    //[arrowView setImage:[UIImage imageNamed:@"next page arrow 1.png"]];
+    //[self.view addSubview:arrowView];
+    UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 1.png"] forState:UIControlStateNormal];
+    [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:nextPageButton];
+
 }
 
+- (void) goToNextPage {
+    [self performSegueWithIdentifier:@"showRouteMapSegue" sender:self];
+}
 
 - (void) setNavigationBar {
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];

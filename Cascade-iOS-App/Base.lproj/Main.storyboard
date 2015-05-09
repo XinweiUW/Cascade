@@ -194,7 +194,7 @@
                 <exit id="Lrf-9f-3aJ" userLabel="Exit" sceneMemberID="exit"/>
                 <swipeGestureRecognizer direction="up" id="XOr-t7-3Hv">
                     <connections>
-                        <segue destination="GWr-7A-JQE" kind="presentation" identifier="showTurnByTurn" id="Gaw-PK-Fop"/>
+                        <segue destination="GWr-7A-JQE" kind="presentation" identifier="showTurnByTurnSegue" id="Gaw-PK-Fop"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
