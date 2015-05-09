@@ -136,8 +136,8 @@
     [backgroundContext performBlock:^{
         NSError *error;
         //NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv?tZGtCGxt4B9qc9nqujQIYqYaA1VZPld7";
-        //NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
-        NSString *url = @"http://www.cascade.org/system/files/Top_10_Rides_Content.csv";
+        NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
+        //NSString *url = @"http://www.cascade.org/system/files/Top_10_Rides_Content.csv";
         //NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         //NSData *responseData = [NSURLConnection sendSynchronousRequest:urlRequest

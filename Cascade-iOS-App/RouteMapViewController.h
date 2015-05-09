@@ -10,9 +10,10 @@
 #import "DataManager.h"
 #import "DescriptionsViewController.h"
 
-@interface RouteMapViewController : UIViewController {
+@interface RouteMapViewController : UIViewController<UIWebViewDelegate> {
     CGFloat selfViewWidth;
     CGFloat selfViewHeight;
+    BOOL allowLoad;
 }
 
 @property (strong, nonatomic) DataManager *dm;
