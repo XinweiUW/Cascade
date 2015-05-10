@@ -58,6 +58,7 @@
     //[self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
     
     [self setNavigationBar];
+    [self setLastPageButton];
     [self setNextPageButton];
     
     //UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
@@ -76,6 +77,20 @@
     
 }
 
+- (void) setLastPageButton {
+    CGFloat arrowX = 0.1 * selfViewWidth;
+    CGFloat arrowY = 46;
+    CGFloat arrowWidth = 0.8 * selfViewWidth;
+    CGFloat arrowHeight = arrowWidth/6;
+    UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+    nextPageButton.backgroundColor = [UIColor clearColor];
+    [nextPageButton setImage:[UIImage imageNamed:@"last page arrow 2.png"] forState:UIControlStateNormal];
+    [nextPageButton addTarget:self action:@selector(goToLastPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:nextPageButton];
+}
+
+
 - (void) setNextPageButton {
     CGFloat arrowX = 0.28 * selfViewWidth;
     CGFloat arrowY = 0.93 * selfViewHeight;
@@ -87,6 +102,10 @@
     [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 2.png"] forState:UIControlStateNormal];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextPageButton];
+}
+
+- (void) goToLastPage {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) goToNextPage {

@@ -47,8 +47,26 @@
     */
     allowLoad = YES;
     [self setNavigationBar];
+    [self setLastPageButton];
     [self setNextPageButton];
     [self loadMapView];
+}
+
+- (void) setLastPageButton {
+    CGFloat arrowX = 0.1 * selfViewWidth;
+    CGFloat arrowY = 46;
+    CGFloat arrowWidth = 0.8 * selfViewWidth;
+    CGFloat arrowHeight = arrowWidth/6;
+    UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+    nextPageButton.backgroundColor = [UIColor clearColor];
+    [nextPageButton setImage:[UIImage imageNamed:@"last page arrow 2.png"] forState:UIControlStateNormal];
+    [nextPageButton addTarget:self action:@selector(goToLastPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:nextPageButton];
+}
+
+- (void) goToLastPage {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) setNextPageButton {
@@ -119,6 +137,13 @@
     UIImageView * backgroundView  =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, selfViewWidth, selfViewHeight)];
     [backgroundView setImage:croppedImage];
     [self.view addSubview:backgroundView];
+    
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.alpha = 0.4;
+    effectView.frame = self.view.bounds;
+    [backgroundView addSubview:effectView];
+
     
 }
 

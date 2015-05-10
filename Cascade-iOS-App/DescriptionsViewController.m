@@ -105,6 +105,7 @@
 }
 
 
+
 - (void) setNextPageButton {
     CGFloat arrowX = 0.28 * selfViewWidth;
     CGFloat arrowY = 0.93 * selfViewHeight;
