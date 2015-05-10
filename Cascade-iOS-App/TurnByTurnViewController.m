@@ -73,8 +73,8 @@
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];
     [self.view addSubview:navBar];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(selfViewWidth * 0.01, 0, navBar.frame.size.height/3*4, navBar.frame.size.height)];
-    [backButton setImage:[UIImage imageNamed:@"back 1.png"] forState:UIControlStateNormal];
+    [backButton setFrame:CGRectMake(selfViewWidth * 0.027, -navBar.frame.size.height * 0.1, navBar.frame.size.height*1.51, navBar.frame.size.height*1.12)];
+    [backButton setImage:[UIImage imageNamed:@"back 3 layer.png"] forState:UIControlStateNormal];
     backButton.backgroundColor = [UIColor clearColor];
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     [navBar addSubview:backButton];
