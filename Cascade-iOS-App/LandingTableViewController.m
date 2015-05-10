@@ -35,7 +35,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
     //CGSize imgSizeHorizontal = CGSizeMake(10, 10);
     //self.placeholder = [self.dm imageWithImage:[UIImage imageNamed:@"loading.png"] scaledToSize:imgSizeHorizontal];
-    self.placeholder = [UIImage imageNamed:@"loading.png"];
+    self.placeholder = [UIImage imageNamed:@"loading 2.png"];
     /*
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -81,10 +81,10 @@
         // This came from the background thread. Without performing in the main thread, cellForRowAtIndexPath will not be fired.
     }
     else if ([[notification name] isEqualToString:@"greyimageGenerated"]){
-        NSInteger number = [notification.object integerValue];
+        //NSInteger number = [notification.object integerValue];
         //number = number - 1;
-        NSIndexPath *index = [NSIndexPath indexPathForRow:number inSection:0];
-        NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
+        //NSIndexPath *index = [NSIndexPath indexPathForRow:number inSection:0];
+        //NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
         //[self.tableView reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView reloadData];
     }

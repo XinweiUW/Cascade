@@ -200,58 +200,6 @@
             </objects>
             <point key="canvasLocation" x="2015" y="2700"/>
         </scene>
-        <!--Turn By Turn Table View Controller-->
-        <scene sceneID="nGe-DD-d5y">
-            <objects>
-                <tableViewController id="hLk-4u-XO1" customClass="TurnByTurnTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" id="p1C-NC-ho8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="62" id="sEM-kq-5F2" customClass="TurnByTurnTableViewCell">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sEM-kq-5F2" id="sxE-BW-PJS">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6y-Kk-Zu5">
-                                            <rect key="frame" x="85" y="80" width="373" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Direction" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndm-rc-Prs">
-                                            <rect key="frame" x="85" y="55" width="466" height="27"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hB-si-Ese">
-                                            <rect key="frame" x="80" y="11" width="64" height="36"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="arrowView" destination="4hB-si-Ese" id="1sq-By-F9h"/>
-                                    <outlet property="direction" destination="Ndm-rc-Prs" id="na0-fn-uI7"/>
-                                    <outlet property="distance" destination="U6y-Kk-Zu5" id="dEq-kI-kGq"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="hLk-4u-XO1" id="zIg-3z-88H"/>
-                            <outlet property="delegate" destination="hLk-4u-XO1" id="jam-oi-ZBc"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <segue destination="erl-PQ-Kdz" kind="unwind" identifier="unwindFromTurnByTurn" unwindAction="unwindSegue:" id="ZVn-pz-ad6"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OlR-SW-UNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="erl-PQ-Kdz" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1667" y="3447"/>
-        </scene>
         <!--Turn By Turn View Controller-->
         <scene sceneID="ywK-Ve-iN5">
             <objects>

@@ -8,8 +8,9 @@
 
 #import "RouteMapViewController.h"
 #import "LandingTableViewController.h"
-#import "TurnByTurnTableViewController.h"
 #import "DSNavigationBar.h"
+#import "TurnByTurnViewController.h"
+
 
 @interface RouteMapViewController ()
 
@@ -172,7 +173,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showTurnByTurnSegue"]) {
         //NSManagedObject *selectedDevice = [self.routeArray objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-        TurnByTurnTableViewController *destViewController = segue.destinationViewController;
+        TurnByTurnViewController *destViewController = segue.destinationViewController;
         destViewController.routedb = self.routedb;
     }
     

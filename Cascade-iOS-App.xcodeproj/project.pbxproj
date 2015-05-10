@@ -57,7 +57,6 @@
 		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
 		9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */; };
 		9DAEBD211AFEDF1800930135 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEBD201AFEDF1800930135 /* loading.png */; };
-		9DC4FF601AF59CFD0070E3EF /* TurnByTurnTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4FF5F1AF59CFD0070E3EF /* TurnByTurnTableViewController.m */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
@@ -85,6 +84,7 @@
 		9DE174601AFF288E007A3D98 /* back 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE1745F1AFF288E007A3D98 /* back 2.png */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Ride.m */; };
+		9DF916A21AFF2DB300D375B0 /* loading 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF916A11AFF2DB300D375B0 /* loading 2.png */; };
 		9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17F91AC9074600D79B51 /* CHCSVParser.m */; };
 /* End PBXBuildFile section */
 
@@ -175,8 +175,6 @@
 		9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		9DA8FC661ACF9468006F4FBB /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
 		9DAEBD201AFEDF1800930135 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
-		9DC4FF5E1AF59CFD0070E3EF /* TurnByTurnTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnByTurnTableViewController.h; sourceTree = "<group>"; };
-		9DC4FF5F1AF59CFD0070E3EF /* TurnByTurnTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnByTurnTableViewController.m; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
@@ -211,6 +209,7 @@
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		9DF0F2491ADB273400830753 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
 		9DF0F24A1ADB273400830753 /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ride.m; sourceTree = "<group>"; };
+		9DF916A11AFF2DB300D375B0 /* loading 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading 2.png"; sourceTree = "<group>"; };
 		9DFC17F91AC9074600D79B51 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		9DFC17FA1AC9074600D79B51 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,6 +269,7 @@
 		9D4082171ACA7DEF00B2602B /* iconimg */ = {
 			isa = PBXGroup;
 			children = (
+				9DF916A11AFF2DB300D375B0 /* loading 2.png */,
 				9DD92FD31AFDBA150068EAC6 /* menu 1.png */,
 				9DE174591AFF2062007A3D98 /* back 1.png */,
 				9DD92FD41AFDBA150068EAC6 /* next page arrow 1.png */,
@@ -411,8 +411,6 @@
 				9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */,
 				9D968B3A1AEF8CE900104C42 /* RouteMapViewController.h */,
 				9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */,
-				9DC4FF5E1AF59CFD0070E3EF /* TurnByTurnTableViewController.h */,
-				9DC4FF5F1AF59CFD0070E3EF /* TurnByTurnTableViewController.m */,
 				9D52A89F1AD395900041CB62 /* AboutViewController.h */,
 				9D52A8A01AD395900041CB62 /* AboutViewController.m */,
 				9D52A8A21AD395AC0041CB62 /* TipViewController.h */,
@@ -568,6 +566,7 @@
 				9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */,
 				9D968B2B1AEF6E7B00104C42 /* arrow right.png in Resources */,
 				9D968B2D1AEF6E7B00104C42 /* attraction.png in Resources */,
+				9DF916A21AFF2DB300D375B0 /* loading 2.png in Resources */,
 				9D968B381AEF6E7B00104C42 /* to list.png in Resources */,
 				9DE1745D1AFF2558007A3D98 /* next page arrow 2.png in Resources */,
 				9D968B301AEF6E7B00104C42 /* complete stamp.png in Resources */,
@@ -618,7 +617,6 @@
 				9D8BFDFC1AC39B4100ED37D1 /* Cascade_iOS_App.xcdatamodeld in Sources */,
 				9DA8FC591ACF9126006F4FBB /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				9D069E241AF497E30061E098 /* SWUtilityButtonView.m in Sources */,
-				9DC4FF601AF59CFD0070E3EF /* TurnByTurnTableViewController.m in Sources */,
 				9D069E1F1AF497E30061E098 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */,
 				9DD7EF2E1AEB43C2008B2C33 /* DifficultiesViewController.m in Sources */,
