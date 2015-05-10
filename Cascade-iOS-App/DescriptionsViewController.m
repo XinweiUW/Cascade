@@ -107,9 +107,9 @@
 
 
 - (void) setNextPageButton {
-    CGFloat arrowX = 0.28 * selfViewWidth;
+    CGFloat arrowX = 0.35 * selfViewWidth;
     CGFloat arrowY = 0.93 * selfViewHeight;
-    CGFloat arrowWidth = 0.44 * selfViewWidth;
+    CGFloat arrowWidth = 0.3 * selfViewWidth;
     CGFloat arrowHeight = arrowWidth/4;
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];

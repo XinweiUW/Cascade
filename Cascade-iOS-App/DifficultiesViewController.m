@@ -78,23 +78,23 @@
 }
 
 - (void) setLastPageButton {
-    CGFloat arrowX = 0.1 * selfViewWidth;
+    CGFloat arrowX = 0.3 * selfViewWidth;
     CGFloat arrowY = 46;
-    CGFloat arrowWidth = 0.8 * selfViewWidth;
-    CGFloat arrowHeight = arrowWidth/6;
-    UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    nextPageButton.backgroundColor = [UIColor clearColor];
-    [nextPageButton setImage:[UIImage imageNamed:@"last page arrow 2.png"] forState:UIControlStateNormal];
-    [nextPageButton addTarget:self action:@selector(goToLastPage) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:nextPageButton];
+    CGFloat arrowWidth = 0.4 * selfViewWidth;
+    CGFloat arrowHeight = arrowWidth/4;
+    UIButton * lastPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [lastPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+    lastPageButton.backgroundColor = [UIColor clearColor];
+    [lastPageButton setImage:[UIImage imageNamed:@"last page arrow 3.png"] forState:UIControlStateNormal];
+    [lastPageButton addTarget:self action:@selector(goToLastPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:lastPageButton];
 }
 
 
 - (void) setNextPageButton {
-    CGFloat arrowX = 0.28 * selfViewWidth;
+    CGFloat arrowX = 0.35 * selfViewWidth;
     CGFloat arrowY = 0.93 * selfViewHeight;
-    CGFloat arrowWidth = 0.44 * selfViewWidth;
+    CGFloat arrowWidth = 0.3 * selfViewWidth;
     CGFloat arrowHeight = arrowWidth/4;
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];

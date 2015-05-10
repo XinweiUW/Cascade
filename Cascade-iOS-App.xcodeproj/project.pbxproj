@@ -59,6 +59,7 @@
 		9DAEBD211AFEDF1800930135 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEBD201AFEDF1800930135 /* loading.png */; };
 		9DC168071B001511005150DF /* back 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168051B001511005150DF /* back 3.png */; };
 		9DC168081B001511005150DF /* back 3 layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168061B001511005150DF /* back 3 layer.png */; };
+		9DC1680A1B001D5B005150DF /* last page arrow 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168091B001D5B005150DF /* last page arrow 3.png */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
@@ -179,6 +180,7 @@
 		9DAEBD201AFEDF1800930135 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		9DC168051B001511005150DF /* back 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back 3.png"; sourceTree = "<group>"; };
 		9DC168061B001511005150DF /* back 3 layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back 3 layer.png"; sourceTree = "<group>"; };
+		9DC168091B001D5B005150DF /* last page arrow 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last page arrow 3.png"; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				9D968B201AEF6E7B00104C42 /* distance.png */,
 				9DE1745F1AFF288E007A3D98 /* back 2.png */,
 				9D968B221AEF6E7B00104C42 /* pin(complete).png */,
+				9DC168091B001D5B005150DF /* last page arrow 3.png */,
 				9D968B231AEF6E7B00104C42 /* pin(uncomplete).png */,
 				9D968B241AEF6E7B00104C42 /* road condition.png */,
 				9DAEBD201AFEDF1800930135 /* loading.png */,
@@ -578,6 +581,7 @@
 				9D968B381AEF6E7B00104C42 /* to list.png in Resources */,
 				9DE1745D1AFF2558007A3D98 /* next page arrow 2.png in Resources */,
 				9D968B301AEF6E7B00104C42 /* complete stamp.png in Resources */,
+				9DC1680A1B001D5B005150DF /* last page arrow 3.png in Resources */,
 				9DE174571AFF149B007A3D98 /* terrain 1.png in Resources */,
 				9D968B2C1AEF6E7B00104C42 /* arrow-up.png in Resources */,
 				9D968B311AEF6E7B00104C42 /* distance.png in Resources */,
