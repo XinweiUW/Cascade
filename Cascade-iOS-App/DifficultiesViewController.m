@@ -9,6 +9,7 @@
 #import "DifficultiesViewController.h"
 #import "LandingTableViewController.h"
 #import "DSNavigationBar.h"
+#define iPhone5Height 568
 
 @interface DifficultiesViewController ()
 
@@ -31,30 +32,30 @@
     
     [self setBackground];
     
+    CGFloat iconX = 0.11 * selfViewWidth;
+    CGFloat iconWidth = 0.15 * selfViewWidth;
     
-   
-    
-    UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.13 * selfViewWidth, 0.22 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
-    [distanceIcon setImage:[UIImage imageNamed:@"distance.png"]];
+    UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, 0.3 * selfViewHeight, iconWidth, iconWidth)];
+    [distanceIcon setImage:[UIImage imageNamed:@"distance 1.png"]];
     [self.view addSubview:distanceIcon];
     [self setLabel:distanceIcon connectWithValue:@"distance"];
     
-    UIImageView *durationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.40 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
-    [durationIcon setImage:[UIImage imageNamed:@"time.png"]];
+    UIImageView *durationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, 0.45 * selfViewHeight, iconWidth, iconWidth)];
+    [durationIcon setImage:[UIImage imageNamed:@"time 1.png"]];
     [self.view addSubview:durationIcon];
     [self setLabel:durationIcon connectWithValue:@"duration"];
     
-    UIImageView *terrainIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.60 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
-    [terrainIcon setImage:[UIImage imageNamed:@"terrain.png"]];
+    UIImageView *terrainIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, 0.60 * selfViewHeight, iconWidth, iconWidth)];
+    [terrainIcon setImage:[UIImage imageNamed:@"terrain 1.png"]];
     [self.view addSubview:terrainIcon];
     [self setLabel:terrainIcon connectWithValue:@"terrain"];
     
-    UIImageView *roadConditionIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.13 * selfViewWidth, 0.78 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
-    [roadConditionIcon setImage:[UIImage imageNamed:@"road condition.png"]];
+    UIImageView *roadConditionIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, 0.75 * selfViewHeight, iconWidth, iconWidth)];
+    [roadConditionIcon setImage:[UIImage imageNamed:@"road condition 1.png"]];
     [self.view addSubview:roadConditionIcon];
     [self setLabel:roadConditionIcon connectWithValue:@"roadCondition"];
     
-    [self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
+    //[self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
     
     [self setNavigationBar];
     [self setNextPageButton];
@@ -76,19 +77,16 @@
 }
 
 - (void) setNextPageButton {
-    CGFloat arrowX = 0.45 * selfViewWidth;
-    CGFloat arrowY = 0.94 * selfViewHeight;
-    CGFloat arrowWidth = 0.1 * selfViewWidth;
-    CGFloat arrowHeight = 0.03 * selfViewHeight;
-    //UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    //[arrowView setImage:[UIImage imageNamed:@"next page arrow 1.png"]];
-    //[self.view addSubview:arrowView];
+    CGFloat arrowX = 0.28 * selfViewWidth;
+    CGFloat arrowY = 0.93 * selfViewHeight;
+    CGFloat arrowWidth = 0.44 * selfViewWidth;
+    CGFloat arrowHeight = arrowWidth/4;
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 1.png"] forState:UIControlStateNormal];
+    nextPageButton.backgroundColor = [UIColor clearColor];
+    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 2.png"] forState:UIControlStateNormal];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextPageButton];
-
 }
 
 - (void) goToNextPage {
@@ -98,19 +96,12 @@
 - (void) setNavigationBar {
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];
     [self.view addSubview:navBar];
-    
-    UIImage *backImage = [UIImage imageNamed:@"back.png"];
-    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
-    [backImageView setImage:backImage];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
-    [backButton setFrame:CGRectMake(10, 10, navBar.frame.size.height, navBar.frame.size.height/1.6)];
+    [backButton setFrame:CGRectMake(selfViewWidth * 0.01, 0, navBar.frame.size.height/3*4, navBar.frame.size.height)];
+    [backButton setImage:[UIImage imageNamed:@"back 1.png"] forState:UIControlStateNormal];
     backButton.backgroundColor = [UIColor clearColor];
-    //[backButton setImage:backImage forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     [navBar addSubview:backButton];
-    [navBar addSubview:backImageView];
-
 }
 
 - (void) setDifficultyLabelWith: (UIImageView *) distanceIcon andRoadConditionIcon: (UIImageView *) roadConditionIcon{
@@ -167,14 +158,14 @@
 - (void) setLabel: (UIImageView *) iconImageView connectWithValue: (NSString *)valueName {
     CGFloat originX = iconImageView.frame.origin.x + iconImageView.frame.size.width * 1.1;
     CGFloat originY = iconImageView.frame.origin.y - iconImageView.frame.size.width * 0.2;
-    CGFloat labelWidth = iconImageView.frame.size.width * 2.5;
+    CGFloat labelWidth = iconImageView.frame.size.width * 4;
     CGFloat labelHeight = iconImageView.frame.size.height * 1.5;
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
     //label.backgroundColor = [UIColor grayColor];
     [label setTextAlignment:NSTextAlignmentLeft];
     label.text = [self.routedb valueForKey:valueName];
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:18.0f];
+    label.font = [UIFont boldSystemFontOfSize:18.0f * selfViewHeight/iPhone5Height];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:label];

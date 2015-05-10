@@ -9,6 +9,7 @@
 #import "DescriptionsViewController.h"
 #import "DifficultiesViewController.h"
 #import "DSNavigationBar.h"
+#define iPhone5Height 568
 
 @interface DescriptionsViewController ()
 
@@ -25,14 +26,13 @@
     //[[self navigationItem] setBackBarButtonItem:backButton];
     // Do any additional setup after loading the view.
     //self.navigationController.navigationBar.backItem.title = @"Custom text";
-    
     [self setBackground];
     
     UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, selfViewHeight * 0.33, selfViewWidth * 0.84, selfViewWidth * 0.3)];
     routeTitleLabel.backgroundColor = [UIColor clearColor];
     routeTitleLabel.textColor = [UIColor whiteColor];
     [routeTitleLabel setTextAlignment:NSTextAlignmentLeft];
-    routeTitleLabel.font = [UIFont boldSystemFontOfSize:16.0f * selfViewHeight/selfViewWidth];
+    routeTitleLabel.font = [UIFont boldSystemFontOfSize:24.0f * selfViewHeight/iPhone5Height];
     routeTitleLabel.numberOfLines = 2;
     routeTitleLabel.lineBreakMode = 0;
     [self.view addSubview:routeTitleLabel];
@@ -49,10 +49,10 @@
     [descriptImage addSubview:effectView];
     
     
-    UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, descriptImage.frame.size.height * 0.05, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
+    UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, descriptImage.frame.size.height * 0.03, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
     routeDescriptLabel.backgroundColor = [UIColor clearColor];
     routeDescriptLabel.textColor = [UIColor whiteColor];
-    routeDescriptLabel.font = [UIFont systemFontOfSize:16.0f];
+    routeDescriptLabel.font = [UIFont systemFontOfSize:16.0f * selfViewHeight/iPhone5Height];
     routeDescriptLabel.lineBreakMode = NSLineBreakByWordWrapping;
     routeDescriptLabel.numberOfLines = 0;
     //routeDescriptLabel.backgroundColor = [UIColor greenColor];
@@ -66,7 +66,7 @@
     UILabel *keyWordsLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, routeDescriptLabel.frame.origin.y + routeDescriptLabel.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.2 * descriptImage.frame.size.height)];
     keyWordsLabel.backgroundColor = [UIColor clearColor];
     keyWordsLabel.textColor = [UIColor whiteColor];
-    keyWordsLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+    keyWordsLabel.font = [UIFont boldSystemFontOfSize:16.0f * selfViewHeight/iPhone5Height];
     keyWordsLabel.lineBreakMode = NSLineBreakByWordWrapping;
     keyWordsLabel.numberOfLines = 0;
     [descriptImage addSubview:keyWordsLabel];
@@ -106,16 +106,14 @@
 
 
 - (void) setNextPageButton {
-    CGFloat arrowX = 0.45 * selfViewWidth;
-    CGFloat arrowY = 0.94 * selfViewHeight;
-    CGFloat arrowWidth = 0.1 * selfViewWidth;
-    CGFloat arrowHeight = 0.03 * selfViewHeight;
-    //UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    //[arrowView setImage:[UIImage imageNamed:@"next page arrow 1.png"]];
-    //[self.view addSubview:arrowView];
+    CGFloat arrowX = 0.28 * selfViewWidth;
+    CGFloat arrowY = 0.93 * selfViewHeight;
+    CGFloat arrowWidth = 0.44 * selfViewWidth;
+    CGFloat arrowHeight = arrowWidth/4;
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 1.png"] forState:UIControlStateNormal];
+    nextPageButton.backgroundColor = [UIColor clearColor];
+    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 2.png"] forState:UIControlStateNormal];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextPageButton];
 }
@@ -128,7 +126,7 @@
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [backBtn setTitle:@"" forState:UIControlStateNormal];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back 2.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(didTapBackButton) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(0.0f, 0.0f, 16.0f, 28.0f);
     backBtn.backgroundColor = [UIColor clearColor];

@@ -52,17 +52,14 @@
 }
 
 - (void) setNextPageButton {
-    CGFloat arrowX = 0.45 * selfViewWidth;
-    CGFloat arrowY = 0.94 * selfViewHeight;
-    CGFloat arrowWidth = 0.1 * selfViewWidth;
-    CGFloat arrowHeight = 0.03 * selfViewHeight;
-    //UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    //[arrowView setImage:[UIImage imageNamed:@"next page arrow 1.png"]];
-    //[self.view addSubview:arrowView];
+    CGFloat arrowX = 0.28 * selfViewWidth;
+    CGFloat arrowY = 0.93 * selfViewHeight;
+    CGFloat arrowWidth = 0.44 * selfViewWidth;
+    CGFloat arrowHeight = arrowWidth/4;
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 1.png"] forState:UIControlStateNormal];
-    //nextPageButton.titleLabel.text = [self.routedb valueForKey:@"Start"];
+    nextPageButton.backgroundColor = [UIColor clearColor];
+    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 2.png"] forState:UIControlStateNormal];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextPageButton];
 }
@@ -74,19 +71,12 @@
 - (void) setNavigationBar {
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];
     [self.view addSubview:navBar];
-    
-    UIImage *backImage = [UIImage imageNamed:@"back.png"];
-    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
-    [backImageView setImage:backImage];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
-    [backButton setFrame:CGRectMake(10, 10, navBar.frame.size.height, navBar.frame.size.height/1.6)];
+    [backButton setFrame:CGRectMake(selfViewWidth * 0.01, 0, navBar.frame.size.height/3*4, navBar.frame.size.height)];
+    [backButton setImage:[UIImage imageNamed:@"back 1.png"] forState:UIControlStateNormal];
     backButton.backgroundColor = [UIColor clearColor];
-    //[backButton setImage:backImage forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     [navBar addSubview:backButton];
-    [navBar addSubview:backImageView];
-    
 }
 
 
