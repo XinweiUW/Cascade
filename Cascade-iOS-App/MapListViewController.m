@@ -97,7 +97,7 @@
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [backBtn setTitle:@"" forState:UIControlStateNormal];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back 2.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(didTapBackButton) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(0.0f, 0.0f, 16.0f, 28.0f);
     backBtn.backgroundColor = [UIColor clearColor];
