@@ -57,6 +57,8 @@
 		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
 		9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */; };
 		9DAEBD211AFEDF1800930135 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEBD201AFEDF1800930135 /* loading.png */; };
+		9DC168071B001511005150DF /* back 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168051B001511005150DF /* back 3.png */; };
+		9DC168081B001511005150DF /* back 3 layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168061B001511005150DF /* back 3 layer.png */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
@@ -175,6 +177,8 @@
 		9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		9DA8FC661ACF9468006F4FBB /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
 		9DAEBD201AFEDF1800930135 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
+		9DC168051B001511005150DF /* back 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back 3.png"; sourceTree = "<group>"; };
+		9DC168061B001511005150DF /* back 3 layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back 3 layer.png"; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				9D968B1A1AEF6E7B00104C42 /* arrow right.png */,
 				9D968B1B1AEF6E7B00104C42 /* arrow-up.png */,
 				9D968B1C1AEF6E7B00104C42 /* attraction.png */,
+				9DC168051B001511005150DF /* back 3.png */,
+				9DC168061B001511005150DF /* back 3 layer.png */,
 				9D968B1D1AEF6E7B00104C42 /* back to original.png */,
 				9D968B1E1AEF6E7B00104C42 /* back.png */,
 				9DE1744F1AFF1350007A3D98 /* back to original 2.png */,
@@ -538,6 +544,7 @@
 				9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */,
 				9DD92FD61AFDBA150068EAC6 /* menu 1.png in Resources */,
 				9DE174551AFF149B007A3D98 /* distance 1.png in Resources */,
+				9DC168081B001511005150DF /* back 3 layer.png in Resources */,
 				9D968B331AEF6E7B00104C42 /* pin(complete).png in Resources */,
 				9D968B2E1AEF6E7B00104C42 /* back to original.png in Resources */,
 				9D968B341AEF6E7B00104C42 /* pin(uncomplete).png in Resources */,
@@ -561,6 +568,7 @@
 				9DE174501AFF1350007A3D98 /* back to original 2.png in Resources */,
 				9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */,
 				9D968B351AEF6E7B00104C42 /* road condition.png in Resources */,
+				9DC168071B001511005150DF /* back 3.png in Resources */,
 				9D40822B1ACA7E1500B2602B /* 10-arrow-up.png in Resources */,
 				9D26F5911AF8A5E800AC73E0 /* last page arrow.png in Resources */,
 				9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */,
