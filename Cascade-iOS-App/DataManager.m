@@ -135,9 +135,10 @@
     
     [backgroundContext performBlock:^{
         NSError *error;
+        NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
         NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv";
         //NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
-        //NSString *url = @"http://www.cascade.org/system/files/Top_10_Rides_Content.csv";
+        //NSString *url = @"https://www.filepicker.io/api/file/iVQitlmpQuSE4wilqbxR";
         //NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         //NSData *responseData = [NSURLConnection sendSynchronousRequest:urlRequest
@@ -150,12 +151,16 @@
         CHCSVParser * p = [[CHCSVParser alloc] initWithCSVString:file];
         [p setRecognizesBackslashesAsEscapes:YES];
         [p setSanitizesFields:YES];
+    
+       
         
         NSLog(@"encoding: %@", CFStringGetNameOfEncoding(CFStringConvertNSStringEncodingToEncoding(encoding)));
         
         DataManager * d = [[DataManager alloc] init];
         [p setDelegate:d];
         [p parse];
+        NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
+        NSLog(@"raw difference: %f", (end-start));
         
         //NSLog(@"%@", [d lines]);
         
@@ -233,20 +238,29 @@
         return;
     }
     
-    NSString *imgURL;
+    //NSString *imgURL;
     NSString *title;
     
     for (NSManagedObject *route in routes) {
         title = [route valueForKey:@"title"];
-        imgURL = [route valueForKey:@"imgURL"];
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imgURL]];
+        if ([self loadImage:title]) continue;
+        NSLog(@"%@", title);
+        NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+        NSString *imgURL = [route valueForKey:@"imgURL"];
+        NSData *imageData = [NSData dataWithContentsOfURL: [NSURL URLWithString:imgURL]];
+        NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
+        NSLog(@"url to imageData: %f", (end-start));
+        NSTimeInterval end2 = [NSDate timeIntervalSinceReferenceDate];
         UIImage *image = [UIImage imageWithData:imageData];
+        NSLog(@"imageData to image %f", (end2 - end));
         // We store original images instead of cropped images since we want to use original images later.
         [self saveImage:image :title];
+        NSTimeInterval end3 = [NSDate timeIntervalSinceReferenceDate];
+        NSLog(@"save image %f", (end3 - end2));
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"imageGenerated" object:[route valueForKey:@"id"]];
     }
 }
-
 
 - (void)saveImage: (UIImage *)image :(NSString *)title {
     if (image != nil)

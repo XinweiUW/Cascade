@@ -41,7 +41,8 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
      */
     self.tableView.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"imageGenerated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"greyimageGenerated" object:nil];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
     
@@ -54,17 +55,16 @@
         }];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"imageGenerated" object:nil];
-        
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasBeenLaunchedOnceKey"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
     }
     else{
         self.routeArray = [self.dm mutableArrayUsingFetchRequest];
-        [self.tableView reloadData];
+        /*[self.tableView reloadData];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            [self.dm generateImageFromURL];
+        });*/
+        [self updateTable];
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"greyimageGenerated" object:nil];
 }
 
 - (void)reloadTable:(NSNotification *)notification
@@ -91,13 +91,17 @@
     else{
         //@synchronized(self.tableView){
         [self.tableView setNeedsDisplay];
-        [self.tableView reloadData];
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
-        dispatch_async(queue, ^{
-            [self.dm generateImageFromURL];
-        });
+        [self updateTable];
         //}
     }
+}
+
+- (void) updateTable {
+    [self.tableView reloadData];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        [self.dm generateImageFromURL];
+    });
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -176,6 +180,7 @@
         //image = [[UIImage alloc] initWithCIImage:self.placeholder];
         cell.userInteractionEnabled = NO;
         cell.backgroundView = [[UIImageView alloc] initWithImage:self.placeholder];
+        
         return cell;
     }
     cell.userInteractionEnabled = YES;
