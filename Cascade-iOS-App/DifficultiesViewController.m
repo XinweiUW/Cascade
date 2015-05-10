@@ -31,30 +31,30 @@
     
     [self setBackground];
     
+    CGFloat iconX = 0.11 * selfViewWidth;
+    CGFloat iconWidth = 0.15 * selfViewWidth;
     
-   
-    
-    UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.13 * selfViewWidth, 0.22 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
-    [distanceIcon setImage:[UIImage imageNamed:@"distance.png"]];
+    UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, 0.3 * selfViewHeight, iconWidth, iconWidth)];
+    [distanceIcon setImage:[UIImage imageNamed:@"distance 1.png"]];
     [self.view addSubview:distanceIcon];
     [self setLabel:distanceIcon connectWithValue:@"distance"];
     
-    UIImageView *durationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.40 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
-    [durationIcon setImage:[UIImage imageNamed:@"time.png"]];
+    UIImageView *durationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, 0.45 * selfViewHeight, iconWidth, iconWidth)];
+    [durationIcon setImage:[UIImage imageNamed:@"time 1.png"]];
     [self.view addSubview:durationIcon];
     [self setLabel:durationIcon connectWithValue:@"duration"];
     
-    UIImageView *terrainIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.4 * selfViewWidth, 0.60 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
-    [terrainIcon setImage:[UIImage imageNamed:@"terrain.png"]];
+    UIImageView *terrainIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, 0.60 * selfViewHeight, iconWidth, iconWidth)];
+    [terrainIcon setImage:[UIImage imageNamed:@"terrain 1.png"]];
     [self.view addSubview:terrainIcon];
     [self setLabel:terrainIcon connectWithValue:@"terrain"];
     
-    UIImageView *roadConditionIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0.13 * selfViewWidth, 0.78 * selfViewHeight, 0.15 * selfViewWidth, 0.15 * selfViewWidth)];
-    [roadConditionIcon setImage:[UIImage imageNamed:@"road condition.png"]];
+    UIImageView *roadConditionIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, 0.75 * selfViewHeight, iconWidth, iconWidth)];
+    [roadConditionIcon setImage:[UIImage imageNamed:@"road condition 1.png"]];
     [self.view addSubview:roadConditionIcon];
     [self setLabel:roadConditionIcon connectWithValue:@"roadCondition"];
     
-    [self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
+    //[self setDifficultyLabelWith:distanceIcon andRoadConditionIcon:roadConditionIcon];
     
     [self setNavigationBar];
     [self setNextPageButton];
@@ -167,7 +167,7 @@
 - (void) setLabel: (UIImageView *) iconImageView connectWithValue: (NSString *)valueName {
     CGFloat originX = iconImageView.frame.origin.x + iconImageView.frame.size.width * 1.1;
     CGFloat originY = iconImageView.frame.origin.y - iconImageView.frame.size.width * 0.2;
-    CGFloat labelWidth = iconImageView.frame.size.width * 2.5;
+    CGFloat labelWidth = iconImageView.frame.size.width * 4;
     CGFloat labelHeight = iconImageView.frame.size.height * 1.5;
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
     //label.backgroundColor = [UIColor grayColor];
