@@ -82,6 +82,7 @@
 		9DE174561AFF149B007A3D98 /* road condition 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE174521AFF149B007A3D98 /* road condition 1.png */; };
 		9DE174571AFF149B007A3D98 /* terrain 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE174531AFF149B007A3D98 /* terrain 1.png */; };
 		9DE174581AFF149B007A3D98 /* time 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE174541AFF149B007A3D98 /* time 1.png */; };
+		9DE1745A1AFF2062007A3D98 /* back 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE174591AFF2062007A3D98 /* back 1.png */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Ride.m */; };
 		9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17F91AC9074600D79B51 /* CHCSVParser.m */; };
@@ -205,6 +206,7 @@
 		9DE174521AFF149B007A3D98 /* road condition 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "road condition 1.png"; sourceTree = "<group>"; };
 		9DE174531AFF149B007A3D98 /* terrain 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "terrain 1.png"; sourceTree = "<group>"; };
 		9DE174541AFF149B007A3D98 /* time 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time 1.png"; sourceTree = "<group>"; };
+		9DE174591AFF2062007A3D98 /* back 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back 1.png"; sourceTree = "<group>"; };
 		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		9DF0F2491ADB273400830753 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				9DD92FD31AFDBA150068EAC6 /* menu 1.png */,
+				9DE174591AFF2062007A3D98 /* back 1.png */,
 				9DD92FD41AFDBA150068EAC6 /* next page arrow 1.png */,
 				9DD92FD51AFDBA150068EAC6 /* last page arrow 1.png */,
 				9D968B181AEF6E7B00104C42 /* arrow down.png */,
@@ -546,6 +549,7 @@
 				9D968B2F1AEF6E7B00104C42 /* back.png in Resources */,
 				9DD92FDA1AFDBA710068EAC6 /* back to original 1.png in Resources */,
 				9D968B361AEF6E7B00104C42 /* terrain.png in Resources */,
+				9DE1745A1AFF2062007A3D98 /* back 1.png in Resources */,
 				9DE174581AFF149B007A3D98 /* time 1.png in Resources */,
 				9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */,
 				9D968B291AEF6E7B00104C42 /* arrow down.png in Resources */,
