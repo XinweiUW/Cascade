@@ -80,7 +80,7 @@
     CGFloat buttonWidth = 0.15 * selfViewWidth;
     
     UIButton *resetButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonWidth)];
-    [resetButton setImage:[UIImage imageNamed:@"back to original 1.png"] forState:UIControlStateNormal];
+    [resetButton setImage:[UIImage imageNamed:@"back to original 2.png"] forState:UIControlStateNormal];
     //[backButton setImage:backImage forState:UIControlStateNormal];
     [resetButton addTarget:self action:@selector(resetMap) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:resetButton];

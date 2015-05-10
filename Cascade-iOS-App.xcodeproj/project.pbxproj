@@ -78,6 +78,7 @@
 		9DD92FD81AFDBA150068EAC6 /* last page arrow 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD92FD51AFDBA150068EAC6 /* last page arrow 1.png */; };
 		9DD92FDA1AFDBA710068EAC6 /* back to original 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD92FD91AFDBA710068EAC6 /* back to original 1.png */; };
 		9DD92FDC1AFDBBE40068EAC6 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD92FDB1AFDBBE40068EAC6 /* LaunchImage.png */; };
+		9DE174501AFF1350007A3D98 /* back to original 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE1744F1AFF1350007A3D98 /* back to original 2.png */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Ride.m */; };
 		9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17F91AC9074600D79B51 /* CHCSVParser.m */; };
@@ -197,6 +198,7 @@
 		9DD92FD51AFDBA150068EAC6 /* last page arrow 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last page arrow 1.png"; sourceTree = "<group>"; };
 		9DD92FD91AFDBA710068EAC6 /* back to original 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back to original 1.png"; sourceTree = "<group>"; };
 		9DD92FDB1AFDBBE40068EAC6 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		9DE1744F1AFF1350007A3D98 /* back to original 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back to original 2.png"; sourceTree = "<group>"; };
 		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		9DF0F2491ADB273400830753 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				9D968B1C1AEF6E7B00104C42 /* attraction.png */,
 				9D968B1D1AEF6E7B00104C42 /* back to original.png */,
 				9D968B1E1AEF6E7B00104C42 /* back.png */,
+				9DE1744F1AFF1350007A3D98 /* back to original 2.png */,
 				9DD92FD91AFDBA710068EAC6 /* back to original 1.png */,
 				9D968B1F1AEF6E7B00104C42 /* complete stamp.png */,
 				9D968B201AEF6E7B00104C42 /* distance.png */,
@@ -541,6 +544,7 @@
 				9DD92FD71AFDBA150068EAC6 /* next page arrow 1.png in Resources */,
 				9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */,
 				9D52CB541AD0D1590002CF59 /* CascadeLogo.png in Resources */,
+				9DE174501AFF1350007A3D98 /* back to original 2.png in Resources */,
 				9D968B321AEF6E7B00104C42 /* menu.png in Resources */,
 				9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */,
 				9D968B351AEF6E7B00104C42 /* road condition.png in Resources */,
