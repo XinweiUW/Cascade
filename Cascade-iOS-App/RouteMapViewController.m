@@ -114,6 +114,12 @@
     //Load the request in the UIWebView.
     [webView loadRequest:requestObj];
     [self.view addSubview:webView];
+    UILabel *mapTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(webView.frame.origin.x, webView.frame.origin.y, webView.frame.size.width, webView.frame.size.height * 0.1)];
+    mapTitleLabel.backgroundColor = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:1.0f];
+    mapTitleLabel.text = [self.routedb valueForKey:@"title"];
+    mapTitleLabel.textColor = [UIColor whiteColor];
+    [mapTitleLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:mapTitleLabel];
 }
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
