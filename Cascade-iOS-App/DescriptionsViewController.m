@@ -28,11 +28,11 @@
     
     [self setBackground];
     
-    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, selfViewHeight * 0.3, selfViewWidth, selfViewWidth/5)];
+    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, selfViewHeight * 0.33, selfViewWidth * 0.84, selfViewWidth * 0.3)];
     routeTitleLabel.backgroundColor = [UIColor clearColor];
     routeTitleLabel.textColor = [UIColor whiteColor];
-    [routeTitleLabel setTextAlignment:NSTextAlignmentCenter];
-    routeTitleLabel.font = [UIFont boldSystemFontOfSize:23.0f];
+    [routeTitleLabel setTextAlignment:NSTextAlignmentLeft];
+    routeTitleLabel.font = [UIFont boldSystemFontOfSize:16.0f * selfViewHeight/selfViewWidth];
     routeTitleLabel.numberOfLines = 2;
     routeTitleLabel.lineBreakMode = 0;
     [self.view addSubview:routeTitleLabel];
@@ -48,7 +48,22 @@
     effectView.frame = descriptImage.bounds;
     [descriptImage addSubview:effectView];
     
-    UILabel *keyWordsLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0, 0.84 * descriptImage.frame.size.width, 0.2 * descriptImage.frame.size.height)];
+    
+    UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, descriptImage.frame.size.height * 0.05, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
+    routeDescriptLabel.backgroundColor = [UIColor clearColor];
+    routeDescriptLabel.textColor = [UIColor whiteColor];
+    routeDescriptLabel.font = [UIFont systemFontOfSize:16.0f];
+    routeDescriptLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    routeDescriptLabel.numberOfLines = 0;
+    //routeDescriptLabel.backgroundColor = [UIColor greenColor];
+    [descriptImage addSubview:routeDescriptLabel];
+    if (self.routedb) {
+        routeDescriptLabel.text = [self.routedb valueForKey:@"descriptions"];
+        [routeDescriptLabel sizeToFit];
+    }
+    
+    
+    UILabel *keyWordsLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, routeDescriptLabel.frame.origin.y + routeDescriptLabel.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.2 * descriptImage.frame.size.height)];
     keyWordsLabel.backgroundColor = [UIColor clearColor];
     keyWordsLabel.textColor = [UIColor whiteColor];
     keyWordsLabel.font = [UIFont boldSystemFontOfSize:17.0f];
@@ -56,20 +71,10 @@
     keyWordsLabel.numberOfLines = 0;
     [descriptImage addSubview:keyWordsLabel];
     
-    
-    
-    UILabel *routeDescriptLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * descriptImage.frame.size.width, 0.15 * descriptImage.frame.size.height, 0.84 * descriptImage.frame.size.width, 0.8 * descriptImage.frame.size.height)];
-    routeDescriptLabel.backgroundColor = [UIColor clearColor];
-    routeDescriptLabel.textColor = [UIColor whiteColor];
-    routeDescriptLabel.font = [UIFont systemFontOfSize:16.0f];
-    routeDescriptLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    routeDescriptLabel.numberOfLines = 0;
-    [descriptImage addSubview:routeDescriptLabel];
-    
     if (self.routedb) {
         routeTitleLabel.text = [self.routedb valueForKey:@"title"];
         keyWordsLabel.text = [self.routedb valueForKey:@"keyWords"];
-        routeDescriptLabel.text = [self.routedb valueForKey:@"descriptions"];
+        
     }
     //[[self navigationController] setNavigationBarHidden:YES animated:YES];
     //[self setNavigationBar];
@@ -78,9 +83,9 @@
     //[self setNavigationBar];
     [self setNextPageButton];
     [self setBackButton];
-   
-    
 }
+
+
 
 - (void) setBackground {
     self.dm = [[DataManager alloc] init];
