@@ -191,7 +191,6 @@
             UIImage *uncompletePin = [self imageWithImage:[UIImage imageNamed:@"pin(uncomplete).png"] scaledToSize:imgSizeUp];
             
             
-            
             if (complete == 0) {
                 
                 pinView.image = uncompletePin;

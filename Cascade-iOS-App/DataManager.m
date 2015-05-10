@@ -135,8 +135,8 @@
     
     [backgroundContext performBlock:^{
         NSError *error;
-        NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv";
-        //NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
+        //NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv";
+        NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
         //NSString *url = @"http://www.cascade.org/system/files/Top_10_Rides_Content.csv";
         //NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
@@ -285,6 +285,17 @@
         NSLog(@"fetch failed: %@", error.localizedDescription);
     }
     return [fetchResult mutableCopy];
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 

@@ -133,7 +133,7 @@
     
     NSString *turn = [self.turns objectAtIndex:indexPath.row];
     
-    cell.userInteractionEnabled = NO;
+    cell.userInteractionEnabled = YES;
     if ([turn containsString:@"Start"] || [turn containsString:@"End"] || ![turn containsString:@"&"])
     {
         //cell.textLabel.text = turn;

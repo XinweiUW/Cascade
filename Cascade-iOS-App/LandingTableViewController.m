@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableDictionary *cachedImages;
 @property (strong, nonatomic) DataManager *dm;
 @property (nonatomic) CGRect croprect;
+@property (nonatomic, strong) UIImage *placeholder;
 
 @end
 
@@ -32,7 +33,9 @@
     self.cachedImages = [[NSMutableDictionary alloc] init];
     self.tableView.rowHeight = self.view.frame.size.height * 0.43;
     self.view.backgroundColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
-    
+    //CGSize imgSizeHorizontal = CGSizeMake(10, 10);
+    //self.placeholder = [self.dm imageWithImage:[UIImage imageNamed:@"loading.png"] scaledToSize:imgSizeHorizontal];
+    self.placeholder = [UIImage imageNamed:@"loading.png"];
     /*
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -170,9 +173,9 @@
     NSManagedObject *device = [self.routeArray objectAtIndex:indexPath.row];
     UIImage *image;
     if (![self.dm loadImage:[device valueForKey:@"title"]]){
-        image = [UIImage imageNamed:@"loading.png"];
+        //image = [[UIImage alloc] initWithCIImage:self.placeholder];
         cell.userInteractionEnabled = NO;
-        cell.backgroundView = [[UIImageView alloc] initWithImage:image];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:self.placeholder];
         return cell;
     }
     cell.userInteractionEnabled = YES;

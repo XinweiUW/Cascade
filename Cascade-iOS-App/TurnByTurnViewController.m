@@ -234,9 +234,15 @@
         cell.imageView.image = upImage;//[UIImage imageNamed:@"arrow-up.png"];
     }
     
-
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row != 0) return;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     CGPoint offset1 = scrollView.contentOffset;

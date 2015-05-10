@@ -62,6 +62,7 @@
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
     [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 1.png"] forState:UIControlStateNormal];
+    //nextPageButton.titleLabel.text = [self.routedb valueForKey:@"Start"];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextPageButton];
 }
@@ -78,7 +79,7 @@
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
     [backImageView setImage:backImage];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
+    backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
     [backButton setFrame:CGRectMake(10, 10, navBar.frame.size.height, navBar.frame.size.height/1.6)];
     backButton.backgroundColor = [UIColor clearColor];
     //[backButton setImage:backImage forState:UIControlStateNormal];

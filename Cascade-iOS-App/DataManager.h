@@ -25,6 +25,7 @@
 - (void)generateImageFromURL;
 - (void)saveImage: (UIImage *)image :(NSString *)title;
 - (UIImage *)loadImage:(NSString *)title;
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 
 @property (strong) Ride *routedb;
 @property (readonly) NSArray *lines;
