@@ -85,6 +85,7 @@
 		9DE174601AFF288E007A3D98 /* back 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE1745F1AFF288E007A3D98 /* back 2.png */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Ride.m */; };
+		9DF916A21AFF2DB300D375B0 /* loading 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF916A11AFF2DB300D375B0 /* loading 2.png */; };
 		9DFC17FB1AC9074600D79B51 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17F91AC9074600D79B51 /* CHCSVParser.m */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +212,7 @@
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		9DF0F2491ADB273400830753 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
 		9DF0F24A1ADB273400830753 /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ride.m; sourceTree = "<group>"; };
+		9DF916A11AFF2DB300D375B0 /* loading 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading 2.png"; sourceTree = "<group>"; };
 		9DFC17F91AC9074600D79B51 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		9DFC17FA1AC9074600D79B51 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,6 +272,7 @@
 		9D4082171ACA7DEF00B2602B /* iconimg */ = {
 			isa = PBXGroup;
 			children = (
+				9DF916A11AFF2DB300D375B0 /* loading 2.png */,
 				9DD92FD31AFDBA150068EAC6 /* menu 1.png */,
 				9DE174591AFF2062007A3D98 /* back 1.png */,
 				9DD92FD41AFDBA150068EAC6 /* next page arrow 1.png */,
@@ -568,6 +571,7 @@
 				9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */,
 				9D968B2B1AEF6E7B00104C42 /* arrow right.png in Resources */,
 				9D968B2D1AEF6E7B00104C42 /* attraction.png in Resources */,
+				9DF916A21AFF2DB300D375B0 /* loading 2.png in Resources */,
 				9D968B381AEF6E7B00104C42 /* to list.png in Resources */,
 				9DE1745D1AFF2558007A3D98 /* next page arrow 2.png in Resources */,
 				9D968B301AEF6E7B00104C42 /* complete stamp.png in Resources */,

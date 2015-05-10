@@ -35,7 +35,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
     //CGSize imgSizeHorizontal = CGSizeMake(10, 10);
     //self.placeholder = [self.dm imageWithImage:[UIImage imageNamed:@"loading.png"] scaledToSize:imgSizeHorizontal];
-    self.placeholder = [UIImage imageNamed:@"loading.png"];
+    self.placeholder = [UIImage imageNamed:@"loading 2.png"];
     /*
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
