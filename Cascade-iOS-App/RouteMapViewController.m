@@ -74,15 +74,20 @@
 
 - (void) setNextPageButton {
     CGFloat arrowX = 0;
-    CGFloat arrowY = 0.93 * selfViewHeight;
+    CGFloat arrowY = webView.frame.origin.y + webView.frame.size.height;
     CGFloat arrowWidth =selfViewWidth;
-    CGFloat arrowHeight = selfViewHeight * 0.07;
+    CGFloat arrowHeight = selfViewHeight - arrowY;
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
     nextPageButton.backgroundColor = [UIColor clearColor];
-    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 3.png"] forState:UIControlStateNormal];
+    //[nextPageButton setImage:[UIImage imageNamed:@"next page arrow 3.png"] forState:UIControlStateNormal];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextPageButton];
+    
+    UIImage *startImage = [UIImage imageNamed:@"attraction 1.png"];
+    UIImageView *startView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowHeight * 0.1, arrowHeight * 0.1, arrowHeight * 0.8, arrowHeight * 0.8)];
+    [startView setImage:startImage];
+    [nextPageButton addSubview:startView];
 }
 
 - (void) goToNextPage {
@@ -107,7 +112,7 @@
     arrowBackground.backgroundColor = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:1.0f];
     //[self.view addSubview:arrowBackground];
     
-    webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,46,selfViewWidth,selfViewHeight * 0.78)];
+    webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,46,selfViewWidth,selfViewHeight * 0.8)];
     
     webView.scalesPageToFit = YES;
     webView.delegate = self;
@@ -120,7 +125,7 @@
     [webView loadRequest:requestObj];
     [self.view addSubview:webView];
     
-    CGFloat buttonX = 0.75 * selfViewWidth;
+    CGFloat buttonX = 0.72 * selfViewWidth;
     CGFloat buttonY = 0.87 * webView.frame.size.height;
     CGFloat buttonWidth = 0.15 * selfViewWidth;
     
