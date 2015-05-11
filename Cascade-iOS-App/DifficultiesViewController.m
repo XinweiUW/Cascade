@@ -78,14 +78,14 @@
 }
 
 - (void) setLastPageButton {
-    CGFloat arrowX = 0.3 * selfViewWidth;
+    CGFloat arrowX = 0;
     CGFloat arrowY = 46;
-    CGFloat arrowWidth = 0.4 * selfViewWidth;
-    CGFloat arrowHeight = arrowWidth/4;
+    CGFloat arrowWidth = selfViewWidth;
+    CGFloat arrowHeight = selfViewHeight * 0.07;
     UIButton * lastPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [lastPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
     lastPageButton.backgroundColor = [UIColor clearColor];
-    [lastPageButton setImage:[UIImage imageNamed:@"last page arrow 3.png"] forState:UIControlStateNormal];
+    [lastPageButton setImage:[UIImage imageNamed:@"last page arrow 4.png"] forState:UIControlStateNormal];
     [lastPageButton addTarget:self action:@selector(goToLastPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lastPageButton];
 }

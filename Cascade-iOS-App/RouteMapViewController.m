@@ -48,20 +48,22 @@
     */
     allowLoad = YES;
     [self setNavigationBar];
+    
+    
+    [self loadMapView];
     [self setLastPageButton];
     [self setNextPageButton];
-    [self loadMapView];
 }
 
 - (void) setLastPageButton {
-    CGFloat arrowX = 0.3 * selfViewWidth;
+    CGFloat arrowX = 0;
     CGFloat arrowY = 46;
-    CGFloat arrowWidth = 0.4 * selfViewWidth;
-    CGFloat arrowHeight = arrowWidth/4;
+    CGFloat arrowWidth = selfViewWidth;
+    CGFloat arrowHeight = selfViewHeight * 0.07;
     UIButton * lastPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [lastPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    lastPageButton.backgroundColor = [UIColor clearColor];
-    [lastPageButton setImage:[UIImage imageNamed:@"last page arrow 3.png"] forState:UIControlStateNormal];
+    lastPageButton.backgroundColor = [UIColor colorWithRed:(68/255.0) green:(68/255.0) blue:(68/255.0) alpha:1.0f];
+    [lastPageButton setImage:[UIImage imageNamed:@"last page arrow 4.png"] forState:UIControlStateNormal];
     [lastPageButton addTarget:self action:@selector(goToLastPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lastPageButton];
 }
@@ -101,8 +103,11 @@
 
 
 - (void) loadMapView {
+    UIImageView *arrowBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 46, selfViewWidth, selfViewHeight * 0.12 - 46)];
+    arrowBackground.backgroundColor = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:1.0f];
+    //[self.view addSubview:arrowBackground];
     
-    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,selfViewHeight * 0.17,selfViewWidth,selfViewHeight * 0.72)];
+    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,46,selfViewWidth,selfViewHeight * 0.78)];
     
     webView.scalesPageToFit = YES;
     webView.delegate = self;
@@ -114,12 +119,12 @@
     //Load the request in the UIWebView.
     [webView loadRequest:requestObj];
     [self.view addSubview:webView];
-    UILabel *mapTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(webView.frame.origin.x, webView.frame.origin.y, webView.frame.size.width, webView.frame.size.height * 0.1)];
+    UILabel *mapTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, webView.frame.size.width, webView.frame.size.height * 0.1)];
     mapTitleLabel.backgroundColor = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:1.0f];
-    mapTitleLabel.text = [self.routedb valueForKey:@"title"];
+    //mapTitleLabel.text = [self.routedb valueForKey:@"title"];
     mapTitleLabel.textColor = [UIColor whiteColor];
     [mapTitleLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:mapTitleLabel];
+    //[webView addSubview:mapTitleLabel];
 }
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {

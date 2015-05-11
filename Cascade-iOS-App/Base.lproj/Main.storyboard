@@ -54,7 +54,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="l8h-9N-hJ5">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="why-jt-XN7">
+                        <barButtonItem key="leftBarButtonItem" image="menu 1.png" id="why-jt-XN7">
                             <inset key="imageInsets" minX="-7" minY="18" maxX="83" maxY="10"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -363,7 +363,7 @@
     <resources>
         <image name="CascadeLogo.png" width="600" height="278"/>
         <image name="complete stamp.png" width="1624" height="1319"/>
-        <image name="menu.png" width="106" height="63"/>
+        <image name="menu 1.png" width="106" height="50"/>
         <image name="to map.png" width="97" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
