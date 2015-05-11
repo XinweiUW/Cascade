@@ -32,14 +32,17 @@
     
     [self setBackground];
     
-    CGFloat iconX = 0.11 * selfViewWidth;
-    CGFloat iconY = 0.33 * selfViewHeight;
-    CGFloat iconDistance = 0.15 * selfViewHeight;
-    CGFloat iconWidth = 0.15 * selfViewWidth;
+    iconX = 0.11 * selfViewWidth;
+    iconY = 0.33 * selfViewHeight;
+    iconDistance = 0.15 * selfViewHeight;
+    iconWidth = 0.15 * selfViewWidth;
     
+    /*
     UIImageView *difficultyIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX - iconWidth * 0.5, 0.15 * selfViewHeight, iconWidth*2, iconWidth*2)];
     [difficultyIcon setImage:[UIImage imageNamed:@"medium 1.png"]];
     [self.view addSubview:difficultyIcon];
+     */
+    [self setDifficultyImageAndLabel];
     
     UIImageView *distanceIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX, iconY, iconWidth, iconWidth)];
     [distanceIcon setImage:[UIImage imageNamed:@"distance 1.png"]];
@@ -80,6 +83,37 @@
     item.leftBarButtonItem = backButtonItem;
     [navBar pushNavigationItem:item animated:NO];
     */
+    
+}
+
+- (void) setDifficultyImageAndLabel {
+    UIImageView *difficultyIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconX - iconWidth * 0.5, 0.15 * selfViewHeight, iconWidth*2, iconWidth*2)];
+    NSString *difficultyText = [self.routedb valueForKey:@"difficulties"];
+    difficultyText = [difficultyText uppercaseString];
+    NSString *imageName;
+    if ([difficultyText containsString:@"EASY"]) {
+        imageName = @"easy 1.png";
+    } else if ([difficultyText containsString:@"MEDIUM"]) {
+        imageName = @"medium 1.png";
+    } else {
+        imageName = @"hard 1.png";
+    }
+    [difficultyIcon setImage:[UIImage imageNamed:imageName]];
+    [self.view addSubview:difficultyIcon];
+    
+    CGFloat originX = 0.3 * selfViewWidth;
+    CGFloat originY = difficultyIcon.frame.origin.y - difficultyIcon.frame.size.width * 0.2;
+    CGFloat labelWidth = difficultyIcon.frame.size.width * 4;
+    CGFloat labelHeight = difficultyIcon.frame.size.height * 1.5;
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
+    //label.backgroundColor = [UIColor grayColor];
+    [label setTextAlignment:NSTextAlignmentLeft];
+    label.text = difficultyText;
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:22.0f * selfViewHeight/iPhone5Height];
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    [self.view addSubview:label];
     
 }
 
@@ -129,24 +163,6 @@
     [navBar addSubview:backButton];
 }
 
-- (void) setDifficultyLabelWith: (UIImageView *) distanceIcon andRoadConditionIcon: (UIImageView *) roadConditionIcon{
-    CGFloat originX = distanceIcon.frame.origin.x - 0.2 * distanceIcon.frame.size.width;
-    CGFloat originY = (distanceIcon.frame.origin.y + roadConditionIcon.frame.origin.y)/2;
-    CGFloat labelWidth = distanceIcon.frame.size.width * 2;
-    CGFloat labelHeight = distanceIcon.frame.size.height;
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
-    [label setTextAlignment:NSTextAlignmentLeft];
-    [self setDifficultyLabelText:label withStarStrings:[self.routedb valueForKey:@"difficulties"]];
-    
-    //label.text = [self.routedb valueForKey:@"difficulties"];
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:25.0f];
-    label.numberOfLines = 2;
-    label.lineBreakMode = 0;
-    [self.view addSubview:label];
-
-}
-
 - (void) setDifficultyLabelText: (UILabel *)label withStarStrings: (NSString *)starString {
     if ([starString isEqualToString:@"*"]) {
         label.text = @"Easy";
@@ -181,7 +197,8 @@
 }
 
 - (void) setLabel: (UIImageView *) iconImageView connectWithValue: (NSString *)valueName {
-    CGFloat originX = iconImageView.frame.origin.x + iconImageView.frame.size.width * 1.3;
+    //CGFloat originX = iconImageView.frame.origin.x + iconImageView.frame.size.width * 1.3;
+    CGFloat originX = 0.3 * selfViewWidth;
     CGFloat originY = iconImageView.frame.origin.y - iconImageView.frame.size.width * 0.2;
     CGFloat labelWidth = iconImageView.frame.size.width * 4;
     CGFloat labelHeight = iconImageView.frame.size.height * 1.5;
