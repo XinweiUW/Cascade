@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "GCNetworkReachability.h"
 @class DataManager;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -19,6 +20,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) NSUserDefaults *userDefault;
+@property (strong, nonatomic) GCNetworkReachability *reachability;
 
 
 @end

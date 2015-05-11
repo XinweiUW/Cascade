@@ -10,6 +10,7 @@
 #import "LandingTableViewController.h"
 #import "DSNavigationBar.h"
 #import "TurnByTurnViewController.h"
+#import "GCNetworkReachability.h"
 
 
 @interface RouteMapViewController ()
@@ -51,6 +52,21 @@
     [self setLastPageButton];
     [self setNextPageButton];
     [self loadMapView];
+    
+    GCNetworkReachability *reachability = [GCNetworkReachability reachabilityForInternetConnection];
+    if (![reachability isReachable]){
+        [self putAlertView];
+    }
+    
+}
+
+- (void) putAlertView{
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
+                                                     message:@"No Internet Connection! Please turn on the app when you have Internet connection!"
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles: nil];
+    [alert show];
 }
 
 - (void) setLastPageButton {
@@ -101,18 +117,32 @@
 
 - (void) loadMapView {
     
-    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,selfViewHeight * 0.17,selfViewWidth,selfViewHeight * 0.72)];
+    self.webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,selfViewHeight * 0.17,selfViewWidth,selfViewHeight * 0.72)];
     
-    webView.scalesPageToFit = YES;
-    webView.delegate = self;
+    self.webView.scalesPageToFit = YES;
+    self.webView.delegate = self;
     NSString *urlAddress = [self.routedb valueForKey:@"mapURL"];
     //Create a URL object.
     NSURL *url = [NSURL URLWithString:urlAddress];
     //URL Requst Object
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     //Load the request in the UIWebView.
-    [webView loadRequest:requestObj];
-    [self.view addSubview:webView];
+    [self.webView loadRequest:requestObj];
+    [self.view addSubview:self.webView];
+    
+    CGFloat buttonX = 0.75 * selfViewWidth;
+    CGFloat buttonY = 0.87 * self.webView.frame.size.height;
+    CGFloat buttonWidth = 0.15 * selfViewWidth;
+    
+    self.resetButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonWidth)];
+    [self.resetButton setImage:[UIImage imageNamed:@"back to original 2.png"] forState:UIControlStateNormal];
+    [self.resetButton addTarget:self action:@selector(resetMap) forControlEvents:UIControlEventTouchUpInside];
+    [self.webView addSubview:self.resetButton];
+}
+
+- (void) resetMap{
+    allowLoad = YES;
+    [self.webView reload];
 }
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {

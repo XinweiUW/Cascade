@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) DataManager *dm;
 @property (strong) NSManagedObject *routedb;
-
+@property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) UIButton *resetButton;
 
 @end

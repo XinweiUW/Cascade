@@ -21,6 +21,7 @@
 @property (strong, nonatomic) DataManager *dm;
 @property (nonatomic) CGRect croprect;
 @property (nonatomic, strong) UIImage *placeholder;
+@property (nonatomic, strong) GCNetworkReachability *reachability;
 
 @end
 
@@ -40,21 +41,28 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
      */
-    GCNetworkReachability *reachability = [GCNetworkReachability reachabilityForInternetConnection];
+    
     self.tableView.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
+    
+    [self monitorNetwork];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"imageGenerated" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"greyimageGenerated" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"textDataGenerated" object:nil];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"CSVFileFetched" object:nil];
     
+    [self updateInterface];
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
     
     // Check if it is the first launch.
+    }
+
+- (void) updateInterface{
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
-        if (![reachability isReachable]){
+        if (![self.reachability isReachable]){
             [self putAlertView];
             return;
         }
@@ -72,8 +80,7 @@
         NSInteger imgCount = [self.dm numberOfImage];
         
         if (self.routeArray.count == 0){
-            //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
-            if (![reachability isReachable]){
+            if (![self.reachability isReachable]){
                 [self putAlertView];
                 return;
             }
@@ -82,7 +89,7 @@
             }];
             
         }else { //(imgCount == 0)
-            if (![reachability isReachable] && self.routeArray.count != imgCount){
+            if (![self.reachability isReachable] && self.routeArray.count != imgCount){
                 [self putAlertView];
             }
             [self updateTable];
@@ -119,15 +126,6 @@
     }
 }
 
-- (void) putAlertView{
-        UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
-                                                         message:@"No Internet Connection! Please turn on the app when you have Internet connection!"
-                                                        delegate:self
-                                               cancelButtonTitle:@"OK"
-                                               otherButtonTitles: nil];
-        [alert show];
-}
-
 - (void) updateTable {
     [self.tableView reloadData];
     self.view.backgroundColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
@@ -135,6 +133,32 @@
     dispatch_async(queue, ^{
         [self.dm generateImageFromURL];
     });
+}
+
+- (void) putAlertView{
+        UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
+                                                         message:@"No Internet Connection!"
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles: nil];
+        [alert show];
+}
+
+
+- (void)monitorNetwork{
+    self.reachability = [GCNetworkReachability reachabilityForInternetConnection];
+    [self.reachability startMonitoringNetworkReachabilityWithNotification];
+    [[NSNotificationCenter defaultCenter] addObserverForName:kGCNetworkReachabilityDidChangeNotification object:nil queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      GCNetworkReachabilityStatus status = [[note userInfo][kGCNetworkReachabilityStatusKey] integerValue];
+                                                      if (status == GCNetworkReachabilityStatusNotReachable){
+                                                          NSLog(@"No connection");
+                                                          [self putAlertView];
+                                                      }else{
+                                                          [self updateInterface];
+                                                      }
+                                                  }];
+
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
