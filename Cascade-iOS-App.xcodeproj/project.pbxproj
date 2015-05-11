@@ -62,6 +62,9 @@
 		9DC1680A1B001D5B005150DF /* last page arrow 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168091B001D5B005150DF /* last page arrow 3.png */; };
 		9DC1680C1B002AD3005150DF /* last page arrow 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC1680B1B002AD3005150DF /* last page arrow 4.png */; };
 		9DC1680E1B002E16005150DF /* next page arrow 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC1680D1B002E16005150DF /* next page arrow 3.png */; };
+		9DC168181B003361005150DF /* medium 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168151B003361005150DF /* medium 1.png */; };
+		9DC168191B003361005150DF /* easy 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168161B003361005150DF /* easy 1.png */; };
+		9DC1681A1B003361005150DF /* hard 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC168171B003361005150DF /* hard 1.png */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
@@ -185,6 +188,9 @@
 		9DC168091B001D5B005150DF /* last page arrow 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last page arrow 3.png"; sourceTree = "<group>"; };
 		9DC1680B1B002AD3005150DF /* last page arrow 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last page arrow 4.png"; sourceTree = "<group>"; };
 		9DC1680D1B002E16005150DF /* next page arrow 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next page arrow 3.png"; sourceTree = "<group>"; };
+		9DC168151B003361005150DF /* medium 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "medium 1.png"; sourceTree = "<group>"; };
+		9DC168161B003361005150DF /* easy 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "easy 1.png"; sourceTree = "<group>"; };
+		9DC168171B003361005150DF /* hard 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hard 1.png"; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
@@ -298,6 +304,9 @@
 				9DE1744F1AFF1350007A3D98 /* back to original 2.png */,
 				9DD92FD91AFDBA710068EAC6 /* back to original 1.png */,
 				9D968B1F1AEF6E7B00104C42 /* complete stamp.png */,
+				9DC168151B003361005150DF /* medium 1.png */,
+				9DC168161B003361005150DF /* easy 1.png */,
+				9DC168171B003361005150DF /* hard 1.png */,
 				9DC1680D1B002E16005150DF /* next page arrow 3.png */,
 				9D968B201AEF6E7B00104C42 /* distance.png */,
 				9DE1745F1AFF288E007A3D98 /* back 2.png */,
@@ -556,16 +565,19 @@
 				9DC168081B001511005150DF /* back 3 layer.png in Resources */,
 				9D968B331AEF6E7B00104C42 /* pin(complete).png in Resources */,
 				9D968B2E1AEF6E7B00104C42 /* back to original.png in Resources */,
+				9DC1681A1B003361005150DF /* hard 1.png in Resources */,
 				9D968B341AEF6E7B00104C42 /* pin(uncomplete).png in Resources */,
 				9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */,
 				9D968B391AEF6E7B00104C42 /* to map.png in Resources */,
 				9D8BFE021AC39B4100ED37D1 /* Main.storyboard in Resources */,
 				9D968B2F1AEF6E7B00104C42 /* back.png in Resources */,
 				9DD92FDA1AFDBA710068EAC6 /* back to original 1.png in Resources */,
+				9DC168191B003361005150DF /* easy 1.png in Resources */,
 				9DE1745A1AFF2062007A3D98 /* back 1.png in Resources */,
 				9DE174601AFF288E007A3D98 /* back 2.png in Resources */,
 				9DE1745E1AFF2558007A3D98 /* last page arrow 2.png in Resources */,
 				9DE174581AFF149B007A3D98 /* time 1.png in Resources */,
+				9DC168181B003361005150DF /* medium 1.png in Resources */,
 				9DC1680E1B002E16005150DF /* next page arrow 3.png in Resources */,
 				9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */,
 				9D968B291AEF6E7B00104C42 /* arrow down.png in Resources */,
