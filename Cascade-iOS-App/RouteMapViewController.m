@@ -107,7 +107,7 @@
     arrowBackground.backgroundColor = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:1.0f];
     //[self.view addSubview:arrowBackground];
     
-    UIWebView *webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,46,selfViewWidth,selfViewHeight * 0.78)];
+    webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,46,selfViewWidth,selfViewHeight * 0.78)];
     
     webView.scalesPageToFit = YES;
     webView.delegate = self;
@@ -126,12 +126,13 @@
     
     UIButton *resetButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonWidth)];
     [resetButton setImage:[UIImage imageNamed:@"back to original 2.png"] forState:UIControlStateNormal];
-    //[resetButton addTarget:self action:@selector(resetMap) forControlEvents:UIControlEventTouchUpInside];
+    [resetButton addTarget:self action:@selector(resetMap) forControlEvents:UIControlEventTouchUpInside];
     [webView addSubview:resetButton];
 }
 
-- (void) resetMap: (UIWebView *)webView {
-    
+- (void) resetMap {
+    allowLoad = YES;
+    [webView reload];
 }
 
 

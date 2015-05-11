@@ -14,6 +14,7 @@
     CGFloat selfViewWidth;
     CGFloat selfViewHeight;
     BOOL allowLoad;
+    UIWebView *webView;
 }
 
 @property (strong, nonatomic) DataManager *dm;
