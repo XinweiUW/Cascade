@@ -55,14 +55,14 @@
      */
     [self setNavigationBar];
     
-    CGSize imgSizeUp = CGSizeMake(40, 45);
-    CGSize imgSizeHorizontal = CGSizeMake(40, 45);
-    startImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
-    endImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
-    leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left.png"] scaledToSize:imgSizeHorizontal];
-    rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right.png"] scaledToSize:imgSizeHorizontal];
-    upImage = [self imageWithImage:[UIImage imageNamed:@"arrow-up.png"] scaledToSize:imgSizeUp];
-    attractionImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
+    CGSize imgSizeUp = CGSizeMake(45, 45);
+    CGSize imgSizeHorizontal = CGSizeMake(45, 45);
+    startImage = [self imageWithImage:[UIImage imageNamed:@"attraction 1.png"] scaledToSize:imgSizeUp];
+    endImage = [self imageWithImage:[UIImage imageNamed:@"attraction 1.png"] scaledToSize:imgSizeUp];
+    leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left 1.png"] scaledToSize:imgSizeHorizontal];
+    rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right 1.png"] scaledToSize:imgSizeHorizontal];
+    upImage = [self imageWithImage:[UIImage imageNamed:@"arrow up 1.png"] scaledToSize:imgSizeUp];
+    attractionImage = [self imageWithImage:[UIImage imageNamed:@"attraction 1.png"] scaledToSize:imgSizeUp];
 }
 
 - (void)swipeDown:(UISwipeGestureRecognizer *)gestureRecognizer{
@@ -166,7 +166,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 95;
+    return 85;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

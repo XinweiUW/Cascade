@@ -90,6 +90,10 @@
 		9DE1745D1AFF2558007A3D98 /* next page arrow 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE1745B1AFF2558007A3D98 /* next page arrow 2.png */; };
 		9DE1745E1AFF2558007A3D98 /* last page arrow 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE1745C1AFF2558007A3D98 /* last page arrow 2.png */; };
 		9DE174601AFF288E007A3D98 /* back 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE1745F1AFF288E007A3D98 /* back 2.png */; };
+		9DEBA4A31B00570D00BC384C /* attraction 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DEBA49F1B00570D00BC384C /* attraction 1.png */; };
+		9DEBA4A41B00570D00BC384C /* arrow right 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DEBA4A01B00570D00BC384C /* arrow right 1.png */; };
+		9DEBA4A51B00570D00BC384C /* arrow left 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DEBA4A11B00570D00BC384C /* arrow left 1.png */; };
+		9DEBA4A61B00570D00BC384C /* arrow up 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DEBA4A21B00570D00BC384C /* arrow up 1.png */; };
 		9DF0F2481ADB1C6500830753 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F2471ADB1C6500830753 /* DataManager.m */; };
 		9DF0F24B1ADB273400830753 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0F24A1ADB273400830753 /* Ride.m */; };
 		9DF916A21AFF2DB300D375B0 /* loading 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF916A11AFF2DB300D375B0 /* loading 2.png */; };
@@ -221,6 +225,10 @@
 		9DE1745B1AFF2558007A3D98 /* next page arrow 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next page arrow 2.png"; sourceTree = "<group>"; };
 		9DE1745C1AFF2558007A3D98 /* last page arrow 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last page arrow 2.png"; sourceTree = "<group>"; };
 		9DE1745F1AFF288E007A3D98 /* back 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back 2.png"; sourceTree = "<group>"; };
+		9DEBA49F1B00570D00BC384C /* attraction 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attraction 1.png"; sourceTree = "<group>"; };
+		9DEBA4A01B00570D00BC384C /* arrow right 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow right 1.png"; sourceTree = "<group>"; };
+		9DEBA4A11B00570D00BC384C /* arrow left 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow left 1.png"; sourceTree = "<group>"; };
+		9DEBA4A21B00570D00BC384C /* arrow up 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow up 1.png"; sourceTree = "<group>"; };
 		9DF0F2461ADB1C6500830753 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		9DF0F2471ADB1C6500830753 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		9DF0F2491ADB273400830753 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
@@ -301,6 +309,10 @@
 				9DC168061B001511005150DF /* back 3 layer.png */,
 				9D968B1D1AEF6E7B00104C42 /* back to original.png */,
 				9D968B1E1AEF6E7B00104C42 /* back.png */,
+				9DEBA49F1B00570D00BC384C /* attraction 1.png */,
+				9DEBA4A01B00570D00BC384C /* arrow right 1.png */,
+				9DEBA4A11B00570D00BC384C /* arrow left 1.png */,
+				9DEBA4A21B00570D00BC384C /* arrow up 1.png */,
 				9DE1744F1AFF1350007A3D98 /* back to original 2.png */,
 				9DD92FD91AFDBA710068EAC6 /* back to original 1.png */,
 				9D968B1F1AEF6E7B00104C42 /* complete stamp.png */,
@@ -560,9 +572,12 @@
 			files = (
 				9DAEBD211AFEDF1800930135 /* loading.png in Resources */,
 				9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */,
+				9DEBA4A61B00570D00BC384C /* arrow up 1.png in Resources */,
 				9DD92FD61AFDBA150068EAC6 /* menu 1.png in Resources */,
 				9DE174551AFF149B007A3D98 /* distance 1.png in Resources */,
+				9DEBA4A31B00570D00BC384C /* attraction 1.png in Resources */,
 				9DC168081B001511005150DF /* back 3 layer.png in Resources */,
+				9DEBA4A41B00570D00BC384C /* arrow right 1.png in Resources */,
 				9D968B331AEF6E7B00104C42 /* pin(complete).png in Resources */,
 				9D968B2E1AEF6E7B00104C42 /* back to original.png in Resources */,
 				9DC1681A1B003361005150DF /* hard 1.png in Resources */,
@@ -593,6 +608,7 @@
 				9D968B351AEF6E7B00104C42 /* road condition.png in Resources */,
 				9DC168071B001511005150DF /* back 3.png in Resources */,
 				9D40822B1ACA7E1500B2602B /* 10-arrow-up.png in Resources */,
+				9DEBA4A51B00570D00BC384C /* arrow left 1.png in Resources */,
 				9D26F5911AF8A5E800AC73E0 /* last page arrow.png in Resources */,
 				9D8BFE071AC39B4100ED37D1 /* LaunchScreen.xib in Resources */,
 				9D968B2B1AEF6E7B00104C42 /* arrow right.png in Resources */,
