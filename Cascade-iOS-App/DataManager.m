@@ -279,7 +279,7 @@
 
 - (NSInteger)numberOfImage{
     NSMutableArray *routes = [self mutableArrayUsingFetchRequest];
-    NSInteger count;
+    NSInteger count = 0;
     NSString *title;
     for (Ride *ride in routes){
         title = ride.title;
@@ -348,6 +348,15 @@
         filePath = [documentsDirectory stringByAppendingPathComponent:[ride valueForKey:@"title"]];
         [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
     }
+}
+
+- (void) putAlertView:(id)sender{
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
+                                                     message:@"No Internet Connection!"
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles: nil];
+    [alert show];
 }
 
 

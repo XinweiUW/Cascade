@@ -20,6 +20,7 @@
 @implementation RouteMapViewController
 
 - (void)viewDidLoad {
+    self.dm = [[DataManager alloc] init];
     selfViewWidth = self.view.frame.size.width;
     selfViewHeight = self.view.frame.size.height;
     [super viewDidLoad];
@@ -55,14 +56,14 @@
     
     GCNetworkReachability *reachability = [GCNetworkReachability reachabilityForInternetConnection];
     if (![reachability isReachable]){
-        [self putAlertView];
+        [self.dm putAlertView:self];
     }
     
 }
 
 - (void) putAlertView{
     UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
-                                                     message:@"No Internet Connection! Please turn on the app when you have Internet connection!"
+                                                     message:@"No Internet Connection!"
                                                     delegate:self
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles: nil];

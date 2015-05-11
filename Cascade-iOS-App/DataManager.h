@@ -27,6 +27,7 @@
 - (UIImage *)loadImage:(NSString *)title;
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 - (NSInteger)numberOfImage;
+- (void) putAlertView:(id)sender;
 
 @property (strong) Ride *routedb;
 @property (readonly) NSArray *lines;

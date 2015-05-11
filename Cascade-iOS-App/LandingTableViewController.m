@@ -34,13 +34,7 @@
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     self.tableView.rowHeight = self.view.frame.size.height * 0.43;
-    //CGSize imgSizeHorizontal = CGSizeMake(10, 10);
-    //self.placeholder = [self.dm imageWithImage:[UIImage imageNamed:@"loading.png"] scaledToSize:imgSizeHorizontal];
     self.placeholder = [UIImage imageNamed:@"loading 2.png"];
-    /*
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-     */
     
     self.tableView.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     
@@ -59,11 +53,16 @@
     // Check if it is the first launch.
     }
 
+/*- (void)viewWillAppear:(BOOL)animated{
+    [self monitorNetwork];
+}*/
+
+
 - (void) updateInterface{
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
         if (![self.reachability isReachable]){
-            [self putAlertView];
+            [self.dm putAlertView:self];
             return;
         }
         [self.dm updateTextFromServerWithCompletion:^{
@@ -81,7 +80,7 @@
         
         if (self.routeArray.count == 0){
             if (![self.reachability isReachable]){
-                [self putAlertView];
+                [self.dm putAlertView:self];
                 return;
             }
             [self.dm updateTextFromServerWithCompletion:^{
@@ -90,7 +89,7 @@
             
         }else { //(imgCount == 0)
             if (![self.reachability isReachable] && self.routeArray.count != imgCount){
-                [self putAlertView];
+                [self.dm putAlertView:self];
             }
             [self updateTable];
         }
@@ -135,16 +134,6 @@
     });
 }
 
-- (void) putAlertView{
-        UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
-                                                         message:@"No Internet Connection!"
-                                                        delegate:self
-                                               cancelButtonTitle:@"OK"
-                                               otherButtonTitles: nil];
-        [alert show];
-}
-
-
 - (void)monitorNetwork{
     self.reachability = [GCNetworkReachability reachabilityForInternetConnection];
     [self.reachability startMonitoringNetworkReachabilityWithNotification];
@@ -152,13 +141,19 @@
                                                   usingBlock:^(NSNotification *note) {
                                                       GCNetworkReachabilityStatus status = [[note userInfo][kGCNetworkReachabilityStatusKey] integerValue];
                                                       if (status == GCNetworkReachabilityStatusNotReachable){
-                                                          NSLog(@"No connection");
-                                                          [self putAlertView];
+                                                          if (self.routeArray.count != [self.dm numberOfImage]){
+                                                              NSLog(@"No connection");
+                                                              [self.dm putAlertView:self];
+                                                          }else{
+                                                              NSLog(@"No need of Internet currently!");
+                                                          }
                                                       }else{
-                                                          [self updateInterface];
+                                                          NSLog(@"Has Internet connection now!");
+                                                          if (self.routeArray.count != [self.dm numberOfImage]){
+                                                              [self updateInterface];
+                                                          }
                                                       }
                                                   }];
-
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
