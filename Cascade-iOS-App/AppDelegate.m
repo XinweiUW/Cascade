@@ -61,7 +61,7 @@
             [self.userDefault synchronize];
         }
     }
-    return YES;
+    return NO;
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {

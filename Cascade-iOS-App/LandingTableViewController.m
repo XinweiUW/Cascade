@@ -12,6 +12,7 @@
 #import "DataManager.h"
 #import "AppDelegate.h"
 #import "Ride.h"
+#import "GCNetworkReachability.h"
 
 @interface LandingTableViewController ()
 
@@ -32,7 +33,6 @@
     self.dm = [[DataManager alloc] init];
     self.cachedImages = [[NSMutableDictionary alloc] init];
     self.tableView.rowHeight = self.view.frame.size.height * 0.43;
-    self.view.backgroundColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
     //CGSize imgSizeHorizontal = CGSizeMake(10, 10);
     //self.placeholder = [self.dm imageWithImage:[UIImage imageNamed:@"loading.png"] scaledToSize:imgSizeHorizontal];
     self.placeholder = [UIImage imageNamed:@"loading 2.png"];
@@ -40,14 +40,20 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
      */
+    GCNetworkReachability *reachability = [GCNetworkReachability reachabilityForInternetConnection];
     self.tableView.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"imageGenerated" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"greyimageGenerated" object:nil];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
     
+    // Check if it is the first launch.
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
+        if (![reachability isReachable]){
+            [self putAlertView];
+            return;
+        }
         [self.dm updateTextFromServerWithCompletion:^{
             NSLog(@"text-based information update complete");
             //[self.dm generateImageFromURL];
@@ -58,12 +64,23 @@
     }
     else{
         self.routeArray = [self.dm mutableArrayUsingFetchRequest];
-        /*[self.tableView reloadData];
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            [self.dm generateImageFromURL];
-        });*/
-        [self updateTable];
+        NSInteger imgCount = [self.dm numberOfImage];
+        
+        if (self.routeArray.count == 0){
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
+            if (![reachability isReachable]){
+                [self putAlertView];
+                return;
+            }
+            [self.dm updateTextFromServerWithCompletion:^{
+
+            }];
+        }else { //(imgCount == 0)
+            if (![reachability isReachable] && self.routeArray.count != imgCount){
+                [self putAlertView];
+            }
+            [self updateTable];
+        }
     }
 }
 
@@ -90,14 +107,24 @@
     }
     else{
         //@synchronized(self.tableView){
-        [self.tableView setNeedsDisplay];
+        //[self.tableView setNeedsDisplay];
         [self updateTable];
         //}
     }
 }
 
+- (void) putAlertView{
+        UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
+                                                         message:@"No Internet Connection! Please turn on the app when you have Internet connection!"
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles: nil];
+        [alert show];
+}
+
 - (void) updateTable {
     [self.tableView reloadData];
+    self.view.backgroundColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
         [self.dm generateImageFromURL];
@@ -201,24 +228,18 @@
         image = [self.dm loadImage:title];
         image = [self getCroppedImage:cell fromOriginalImage:image];
         [self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-        
     }
     
     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
-    //UIImage *grayBackGound = [self convertImageToGrayScale:image];
     
     [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
     cell.routeNameLabel.numberOfLines = 2;
     cell.routeNameLabel.lineBreakMode = 0;
     
     if ([[device valueForKey:@"complete"] integerValue] == 1) {
-        //cell.backgroundView.alpha = 0.5;
         cell.completeView.hidden = FALSE;
-        //cell.backgroundView = [[UIImageView alloc] initWithImage:grayBackGound];
     } else if ([[device valueForKey:@"complete"] integerValue]  == 0 ){
-        //cell.backgroundView.alpha = 1;
         cell.completeView.hidden = TRUE;
-        //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     }
     
     return cell;

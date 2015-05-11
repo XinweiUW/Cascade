@@ -57,6 +57,8 @@
 		9DA8FC621ACF914D006F4FBB /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC611ACF914D006F4FBB /* SlideNavigationController.m */; };
 		9DA8FC651ACF9176006F4FBB /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */; };
 		9DAEBD211AFEDF1800930135 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEBD201AFEDF1800930135 /* loading.png */; };
+		9DBFF8791B000F32006A92F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DBFF8781B000F32006A92F0 /* SystemConfiguration.framework */; };
+		9DBFF87C1B0027DF006A92F0 /* GCNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBFF87B1B0027DF006A92F0 /* GCNetworkReachability.m */; };
 		9DD314C21AC7C12D004C89AE /* LandingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */; };
 		9DD314C61AC7C21A004C89AE /* DescriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD314C51AC7C21A004C89AE /* DescriptionsViewController.m */; };
 		9DD314C81AC7D05A004C89AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD314C71AC7D05A004C89AE /* Foundation.framework */; };
@@ -175,6 +177,9 @@
 		9DA8FC641ACF9176006F4FBB /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		9DA8FC661ACF9468006F4FBB /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
 		9DAEBD201AFEDF1800930135 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
+		9DBFF8781B000F32006A92F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9DBFF87A1B0027DF006A92F0 /* GCNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCNetworkReachability.h; sourceTree = "<group>"; };
+		9DBFF87B1B0027DF006A92F0 /* GCNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCNetworkReachability.m; sourceTree = "<group>"; };
 		9DD314C01AC7C12D004C89AE /* LandingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingTableViewController.h; sourceTree = "<group>"; };
 		9DD314C11AC7C12D004C89AE /* LandingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingTableViewController.m; sourceTree = "<group>"; };
 		9DD314C41AC7C21A004C89AE /* DescriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionsViewController.h; sourceTree = "<group>"; };
@@ -219,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBFF8791B000F32006A92F0 /* SystemConfiguration.framework in Frameworks */,
 				9DD46A421AE468CE006BBCEB /* CoreLocation.framework in Frameworks */,
 				9DD46A401AE468C6006BBCEB /* MapKit.framework in Frameworks */,
 				9DD314CE1AC7D084004C89AE /* CoreData.framework in Frameworks */,
@@ -340,6 +346,8 @@
 				9D4082171ACA7DEF00B2602B /* iconimg */,
 				9D8BFDF71AC39B4100ED37D1 /* AppDelegate.h */,
 				9D8BFDF81AC39B4100ED37D1 /* AppDelegate.m */,
+				9DBFF87A1B0027DF006A92F0 /* GCNetworkReachability.h */,
+				9DBFF87B1B0027DF006A92F0 /* GCNetworkReachability.m */,
 				9D069E251AF4980F0061E098 /* CustomLandingTableViewCell.h */,
 				9D069E261AF4980F0061E098 /* CustomLandingTableViewCell.m */,
 				9D1B386B1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.h */,
@@ -430,6 +438,7 @@
 		9DD314CF1AC7D09C004C89AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DBFF8781B000F32006A92F0 /* SystemConfiguration.framework */,
 				9DD46A411AE468CE006BBCEB /* CoreLocation.framework */,
 				9DD46A3F1AE468C6006BBCEB /* MapKit.framework */,
 				9DD314C71AC7D05A004C89AE /* Foundation.framework */,
@@ -608,6 +617,7 @@
 				9D069E211AF497E30061E098 /* SWLongPressGestureRecognizer.m in Sources */,
 				9D52A8A41AD395AC0041CB62 /* TipViewController.m in Sources */,
 				9D069E201AF497E30061E098 /* SWCellScrollView.m in Sources */,
+				9DBFF87C1B0027DF006A92F0 /* GCNetworkReachability.m in Sources */,
 				9D8BFDF61AC39B4100ED37D1 /* main.m in Sources */,
 				9D8BFDFF1AC39B4100ED37D1 /* ViewController.m in Sources */,
 				9D52A8A11AD395900041CB62 /* AboutViewController.m in Sources */,

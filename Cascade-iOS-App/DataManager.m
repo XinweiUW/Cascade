@@ -126,7 +126,7 @@
     
     NSMutableArray *rides = [self mutableArrayUsingFetchRequest];
     if (rides.count != 0){
-        //[self deleteObjects];
+        [self deleteObjects];
     }
     
     NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
@@ -219,8 +219,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.managedObjectContext save:nil];
                 //if (completionHandler) {
-                    //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
-                    //dispatch_async(queue, completionHandler);
+                //    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
+                //    dispatch_async(queue, completionHandler);
                     //dispatch_async(dispatch_get_main_queue(), completionHandler);
                     //completionHandler();
                 //}
@@ -272,6 +272,17 @@
         NSData* data = UIImagePNGRepresentation(image);
         [data writeToFile:path atomically:YES];
     }
+}
+
+- (NSInteger)numberOfImage{
+    NSMutableArray *routes = [self mutableArrayUsingFetchRequest];
+    NSInteger count;
+    NSString *title;
+    for (Ride *ride in routes){
+        title = ride.title;
+        if ([self loadImage:title]) count ++;
+    }
+    return count;
 }
 
 - (UIImage *)loadImage:(NSString *)title{
