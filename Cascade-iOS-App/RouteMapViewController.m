@@ -80,12 +80,19 @@
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
     nextPageButton.backgroundColor = [UIColor clearColor];
-    //[nextPageButton setImage:[UIImage imageNamed:@"next page arrow 3.png"] forState:UIControlStateNormal];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSString *startPoint = [self.routedb valueForKey:@"start"];
+    [nextPageButton setTitle:startPoint forState:UIControlStateNormal];
+    nextPageButton.titleLabel.backgroundColor = [UIColor clearColor];
+    nextPageButton.titleLabel.lineBreakMode = 0;
+    nextPageButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    nextPageButton.contentEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0);
+    nextPageButton.titleLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:nextPageButton];
     
     UIImage *startImage = [UIImage imageNamed:@"attraction 1.png"];
-    UIImageView *startView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowHeight * 0.1, arrowHeight * 0.1, arrowHeight * 0.8, arrowHeight * 0.8)];
+    UIImageView *startView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowHeight * 0.15, arrowHeight * 0.2, arrowHeight * 0.6, arrowHeight * 0.6)];
     [startView setImage:startImage];
     [nextPageButton addSubview:startView];
 }
