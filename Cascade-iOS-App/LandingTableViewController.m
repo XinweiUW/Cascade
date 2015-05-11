@@ -42,8 +42,12 @@
      */
     GCNetworkReachability *reachability = [GCNetworkReachability reachabilityForInternetConnection];
     self.tableView.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"imageGenerated" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"greyimageGenerated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"textDataGenerated" object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"CSVFileFetched" object:nil];
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
     
@@ -59,22 +63,24 @@
             //[self.dm generateImageFromURL];
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         }];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
+        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"hasBeenLaunchedOnceKey"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
     }
     else{
         self.routeArray = [self.dm mutableArrayUsingFetchRequest];
         NSInteger imgCount = [self.dm numberOfImage];
         
         if (self.routeArray.count == 0){
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
+            //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
             if (![reachability isReachable]){
                 [self putAlertView];
                 return;
             }
             [self.dm updateTextFromServerWithCompletion:^{
-
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             }];
+            
         }else { //(imgCount == 0)
             if (![reachability isReachable] && self.routeArray.count != imgCount){
                 [self putAlertView];
@@ -86,7 +92,7 @@
 
 - (void)reloadTable:(NSNotification *)notification
 {
-    if (self.routeArray == nil){
+    if (self.routeArray.count == 0){
         self.routeArray = [self.dm mutableArrayUsingFetchRequest];
     }
     [self.tableView setNeedsDisplay];
@@ -104,12 +110,12 @@
         //NSArray *indexArray = [NSArray arrayWithObjects:index, nil];
         //[self.tableView reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView reloadData];
-    }
-    else{
-        //@synchronized(self.tableView){
-        //[self.tableView setNeedsDisplay];
+    }/*else if ([[notification name] isEqualToString:@"CSVFileFetched"]){
+        //[self.tableView performSelector:@selector(reloadData)];
+        [self.tableView reloadData];
+    }*/
+    else if ([[notification name] isEqualToString:@"textDataGenerated"]){
         [self updateTable];
-        //}
     }
 }
 

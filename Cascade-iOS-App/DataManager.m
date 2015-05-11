@@ -152,8 +152,6 @@
         [p setRecognizesBackslashesAsEscapes:YES];
         [p setSanitizesFields:YES];
     
-       
-        
         NSLog(@"encoding: %@", CFStringGetNameOfEncoding(CFStringConvertNSStringEncodingToEncoding(encoding)));
         
         DataManager * d = [[DataManager alloc] init];
@@ -163,7 +161,11 @@
         NSLog(@"raw difference: %f", (end-start));
         
         //NSLog(@"%@", [d lines]);
+        //dispatch_async(dispatch_get_main_queue(), ^{
+        //    [[NSNotificationCenter defaultCenter] postNotificationName:@"CSVFileFetched" object:nil];
+        //});
         
+
         NSInteger size = [d lines].count;
         
         for (NSInteger i = 1; i < size; i++){
@@ -218,6 +220,7 @@
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.managedObjectContext save:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"textDataGenerated" object:nil];
                 //if (completionHandler) {
                 //    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul);
                 //    dispatch_async(queue, completionHandler);
