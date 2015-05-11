@@ -119,13 +119,21 @@
     //Load the request in the UIWebView.
     [webView loadRequest:requestObj];
     [self.view addSubview:webView];
-    UILabel *mapTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, webView.frame.size.width, webView.frame.size.height * 0.1)];
-    mapTitleLabel.backgroundColor = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:1.0f];
-    //mapTitleLabel.text = [self.routedb valueForKey:@"title"];
-    mapTitleLabel.textColor = [UIColor whiteColor];
-    [mapTitleLabel setTextAlignment:NSTextAlignmentCenter];
-    //[webView addSubview:mapTitleLabel];
+    
+    CGFloat buttonX = 0.75 * selfViewWidth;
+    CGFloat buttonY = 0.87 * webView.frame.size.height;
+    CGFloat buttonWidth = 0.15 * selfViewWidth;
+    
+    UIButton *resetButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonWidth)];
+    [resetButton setImage:[UIImage imageNamed:@"back to original 2.png"] forState:UIControlStateNormal];
+    //[resetButton addTarget:self action:@selector(resetMap) forControlEvents:UIControlEventTouchUpInside];
+    [webView addSubview:resetButton];
 }
+
+- (void) resetMap: (UIWebView *)webView {
+    
+}
+
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
     return allowLoad;
