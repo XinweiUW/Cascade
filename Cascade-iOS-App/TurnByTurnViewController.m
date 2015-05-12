@@ -10,7 +10,7 @@
 #import "DataManager.h"
 #import "TurnByTurnTableViewCell.h"
 #import "DSNavigationBar.h"
-//#import "MYUtil.h"
+#define iPhone5Height 568
 
 @interface TurnByTurnViewController ()
 
@@ -39,8 +39,8 @@
 
     [self setNavigationBar];
     
-    CGSize imgSizeUp = CGSizeMake(45, 45);
-    CGSize imgSizeHorizontal = CGSizeMake(45, 45);
+    CGSize imgSizeUp = CGSizeMake(45 * selfViewHeight/iPhone5Height, 45 * selfViewHeight/iPhone5Height);
+    CGSize imgSizeHorizontal = CGSizeMake(45 * selfViewHeight/iPhone5Height, 45 * selfViewHeight/iPhone5Height);
 
     startImage = [self imageWithImage:[UIImage imageNamed:@"attraction 1.png"] scaledToSize:imgSizeUp];
     endImage = [self imageWithImage:[UIImage imageNamed:@"attraction 1.png"] scaledToSize:imgSizeUp];

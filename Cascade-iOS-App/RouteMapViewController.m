@@ -11,6 +11,7 @@
 #import "DSNavigationBar.h"
 #import "TurnByTurnViewController.h"
 #import "GCNetworkReachability.h"
+#define iPhone5Height 568
 
 
 @interface RouteMapViewController ()
@@ -95,12 +96,12 @@
     nextPageButton.titleLabel.backgroundColor = [UIColor clearColor];
     nextPageButton.titleLabel.lineBreakMode = 0;
     nextPageButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    nextPageButton.contentEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0);
+    nextPageButton.contentEdgeInsets = UIEdgeInsetsMake(0, 71 * selfViewHeight/iPhone5Height, 0, 0);
     nextPageButton.titleLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:nextPageButton];
     
     UIImage *startImage = [UIImage imageNamed:@"attraction 1.png"];
-    UIImageView *startView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowHeight * 0.15, arrowHeight * 0.2, arrowHeight * 0.6, arrowHeight * 0.6)];
+    UIImageView *startView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowHeight * 0.22, arrowHeight * 0.2, arrowHeight * 0.6, arrowHeight * 0.6)];
     [startView setImage:startImage];
     [nextPageButton addSubview:startView];
 }
