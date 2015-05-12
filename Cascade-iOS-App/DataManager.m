@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) NSMutableDictionary *rideExist;
+@property (strong, nonatomic) NSMutableArray *rides;
 @end
 
 @implementation DataManager{
@@ -124,13 +126,7 @@
 - (void)updateTextFromServerWithCompletion:(void (^)(void))completionHandler{
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    NSMutableArray *rides = [self mutableArrayUsingFetchRequest];
-    if (rides.count != 0){
-        [self deleteObjects];
-    }
-    
     NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    
     backgroundContext.parentContext = self.managedObjectContext;
     
     [backgroundContext performBlock:^{
@@ -165,6 +161,18 @@
         //    [[NSNotificationCenter defaultCenter] postNotificationName:@"CSVFileFetched" object:nil];
         //});
         
+        self.rides = [self mutableArrayUsingFetchRequest];
+        self.rideExist = [[NSMutableDictionary alloc] init];
+        
+        //Boolean update = false;
+        /*if (rides.count != 0){
+            [self deleteObjects];
+        }*/
+        
+        for (NSInteger i = 0; i < self.rides.count; i++){
+            NSString *title = [[self.rides objectAtIndex:i] valueForKey:@"title"];
+            [self.rideExist setValue:[NSNumber numberWithInteger:0] forKey:title];
+        }
 
         NSInteger size = [d lines].count;
         
@@ -192,27 +200,64 @@
             NSString *longitude = [temp objectAtIndex:16];
             NSString *turnByTurnText = [temp objectAtIndex:17];
             
-            Ride *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
-            newRide.id = (NSInteger)number;
-            newRide.title = title;
-            newRide.distance = distance;
-            newRide.duration = duration;
-            newRide.terrain = terrain;
-            newRide.keyWords = keyWords;
-            newRide.shortOverview = shortOverview;
-            newRide.start = start;
-            newRide.finish = finish;
-            newRide.mapURL = mapURL;
-            newRide.roadCondition = roadCondition;
-            newRide.imgURL = imgURL;
-            newRide.attractions = attractions;
-            newRide.descriptions = descriptions;
-            newRide.turnByTurn = turnByTurn;
-            newRide.difficulties = difficulties;
-            newRide.complete = 0;
-            newRide.latitude = latitude;
-            newRide.longitude = longitude;
-            newRide.turnByTurnText = turnByTurnText;
+            if (/*self.rideExist.count == 0 || */![self.rideExist valueForKey:title]){
+                Ride *newRide = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:backgroundContext];
+                newRide.id = (NSInteger)number;
+                newRide.title = title;
+                newRide.distance = distance;
+                newRide.duration = duration;
+                newRide.terrain = terrain;
+                newRide.keyWords = keyWords;
+                newRide.shortOverview = shortOverview;
+                newRide.start = start;
+                newRide.finish = finish;
+                newRide.mapURL = mapURL;
+                newRide.roadCondition = roadCondition;
+                newRide.imgURL = imgURL;
+                newRide.attractions = attractions;
+                newRide.descriptions = descriptions;
+                newRide.turnByTurn = turnByTurn;
+                newRide.difficulties = difficulties;
+                newRide.complete = 0;
+                newRide.latitude = latitude;
+                newRide.longitude = longitude;
+                newRide.turnByTurnText = turnByTurnText;
+            }else{
+                [self.rideExist setValue:[NSNumber numberWithInteger:1] forKey:title];
+                Ride *currentRide = [self.rides objectAtIndex:i-1];
+                currentRide.id = (NSInteger)number;
+                currentRide.title = title;
+                currentRide.distance = distance;
+                currentRide.duration = duration;
+                currentRide.terrain = terrain;
+                currentRide.keyWords = keyWords;
+                currentRide.shortOverview = shortOverview;
+                currentRide.start = start;
+                currentRide.finish = finish;
+                currentRide.mapURL = mapURL;
+                currentRide.roadCondition = roadCondition;
+                if (![currentRide.imgURL isEqualToString:imgURL]){
+                    //mark the imgURL that the image needs to be deleted in local and we will regenerate the current image based on the new imageURL.
+                    [self deleteImage:i-1];
+                }
+                currentRide.imgURL = imgURL;
+                currentRide.attractions = attractions;
+                currentRide.descriptions = descriptions;
+                currentRide.turnByTurn = turnByTurn;
+                currentRide.difficulties = difficulties;
+                //currentRide.complete = 0;
+                currentRide.latitude = latitude;
+                currentRide.longitude = longitude;
+                currentRide.turnByTurnText = turnByTurnText;
+            }
+        }
+        
+        for (NSInteger i = 0; i < self.rides.count; i++){
+            NSString *title = [[self.rides objectAtIndex:i] valueForKey:@"title"];
+            if ([self.rideExist valueForKey:title] == 0){
+                // delete Object
+                [self deleteObject:i];
+            }
         }
         
         if (![backgroundContext save:&error]){
@@ -326,28 +371,23 @@
     return newImage;
 }
 
+- (void) deleteObject:(NSInteger)index{
+    //self.managedObjectContext = [self managedObjectContext];
+    Ride *ride = [self.rides objectAtIndex:index];
+    [self.managedObjectContext deleteObject:ride];
+}
 
-// Currently, if we want to update the core data, we would delete all the data and insert all the new data. Later, we will just update those that has been changed.
-- (void) deleteObjects{
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Routes"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSMutableArray *rides = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-    
+- (void) deleteImage:(NSInteger)index{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                          NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath;
     NSError *error;
     
-    for (id ride in rides){
-        [managedObjectContext deleteObject:ride];
-        filePath = [documentsDirectory stringByAppendingPathComponent:[ride valueForKey:@"title"]];
-        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
-    }
+    Ride *ride = [self.rides objectAtIndex:index];
+    
+    filePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", ride.title]]; //[documentsDirectory stringByAppendingPathComponent:ride.title];
+    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
 }
 
 - (void) putAlertView:(id)sender{

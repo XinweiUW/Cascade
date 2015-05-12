@@ -55,14 +55,16 @@
      */
     [self setNavigationBar];
     
-    CGSize imgSizeUp = CGSizeMake(40, 45);
-    CGSize imgSizeHorizontal = CGSizeMake(40, 45);
+    CGSize imgSizeUp = CGSizeMake(45, 45);
+    CGSize imgSizeHorizontal = CGSizeMake(45, 45);
     startImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
     endImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
-    leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left.png"] scaledToSize:imgSizeHorizontal];
-    rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right.png"] scaledToSize:imgSizeHorizontal];
-    upImage = [self imageWithImage:[UIImage imageNamed:@"arrow-up.png"] scaledToSize:imgSizeUp];
+    leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left 1.png"] scaledToSize:imgSizeHorizontal];
+    rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right 1.png"] scaledToSize:imgSizeHorizontal];
+    upImage = [self imageWithImage:[UIImage imageNamed:@"arrow up 1.png"] scaledToSize:imgSizeUp];
     attractionImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
+    uTurnImage = [self imageWithImage:[UIImage imageNamed:@"u turn 1.png"] scaledToSize:imgSizeUp];
+    
 }
 
 - (void)swipeDown:(UISwipeGestureRecognizer *)gestureRecognizer{
@@ -221,7 +223,10 @@
     }else if([turn containsString:@"right"]){
         //cell.imageView.transform = CGAffineTransformMakeScale(0.35, 0.35);
         cell.imageView.image = rightImage;//[UIImage imageNamed:@"arrow right.png"];
-    }else /*if([turn containsString:@"End"])*/{
+    }else if ([turn containsString:@"U-turn"]){
+        cell.imageView.image = uTurnImage;
+    }
+    else /*if([turn containsString:@"End"])*/{
         //cell.imageView.transform = CGAffineTransformMakeScale(0.40, 0.35);
         //cell.imageView.transform = CGAffineTransformMakeScale(0.50, 0.50);
         cell.imageView.image = upImage;//[UIImage imageNamed:@"arrow-up.png"];

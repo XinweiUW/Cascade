@@ -17,6 +17,11 @@
 		9D1B386D1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B386C1AF5D00200C0F9E2 /* TurnByTurnTableViewCell.m */; };
 		9D26F5911AF8A5E800AC73E0 /* last page arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D26F58F1AF8A5E800AC73E0 /* last page arrow.png */; };
 		9D38DEE11AF7158D0082DD07 /* DSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D38DEE01AF7158D0082DD07 /* DSNavigationBar.m */; };
+		9D3AB9871B01A92D00868717 /* u turn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3AB9861B01A92D00868717 /* u turn.png */; };
+		9D3AB98B1B01AB7200868717 /* arrow left 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3AB9881B01AB7200868717 /* arrow left 1.png */; };
+		9D3AB98C1B01AB7200868717 /* arrow right 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3AB9891B01AB7200868717 /* arrow right 1.png */; };
+		9D3AB98D1B01AB7200868717 /* arrow up 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3AB98A1B01AB7200868717 /* arrow up 1.png */; };
+		9D3AB98F1B01CE6F00868717 /* u turn 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3AB98E1B01CE6F00868717 /* u turn 1.png */; };
 		9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082181ACA7E1500B2602B /* 2-switch to map list.png */; };
 		9D4082231ACA7E1500B2602B /* 3-switch to picture list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */; };
 		9D4082281ACA7E1500B2602B /* 9-turn by turn list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D40821E1ACA7E1500B2602B /* 9-turn by turn list.png */; };
@@ -120,6 +125,11 @@
 		9D26F58F1AF8A5E800AC73E0 /* last page arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last page arrow.png"; sourceTree = "<group>"; };
 		9D38DEDF1AF7158D0082DD07 /* DSNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSNavigationBar.h; sourceTree = "<group>"; };
 		9D38DEE01AF7158D0082DD07 /* DSNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSNavigationBar.m; sourceTree = "<group>"; };
+		9D3AB9861B01A92D00868717 /* u turn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "u turn.png"; sourceTree = "<group>"; };
+		9D3AB9881B01AB7200868717 /* arrow left 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow left 1.png"; sourceTree = "<group>"; };
+		9D3AB9891B01AB7200868717 /* arrow right 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow right 1.png"; sourceTree = "<group>"; };
+		9D3AB98A1B01AB7200868717 /* arrow up 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow up 1.png"; sourceTree = "<group>"; };
+		9D3AB98E1B01CE6F00868717 /* u turn 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "u turn 1.png"; sourceTree = "<group>"; };
 		9D4082181ACA7E1500B2602B /* 2-switch to map list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-switch to map list.png"; sourceTree = "<group>"; };
 		9D4082191ACA7E1500B2602B /* 3-switch to picture list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-switch to picture list.png"; sourceTree = "<group>"; };
 		9D40821E1ACA7E1500B2602B /* 9-turn by turn list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-turn by turn list.png"; sourceTree = "<group>"; };
@@ -282,6 +292,11 @@
 				9DD92FD51AFDBA150068EAC6 /* last page arrow 1.png */,
 				9DE1745B1AFF2558007A3D98 /* next page arrow 2.png */,
 				9DE1745C1AFF2558007A3D98 /* last page arrow 2.png */,
+				9D3AB9881B01AB7200868717 /* arrow left 1.png */,
+				9D3AB9891B01AB7200868717 /* arrow right 1.png */,
+				9D3AB98A1B01AB7200868717 /* arrow up 1.png */,
+				9D3AB9861B01A92D00868717 /* u turn.png */,
+				9D3AB98E1B01CE6F00868717 /* u turn 1.png */,
 				9D968B181AEF6E7B00104C42 /* arrow down.png */,
 				9D968B191AEF6E7B00104C42 /* arrow left.png */,
 				9D968B1A1AEF6E7B00104C42 /* arrow right.png */,
@@ -419,6 +434,8 @@
 				9DD7EF2D1AEB43C2008B2C33 /* DifficultiesViewController.m */,
 				9D968B3A1AEF8CE900104C42 /* RouteMapViewController.h */,
 				9D968B3B1AEF8CE900104C42 /* RouteMapViewController.m */,
+				9D7B794B1AF6E0E9004F362E /* TurnByTurnViewController.h */,
+				9D7B794C1AF6E0E9004F362E /* TurnByTurnViewController.m */,
 				9D52A89F1AD395900041CB62 /* AboutViewController.h */,
 				9D52A8A01AD395900041CB62 /* AboutViewController.m */,
 				9D52A8A21AD395AC0041CB62 /* TipViewController.h */,
@@ -429,8 +446,6 @@
 				9DD46A3D1AE4628C006BBCEB /* MapListViewController.m */,
 				9DD46A431AE47E99006BBCEB /* RideAnnotation.h */,
 				9DD46A441AE47E99006BBCEB /* RideAnnotation.m */,
-				9D7B794B1AF6E0E9004F362E /* TurnByTurnViewController.h */,
-				9D7B794C1AF6E0E9004F362E /* TurnByTurnViewController.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -543,15 +558,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3AB9871B01A92D00868717 /* u turn.png in Resources */,
 				9DAEBD211AFEDF1800930135 /* loading.png in Resources */,
 				9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */,
+				9D3AB98C1B01AB7200868717 /* arrow right 1.png in Resources */,
 				9DD92FD61AFDBA150068EAC6 /* menu 1.png in Resources */,
 				9DE174551AFF149B007A3D98 /* distance 1.png in Resources */,
 				9D968B331AEF6E7B00104C42 /* pin(complete).png in Resources */,
+				9D3AB98B1B01AB7200868717 /* arrow left 1.png in Resources */,
 				9D968B2E1AEF6E7B00104C42 /* back to original.png in Resources */,
 				9D968B341AEF6E7B00104C42 /* pin(uncomplete).png in Resources */,
 				9D4082291ACA7E1500B2602B /* 10-arrow-left.png in Resources */,
 				9D968B391AEF6E7B00104C42 /* to map.png in Resources */,
+				9D3AB98D1B01AB7200868717 /* arrow up 1.png in Resources */,
 				9D8BFE021AC39B4100ED37D1 /* Main.storyboard in Resources */,
 				9D968B2F1AEF6E7B00104C42 /* back.png in Resources */,
 				9DD92FDA1AFDBA710068EAC6 /* back to original 1.png in Resources */,
@@ -580,6 +599,7 @@
 				9DE1745D1AFF2558007A3D98 /* next page arrow 2.png in Resources */,
 				9D968B301AEF6E7B00104C42 /* complete stamp.png in Resources */,
 				9DE174571AFF149B007A3D98 /* terrain 1.png in Resources */,
+				9D3AB98F1B01CE6F00868717 /* u turn 1.png in Resources */,
 				9D968B2C1AEF6E7B00104C42 /* arrow-up.png in Resources */,
 				9D968B311AEF6E7B00104C42 /* distance.png in Resources */,
 				9D8BFE041AC39B4100ED37D1 /* Images.xcassets in Resources */,
