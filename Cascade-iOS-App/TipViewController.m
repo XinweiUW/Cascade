@@ -56,7 +56,7 @@
 
 
 - (void) setFirstParagraph {
-    firstParaLabel = [[UITextView alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
+    firstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
     //firstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
     //firstParaLabel.numberOfLines = 0;
     //firstParaLabel.backgroundColor = [UIColor greenColor];
