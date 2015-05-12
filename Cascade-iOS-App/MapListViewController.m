@@ -61,6 +61,7 @@
     
     for (NSInteger index = 0; index < self.rides.count; index ++) {
         Ride *ride = [self.rides objectAtIndex:index];
+        if (![self.dm loadImage:ride.title]) continue;
         double latitude = [[ride valueForKey:@"latitude"] doubleValue];
         double longitude = [[ride valueForKey:@"longitude"] doubleValue];
         [self.rideIndices setValue:[ride valueForKey:@"id"] forKey:[ride valueForKey:@"title"]];

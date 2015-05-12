@@ -35,7 +35,7 @@
     self.cachedImages = [[NSMutableDictionary alloc] init];
     self.tableView.rowHeight = self.view.frame.size.height * 0.43;
     self.placeholder = [UIImage imageNamed:@"loading 2.png"];
-    
+    self.routeArray = [self.dm mutableArrayUsingFetchRequest];
     self.tableView.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     
     [self monitorNetwork];
@@ -59,9 +59,11 @@
 
 
 - (void) updateInterface{
-    /*if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
-        if (![self.reachability isReachable]){
+        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"hasBeenLaunchedOnceKey"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        if (![self.reachability isReachable] && (self.routeArray.count == 0 || (self.routeArray.count != [self.dm numberOfImage]))){
             [self.dm putAlertView:self];
             return;
         }
@@ -70,11 +72,8 @@
             //[self.dm generateImageFromURL];
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         }];
-        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"hasBeenLaunchedOnceKey"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
-    }*/
-    //else{
+    }
+    else{
         self.routeArray = [self.dm mutableArrayUsingFetchRequest];
         NSInteger imgCount = [self.dm numberOfImage];
         
@@ -86,14 +85,14 @@
             [self.dm updateTextFromServerWithCompletion:^{
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             }];
-            
+        
         }else { //(imgCount == 0)
             if (![self.reachability isReachable] && self.routeArray.count != imgCount){
                 [self.dm putAlertView:self];
             }
             [self updateTable];
         }
-    //}
+    }
 }
 
 - (void)reloadTable:(NSNotification *)notification
@@ -141,7 +140,7 @@
                                                   usingBlock:^(NSNotification *note) {
                                                       GCNetworkReachabilityStatus status = [[note userInfo][kGCNetworkReachabilityStatusKey] integerValue];
                                                       if (status == GCNetworkReachabilityStatusNotReachable){
-                                                          if (self.routeArray.count != [self.dm numberOfImage]){
+                                                          if (self.routeArray.count == 0 || self.routeArray.count != [self.dm numberOfImage]){
                                                               NSLog(@"No connection");
                                                               [self.dm putAlertView:self];
                                                           }else{
@@ -149,8 +148,12 @@
                                                           }
                                                       }else{
                                                           NSLog(@"Has Internet connection now!");
-                                                          if (self.routeArray.count != [self.dm numberOfImage]){
+                                                          if (self.routeArray.count == 0 /*&& [self.dm numberOfImage] == 0 || self.routeArray.count != [self.dm numberOfImage] )*/){
                                                               [self updateInterface];
+                                                          }else if (self.routeArray.count != [self.dm numberOfImage]){
+                                                              [self updateTable];
+                                                          }else{
+                                                              NSLog(@"All info loaded!");
                                                           }
                                                       }
                                                   }];
@@ -350,11 +353,11 @@
             
             // Setting up grey image.
             NSString *title = [NSString stringWithFormat:@"grey%@", obj.title];
-            UIImage *image;
+            UIImage *image = [self.dm loadImage:title];
             
-            if ([self.dm loadImage:title]){
-                image = [self.dm loadImage:title];
-            }else{
+            //if ([self.dm loadImage:title]){
+            //image = [self.dm loadImage:title];
+            /*}else{
                 image = [self.dm loadImage:obj.title];
                 image = [self convertImageToGrayScale:image];
                 dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
@@ -362,14 +365,11 @@
                     [self.dm saveImage:image :title];
                 });
                 
-            }
+            }*/
             
             image = [self getCroppedImage:cell fromOriginalImage:image];
             [self.cachedImages setValue:image forKey:obj.title];
             //[self.cachedImages setValue:image forKey:[device valueForKey:@"title"]];
-            
-            
-            
             //cell.backgroundView = [[UIImageView alloc] initWithImage:image];
             
             NSNumber *comp = [NSNumber numberWithInt:1];

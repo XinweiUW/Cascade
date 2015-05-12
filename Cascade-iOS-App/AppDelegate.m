@@ -56,13 +56,13 @@
     }else{
         NSDate *lastDate = [self.userDefault objectForKey:@"lastDate"];
         NSDate *now = [NSDate date];
-        if ([now timeIntervalSinceDate:lastDate] > 1/*3600000000000*/){
+        if ([now timeIntervalSinceDate:lastDate] > 3600 * 24 * 7){
             [self.userDefault setBool:NO forKey:@"hasBeenLaunchedOnceKey"];
             [self.userDefault setObject:now forKey:@"lastDate"];
             [self.userDefault synchronize];
         }
     }
-    return NO;
+    return YES;
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {

@@ -10,11 +10,15 @@
 #import "AppDelegate.h"
 
 @interface DataManager()
+
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
 @property (strong, nonatomic) NSMutableDictionary *rideExist;
-@property (strong, nonatomic) NSMutableArray *rides;
+@property (strong, nonatomic) NSMutableArray *currentRides;
+@property (strong, nonatomic) NSMutableArray *ridesFromCSV;
+
 @end
 
 @implementation DataManager{
@@ -122,6 +126,30 @@
     _lines = nil;
 }
 
+- (NSArray *)fetchCSV{
+    
+    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+    NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv";
+    NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+    NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"Beginning...");
+    NSStringEncoding encoding = 0;
+    CHCSVParser * p = [[CHCSVParser alloc] initWithCSVString:file];
+    [p setRecognizesBackslashesAsEscapes:YES];
+    [p setSanitizesFields:YES];
+    
+    NSLog(@"encoding: %@", CFStringGetNameOfEncoding(CFStringConvertNSStringEncodingToEncoding(encoding)));
+    
+    DataManager * d = [[DataManager alloc] init];
+    [p setDelegate:d];
+    [p parse];
+    NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
+    NSLog(@"raw difference: %f", (end-start));
+    
+    return [d lines];
+}
+
 
 - (void)updateTextFromServerWithCompletion:(void (^)(void))completionHandler{
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -131,53 +159,24 @@
     
     [backgroundContext performBlock:^{
         NSError *error;
-        NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
-        NSString *url = @"http://cbc-drupal-assets.s3.amazonaws.com/Top_10_Rides_Content.csv";
-        //NSString *url = @"https://www.filepicker.io/api/file/oNGZwe49SKO9BDgNEDoM";
-        //NSString *url = @"https://www.filepicker.io/api/file/iVQitlmpQuSE4wilqbxR";
-        //NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-        NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-        //NSData *responseData = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                     //returningResponse:nil
-                                                     //            error:nil];
-        NSString *file = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    
-        NSLog(@"Beginning...");
-        NSStringEncoding encoding = 0;
-        CHCSVParser * p = [[CHCSVParser alloc] initWithCSVString:file];
-        [p setRecognizesBackslashesAsEscapes:YES];
-        [p setSanitizesFields:YES];
-    
-        NSLog(@"encoding: %@", CFStringGetNameOfEncoding(CFStringConvertNSStringEncodingToEncoding(encoding)));
-        
-        DataManager * d = [[DataManager alloc] init];
-        [p setDelegate:d];
-        [p parse];
-        NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
-        NSLog(@"raw difference: %f", (end-start));
-        
         //NSLog(@"%@", [d lines]);
         //dispatch_async(dispatch_get_main_queue(), ^{
         //    [[NSNotificationCenter defaultCenter] postNotificationName:@"CSVFileFetched" object:nil];
         //});
         
-        self.rides = [self mutableArrayUsingFetchRequest];
+        self.ridesFromCSV = [[NSMutableArray alloc] initWithArray:[self fetchCSV]];
+        self.currentRides = [self mutableArrayUsingFetchRequest];
         self.rideExist = [[NSMutableDictionary alloc] init];
         
-        //Boolean update = false;
-        /*if (rides.count != 0){
-            [self deleteObjects];
-        }*/
-        
-        for (NSInteger i = 0; i < self.rides.count; i++){
-            NSString *title = [[self.rides objectAtIndex:i] valueForKey:@"title"];
+        for (NSInteger i = 0; i < self.currentRides.count; i++){
+            NSString *title = [[self.currentRides objectAtIndex:i] valueForKey:@"title"];
             [self.rideExist setValue:[NSNumber numberWithInteger:0] forKey:title];
         }
 
-        NSInteger size = [d lines].count;
+        NSInteger size = self.ridesFromCSV.count;
         
         for (NSInteger i = 1; i < size; i++){
-            NSArray *temp = [[d lines] objectAtIndex:i];
+            NSArray *temp = [self.ridesFromCSV objectAtIndex:i];
             NSNumber *number = [NSNumber numberWithInteger:i];
             //NSNumber *comp = [NSNumber numberWithInt:0];
             
@@ -224,7 +223,7 @@
                 newRide.turnByTurnText = turnByTurnText;
             }else{
                 [self.rideExist setValue:[NSNumber numberWithInteger:1] forKey:title];
-                Ride *currentRide = [self.rides objectAtIndex:i-1];
+                Ride *currentRide = [self.currentRides objectAtIndex:i-1];
                 currentRide.id = (NSInteger)number;
                 currentRide.title = title;
                 currentRide.distance = distance;
@@ -252,9 +251,9 @@
             }
         }
         
-        for (NSInteger i = 0; i < self.rides.count; i++){
-            NSString *title = [[self.rides objectAtIndex:i] valueForKey:@"title"];
-            if ([[self.rideExist valueForKey:title] integerValue] == 0){
+        for (NSInteger i = 0; i < self.currentRides.count; i++){
+            NSString *title = [[self.currentRides objectAtIndex:i] valueForKey:@"title"];
+            if ([[self.rideExist valueForKey:title] integerValue] == 0 && self.ridesFromCSV.count > 0){ // self.ridesFromCSV.count > 0 is to make sure no data will be deleted if CSV was not fetched.
                 // delete Object
                 [self deleteObject:i];
             }
@@ -304,11 +303,12 @@
         // We store original images instead of cropped images since we want to use original images later.
         [self saveImage:image :title];
 
-        
         NSTimeInterval end2 = [NSDate timeIntervalSinceReferenceDate];
-        UIImage *greyImage = [self convertImageToGrayScale:image];
-        NSString *greyTitle = [NSString stringWithFormat:@"grey%@", title];
-        [self saveImage:greyImage :greyTitle];
+        if (image){
+            UIImage *greyImage = [self convertImageToGrayScale:image];
+            NSString *greyTitle = [NSString stringWithFormat:@"grey%@", title];
+            [self saveImage:greyImage :greyTitle];
+        }
         NSTimeInterval end3 = [NSDate timeIntervalSinceReferenceDate];
         NSLog(@"save image %f", (end3 - end2));
         [[NSNotificationCenter defaultCenter] postNotificationName:@"imageGenerated" object:[route valueForKey:@"id"]];
@@ -409,7 +409,7 @@
 
 - (void) deleteObject:(NSInteger)index{
     //self.managedObjectContext = [self managedObjectContext];
-    Ride *ride = [self.rides objectAtIndex:index];
+    Ride *ride = [self.currentRides objectAtIndex:index];
     [self.managedObjectContext deleteObject:ride];
 }
 
@@ -420,7 +420,7 @@
     NSString *filePath;
     NSError *error;
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    Ride *ride = [self.rides objectAtIndex:index];
+    Ride *ride = [self.currentRides objectAtIndex:index];
     
     filePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", ride.title]]; //[documentsDirectory stringByAppendingPathComponent:ride.title];
     [fileManager removeItemAtPath:filePath error:&error];
