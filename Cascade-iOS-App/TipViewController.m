@@ -19,15 +19,16 @@
     [super viewDidLoad];
     selfViewWidth = self.view.frame.size.width;
     selfViewHeight = self.view.frame.size.height;
-    originX = 0.08 * selfViewWidth;
-    originY = 0;
-    labelWidth = 0.84 * selfViewWidth;
+    
+    originX = 0;
+    originY = 0.1 * selfViewHeight;
+    labelWidth = 0.95 * selfViewWidth;
     
     
-    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.02 * selfViewWidth, 0.2 * selfViewHeight, 0.96 * selfViewWidth, 0.78 * selfViewHeight)];
+    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.03 * selfViewWidth, 46, 0.96 * selfViewWidth, 0.9 * selfViewHeight)];
     scrollView.contentSize = CGSizeMake(0.96 * selfViewWidth, selfViewHeight);
     //[scrollView setContentOffset:CGPointZero];
-    scrollView.backgroundColor = [UIColor grayColor];
+    //scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
 
     [self setBackButton];
@@ -36,6 +37,19 @@
     [self setSecondParagraph];
     // Do any additional setup after loading the view.
 }
+
+- (void) setTitleLabel {
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.3 * selfViewWidth, 0, selfViewWidth * 0.4, selfViewWidth * 0.1)];
+    NSString *title = @"Safety Tip";
+    titleLabel.text = title;
+    titleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    titleLabel.font = [UIFont boldSystemFontOfSize:24.0f * selfViewHeight/iPhone5Height];
+    //titleLabel.backgroundColor = [UIColor grayColor];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel sizeToFit];
+    [scrollView addSubview:titleLabel];
+}
+
 
 - (void) setFirstParagraph {
     firstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
@@ -56,7 +70,7 @@
     secondParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY + firstParaLabel.frame.size.height, labelWidth, 0.2 * selfViewWidth)];
     secondParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
     secondParaLabel.numberOfLines = 0;
-    secondParaLabel.backgroundColor = [UIColor greenColor];
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
     NSString *labelText = @"Stay alert - watch for cars, other riders, and hazards. Don’t ride with earphones or earbuds. Pull off the road and stop when using a cell phone.";
     [secondParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(0, 1)]];
     [secondParaLabel sizeToFit];
@@ -93,20 +107,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setTitleLabel {
-    CGFloat labelX = 0.3 * selfViewWidth;
-    CGFloat labelY = 0.1 * selfViewHeight;
-    CGFloat labelWidth = 0.4 * selfViewWidth;
-    CGFloat labelHeight = labelWidth/4;
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, labelY, labelWidth, labelHeight)];
-    NSString *title = @"Safety Tip";
-    titleLabel.text = title;
-    titleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
-    titleLabel.font = [UIFont boldSystemFontOfSize:24.0f * selfViewHeight/iPhone5Height];
-    //titleLabel.backgroundColor = [UIColor grayColor];
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:titleLabel];
-}
 
 
 - (void) setBackButton {
