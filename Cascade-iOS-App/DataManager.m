@@ -254,7 +254,7 @@
         
         for (NSInteger i = 0; i < self.rides.count; i++){
             NSString *title = [[self.rides objectAtIndex:i] valueForKey:@"title"];
-            if ([self.rideExist valueForKey:title] == 0){
+            if ([[self.rideExist valueForKey:title] integerValue] == 0){
                 // delete Object
                 [self deleteObject:i];
             }
@@ -292,23 +292,59 @@
     for (NSManagedObject *route in routes) {
         title = [route valueForKey:@"title"];
         if ([self loadImage:title]) continue;
-        NSLog(@"%@", title);
+        //NSLog(@"%@", title);
         NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
         NSString *imgURL = [route valueForKey:@"imgURL"];
         NSData *imageData = [NSData dataWithContentsOfURL: [NSURL URLWithString:imgURL]];
         NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
-        NSLog(@"url to imageData: %f", (end-start));
-        NSTimeInterval end2 = [NSDate timeIntervalSinceReferenceDate];
+        //NSLog(@"url to imageData: %f", (end-start));
+        
         UIImage *image = [UIImage imageWithData:imageData];
-        NSLog(@"imageData to image %f", (end2 - end));
+        //NSLog(@"imageData to image %f", (end2 - end));
         // We store original images instead of cropped images since we want to use original images later.
         [self saveImage:image :title];
+
+        
+        NSTimeInterval end2 = [NSDate timeIntervalSinceReferenceDate];
+        UIImage *greyImage = [self convertImageToGrayScale:image];
+        NSString *greyTitle = [NSString stringWithFormat:@"grey%@", title];
+        [self saveImage:greyImage :greyTitle];
         NSTimeInterval end3 = [NSDate timeIntervalSinceReferenceDate];
         NSLog(@"save image %f", (end3 - end2));
-        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"imageGenerated" object:[route valueForKey:@"id"]];
     }
 }
+
+- (UIImage *)convertImageToGrayScale:(UIImage *)image
+{
+    // Create image rectangle with current image width/height
+    CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    // Grayscale color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    
+    // Create bitmap content with current image size and grayscale colorspace
+    CGContextRef context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaNone);
+    
+    // Draw image into current context, with specified rectangle
+    // using previously defined context (with grayscale colorspace)
+    CGContextDrawImage(context, imageRect, [image CGImage]);
+    
+    // Create bitmap image info from pixel data in current context
+    CGImageRef imageRef = CGBitmapContextCreateImage(context);
+    
+    // Create a new UIImage object
+    UIImage *newImage = [UIImage imageWithCGImage:imageRef];
+    
+    // Release colorspace, context and bitmap information
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    CFRelease(imageRef);
+    
+    // Return the new grayscale image
+    return newImage;
+}
+
 
 - (void)saveImage: (UIImage *)image :(NSString *)title {
     if (image != nil)
@@ -383,11 +419,15 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath;
     NSError *error;
-    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     Ride *ride = [self.rides objectAtIndex:index];
     
     filePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", ride.title]]; //[documentsDirectory stringByAppendingPathComponent:ride.title];
-    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+    [fileManager removeItemAtPath:filePath error:&error];
+    NSString *greyFilePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"grey%@.png", ride.title]];
+    if (greyFilePath){
+        [fileManager removeItemAtPath:greyFilePath error:&error];
+    }
 }
 
 - (void) putAlertView:(id)sender{

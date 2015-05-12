@@ -59,7 +59,7 @@
 
 
 - (void) updateInterface{
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
+    /*if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenLaunchedOnceKey"])
     {
         if (![self.reachability isReachable]){
             [self.dm putAlertView:self];
@@ -73,8 +73,8 @@
         [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"hasBeenLaunchedOnceKey"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSManagedObjectContextDidSaveNotification object:self.dm.managedObjectContext];
-    }
-    else{
+    }*/
+    //else{
         self.routeArray = [self.dm mutableArrayUsingFetchRequest];
         NSInteger imgCount = [self.dm numberOfImage];
         
@@ -93,7 +93,7 @@
             }
             [self updateTable];
         }
-    }
+    //}
 }
 
 - (void)reloadTable:(NSNotification *)notification
