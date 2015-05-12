@@ -169,7 +169,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIImage *)convertImageToGrayScale:(UIImage *)image
+/*- (UIImage *)convertImageToGrayScale:(UIImage *)image
 {
     // Create image rectangle with current image width/height
     CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
@@ -197,7 +197,7 @@
     
     // Return the new grayscale image
     return newImage;
-}
+}*/
 
 
 #pragma mark - Table view data source
