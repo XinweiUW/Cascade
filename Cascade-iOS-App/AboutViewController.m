@@ -187,19 +187,21 @@
 - (void) setContactContent {
     CGFloat buttonY = secondTitleLabel.frame.origin.y + secondTitleLabel.frame.size.height + labelDistance * 1.5;
     UITextView *emailInfo = [[UITextView alloc] initWithFrame:CGRectMake(originX, buttonY, labelWidth, secondParaLabel.frame.size.height*2)];
-    emailInfo.text = @"info@cascade.org";
+    //emailInfo.text = @"info@cascade.org";
+    [emailInfo setAttributedText:[self attributedText:@"info@cascade.org"]];
     emailInfo.editable = NO;
     emailInfo.dataDetectorTypes = UIDataDetectorTypeAll;
-    [emailInfo setTextColor:[UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1]];
+    [emailInfo setTintColor:[UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1]];
     emailInfo.font = [UIFont systemFontOfSize:18.0f * selfViewHeight/iPhone5Height];
     [scrollView addSubview:emailInfo];
     
     buttonY = emailInfo.frame.origin.y + emailInfo.frame.size.height + labelDistance * 0.2;
     UITextView *phoneNumInfo = [[UITextView alloc] initWithFrame:CGRectMake(originX, buttonY, labelWidth, 0.2 * selfViewWidth)];
-    phoneNumInfo.text = @"206-522-3222";
+    //phoneNumInfo.text = @"206-522-3222";
+    [phoneNumInfo setAttributedText:[self attributedText:@"206-522-3222"]];
     phoneNumInfo.editable = NO;
     phoneNumInfo.dataDetectorTypes = UIDataDetectorTypeAll;
-    //contactInfo.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    [phoneNumInfo setTintColor:[UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1]];
     phoneNumInfo.font = [UIFont systemFontOfSize:18.0f * selfViewHeight/iPhone5Height];
     [scrollView addSubview:phoneNumInfo];
 }
