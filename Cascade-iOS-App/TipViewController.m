@@ -21,11 +21,11 @@
     selfViewHeight = self.view.frame.size.height;
     
     originX = 0;
-    originY = 0.1 * selfViewHeight;
+    originY = 0.14 * selfViewHeight;
     labelWidth = 0.95 * selfViewWidth;
+    labelDistance = 0.03 * selfViewHeight;
     
-    
-    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.03 * selfViewWidth, 46, 0.96 * selfViewWidth, 0.9 * selfViewHeight)];
+    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.03 * selfViewWidth, 45, 0.96 * selfViewWidth, 0.9 * selfViewHeight)];
     scrollView.contentSize = CGSizeMake(0.96 * selfViewWidth, selfViewHeight);
     //[scrollView setContentOffset:CGPointZero];
     //scrollView.backgroundColor = [UIColor grayColor];
@@ -35,15 +35,19 @@
     [self setTitleLabel];
     [self setFirstParagraph];
     [self setSecondParagraph];
+    [self setThirdParagraph];
+    [self setFourthParagraph];
+    [self setFifthParagraph];
+    [self setSixthParagraph];
     // Do any additional setup after loading the view.
 }
 
 - (void) setTitleLabel {
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.3 * selfViewWidth, 0, selfViewWidth * 0.4, selfViewWidth * 0.1)];
-    NSString *title = @"Safety Tip";
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.02 * selfViewHeight, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
+    NSString *title = @"Safety Tips";
     titleLabel.text = title;
     titleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
-    titleLabel.font = [UIFont boldSystemFontOfSize:24.0f * selfViewHeight/iPhone5Height];
+    titleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
     //titleLabel.backgroundColor = [UIColor grayColor];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     [titleLabel sizeToFit];
@@ -62,12 +66,10 @@
     [scrollView addSubview:firstParaLabel];
 }
 
-- (BOOL) automaticallyAdjustsScrollViewInsets{
-    return NO;
-}
 
 - (void) setSecondParagraph {
-    secondParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY + firstParaLabel.frame.size.height, labelWidth, 0.2 * selfViewWidth)];
+    CGFloat labelY = firstParaLabel.frame.origin.y + firstParaLabel.frame.size.height + labelDistance;
+    secondParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
     secondParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
     secondParaLabel.numberOfLines = 0;
     //secondParaLabel.backgroundColor = [UIColor greenColor];
@@ -76,6 +78,56 @@
     [secondParaLabel sizeToFit];
     [scrollView addSubview:secondParaLabel];
 }
+
+- (void) setThirdParagraph {
+    CGFloat labelY = secondParaLabel.frame.origin.y + secondParaLabel.frame.size.height + labelDistance;
+    thirdParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
+    thirdParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    thirdParaLabel.numberOfLines = 0;
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Move off the road if stopping. Pull completely off the road or trail to let cars and others pass. Don’t block driveways or intersections.";
+    [thirdParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(0, 1)]];
+    [thirdParaLabel sizeToFit];
+    [scrollView addSubview:thirdParaLabel];
+}
+
+- (void) setFourthParagraph {
+    CGFloat labelY = thirdParaLabel.frame.origin.y + thirdParaLabel.frame.size.height + labelDistance;
+    fourthParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
+    fourthParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    fourthParaLabel.numberOfLines = 0;
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Act responsibly and obey all traffic laws. Stop at stop signs and use hand signals. Yield to pedestrians and bicycle in a straight line.";
+    [fourthParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(0, 1)]];
+    [fourthParaLabel sizeToFit];
+    [scrollView addSubview:fourthParaLabel];
+}
+
+- (void) setFifthParagraph {
+    CGFloat labelY = fourthParaLabel.frame.origin.y + fourthParaLabel.frame.size.height + labelDistance;
+    fifthParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
+    fifthParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    fifthParaLabel.numberOfLines = 0;
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Retain space between yourself and others. Leave enough room to dodge obstacles.";
+    [fifthParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(0, 1)]];
+    [fifthParaLabel sizeToFit];
+    [scrollView addSubview:fifthParaLabel];
+}
+
+- (void) setSixthParagraph {
+    CGFloat labelY = fifthParaLabel.frame.origin.y + fifthParaLabel.frame.size.height + labelDistance;
+    sixthParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
+    sixthParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    sixthParaLabel.numberOfLines = 0;
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Tell others when passing, and pass on the left.";
+    [sixthParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(0, 1)]];
+    [sixthParaLabel sizeToFit];
+    [scrollView addSubview:sixthParaLabel];
+}
+
+
 
 - (NSMutableAttributedString *)attributedText: (NSString *)originalText withRange: (NSRange) range {
     //NSString *labelText = @"We encourage all riders to Ride SMART.";
@@ -125,6 +177,10 @@
 
 - (void) didTapBackButton {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL) automaticallyAdjustsScrollViewInsets{
+    return NO;
 }
 
 

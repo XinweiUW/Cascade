@@ -14,6 +14,7 @@
     CGFloat originX;
     CGFloat originY;
     CGFloat labelWidth;
+    CGFloat labelDistance;
 
     UIScrollView *scrollView;
     UILabel *titleLabel;
