@@ -50,9 +50,11 @@
     */
     allowLoad = YES;
     [self setNavigationBar];
+    
+    
+    [self loadMapView];
     [self setLastPageButton];
     [self setNextPageButton];
-    [self loadMapView];
     
     GCNetworkReachability *reachability = [GCNetworkReachability reachabilityForInternetConnection];
     if (![reachability isReachable]){
@@ -61,26 +63,17 @@
     
 }
 
-- (void) putAlertView{
-    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error"
-                                                     message:@"No Internet Connection!"
-                                                    delegate:self
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles: nil];
-    [alert show];
-}
-
 - (void) setLastPageButton {
-    CGFloat arrowX = 0.1 * selfViewWidth;
+    CGFloat arrowX = 0;
     CGFloat arrowY = 46;
-    CGFloat arrowWidth = 0.8 * selfViewWidth;
-    CGFloat arrowHeight = arrowWidth/6;
-    UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    nextPageButton.backgroundColor = [UIColor clearColor];
-    [nextPageButton setImage:[UIImage imageNamed:@"last page arrow 2.png"] forState:UIControlStateNormal];
-    [nextPageButton addTarget:self action:@selector(goToLastPage) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:nextPageButton];
+    CGFloat arrowWidth = selfViewWidth;
+    CGFloat arrowHeight = selfViewHeight * 0.07;
+    UIButton * lastPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [lastPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+    lastPageButton.backgroundColor = [UIColor colorWithRed:(68/255.0) green:(68/255.0) blue:(68/255.0) alpha:1.0f];
+    [lastPageButton setImage:[UIImage imageNamed:@"last page arrow 4.png"] forState:UIControlStateNormal];
+    [lastPageButton addTarget:self action:@selector(goToLastPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:lastPageButton];
 }
 
 - (void) goToLastPage {
@@ -88,16 +81,28 @@
 }
 
 - (void) setNextPageButton {
-    CGFloat arrowX = 0.28 * selfViewWidth;
-    CGFloat arrowY = 0.93 * selfViewHeight;
-    CGFloat arrowWidth = 0.44 * selfViewWidth;
-    CGFloat arrowHeight = arrowWidth/4;
+    CGFloat arrowX = 0;
+    CGFloat arrowY = webView.frame.origin.y + webView.frame.size.height;
+    CGFloat arrowWidth =selfViewWidth;
+    CGFloat arrowHeight = selfViewHeight - arrowY;
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
     nextPageButton.backgroundColor = [UIColor clearColor];
-    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 2.png"] forState:UIControlStateNormal];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSString *startPoint = [self.routedb valueForKey:@"start"];
+    [nextPageButton setTitle:startPoint forState:UIControlStateNormal];
+    nextPageButton.titleLabel.backgroundColor = [UIColor clearColor];
+    nextPageButton.titleLabel.lineBreakMode = 0;
+    nextPageButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    nextPageButton.contentEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0);
+    nextPageButton.titleLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:nextPageButton];
+    
+    UIImage *startImage = [UIImage imageNamed:@"attraction 1.png"];
+    UIImageView *startView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowHeight * 0.15, arrowHeight * 0.2, arrowHeight * 0.6, arrowHeight * 0.6)];
+    [startView setImage:startImage];
+    [nextPageButton addSubview:startView];
 }
 
 - (void) goToNextPage {
@@ -108,43 +113,48 @@
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];
     [self.view addSubview:navBar];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(selfViewWidth * 0.01, 0, navBar.frame.size.height/3*4, navBar.frame.size.height)];
-    [backButton setImage:[UIImage imageNamed:@"back 1.png"] forState:UIControlStateNormal];
+    [backButton setFrame:CGRectMake(selfViewWidth * 0.027, -navBar.frame.size.height * 0.1, navBar.frame.size.height*1.51, navBar.frame.size.height*1.12)];
+    [backButton setImage:[UIImage imageNamed:@"back 3 layer.png"] forState:UIControlStateNormal];
     backButton.backgroundColor = [UIColor clearColor];
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     [navBar addSubview:backButton];
 }
 
 
+
 - (void) loadMapView {
+    UIImageView *arrowBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 46, selfViewWidth, selfViewHeight * 0.12 - 46)];
+    arrowBackground.backgroundColor = [UIColor colorWithRed:(32/255.0) green:(32/255.0) blue:(32/255) alpha:1.0f];
+    //[self.view addSubview:arrowBackground];
     
-    self.webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,selfViewHeight * 0.17,selfViewWidth,selfViewHeight * 0.72)];
+    webView =[[UIWebView alloc] initWithFrame:CGRectMake(0,46,selfViewWidth,selfViewHeight * 0.8)];
     
-    self.webView.scalesPageToFit = YES;
-    self.webView.delegate = self;
+    webView.scalesPageToFit = YES;
+    webView.delegate = self;
     NSString *urlAddress = [self.routedb valueForKey:@"mapURL"];
     //Create a URL object.
     NSURL *url = [NSURL URLWithString:urlAddress];
     //URL Requst Object
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     //Load the request in the UIWebView.
-    [self.webView loadRequest:requestObj];
-    [self.view addSubview:self.webView];
+    [webView loadRequest:requestObj];
+    [self.view addSubview:webView];
     
-    CGFloat buttonX = 0.75 * selfViewWidth;
-    CGFloat buttonY = 0.87 * self.webView.frame.size.height;
+    CGFloat buttonX = 0.72 * selfViewWidth;
+    CGFloat buttonY = 0.87 * webView.frame.size.height;
     CGFloat buttonWidth = 0.15 * selfViewWidth;
     
-    self.resetButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonWidth)];
-    [self.resetButton setImage:[UIImage imageNamed:@"back to original 2.png"] forState:UIControlStateNormal];
-    [self.resetButton addTarget:self action:@selector(resetMap) forControlEvents:UIControlEventTouchUpInside];
-    [self.webView addSubview:self.resetButton];
+    UIButton *resetButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonWidth)];
+    [resetButton setImage:[UIImage imageNamed:@"back to original 2.png"] forState:UIControlStateNormal];
+    [resetButton addTarget:self action:@selector(resetMap) forControlEvents:UIControlEventTouchUpInside];
+    [webView addSubview:resetButton];
 }
 
-- (void) resetMap{
+- (void) resetMap {
     allowLoad = YES;
-    [self.webView reload];
+    [webView reload];
 }
+
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
     return allowLoad;

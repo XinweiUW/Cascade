@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableArray *rides;
 @property (strong, nonatomic) NSMutableDictionary *rideIndices;
 @property (nonatomic) MKCoordinateRegion region;
+@property (strong, nonatomic) NSString *pronto;
 
 @end
 
@@ -28,6 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pronto = @"Pronto ride: Capital Hill to Downtown";
     
     selfViewWidth = self.view.frame.size.width;
     selfViewHeight = self.view.frame.size.height;
@@ -67,7 +70,13 @@
         [self.rideIndices setValue:[ride valueForKey:@"id"] forKey:[ride valueForKey:@"title"]];
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake(latitude, longitude);
         //CLLocationCoordinate2D *loc =
-        RideAnnotation *annotation = [[RideAnnotation alloc] initWithVariable:index :[ride valueForKey:@"title"] :location];
+        RideAnnotation *annotation;
+        if ([[ride valueForKey:@"title"] containsString:@"Pronto"]){
+            annotation = [[RideAnnotation alloc] initWithVariable:index :@"Pronto Ride" :location];
+        }else{
+            annotation = [[RideAnnotation alloc] initWithVariable:index :[ride valueForKey:@"title"] :location];
+        }
+        
         //MKAnnotationView *aView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"rideAnnotation"];
         [self.mapView addAnnotation:annotation];
     }
@@ -76,8 +85,8 @@
 - (void) resetButton {
     //UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, navBar.frame.size.height/2.8, navBar.frame.size.height/1.6)];
     //UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGFloat buttonX = 0.75 * selfViewWidth;
-    CGFloat buttonY = 0.85 * selfViewHeight;
+    CGFloat buttonX = 0.80 * selfViewWidth;
+    CGFloat buttonY = 0.89 * selfViewHeight;
     CGFloat buttonWidth = 0.15 * selfViewWidth;
     
     UIButton *resetButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonWidth)];
@@ -98,9 +107,9 @@
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [backBtn setTitle:@"" forState:UIControlStateNormal];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"back 2.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back 3.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(didTapBackButton) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.frame = CGRectMake(0.0f, 0.0f, 16.0f, 28.0f);
+    backBtn.frame = CGRectMake(0.0f, 10.0f, 24.0f, 28.0f);
     backBtn.backgroundColor = [UIColor clearColor];
     //[backBtn setContentEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 16.0f, 28.0f)];
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
@@ -146,6 +155,11 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
     NSLog(@"It works");
     NSString *title = [view.annotation title];
+    
+    if ([title containsString:@"Pronto"]){
+        title = self.pronto;
+    }
+    
     NSNumber *index = [self.rideIndices valueForKey:title];
     NSManagedObject *ride = [self.rides objectAtIndex:[index integerValue] - 1];
     [self performSegueWithIdentifier:@"showDetailFromMap" sender:ride];
@@ -179,7 +193,14 @@
             //pinView. = YES;
             pinView.canShowCallout = YES;
             NSString *title = [pinView.annotation title];
-            NSInteger index = [[self.rideIndices valueForKey:title] integerValue] - 1;
+            
+            NSInteger index;
+            if (![title containsString:@"Pronto"]) {
+                index = [[self.rideIndices valueForKey:title] integerValue] - 1;
+            }else{
+                index = [[self.rideIndices valueForKey:self.pronto] integerValue] - 1;
+            }
+            
             NSManagedObject *ride = [self.rides objectAtIndex:index];
             NSInteger complete = [[ride valueForKey:@"complete"] integerValue];
             

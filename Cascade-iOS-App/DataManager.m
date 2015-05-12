@@ -292,10 +292,10 @@
         title = [route valueForKey:@"title"];
         if ([self loadImage:title]) continue;
         //NSLog(@"%@", title);
-        NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+        //NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
         NSString *imgURL = [route valueForKey:@"imgURL"];
         NSData *imageData = [NSData dataWithContentsOfURL: [NSURL URLWithString:imgURL]];
-        NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
+        //NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
         //NSLog(@"url to imageData: %f", (end-start));
         
         UIImage *image = [UIImage imageWithData:imageData];

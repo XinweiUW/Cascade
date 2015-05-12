@@ -107,14 +107,14 @@
 
 
 - (void) setNextPageButton {
-    CGFloat arrowX = 0.28 * selfViewWidth;
+    CGFloat arrowX = 0;
     CGFloat arrowY = 0.93 * selfViewHeight;
-    CGFloat arrowWidth = 0.44 * selfViewWidth;
-    CGFloat arrowHeight = arrowWidth/4;
+    CGFloat arrowWidth =selfViewWidth;
+    CGFloat arrowHeight = selfViewHeight * 0.07;
     UIButton * nextPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextPageButton setFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
     nextPageButton.backgroundColor = [UIColor clearColor];
-    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 2.png"] forState:UIControlStateNormal];
+    [nextPageButton setImage:[UIImage imageNamed:@"next page arrow 3.png"] forState:UIControlStateNormal];
     [nextPageButton addTarget:self action:@selector(goToNextPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextPageButton];
 }
@@ -127,9 +127,9 @@
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [backBtn setTitle:@"" forState:UIControlStateNormal];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"back 2.png"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back 3.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(didTapBackButton) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.frame = CGRectMake(0.0f, 0.0f, 16.0f, 28.0f);
+    backBtn.frame = CGRectMake(0.0f, 10.0f, 24.0f, 28.0f);
     backBtn.backgroundColor = [UIColor clearColor];
     //[backBtn setContentEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 16.0f, 28.0f)];
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];

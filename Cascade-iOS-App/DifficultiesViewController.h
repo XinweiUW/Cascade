@@ -14,6 +14,10 @@
 @interface DifficultiesViewController : UIViewController {
     CGFloat selfViewWidth;
     CGFloat selfViewHeight;
+    CGFloat iconX;
+    CGFloat iconY;
+    CGFloat iconDistance;
+    CGFloat iconWidth;
 }
 
 @property (strong, nonatomic) DataManager *dm;

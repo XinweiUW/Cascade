@@ -37,34 +37,18 @@
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDown];
 
-    /*
-    DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 60)];
-    [self.view addSubview:navBar];
-    
-    UIImage *backImage = [UIImage imageNamed:@"back.png"];
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //backButton.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
-    [backButton setFrame:CGRectMake(0, 0, navBar.frame.size.height/3, navBar.frame.size.height/2.5)];
-    [backButton setImage:backImage forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    
-    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:nil];
-    item.leftBarButtonItem = backButtonItem;
-    [navBar pushNavigationItem:item animated:NO];
-     */
     [self setNavigationBar];
     
     CGSize imgSizeUp = CGSizeMake(45, 45);
     CGSize imgSizeHorizontal = CGSizeMake(45, 45);
-    startImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
-    endImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
+
+    startImage = [self imageWithImage:[UIImage imageNamed:@"attraction 1.png"] scaledToSize:imgSizeUp];
+    endImage = [self imageWithImage:[UIImage imageNamed:@"attraction 1.png"] scaledToSize:imgSizeUp];
     leftImage = [self imageWithImage:[UIImage imageNamed:@"arrow left 1.png"] scaledToSize:imgSizeHorizontal];
     rightImage = [self imageWithImage:[UIImage imageNamed:@"arrow right 1.png"] scaledToSize:imgSizeHorizontal];
     upImage = [self imageWithImage:[UIImage imageNamed:@"arrow up 1.png"] scaledToSize:imgSizeUp];
-    attractionImage = [self imageWithImage:[UIImage imageNamed:@"attraction.png"] scaledToSize:imgSizeUp];
+    attractionImage = [self imageWithImage:[UIImage imageNamed:@"attraction 1.png"] scaledToSize:imgSizeUp];
     uTurnImage = [self imageWithImage:[UIImage imageNamed:@"u turn 1.png"] scaledToSize:imgSizeUp];
-    
 }
 
 - (void)swipeDown:(UISwipeGestureRecognizer *)gestureRecognizer{
@@ -75,8 +59,8 @@
     DSNavigationBar *navBar = [[DSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, selfViewWidth, 46)];
     [self.view addSubview:navBar];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setFrame:CGRectMake(selfViewWidth * 0.01, 0, navBar.frame.size.height/3*4, navBar.frame.size.height)];
-    [backButton setImage:[UIImage imageNamed:@"back 1.png"] forState:UIControlStateNormal];
+    [backButton setFrame:CGRectMake(selfViewWidth * 0.027, -navBar.frame.size.height * 0.1, navBar.frame.size.height*1.51, navBar.frame.size.height*1.12)];
+    [backButton setImage:[UIImage imageNamed:@"back 3 layer.png"] forState:UIControlStateNormal];
     backButton.backgroundColor = [UIColor clearColor];
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     [navBar addSubview:backButton];
@@ -167,7 +151,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 95;
+    return 85;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

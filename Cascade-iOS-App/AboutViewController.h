@@ -8,6 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController
+@interface AboutViewController : UIViewController {
+    CGFloat selfViewWidth;
+    CGFloat selfViewHeight;
+    CGFloat originX;
+    CGFloat originY;
+    CGFloat labelWidth;
+    CGFloat labelDistance;
+    
+    UIScrollView *scrollView;
+    UILabel *titleLabel;
+    UILabel *firstParaLabel;
+    UILabel *secondParaLabel;
+    UILabel *secondTitleLabel;
+    
+    UIButton *cascadeWebsite;
+    UIButton *EventsButton;
+    UIButton *exploreButton;
+    UIButton *classButton;
+    UIButton *volunteerButton;
+    UIButton *transformButton;
+    
+}
 
 @end
