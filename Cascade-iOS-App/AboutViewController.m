@@ -34,18 +34,20 @@
     //scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
     
-    [self setTitleLabel];
+    [self setFirstTitleLabel];
     [self setFirstParagraph];
     [self setSecondParagraph];
     [self setEventsButton];
     [self setExploreButton];
     [self setClassButton];
     [self setVolunteerButton];
+    [self setTransformButton];
+    [self setSecondTitleLabel];
 }
 
-- (void) setTitleLabel {
+- (void) setFirstTitleLabel {
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.02 * selfViewHeight, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
-    NSString *title = @"About Cascade:";
+    NSString *title = @"About Cascade";
     titleLabel.text = title;
     titleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
     titleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
@@ -151,6 +153,36 @@
     [scrollView addSubview:volunteerButton];
 }
 
+- (void) setTransformButton {
+    CGFloat buttonX = volunteerButton.frame.origin.x;
+    CGFloat buttonY = volunteerButton.frame.origin.y + volunteerButton.frame.size.height + labelDistance;
+    CGFloat buttonWidth = volunteerButton.frame.size.width;
+    CGFloat buttonHeight = volunteerButton.frame.size.height;
+    transformButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [transformButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [transformButton setAttributedTitle:[self attributedText:@"Transform the region >>"] forState:UIControlStateNormal];
+    //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    transformButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [transformButton addTarget:self action:@selector(goToCascadeTransformWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:transformButton];
+}
+
+- (void) setSecondTitleLabel {
+    //CGFloat buttonX = transformButton.frame.origin.x;
+    CGFloat buttonY = transformButton.frame.origin.y + transformButton.frame.size.height + labelDistance * 2;
+    //CGFloat buttonWidth = transformButton.frame.size.width;
+    //CGFloat buttonHeight = transformButton.frame.size.height;
+    secondTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, buttonY, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
+    NSString *title = @"Contact Cascade";
+    secondTitleLabel.text = title;
+    secondTitleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    secondTitleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
+    //titleLabel.backgroundColor = [UIColor grayColor];
+    [secondTitleLabel setTextAlignment:NSTextAlignmentCenter];
+    [secondTitleLabel sizeToFit];
+    [scrollView addSubview:secondTitleLabel];
+}
+
 
 - (NSMutableAttributedString *) attributedText: (NSString *)originalText {
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:originalText];
@@ -185,6 +217,10 @@
     [[UIApplication sharedApplication] openURL:url];
 }
 
+- (void) goToCascadeTransformWebsite {
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://www.cascade.org/get-involved" ];
+    [[UIApplication sharedApplication] openURL:url];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

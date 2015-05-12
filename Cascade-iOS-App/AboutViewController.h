@@ -20,16 +20,15 @@
     UILabel *titleLabel;
     UILabel *firstParaLabel;
     UILabel *secondParaLabel;
-    UILabel *thirdParaLabel;
-    UILabel *fourthParaLabel;
-    UILabel *fifthParaLabel;
-    UILabel *sixthParaLabel;
+    UILabel *secondTitleLabel;
     
     UIButton *cascadeWebsite;
     UIButton *EventsButton;
     UIButton *exploreButton;
     UIButton *classButton;
     UIButton *volunteerButton;
+    UIButton *transformButton;
+    
 }
 
 @end
