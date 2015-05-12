@@ -8,6 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController
+@interface AboutViewController : UIViewController {
+    CGFloat selfViewWidth;
+    CGFloat selfViewHeight;
+    CGFloat originX;
+    CGFloat originY;
+    CGFloat labelWidth;
+    CGFloat labelDistance;
+    
+    UIScrollView *scrollView;
+    UILabel *titleLabel;
+    UILabel *firstParaLabel;
+    UILabel *secondParaLabel;
+    UILabel *thirdParaLabel;
+    UILabel *fourthParaLabel;
+    UILabel *fifthParaLabel;
+    UILabel *sixthParaLabel;
+}
 
 @end
