@@ -50,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 5;
+	return 4;
 }
 
 /*- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -95,9 +95,9 @@
 			cell.textLabel.text = @"Safety Tip";
 			break;
 			
-		case 4:
-			cell.textLabel.text = @"Settings";
-			break;
+		//case 4:
+			//cell.textLabel.text = @"Settings";
+			//break;
 	}
 	
 	cell.backgroundColor = [UIColor clearColor];
@@ -128,9 +128,9 @@
             vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"TipViewController"];
             break;
         
-        case 4:
-            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"SettingsViewController"];
-            break;
+        //case 4:
+            //vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"SettingsViewController"];
+            //break;
 		//case 3:
 			//[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 			//[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
