@@ -260,7 +260,15 @@
     
     cell.backgroundView = [[UIImageView alloc] initWithImage:image];
     
-    [cell.routeNameLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"title"]]];
+    NSString *titleText = [NSString stringWithFormat:@"%@", [device valueForKey:@"title"]];
+    if ([titleText containsString:@":"]) {
+        NSString *newTitleText = [titleText stringByReplacingOccurrencesOfString:@": " withString:@":\n"];
+        [cell.routeNameLabel setText:newTitleText];
+    } else {
+        [cell.routeNameLabel setText:titleText];
+    }
+
+    //[cell.routeNameLabel setText:titleText];
     cell.routeNameLabel.numberOfLines = 2;
     cell.routeNameLabel.lineBreakMode = 0;
     
