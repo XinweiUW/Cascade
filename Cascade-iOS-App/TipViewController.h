@@ -25,6 +25,8 @@
     UILabel *fifthParaLabel;
     UILabel *sixthParaLabel;
     
+    
+    
 }
 
 @end

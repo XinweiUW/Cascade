@@ -38,6 +38,9 @@
     [self setFirstParagraph];
     [self setSecondParagraph];
     [self setEventsButton];
+    [self setExploreButton];
+    [self setClassButton];
+    [self setVolunteerButton];
 }
 
 - (void) setTitleLabel {
@@ -81,7 +84,7 @@
     CGFloat buttonY = secondParaLabel.frame.origin.y;
     CGFloat buttonWidth = secondParaLabel.frame.size.width * 1.5;
     CGFloat buttonHeight = secondParaLabel.frame.size.height;
-    UIButton *cascadeWebsite = [UIButton buttonWithType:UIButtonTypeCustom];
+    cascadeWebsite = [UIButton buttonWithType:UIButtonTypeCustom];
     [cascadeWebsite setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
     [cascadeWebsite setAttributedTitle:[self attributedText:@"www.cascade.org"] forState:UIControlStateNormal];
     //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
@@ -96,15 +99,58 @@
     CGFloat buttonY = secondParaLabel.frame.origin.y + secondParaLabel.frame.size.height + labelDistance;
     CGFloat buttonWidth = secondParaLabel.frame.size.width * 2.5;
     CGFloat buttonHeight = secondParaLabel.frame.size.height;
-    UIButton *cascadeWebsite = [UIButton buttonWithType:UIButtonTypeCustom];
-    [cascadeWebsite setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
-    [cascadeWebsite setAttributedTitle:[self attributedText:@"Join an event >>"] forState:UIControlStateNormal];
+    EventsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [EventsButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [EventsButton setAttributedTitle:[self attributedText:@"Join an event >>"] forState:UIControlStateNormal];
     //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
-    cascadeWebsite.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [cascadeWebsite addTarget:self action:@selector(goToCascadeEventsWebsite) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:cascadeWebsite];
+    EventsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [EventsButton addTarget:self action:@selector(goToCascadeEventsWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:EventsButton];
 
 }
+
+- (void) setExploreButton {
+    CGFloat buttonX = EventsButton.frame.origin.x;
+    CGFloat buttonY = EventsButton.frame.origin.y + EventsButton.frame.size.height + labelDistance;
+    CGFloat buttonWidth = EventsButton.frame.size.width;
+    CGFloat buttonHeight = EventsButton.frame.size.height;
+    exploreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [exploreButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [exploreButton setAttributedTitle:[self attributedText:@"Explore routes with friends >>"] forState:UIControlStateNormal];
+    //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    exploreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [exploreButton addTarget:self action:@selector(goToCascadeExploreWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:exploreButton];
+}
+
+- (void) setClassButton {
+    CGFloat buttonX = exploreButton.frame.origin.x;
+    CGFloat buttonY = exploreButton.frame.origin.y + exploreButton.frame.size.height + labelDistance;
+    CGFloat buttonWidth = exploreButton.frame.size.width;
+    CGFloat buttonHeight = exploreButton.frame.size.height;
+    classButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [classButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [classButton setAttributedTitle:[self attributedText:@"Take a class >>"] forState:UIControlStateNormal];
+    //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    classButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [classButton addTarget:self action:@selector(goToCascadeClassWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:classButton];
+}
+
+- (void) setVolunteerButton {
+    CGFloat buttonX = classButton.frame.origin.x;
+    CGFloat buttonY = classButton.frame.origin.y + classButton.frame.size.height + labelDistance;
+    CGFloat buttonWidth = classButton.frame.size.width;
+    CGFloat buttonHeight = classButton.frame.size.height;
+    volunteerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [volunteerButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [volunteerButton setAttributedTitle:[self attributedText:@"Volunteer >>"] forState:UIControlStateNormal];
+    //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    volunteerButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [volunteerButton addTarget:self action:@selector(goToCascadeVolunteerWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:volunteerButton];
+}
+
 
 - (NSMutableAttributedString *) attributedText: (NSString *)originalText {
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:originalText];
@@ -121,6 +167,21 @@
 
 - (void) goToCascadeEventsWebsite {
     NSURL *url = [ [ NSURL alloc ] initWithString: @"http://cascade.org/ride/major-rides" ];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+- (void) goToCascadeExploreWebsite {
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://cascade.org/grouprides" ];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+- (void) goToCascadeClassWebsite {
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://cascade.org/learn" ];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+- (void) goToCascadeVolunteerWebsite {
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://cascade.org/volunteer" ];
     [[UIApplication sharedApplication] openURL:url];
 }
 

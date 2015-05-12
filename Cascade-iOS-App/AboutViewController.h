@@ -24,6 +24,12 @@
     UILabel *fourthParaLabel;
     UILabel *fifthParaLabel;
     UILabel *sixthParaLabel;
+    
+    UIButton *cascadeWebsite;
+    UIButton *EventsButton;
+    UIButton *exploreButton;
+    UIButton *classButton;
+    UIButton *volunteerButton;
 }
 
 @end
