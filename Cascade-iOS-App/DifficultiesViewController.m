@@ -103,14 +103,14 @@
     
     CGFloat originX = 0.3 * selfViewWidth;
     CGFloat originY = difficultyIcon.frame.origin.y - difficultyIcon.frame.size.width * 0.2;
-    CGFloat labelWidth = difficultyIcon.frame.size.width * 4;
+    CGFloat labelWidth = difficultyIcon.frame.size.width * 2.1;
     CGFloat labelHeight = difficultyIcon.frame.size.height * 1.5;
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(originX, originY, labelWidth, labelHeight)];
     //label.backgroundColor = [UIColor grayColor];
     [label setTextAlignment:NSTextAlignmentLeft];
     label.text = difficultyText;
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:22.0f * selfViewHeight/iPhone5Height];
+    label.font = [UIFont boldSystemFontOfSize:19.0f * selfViewHeight/iPhone5Height];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     [self.view addSubview:label];
