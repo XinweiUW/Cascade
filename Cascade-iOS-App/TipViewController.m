@@ -56,9 +56,9 @@
 
 
 - (void) setFirstParagraph {
-    firstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
-    firstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    firstParaLabel.numberOfLines = 0;
+    firstParaLabel = [[UITextView alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
+    //firstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    //firstParaLabel.numberOfLines = 0;
     //firstParaLabel.backgroundColor = [UIColor greenColor];
     NSString *labelText = @"We encourage all riders to Ride SMART.";
     [firstParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(26, 11)]];

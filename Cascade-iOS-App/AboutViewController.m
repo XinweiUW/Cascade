@@ -7,6 +7,7 @@
 //
 
 #import "AboutViewController.h"
+#define iPhone5Height 568
 
 @interface AboutViewController ()
 
@@ -32,7 +33,36 @@
     //[scrollView setContentOffset:CGPointZero];
     //scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
+    
+    [self setTitleLabel];
+    [self setFirstParagraph];
 }
+
+- (void) setTitleLabel {
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.02 * selfViewHeight, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
+    NSString *title = @"About Cascade:";
+    titleLabel.text = title;
+    titleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    titleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
+    //titleLabel.backgroundColor = [UIColor grayColor];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel sizeToFit];
+    [scrollView addSubview:titleLabel];
+}
+
+- (void) setFirstParagraph {
+    firstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
+    firstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    firstParaLabel.numberOfLines = 0;
+    //firstParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Cascade Bicycle Club, the nation’s largest locally based bicycle organization, is 15,000-members and 36-staff strong, and serves bike riders of all ages and abilities throughout the Puget Sound region.";
+    firstParaLabel.font = [UIFont systemFontOfSize:16.0f * selfViewHeight/iPhone5Height];
+    firstParaLabel.textColor = [UIColor blackColor];
+    [firstParaLabel setText:labelText];
+    [firstParaLabel sizeToFit];
+    [scrollView addSubview:firstParaLabel];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
