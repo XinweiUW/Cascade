@@ -19,44 +19,41 @@
     [super viewDidLoad];
     selfViewWidth = self.view.frame.size.width;
     selfViewHeight = self.view.frame.size.height;
+    originX = 0.08 * selfViewWidth;
+    originY = 0.2 * selfViewHeight;
+    labelWidth = 0.84 * selfViewWidth;
+    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.02 * selfViewWidth, originY, 0.96 * selfViewWidth, 0.78 * selfViewHeight)];
+    scrollView.contentSize = CGSizeMake(0.96 * selfViewWidth, 0.78 * selfViewHeight);
+    scrollView.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:scrollView];
 
     [self setBackButton];
     [self setTitleLabel];
     [self setFirstParagraph];
+    [self setSecondParagraph];
     // Do any additional setup after loading the view.
 }
 
 - (void) setFirstParagraph {
-    /*
-    firstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, 0.2 * selfViewHeight, 0.84 * selfViewWidth, 0.2 * selfViewWidth)];
-    firstParaLabel.backgroundColor = [UIColor clearColor];
-    firstParaLabel.textColor = [UIColor blackColor];
-    firstParaLabel.font = [UIFont systemFontOfSize:16.0f * selfViewHeight/iPhone5Height];
-    firstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    firstParaLabel.numberOfLines = 0;
-    firstParaLabel.text = @"We encourage all riders to Ride SMART.";
-    
-    NSMutableAttributedString *text =
-    [[NSMutableAttributedString alloc]
-     initWithAttributedString: firstParaLabel.attributedText];
-    
-    [text addAttribute:NSForegroundColorAttributeName
-                 value:[UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1]
-                 range:NSMakeRange(26, 11)];
-    [firstParaLabel setAttributedText: text];
-    
-    //firstParaLabel.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:firstParaLabel];
-    */
-    
-    firstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, 0.2 * selfViewHeight, 0.84 * selfViewWidth, 0.2 * selfViewWidth)];
+    firstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
     firstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
     firstParaLabel.numberOfLines = 0;
     //firstParaLabel.backgroundColor = [UIColor greenColor];
     NSString *labelText = @"We encourage all riders to Ride SMART.";
     [firstParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(26, 11)]];
     [firstParaLabel sizeToFit];
-    [self.view addSubview:firstParaLabel];
+    [scrollView addSubview:firstParaLabel];
+}
+
+- (void) setSecondParagraph {
+    secondParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY + firstParaLabel.frame.size.height, labelWidth, 0.2 * selfViewWidth)];
+    secondParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    secondParaLabel.numberOfLines = 0;
+    secondParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Stay alert - watch for cars, other riders, and hazards. Don’t ride with earphones or earbuds. Pull off the road and stop when using a cell phone.";
+    [secondParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(0, 1)]];
+    [secondParaLabel sizeToFit];
+    [scrollView addSubview:secondParaLabel];
 }
 
 - (NSMutableAttributedString *)attributedText: (NSString *)originalText withRange: (NSRange) range {

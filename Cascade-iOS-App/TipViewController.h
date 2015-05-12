@@ -11,9 +11,19 @@
 @interface TipViewController : UIViewController {
     CGFloat selfViewWidth;
     CGFloat selfViewHeight;
-    
+    CGFloat originX;
+    CGFloat originY;
+    CGFloat labelWidth;
+
+    UIScrollView *scrollView;
     UILabel *titleLabel;
     UILabel *firstParaLabel;
+    UILabel *secondParaLabel;
+    UILabel *thirdParaLabel;
+    UILabel *fourthParaLabel;
+    UILabel *fifthParaLabel;
+    UILabel *sixthParaLabel;
+    
 }
 
 @end
