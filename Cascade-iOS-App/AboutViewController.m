@@ -29,7 +29,7 @@
     labelDistance = 0.03 * selfViewHeight;
     
     scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.045 * selfViewWidth, 45, 0.95 * selfViewWidth, 0.9 * selfViewHeight)];
-    scrollView.contentSize = CGSizeMake(0.95 * selfViewWidth, selfViewHeight);
+    scrollView.contentSize = CGSizeMake(0.95 * selfViewWidth, selfViewHeight * 1.5);
     //[scrollView setContentOffset:CGPointZero];
     //scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
@@ -43,6 +43,7 @@
     [self setVolunteerButton];
     [self setTransformButton];
     [self setSecondTitleLabel];
+    [self setContactContent];
 }
 
 - (void) setFirstTitleLabel {
@@ -181,6 +182,26 @@
     [secondTitleLabel setTextAlignment:NSTextAlignmentCenter];
     [secondTitleLabel sizeToFit];
     [scrollView addSubview:secondTitleLabel];
+}
+
+- (void) setContactContent {
+    CGFloat buttonY = secondTitleLabel.frame.origin.y + secondTitleLabel.frame.size.height + labelDistance * 1.5;
+    UITextView *emailInfo = [[UITextView alloc] initWithFrame:CGRectMake(originX, buttonY, labelWidth, secondParaLabel.frame.size.height*2)];
+    emailInfo.text = @"info@cascade.org";
+    emailInfo.editable = NO;
+    emailInfo.dataDetectorTypes = UIDataDetectorTypeAll;
+    [emailInfo setTextColor:[UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1]];
+    emailInfo.font = [UIFont systemFontOfSize:18.0f * selfViewHeight/iPhone5Height];
+    [scrollView addSubview:emailInfo];
+    
+    buttonY = emailInfo.frame.origin.y + emailInfo.frame.size.height + labelDistance * 0.2;
+    UITextView *phoneNumInfo = [[UITextView alloc] initWithFrame:CGRectMake(originX, buttonY, labelWidth, 0.2 * selfViewWidth)];
+    phoneNumInfo.text = @"206-522-3222";
+    phoneNumInfo.editable = NO;
+    phoneNumInfo.dataDetectorTypes = UIDataDetectorTypeAll;
+    //contactInfo.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    phoneNumInfo.font = [UIFont systemFontOfSize:18.0f * selfViewHeight/iPhone5Height];
+    [scrollView addSubview:phoneNumInfo];
 }
 
 
