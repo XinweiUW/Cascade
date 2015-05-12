@@ -22,11 +22,11 @@
     
     originX = 0;
     originY = 0.14 * selfViewHeight;
-    labelWidth = 0.95 * selfViewWidth;
+    labelWidth = 0.92 * selfViewWidth;
     labelDistance = 0.03 * selfViewHeight;
     
-    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.03 * selfViewWidth, 45, 0.96 * selfViewWidth, 0.9 * selfViewHeight)];
-    scrollView.contentSize = CGSizeMake(0.96 * selfViewWidth, selfViewHeight);
+    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.045 * selfViewWidth, 45, 0.95 * selfViewWidth, 0.9 * selfViewHeight)];
+    scrollView.contentSize = CGSizeMake(0.95 * selfViewWidth, selfViewHeight);
     //[scrollView setContentOffset:CGPointZero];
     //scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
