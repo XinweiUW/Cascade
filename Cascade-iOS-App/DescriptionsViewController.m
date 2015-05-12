@@ -28,11 +28,11 @@
     //self.navigationController.navigationBar.backItem.title = @"Custom text";
     [self setBackground];
     
-    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, selfViewHeight * 0.33, selfViewWidth * 0.84, selfViewWidth * 0.3)];
+    UILabel *routeTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.08 * selfViewWidth, selfViewHeight * 0.35, selfViewWidth * 0.84, selfViewWidth * 0.3)];
     routeTitleLabel.backgroundColor = [UIColor clearColor];
     routeTitleLabel.textColor = [UIColor whiteColor];
     [routeTitleLabel setTextAlignment:NSTextAlignmentLeft];
-    routeTitleLabel.font = [UIFont boldSystemFontOfSize:24.0f * selfViewHeight/iPhone5Height];
+    routeTitleLabel.font = [UIFont boldSystemFontOfSize:23.0f * selfViewHeight/iPhone5Height];
     routeTitleLabel.numberOfLines = 2;
     routeTitleLabel.lineBreakMode = 0;
     [self.view addSubview:routeTitleLabel];
@@ -72,7 +72,14 @@
     [descriptImage addSubview:keyWordsLabel];
     
     if (self.routedb) {
-        routeTitleLabel.text = [self.routedb valueForKey:@"title"];
+        //routeTitleLabel.text = [self.routedb valueForKey:@"title"];
+        NSString * titleText = [self.routedb valueForKey:@"title"];
+        if ([titleText containsString:@":"]) {
+            NSString *newTitleText = [titleText stringByReplacingOccurrencesOfString:@": " withString:@":\n"];
+            routeTitleLabel.text = newTitleText;
+        } else {
+            routeTitleLabel.text = titleText;
+        }
         keyWordsLabel.text = [self.routedb valueForKey:@"keyWords"];
         
     }
