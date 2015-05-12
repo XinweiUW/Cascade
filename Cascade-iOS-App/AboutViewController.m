@@ -36,6 +36,8 @@
     
     [self setTitleLabel];
     [self setFirstParagraph];
+    [self setSecondParagraph];
+    [self setEventsButton];
 }
 
 - (void) setTitleLabel {
@@ -63,6 +65,65 @@
     [scrollView addSubview:firstParaLabel];
 }
 
+- (void) setSecondParagraph {
+    CGFloat labelY = firstParaLabel.frame.origin.y + firstParaLabel.frame.size.height + labelDistance;
+    secondParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
+    secondParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    secondParaLabel.numberOfLines = 0;
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Learn more at: ";
+    [secondParaLabel setText:labelText];
+    [secondParaLabel sizeToFit];
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    [scrollView addSubview:secondParaLabel];
+    
+    CGFloat buttonX = secondParaLabel.frame.origin.x + secondParaLabel.frame.size.width;
+    CGFloat buttonY = secondParaLabel.frame.origin.y;
+    CGFloat buttonWidth = secondParaLabel.frame.size.width * 1.5;
+    CGFloat buttonHeight = secondParaLabel.frame.size.height;
+    UIButton *cascadeWebsite = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cascadeWebsite setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [cascadeWebsite setAttributedTitle:[self attributedText:@"www.cascade.org"] forState:UIControlStateNormal];
+    //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    cascadeWebsite.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [cascadeWebsite addTarget:self action:@selector(goToCascadeOfficialWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:cascadeWebsite];
+
+}
+
+- (void) setEventsButton {
+    CGFloat buttonX = secondParaLabel.frame.origin.x;
+    CGFloat buttonY = secondParaLabel.frame.origin.y + secondParaLabel.frame.size.height + labelDistance;
+    CGFloat buttonWidth = secondParaLabel.frame.size.width * 2.5;
+    CGFloat buttonHeight = secondParaLabel.frame.size.height;
+    UIButton *cascadeWebsite = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cascadeWebsite setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [cascadeWebsite setAttributedTitle:[self attributedText:@"Join an event >>"] forState:UIControlStateNormal];
+    //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    cascadeWebsite.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [cascadeWebsite addTarget:self action:@selector(goToCascadeEventsWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:cascadeWebsite];
+
+}
+
+- (NSMutableAttributedString *) attributedText: (NSString *)originalText {
+    NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:originalText];
+    [commentString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [commentString length])];
+    UIColor* textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    [commentString setAttributes:@{NSForegroundColorAttributeName:textColor,NSUnderlineStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]} range:NSMakeRange(0,[commentString length])];
+    return commentString;
+}
+
+- (void) goToCascadeOfficialWebsite {
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://www.cascade.org" ];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+- (void) goToCascadeEventsWebsite {
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://cascade.org/ride/major-rides" ];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -85,6 +146,10 @@
 
 - (void) didTapBackButton {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL) automaticallyAdjustsScrollViewInsets{
+    return NO;
 }
 
 /*
