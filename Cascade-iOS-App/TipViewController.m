@@ -20,10 +20,13 @@
     selfViewWidth = self.view.frame.size.width;
     selfViewHeight = self.view.frame.size.height;
     originX = 0.08 * selfViewWidth;
-    originY = 0.2 * selfViewHeight;
+    originY = 0;
     labelWidth = 0.84 * selfViewWidth;
-    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.02 * selfViewWidth, originY, 0.96 * selfViewWidth, 0.78 * selfViewHeight)];
-    scrollView.contentSize = CGSizeMake(0.96 * selfViewWidth, 0.78 * selfViewHeight);
+    
+    
+    scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.02 * selfViewWidth, 0.2 * selfViewHeight, 0.96 * selfViewWidth, 0.78 * selfViewHeight)];
+    scrollView.contentSize = CGSizeMake(0.96 * selfViewWidth, selfViewHeight);
+    //[scrollView setContentOffset:CGPointZero];
     scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
 
@@ -43,6 +46,10 @@
     [firstParaLabel setAttributedText:[self attributedText:labelText withRange:NSMakeRange(26, 11)]];
     [firstParaLabel sizeToFit];
     [scrollView addSubview:firstParaLabel];
+}
+
+- (BOOL) automaticallyAdjustsScrollViewInsets{
+    return NO;
 }
 
 - (void) setSecondParagraph {
