@@ -10,6 +10,7 @@
 #import "DataManager.h"
 #import "Ride.h"
 #import "DescriptionsViewController.h"
+#define iPhone5Height 568
 
 
 @interface MapListViewController ()
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) NSMutableDictionary *rideIndices;
 @property (nonatomic) MKCoordinateRegion region;
 @property (strong, nonatomic) NSString *pronto;
+@property (strong, nonatomic) UIImage *rightIcon;
 
 @end
 
@@ -48,6 +50,9 @@
     [self resetButton];
     [self setBackButton];
     
+    
+    CGSize imgSize = CGSizeMake(10, 10);
+    self.rightIcon = [self.dm imageWithImage:[UIImage imageNamed:@"grey arrow right.png"] scaledToSize:imgSize];
     
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = TRUE;
@@ -225,7 +230,7 @@
             
             //pinView.image = [UIImage imageNamed:@"menu-button.png"];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
-            //[button setImage:[UIImage new] forState:UIControlStateNormal];
+            [button setImage:self.rightIcon forState:UIControlStateNormal];
             [button.titleLabel setTextAlignment:NSTextAlignmentCenter];
             pinView.rightCalloutAccessoryView = button;
             

@@ -28,6 +28,7 @@
 		9D40822A1ACA7E1500B2602B /* 10-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082201ACA7E1500B2602B /* 10-arrow-right.png */; };
 		9D40822B1ACA7E1500B2602B /* 10-arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4082211ACA7E1500B2602B /* 10-arrow-up.png */; };
 		9D40822D1ACA7EB000B2602B /* Cascade_UserIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D40822C1ACA7EB000B2602B /* Cascade_UserIcon.jpg */; };
+		9D4E4EB21B02BC82002B0BD2 /* grey arrow right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4E4EB11B02BC82002B0BD2 /* grey arrow right.png */; };
 		9D52A8A11AD395900041CB62 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52A8A01AD395900041CB62 /* AboutViewController.m */; };
 		9D52A8A41AD395AC0041CB62 /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52A8A31AD395AC0041CB62 /* TipViewController.m */; };
 		9D52A8A71AD395BE0041CB62 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52A8A61AD395BE0041CB62 /* SettingsViewController.m */; };
@@ -147,6 +148,7 @@
 		9D4082211ACA7E1500B2602B /* 10-arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-arrow-up.png"; sourceTree = "<group>"; };
 		9D40822C1ACA7EB000B2602B /* Cascade_UserIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cascade_UserIcon.jpg; sourceTree = "<group>"; };
 		9D4082381ACA916E00B2602B /* Cascade-iOS-App-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cascade-iOS-App-Prefix.pch"; sourceTree = "<group>"; };
+		9D4E4EB11B02BC82002B0BD2 /* grey arrow right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey arrow right.png"; sourceTree = "<group>"; };
 		9D52A89F1AD395900041CB62 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		9D52A8A01AD395900041CB62 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		9D52A8A21AD395AC0041CB62 /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				9DC1680D1B002E16005150DF /* next page arrow 3.png */,
 				9D968B201AEF6E7B00104C42 /* distance.png */,
 				9DE1745F1AFF288E007A3D98 /* back 2.png */,
+				9D4E4EB11B02BC82002B0BD2 /* grey arrow right.png */,
 				9DC1680B1B002AD3005150DF /* last page arrow 4.png */,
 				9D968B221AEF6E7B00104C42 /* pin(complete).png */,
 				9DC168091B001D5B005150DF /* last page arrow 3.png */,
@@ -617,6 +620,7 @@
 				9DE174581AFF149B007A3D98 /* time 1.png in Resources */,
 				9DC168181B003361005150DF /* medium 1.png in Resources */,
 				9DC1680E1B002E16005150DF /* next page arrow 3.png in Resources */,
+				9D4E4EB21B02BC82002B0BD2 /* grey arrow right.png in Resources */,
 				9D4082221ACA7E1500B2602B /* 2-switch to map list.png in Resources */,
 				9D968B291AEF6E7B00104C42 /* arrow down.png in Resources */,
 				9DE174561AFF149B007A3D98 /* road condition 1.png in Resources */,
