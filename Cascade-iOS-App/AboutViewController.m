@@ -34,6 +34,11 @@
     //scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
     
+    [self setAppTitle];
+    [self setAppFirstParagraph];
+    [self setAppSecondParagraph];
+    [self setAppCreditWebsite];
+    
     [self setClubTitle];
     [self setClubParagraph];
     [self setClubWebsite];
@@ -46,10 +51,72 @@
     [self setContactContent];
 }
 
+- (void) setAppTitle {
+    appTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(originX, 0.02 * selfViewHeight, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
+    NSString *title = @"About the Let’s Ride! App:";
+    appTitleLabel.text = title;
+    appTitleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    appTitleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
+    //titleLabel.backgroundColor = [UIColor grayColor];
+    [appTitleLabel setTextAlignment:NSTextAlignmentCenter];
+    [appTitleLabel sizeToFit];
+    [scrollView addSubview:appTitleLabel];
+}
 
+- (void) setAppFirstParagraph {
+    appFirstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, appTitleLabel.frame.origin.y + appTitleLabel.frame.size.height + labelDistance, labelWidth, 0.2 * selfViewWidth)];
+    appFirstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    appFirstParaLabel.numberOfLines = 0;
+    //firstParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Hop on a bike discover Seattle on two wheels with these 10 amazing bike rides curated by the pro’s and guaranteed to be amazing experiences for you to ride solo or with your adventurous friends!  Whether you’re new to Seattle or just looking to experience new corners of its of its beautiful surroundings, this app is sure to please. Challenge yourself to complete all 10 beautiful rides! #UnlockYourCity";
+    appFirstParaLabel.font = [UIFont systemFontOfSize:16.0f * selfViewHeight/iPhone5Height];
+    appFirstParaLabel.textColor = [UIColor blackColor];
+    [appFirstParaLabel setText:labelText];
+    [appFirstParaLabel sizeToFit];
+    [scrollView addSubview:appFirstParaLabel];
+}
+
+-(void) setAppSecondParagraph {
+    CGFloat labelY = appFirstParaLabel.frame.origin.y + appFirstParaLabel.frame.size.height + labelDistance;
+    appSecondParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
+    appSecondParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    appSecondParaLabel.numberOfLines = 0;
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"This app was created by a dedicated team of students from University of Washington’s iSchool and Cascade Bicycle Club. ";
+    [appSecondParaLabel setText:labelText];
+    [appSecondParaLabel sizeToFit];
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    [scrollView addSubview:appSecondParaLabel];
+}
+
+-(void) setAppCreditWebsite {
+    CGFloat labelY = appSecondParaLabel.frame.origin.y + appSecondParaLabel.frame.size.height + labelDistance;
+    appCreditParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
+    appCreditParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    appCreditParaLabel.numberOfLines = 0;
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    NSString *labelText = @"Learn more at: ";
+    [appCreditParaLabel setText:labelText];
+    [appCreditParaLabel sizeToFit];
+    //secondParaLabel.backgroundColor = [UIColor greenColor];
+    [scrollView addSubview:appCreditParaLabel];
+    
+    CGFloat buttonX = appCreditParaLabel.frame.origin.x + appCreditParaLabel.frame.size.width;
+    CGFloat buttonY = appCreditParaLabel.frame.origin.y;
+    CGFloat buttonWidth = appCreditParaLabel.frame.size.width * 1.5;
+    CGFloat buttonHeight = appCreditParaLabel.frame.size.height;
+    appCreditButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [appCreditButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [appCreditButton setAttributedTitle:[self attributedText:@"here"] forState:UIControlStateNormal];
+    //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    appCreditButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [appCreditButton addTarget:self action:@selector(goToCascadeOfficialWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:appCreditButton];
+}
 
 - (void) setClubTitle {
-    clubTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.02 * selfViewHeight, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
+    CGFloat labelY = appCreditParaLabel.frame.origin.y + appCreditParaLabel.frame.size.height + labelDistance * 2;
+    clubTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(originX, labelY, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
     NSString *title = @"About Cascade Bicycle Club:";
     clubTitleLabel.text = title;
     clubTitleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
@@ -61,7 +128,8 @@
 }
 
 - (void) setClubParagraph {
-    clubFirstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
+    CGFloat labelY = clubTitleLabel.frame.origin.y + clubTitleLabel.frame.size.height + labelDistance * 1.5;
+    clubFirstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
     clubFirstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
     clubFirstParaLabel.numberOfLines = 0;
     //firstParaLabel.backgroundColor = [UIColor greenColor];

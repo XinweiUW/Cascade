@@ -17,6 +17,13 @@
     CGFloat labelDistance;
     
     UIScrollView *scrollView;
+    
+    UILabel *appTitleLabel;
+    UILabel *appFirstParaLabel;
+    UILabel *appSecondParaLabel;
+    UILabel *appCreditParaLabel;
+    UIButton *appCreditButton;
+    
     UILabel *clubTitleLabel;
     UILabel *clubFirstParaLabel;
     UILabel *clubSecondParaLabel;
