@@ -111,9 +111,9 @@
     appCreditButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [appCreditButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
     [appCreditButton setAttributedTitle:[self attributedText:@"here"] forState:UIControlStateNormal];
-    //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    //appCreditButton.backgroundColor = [UIColor grayColor];
     appCreditButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [appCreditButton addTarget:self action:@selector(goToCascadeOfficialWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [appCreditButton addTarget:self action:@selector(goToFullCreditWebsite) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:appCreditButton];
 }
 
@@ -286,6 +286,11 @@
     UIColor* textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
     [commentString setAttributes:@{NSForegroundColorAttributeName:textColor,NSUnderlineStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]} range:NSMakeRange(0,[commentString length])];
     return commentString;
+}
+
+- (void) goToFullCreditWebsite {
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://www.cascade.org/node/21831" ];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (void) goToCascadeOfficialWebsite {
