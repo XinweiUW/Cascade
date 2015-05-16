@@ -34,9 +34,9 @@
     //scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
     
-    [self setFirstTitleLabel];
-    [self setFirstParagraph];
-    [self setSecondParagraph];
+    [self setClubTitle];
+    [self setClubParagraph];
+    [self setClubWebsite];
     [self setEventsButton];
     [self setExploreButton];
     [self setClassButton];
@@ -46,62 +46,64 @@
     [self setContactContent];
 }
 
-- (void) setFirstTitleLabel {
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.02 * selfViewHeight, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
-    NSString *title = @"About Cascade";
-    titleLabel.text = title;
-    titleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
-    titleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
+
+
+- (void) setClubTitle {
+    clubTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.02 * selfViewHeight, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
+    NSString *title = @"About Cascade Bicycle Club:";
+    clubTitleLabel.text = title;
+    clubTitleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    clubTitleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
     //titleLabel.backgroundColor = [UIColor grayColor];
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [titleLabel sizeToFit];
-    [scrollView addSubview:titleLabel];
+    [clubTitleLabel setTextAlignment:NSTextAlignmentCenter];
+    [clubTitleLabel sizeToFit];
+    [scrollView addSubview:clubTitleLabel];
 }
 
-- (void) setFirstParagraph {
-    firstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
-    firstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    firstParaLabel.numberOfLines = 0;
+- (void) setClubParagraph {
+    clubFirstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, originY, labelWidth, 0.2 * selfViewWidth)];
+    clubFirstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    clubFirstParaLabel.numberOfLines = 0;
     //firstParaLabel.backgroundColor = [UIColor greenColor];
     NSString *labelText = @"Cascade Bicycle Club, the nation’s largest locally based bicycle organization, is 15,000-members and 36-staff strong, and serves bike riders of all ages and abilities throughout the Puget Sound region.";
-    firstParaLabel.font = [UIFont systemFontOfSize:16.0f * selfViewHeight/iPhone5Height];
-    firstParaLabel.textColor = [UIColor blackColor];
-    [firstParaLabel setText:labelText];
-    [firstParaLabel sizeToFit];
-    [scrollView addSubview:firstParaLabel];
+    clubFirstParaLabel.font = [UIFont systemFontOfSize:16.0f * selfViewHeight/iPhone5Height];
+    clubFirstParaLabel.textColor = [UIColor blackColor];
+    [clubFirstParaLabel setText:labelText];
+    [clubFirstParaLabel sizeToFit];
+    [scrollView addSubview:clubFirstParaLabel];
 }
 
-- (void) setSecondParagraph {
-    CGFloat labelY = firstParaLabel.frame.origin.y + firstParaLabel.frame.size.height + labelDistance;
-    secondParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
-    secondParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    secondParaLabel.numberOfLines = 0;
+- (void) setClubWebsite {
+    CGFloat labelY = clubFirstParaLabel.frame.origin.y + clubFirstParaLabel.frame.size.height + labelDistance;
+    clubSecondParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
+    clubSecondParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    clubSecondParaLabel.numberOfLines = 0;
     //secondParaLabel.backgroundColor = [UIColor greenColor];
     NSString *labelText = @"Learn more at: ";
-    [secondParaLabel setText:labelText];
-    [secondParaLabel sizeToFit];
+    [clubSecondParaLabel setText:labelText];
+    [clubSecondParaLabel sizeToFit];
     //secondParaLabel.backgroundColor = [UIColor greenColor];
-    [scrollView addSubview:secondParaLabel];
+    [scrollView addSubview:clubSecondParaLabel];
     
-    CGFloat buttonX = secondParaLabel.frame.origin.x + secondParaLabel.frame.size.width;
-    CGFloat buttonY = secondParaLabel.frame.origin.y;
-    CGFloat buttonWidth = secondParaLabel.frame.size.width * 1.5;
-    CGFloat buttonHeight = secondParaLabel.frame.size.height;
-    cascadeWebsite = [UIButton buttonWithType:UIButtonTypeCustom];
-    [cascadeWebsite setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
-    [cascadeWebsite setAttributedTitle:[self attributedText:@"www.cascade.org"] forState:UIControlStateNormal];
+    CGFloat buttonX = clubSecondParaLabel.frame.origin.x + clubSecondParaLabel.frame.size.width;
+    CGFloat buttonY = clubSecondParaLabel.frame.origin.y;
+    CGFloat buttonWidth = clubSecondParaLabel.frame.size.width * 1.5;
+    CGFloat buttonHeight = clubSecondParaLabel.frame.size.height;
+    clubWebsiteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [clubWebsiteButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [clubWebsiteButton setAttributedTitle:[self attributedText:@"www.cascade.org"] forState:UIControlStateNormal];
     //cascadeWebsite.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
-    cascadeWebsite.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [cascadeWebsite addTarget:self action:@selector(goToCascadeOfficialWebsite) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:cascadeWebsite];
+    clubWebsiteButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [clubWebsiteButton addTarget:self action:@selector(goToCascadeOfficialWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:clubWebsiteButton];
 
 }
 
 - (void) setEventsButton {
-    CGFloat buttonX = secondParaLabel.frame.origin.x;
-    CGFloat buttonY = secondParaLabel.frame.origin.y + secondParaLabel.frame.size.height + labelDistance;
-    CGFloat buttonWidth = secondParaLabel.frame.size.width * 2.5;
-    CGFloat buttonHeight = secondParaLabel.frame.size.height;
+    CGFloat buttonX = clubSecondParaLabel.frame.origin.x;
+    CGFloat buttonY = clubSecondParaLabel.frame.origin.y + clubSecondParaLabel.frame.size.height + labelDistance;
+    CGFloat buttonWidth = clubSecondParaLabel.frame.size.width * 2.5;
+    CGFloat buttonHeight = clubSecondParaLabel.frame.size.height;
     EventsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [EventsButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
     [EventsButton setAttributedTitle:[self attributedText:@"Join an event >>"] forState:UIControlStateNormal];
@@ -186,7 +188,7 @@
 
 - (void) setContactContent {
     CGFloat buttonY = secondTitleLabel.frame.origin.y + secondTitleLabel.frame.size.height + labelDistance * 1.5;
-    UITextView *emailInfo = [[UITextView alloc] initWithFrame:CGRectMake(originX, buttonY, labelWidth, secondParaLabel.frame.size.height*2)];
+    UITextView *emailInfo = [[UITextView alloc] initWithFrame:CGRectMake(originX, buttonY, labelWidth, clubSecondParaLabel.frame.size.height*2)];
     //emailInfo.text = @"info@cascade.org";
     [emailInfo setAttributedText:[self attributedText:@"info@cascade.org"]];
     emailInfo.editable = NO;
