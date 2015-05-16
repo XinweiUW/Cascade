@@ -27,9 +27,10 @@
     originY = 0.14 * selfViewHeight;
     labelWidth = 0.92 * selfViewWidth;
     labelDistance = 0.03 * selfViewHeight;
+    titleFontSize = 22.0f * selfViewHeight/iPhone5Height;
     
     scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0.045 * selfViewWidth, 45, 0.95 * selfViewWidth, 0.9 * selfViewHeight)];
-    scrollView.contentSize = CGSizeMake(0.95 * selfViewWidth, selfViewHeight * 1.5);
+    scrollView.contentSize = CGSizeMake(0.95 * selfViewWidth, selfViewHeight * 2);
     //[scrollView setContentOffset:CGPointZero];
     //scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
@@ -47,16 +48,18 @@
     [self setClassButton];
     [self setVolunteerButton];
     [self setTransformButton];
-    [self setSecondTitleLabel];
+    [self setContactTitle];
     [self setContactContent];
 }
 
 - (void) setAppTitle {
     appTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(originX, 0.02 * selfViewHeight, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
-    NSString *title = @"About the Let’s Ride! App:";
+    appTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    appTitleLabel.numberOfLines = 0;
+    NSString *title = @"About the Let’s Ride! App";
     appTitleLabel.text = title;
     appTitleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
-    appTitleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
+    appTitleLabel.font = [UIFont boldSystemFontOfSize:titleFontSize];
     //titleLabel.backgroundColor = [UIColor grayColor];
     [appTitleLabel setTextAlignment:NSTextAlignmentCenter];
     [appTitleLabel sizeToFit];
@@ -95,7 +98,7 @@
     appCreditParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
     appCreditParaLabel.numberOfLines = 0;
     //secondParaLabel.backgroundColor = [UIColor greenColor];
-    NSString *labelText = @"Learn more at: ";
+    NSString *labelText = @"Full credits ";
     [appCreditParaLabel setText:labelText];
     [appCreditParaLabel sizeToFit];
     //secondParaLabel.backgroundColor = [UIColor greenColor];
@@ -117,10 +120,10 @@
 - (void) setClubTitle {
     CGFloat labelY = appCreditParaLabel.frame.origin.y + appCreditParaLabel.frame.size.height + labelDistance * 2;
     clubTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(originX, labelY, 0.96 * selfViewWidth, selfViewWidth * 0.1)];
-    NSString *title = @"About Cascade Bicycle Club:";
+    NSString *title = @"About Cascade Bicycle Club";
     clubTitleLabel.text = title;
     clubTitleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
-    clubTitleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
+    clubTitleLabel.font = [UIFont boldSystemFontOfSize:titleFontSize];
     //titleLabel.backgroundColor = [UIColor grayColor];
     [clubTitleLabel setTextAlignment:NSTextAlignmentCenter];
     [clubTitleLabel sizeToFit];
@@ -128,7 +131,7 @@
 }
 
 - (void) setClubParagraph {
-    CGFloat labelY = clubTitleLabel.frame.origin.y + clubTitleLabel.frame.size.height + labelDistance * 1.5;
+    CGFloat labelY = clubTitleLabel.frame.origin.y + clubTitleLabel.frame.size.height + labelDistance;
     clubFirstParaLabel = [[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelWidth, 0.2 * selfViewWidth)];
     clubFirstParaLabel.lineBreakMode = NSLineBreakByWordWrapping;
     clubFirstParaLabel.numberOfLines = 0;
@@ -238,7 +241,7 @@
     [scrollView addSubview:transformButton];
 }
 
-- (void) setSecondTitleLabel {
+- (void) setContactTitle {
     //CGFloat buttonX = transformButton.frame.origin.x;
     CGFloat buttonY = transformButton.frame.origin.y + transformButton.frame.size.height + labelDistance * 2;
     //CGFloat buttonWidth = transformButton.frame.size.width;
@@ -247,7 +250,7 @@
     NSString *title = @"Contact Cascade";
     secondTitleLabel.text = title;
     secondTitleLabel.textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
-    secondTitleLabel.font = [UIFont boldSystemFontOfSize:30.0f * selfViewHeight/iPhone5Height];
+    secondTitleLabel.font = [UIFont boldSystemFontOfSize:titleFontSize];
     //titleLabel.backgroundColor = [UIColor grayColor];
     [secondTitleLabel setTextAlignment:NSTextAlignmentCenter];
     [secondTitleLabel sizeToFit];
@@ -255,7 +258,7 @@
 }
 
 - (void) setContactContent {
-    CGFloat buttonY = secondTitleLabel.frame.origin.y + secondTitleLabel.frame.size.height + labelDistance * 1.5;
+    CGFloat buttonY = secondTitleLabel.frame.origin.y + secondTitleLabel.frame.size.height + labelDistance;
     UITextView *emailInfo = [[UITextView alloc] initWithFrame:CGRectMake(originX, buttonY, labelWidth, clubSecondParaLabel.frame.size.height*2)];
     //emailInfo.text = @"info@cascade.org";
     [emailInfo setAttributedText:[self attributedText:@"info@cascade.org"]];

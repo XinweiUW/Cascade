@@ -15,6 +15,7 @@
     CGFloat originY;
     CGFloat labelWidth;
     CGFloat labelDistance;
+    CGFloat titleFontSize;
     
     UIScrollView *scrollView;
     
