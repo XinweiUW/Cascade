@@ -110,7 +110,7 @@
     CGFloat buttonHeight = appCreditParaLabel.frame.size.height;
     appCreditButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [appCreditButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
-    [appCreditButton setAttributedTitle:[self attributedText:@"here"] forState:UIControlStateNormal];
+    [appCreditButton setAttributedTitle:[self attributedText2:@"here."] forState:UIControlStateNormal];
     //appCreditButton.backgroundColor = [UIColor grayColor];
     appCreditButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [appCreditButton addTarget:self action:@selector(goToFullCreditWebsite) forControlEvents:UIControlEventTouchUpInside];
@@ -287,6 +287,15 @@
     [commentString setAttributes:@{NSForegroundColorAttributeName:textColor,NSUnderlineStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]} range:NSMakeRange(0,[commentString length])];
     return commentString;
 }
+
+- (NSMutableAttributedString *) attributedText2: (NSString *)originalText {
+    NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:originalText];
+    [commentString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [commentString length] - 1)];
+    UIColor* textColor = [UIColor colorWithRed:67/255.0 green:176/255.0 blue:42/255.0 alpha:1];
+    [commentString setAttributes:@{NSForegroundColorAttributeName:textColor,NSUnderlineStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]} range:NSMakeRange(0,[commentString length] - 1)];
+    return commentString;
+}
+
 
 - (void) goToFullCreditWebsite {
     NSURL *url = [ [ NSURL alloc ] initWithString: @"http://www.cascade.org/node/21831" ];
