@@ -74,15 +74,9 @@
         double longitude = [[ride valueForKey:@"longitude"] doubleValue];
         [self.rideIndices setValue:[ride valueForKey:@"id"] forKey:[ride valueForKey:@"title"]];
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake(latitude, longitude);
-        //CLLocationCoordinate2D *loc =
         RideAnnotation *annotation;
-        if ([[ride valueForKey:@"title"] containsString:@"Pronto"]){
-            annotation = [[RideAnnotation alloc] initWithVariable:index :@"Pronto Ride" :location];
-        }else{
-            annotation = [[RideAnnotation alloc] initWithVariable:index :[ride valueForKey:@"title"] :location];
-        }
+        annotation = [[RideAnnotation alloc] initWithVariable:index :[ride valueForKey:@"title"] :location];
         
-        //MKAnnotationView *aView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"rideAnnotation"];
         [self.mapView addAnnotation:annotation];
     }
 }
@@ -161,9 +155,9 @@
     NSLog(@"It works");
     NSString *title = [view.annotation title];
     
-    if ([title containsString:@"Pronto"]){
-        title = self.pronto;
-    }
+    //if ([title containsString:@"Pronto"]){
+    //    title = self.pronto;
+    //}
     
     NSNumber *index = [self.rideIndices valueForKey:title];
     NSManagedObject *ride = [self.rides objectAtIndex:[index integerValue] - 1];
@@ -200,23 +194,16 @@
             NSString *title = [pinView.annotation title];
             
             NSInteger index;
-            if (![title containsString:@"Pronto"]) {
-                index = [[self.rideIndices valueForKey:title] integerValue] - 1;
-            }else{
-                index = [[self.rideIndices valueForKey:self.pronto] integerValue] - 1;
-            }
+            index = [[self.rideIndices valueForKey:title] integerValue] - 1;
             
             NSManagedObject *ride = [self.rides objectAtIndex:index];
             NSInteger complete = [[ride valueForKey:@"complete"] integerValue];
             
             CGSize imgSizeUp = CGSizeMake(25, 33);
             
-            //CGSize imgSizeHorizontal = CGSizeMake(40, 45);
-            
             UIImage *completePin = [self imageWithImage:[UIImage imageNamed:@"pin(complete).png"] scaledToSize:imgSizeUp];
             
             UIImage *uncompletePin = [self imageWithImage:[UIImage imageNamed:@"pin(uncomplete).png"] scaledToSize:imgSizeUp];
-            
             
             if (complete == 0) {
                 
@@ -228,13 +215,11 @@
                 
             }
             
-            //pinView.image = [UIImage imageNamed:@"menu-button.png"];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoDark];
             [button setImage:self.rightIcon forState:UIControlStateNormal];
             [button.titleLabel setTextAlignment:NSTextAlignmentCenter];
             pinView.rightCalloutAccessoryView = button;
             
-            // If appropriate, customize the callout by adding accessory views (code not shown).
         }
         else
             pinView.annotation = annotation;
