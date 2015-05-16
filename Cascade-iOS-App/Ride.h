@@ -8,7 +8,7 @@
 
 #import <CoreData/CoreData.h>
 
-@interface Rides : NSManagedObject
+@interface Ride : NSManagedObject
 
 @property (nonatomic) NSInteger id;
 @property(strong, nonatomic) NSString *title;
@@ -22,11 +22,16 @@
 @property(strong, nonatomic) NSString *mapURL;
 @property(strong, nonatomic) NSString *roadCondition;
 @property(strong, nonatomic) NSString *imgURL;
-@property(strong, nonatomic) NSData *imgData;
+//@property(strong, nonatomic) NSData *imgData;
 @property(strong, nonatomic) NSString *attractions;
 @property(strong, nonatomic) NSString *descriptions;
 @property(strong, nonatomic) NSString *turnByTurn;
 @property(strong, nonatomic) NSString *difficulties;
+@property(nonatomic) NSInteger complete;
+@property(nonatomic) NSString *latitude;
+@property(nonatomic) NSString *longitude;
+@property(strong, nonatomic) NSString *turnByTurnText;
+
 
 //@property(strong, nonatomic) NSData *imgURL;
 

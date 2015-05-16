@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Cascade. All rights reserved.
 //
 
-#import "Rides.h"
+#import "Ride.h"
 
-@implementation Rides
+@implementation Ride
 
 @dynamic id;
 @dynamic title;
@@ -24,8 +24,12 @@
 @dynamic attractions;
 @dynamic descriptions;
 @dynamic turnByTurn;
+@dynamic turnByTurnText;
 @dynamic difficulties;
 //@dynamic imgData;
 @dynamic imgURL;
+@dynamic complete;
+@dynamic latitude;
+@dynamic longitude;
 
 @end

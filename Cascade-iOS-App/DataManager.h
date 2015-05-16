@@ -10,22 +10,26 @@
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
 #import "CHCSVParser.h"
-#import "Rides.h"
+#import "Ride.h"
 
 @interface DataManager : NSObject <CHCSVParserDelegate>
 
 //- (NSManagedObjectContext *)managedObjectContext;
 //- (NSMutableArray *)executeParsing;
-- (NSMutableArray *)fetchRequest;
+- (NSMutableArray *)mutableArrayUsingFetchRequest;
 
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-- (void)updateFromServerWithCompletion:(void (^)(void))completionHandler;
+- (void)updateTextFromServerWithCompletion:(void (^)(void))completionHandler;
+- (void)generateImageFromURL;
 - (void)saveImage: (UIImage *)image :(NSString *)title;
 - (UIImage *)loadImage:(NSString *)title;
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
+- (NSInteger)numberOfImage;
+- (void) putAlertView:(id)sender;
 
-@property (strong) Rides *routedb;
+@property (strong) Ride *routedb;
 @property (readonly) NSArray *lines;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

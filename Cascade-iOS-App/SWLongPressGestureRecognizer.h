@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
 @interface SWLongPressGestureRecognizer : UILongPressGestureRecognizer

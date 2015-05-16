@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "DataManager.h"
 
-@interface DescriptionsViewController : UIViewController
+@interface DescriptionsViewController : UIViewController {
+    CGFloat selfViewWidth;
+    CGFloat selfViewHeight;
+}
 
+@property (strong, nonatomic) DataManager *dm;
+//@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 
-@property (weak, nonatomic) IBOutlet UILabel *routeTitle;
-@property (weak, nonatomic) IBOutlet UILabel *routeDescription;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
+//@property (weak, nonatomic) IBOutlet UILabel *routeTitleLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *routeDescriptionLabel;
 
+@property(nonatomic) UIEdgeInsets contentEdgeInsets;
 @property (strong) NSManagedObject *routedb;
 
 @end

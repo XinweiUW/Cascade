@@ -8,6 +8,35 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController
+@interface AboutViewController : UIViewController {
+    CGFloat selfViewWidth;
+    CGFloat selfViewHeight;
+    CGFloat originX;
+    CGFloat originY;
+    CGFloat labelWidth;
+    CGFloat labelDistance;
+    CGFloat titleFontSize;
+    
+    UIScrollView *scrollView;
+    
+    UILabel *appTitleLabel;
+    UILabel *appFirstParaLabel;
+    UILabel *appSecondParaLabel;
+    UILabel *appCreditParaLabel;
+    UIButton *appCreditButton;
+    
+    UILabel *clubTitleLabel;
+    UILabel *clubFirstParaLabel;
+    UILabel *clubSecondParaLabel;
+    UILabel *secondTitleLabel;
+    
+    UIButton *clubWebsiteButton;
+    UIButton *EventsButton;
+    UIButton *exploreButton;
+    UIButton *classButton;
+    UIButton *volunteerButton;
+    UIButton *transformButton;
+    
+}
 
 @end
